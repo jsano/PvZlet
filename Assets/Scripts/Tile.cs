@@ -10,6 +10,8 @@ public class Tile : MonoBehaviour
 
     public static readonly Vector2 TILE_DISTANCE = new Vector2(2, 2.4f);
 
+    public GameObject placed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (PlantBuilder.planting != -1) SR.color = hoverColor;
+        if (PlantBuilder.planting != -1 && placed == null) SR.color = hoverColor;
     }
 
     void OnMouseExit()
@@ -34,7 +36,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (PlantBuilder.planting != -1) PlantBuilder.Plant(transform.position);
+        if (PlantBuilder.planting != -1 && placed == null) PlantBuilder.Plant(this);
     }
 
 }

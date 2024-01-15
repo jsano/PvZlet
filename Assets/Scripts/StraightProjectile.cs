@@ -40,10 +40,10 @@ public class StraightProjectile : MonoBehaviour
     /// <summary> Called when this projectile hits either an enemy, enemy projectile, or ground, where it disappears in all cases </summary>
     void OnTriggerEnter2D(Collider2D other)
     {
-        //if (other.GetComponent<Enemy>() != null)
-        //{
-        //    other.GetComponent<Enemy>().receiveDamage(dmg, fromPlayer);
-        //}
+        if (other.GetComponent<Zombie>() != null)
+        {
+            other.GetComponent<Zombie>().ReceiveDamage(dmg);
+        }
         // I was planning to have a particle system for when the projecile hits something to have a cool shatter effect
         /*GameObject p0 = Instantiate(dissolve, transform.position, transform.rotation);
         ParticleSystem.MainModule p = p0.GetComponent<ParticleSystem>().main;

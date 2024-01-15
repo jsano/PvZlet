@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 0
   dmg: 0
   dir: {x: 0, y: 0, z: 0}
+  distance: 0
   laneSplash: 0
   neighboringLaneSplash: 0
 --- !u!50 &-7294238510343628029

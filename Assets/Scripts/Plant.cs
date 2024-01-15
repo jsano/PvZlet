@@ -20,8 +20,8 @@ public abstract class Plant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rightOffset = new Vector3(1, 0);
-        topOffset = new Vector3(1.15f, 0);
+        rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 2, 0);
+        topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
     }
 
     // Update is called once per frame

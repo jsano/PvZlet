@@ -31,7 +31,7 @@ public class StraightProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(startPos, transform.position) >= distance)
+        if (Vector3.Distance(startPos, transform.position) / Tile.TILE_DISTANCE.x >= distance)
         {
             Destroy(gameObject);
         }

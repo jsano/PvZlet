@@ -32,7 +32,6 @@ public class PlantBuilder : MonoBehaviour
     {
         if (buttonID == planting) planting = -1;
         else planting = buttonID;
-        Debug.Log(assignedPlants.Length);
         currentPlant = allPlants[assignedPlants[buttonID]];
     }
 

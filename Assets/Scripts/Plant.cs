@@ -30,12 +30,12 @@ public abstract class Plant : MonoBehaviour
         period += Time.deltaTime;
         if (period >= atkspd)
         {
-            //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, range);
-            //if (hit)
-            //{ 
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+            if (hit)
+            { 
                 Attack();
                 period = 0;
-            //}
+            }
         }
         if (HP <= 0)
         {
@@ -45,15 +45,22 @@ public abstract class Plant : MonoBehaviour
 
     protected abstract void Attack();
 
-    protected virtual void ReceiveDamage(int dmg)
+    public virtual void ReceiveDamage(int dmg)
     {
         HP -= dmg;
-        //StartCoroutine(IFrames());
+        StartCoroutine(EatenVisual());
     }
 
     protected virtual void Die()
     {
         Destroy(gameObject);
+    }
+
+    protected IEnumerator EatenVisual()
+    {
+        GetComponent<SpriteRenderer>().color -= Color.blue / 2;
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color += Color.blue / 2;
     }
 
 }

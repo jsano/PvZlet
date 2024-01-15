@@ -12,6 +12,7 @@ public class ZombieSpawner : MonoBehaviour
     public List<List<int>> waves = new List<List<int>>();
     public int lanes;
     [HideInInspector] public int currentBuild = 0;
+    private float forceSend;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class ZombieSpawner : MonoBehaviour
     void Update()
     {
         preparation = Mathf.Max(0, preparation - Time.deltaTime);
+        forceSend -= Time.deltaTime;
     }
 
     private IEnumerator Spawn()
@@ -35,6 +37,7 @@ public class ZombieSpawner : MonoBehaviour
         yield return new WaitUntil(() => preparation <= 0);
         for (int waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
+            forceSend = 30f;
             foreach (int i in waves[waveNumber])
             {
                 currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;
@@ -42,7 +45,7 @@ public class ZombieSpawner : MonoBehaviour
                 g.GetComponent<Zombie>().row = Random.Range(1, lanes);
             }
             int maxBuild = currentBuild;
-            yield return new WaitUntil(() => currentBuild / maxBuild <= 0.5f);
+            yield return new WaitUntil(() => currentBuild / maxBuild < 0.5f || forceSend <= 0);
         }
         yield return new WaitUntil(() => currentBuild == 0);
         Debug.Log("WIN");

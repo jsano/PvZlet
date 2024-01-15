@@ -16,6 +16,9 @@ public class Zombie : MonoBehaviour
 
     private Rigidbody2D RB;
 
+    private GameObject eating;
+    private Coroutine eatingCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +29,16 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Walk();
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Plant"));
+        if (hit)
+        {
+            if (eating == null || hit.collider.gameObject != eating)
+            {
+                if (eatingCoroutine != null) StopCoroutine(eatingCoroutine);
+                eatingCoroutine = StartCoroutine(Eat(hit.collider.GetComponent<Plant>()));
+            }
+        }
+        else Walk();
         if (HP <= 0)
         {
             Die();
@@ -35,7 +47,7 @@ public class Zombie : MonoBehaviour
 
     protected void Spawn()
     {
-        transform.position = new Vector3(Tile.TILE_DISTANCE.x * 7, Tile.TILE_DISTANCE.y * (3 - row), 0);
+        transform.position = new Vector3(Tile.TILE_DISTANCE.x * 7.5f, Tile.TILE_DISTANCE.y * (3 - row), 0);
     }
 
     protected void Walk()
@@ -55,25 +67,16 @@ public class Zombie : MonoBehaviour
         RB.velocity = Vector3.zero;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Plant>() != null)
-        {
-            RB.velocity = Vector2.zero;
-            StartCoroutine(Eat(collision.GetComponent<Plant>()));
-        }
-        
-    }
-
     protected IEnumerator Eat(Plant p)
     {
+        eating = p.gameObject;
         while (p != null)
         {
+            RB.velocity = Vector2.zero;
             period = 0;
             p.ReceiveDamage(damage);
             yield return new WaitForSeconds(0.5f);
         }
-        
     }
 
     public virtual void ReceiveDamage(float dmg)

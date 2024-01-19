@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class Seed : MonoBehaviour
 {
 
     private PlantBuilder pb;
-    public int ID;
+    public int ID; // 0-indexed
     private Button b;
     private Plant plant;
 
@@ -18,6 +19,7 @@ public class Seed : MonoBehaviour
         pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         b = GetComponent<Button>();
         plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
+        transform.Find("Text").GetComponent<TextMeshProUGUI>().text = ID + "";
     }
 
     // Update is called once per frame

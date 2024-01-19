@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Zombie : MonoBehaviour
@@ -29,16 +30,20 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Plant"));
-        if (hit)
+        RaycastHit2D[] hit = Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Plant"));
+        bool nothing = true;
+        for (int i = 0; i < hit.Length; i++)
         {
-            if (eating == null || hit.collider.gameObject != eating)
+            if (hit[i].collider.gameObject.GetComponent<Plant>().instant) continue;
+            if (eating == null || hit[i].collider.gameObject != eating)
             {
                 if (eatingCoroutine != null) StopCoroutine(eatingCoroutine);
-                eatingCoroutine = StartCoroutine(Eat(hit.collider.GetComponent<Plant>()));
+                eatingCoroutine = StartCoroutine(Eat(hit[i].collider.GetComponent<Plant>()));
             }
+            nothing = false;
+            break;
         }
-        else Walk();
+        if (nothing) Walk();
         if (HP <= 0)
         {
             Die();

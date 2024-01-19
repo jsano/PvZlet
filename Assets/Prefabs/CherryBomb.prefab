@@ -89,6 +89,7 @@ MonoBehaviour:
   HP: 5
   range: 0
   alwaysAttack: 1
+  instant: 1
   row: 0
   col: 0
   projectile: {fileID: 3877779073688012961, guid: d882ac1049f335048b9a66004df2268f, type: 3}

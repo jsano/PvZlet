@@ -13,6 +13,7 @@ public abstract class Plant : MonoBehaviour
     public int HP;
     public float range;
     public bool alwaysAttack = false;
+    public bool instant;
 
     [HideInInspector] public int row;
     [HideInInspector] public int col;
@@ -35,7 +36,7 @@ public abstract class Plant : MonoBehaviour
         if (period >= atkspd)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-            if (hit || alwaysAttack)
+            if (hit || alwaysAttack || instant)
             { 
                 Attack();
                 period = 0;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 522950279159447988}
   - component: {fileID: 5964213700757602430}
   - component: {fileID: 5911949842474577495}
+  - component: {fileID: -5024108398215470033}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,3 +98,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572a27c8992d19d43a2a03882d8e3b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sunValue: 25
+  lifetime: 5
+--- !u!58 &-5024108398215470033
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617563865656503287}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

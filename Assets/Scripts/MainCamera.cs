@@ -1,23 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class UI : MonoBehaviour
+public class MainCamera : MonoBehaviour
 {
-
-    private TextMeshProUGUI s;
-
     // Start is called before the first frame update
     void Start()
     {
-        s = transform.Find("Sun").Find("Text").GetComponent<TextMeshProUGUI>();
+        GetComponent<Camera>().eventMask = LayerMask.GetMask("UI");
     }
 
     // Update is called once per frame
     void Update()
     {
-        s.text = PlantBuilder.sun + "";
+        
     }
-
 }

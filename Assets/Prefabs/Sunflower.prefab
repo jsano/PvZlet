@@ -89,7 +89,7 @@ MonoBehaviour:
   cost: 50
   recharge: 5
   damage: 0
-  atkspd: 10
+  atkspd: 5
   HP: 6
   range: 0
   alwaysAttack: 1

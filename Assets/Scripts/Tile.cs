@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (PlantBuilder.planting != -1 && placed == null) SR.color = hoverColor;
+        if (EventSystem.current.currentSelectedGameObject != null && placed == null) SR.color = hoverColor;
         else SR.color = Color.clear;
     }
 
@@ -40,7 +41,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (PlantBuilder.planting != -1 && placed == null) PlantBuilder.Plant(this);
+        if (EventSystem.current.currentSelectedGameObject != null && placed == null) PlantBuilder.Plant(this);
     }
 
 }

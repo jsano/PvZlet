@@ -22,30 +22,26 @@ public class PlantBuilder : MonoBehaviour
 
     public int[] assignedPlants;
     private static GameObject currentPlant;
-    [HideInInspector] public static int planting = -1;
 
-    public int sun = 100;
+    public int startingSun;
+    public static int sun;
 
     // Start is called before the first frame update
     void Awake()
     {
         assignedPlants = new int[] {2, 0, 1};
+        sun = startingSun;
     }
 
     void Update()
     {
-
+        if (Input.GetMouseButton(0) && EventSystem.current.currentSelectedGameObject != null) 
+            EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void SetPlantToBuild(int buttonID)
     {
         if (buttonID >= assignedPlants.Length) return;
-        if (buttonID == planting)
-        {
-            planting = -1;
-            EventSystem.current.SetSelectedGameObject(null);
-        }
-        else planting = buttonID;
         currentPlant = allPlants[assignedPlants[buttonID]];
     }
 
@@ -54,8 +50,7 @@ public class PlantBuilder : MonoBehaviour
         GameObject g = Instantiate(currentPlant, t.transform.position, Quaternion.identity);
         t.placed = g;
         g.GetComponent<Plant>().row = t.row;
-        planting = -1;
-        //sun -= g.GetComponent<Plant>().cost;
+        sun -= g.GetComponent<Plant>().cost;
     }
 
 }

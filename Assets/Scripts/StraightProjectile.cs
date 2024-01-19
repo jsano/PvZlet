@@ -19,6 +19,8 @@ public class StraightProjectile : MonoBehaviour
 
     private Rigidbody2D RB;
 
+    private bool hit = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,9 +42,10 @@ public class StraightProjectile : MonoBehaviour
     /// <summary> Called when this projectile hits either an enemy, enemy projectile, or ground, where it disappears in all cases </summary>
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Zombie>() != null)
+        if (other.GetComponent<Zombie>() != null && !hit)
         {
             other.GetComponent<Zombie>().ReceiveDamage(dmg);
+            hit = true;
         }
         // I was planning to have a particle system for when the projecile hits something to have a cool shatter effect
         /*GameObject p0 = Instantiate(dissolve, transform.position, transform.rotation);

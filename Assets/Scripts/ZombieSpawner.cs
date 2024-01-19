@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
 
-    private float preparation = 0;//10f;
+    public float preparation;
 
     public GameObject[] allZombies;
 

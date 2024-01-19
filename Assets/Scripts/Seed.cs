@@ -23,21 +23,26 @@ public class Seed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        b.interactable = pb.sun >= plant.cost;
+        b.interactable = PlantBuilder.sun >= plant.cost;
 
-        if (Input.GetButtonDown("Plant1") && ID == 0 && b.enabled) OnClick();
-        if (Input.GetButtonDown("Plant2") && ID == 1 && b.enabled) OnClick();
-        if (Input.GetButtonDown("Plant3") && ID == 2 && b.enabled) OnClick();
-        if (Input.GetButtonDown("Plant4") && ID == 3 && b.enabled) OnClick();
-        if (Input.GetButtonDown("Plant5") && ID == 4 && b.enabled) OnClick();
-        if (Input.GetButtonDown("Plant6") && ID == 5 && b.enabled) OnClick();
-        if (Input.GetButtonDown("Plant7") && ID == 6 && b.enabled) OnClick();
-        if (Input.GetButtonDown("Plant8") && ID == 7 && b.enabled) OnClick();
-        if (Input.GetButtonDown("Plant9") && ID == 8 && b.enabled) OnClick();
+        if (Input.GetButtonDown("Plant1") && ID == 0 && b.interactable) OnClick();
+        if (Input.GetButtonDown("Plant2") && ID == 1 && b.interactable) OnClick();
+        if (Input.GetButtonDown("Plant3") && ID == 2 && b.interactable) OnClick();
+        if (Input.GetButtonDown("Plant4") && ID == 3 && b.interactable) OnClick();
+        if (Input.GetButtonDown("Plant5") && ID == 4 && b.interactable) OnClick();
+        if (Input.GetButtonDown("Plant6") && ID == 5 && b.interactable) OnClick();
+        if (Input.GetButtonDown("Plant7") && ID == 6 && b.interactable) OnClick();
+        if (Input.GetButtonDown("Plant8") && ID == 7 && b.interactable) OnClick();
+        if (Input.GetButtonDown("Plant9") && ID == 8 && b.interactable) OnClick();
     }
 
     public void OnClick()
     {
+        if (EventSystem.current.currentSelectedGameObject == gameObject)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            return;
+        }
         EventSystem.current.SetSelectedGameObject(gameObject);
         pb.SetPlantToBuild(ID);
     }

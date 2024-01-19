@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class DestroyAfterAnimation : MonoBehaviour
 {
+
+    public float lifetime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,12 +16,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        lifetime -= Time.deltaTime;
+        if (lifetime < 0) Destroy(gameObject);
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("LOSE");
-    }
-
 }

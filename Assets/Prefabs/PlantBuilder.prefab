@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allPlants:
   - {fileID: 8313544308739958182, guid: 95ef5e19425a6f749ac63cb2ab794470, type: 3}
+  - {fileID: 6749981461013567896, guid: cf452e9ca7ab34d4cbe0cfbb0de5bb78, type: 3}
   - {fileID: 8141742102053421967, guid: 13f15d972555ecd4d91cde6bfdf1b04e, type: 3}
-  - {fileID: 1979200642940330166, guid: 55c526d9f530cca46b65af4079b6821f, type: 3}
   assignedPlants: 
+  sun: 100

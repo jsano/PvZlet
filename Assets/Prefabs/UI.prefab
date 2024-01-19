@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2755392260687934861}
   - component: {fileID: 2755392260687934862}
   - component: {fileID: 2755392260687934863}
+  - component: {fileID: 3505524972916884578}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.495283, b: 0.495283, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -122,10 +123,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6958130304118783083}
-        m_TargetAssemblyTypeName: PlantBuilder, Assembly-CSharp
-        m_MethodName: SetPlantToBuild
-        m_Mode: 3
+      - m_Target: {fileID: 3505524972916884578}
+        m_TargetAssemblyTypeName: Seed, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -134,6 +135,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3505524972916884578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755392260687934849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60da145c2e7ffa4c89d321350df868f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 2
 --- !u!1 &2755392260947272035
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +181,7 @@ RectTransform:
   - {fileID: 2755392261909696168}
   - {fileID: 2755392260687934848}
   m_Father: {fileID: 2755392260987472842}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -232,7 +246,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1039472502999498139}
   - {fileID: 2755392260947272034}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -597,6 +610,7 @@ GameObject:
   - component: {fileID: 2755392261597667683}
   - component: {fileID: 2755392261597667684}
   - component: {fileID: 2755392261597667685}
+  - component: {fileID: 8119440820612995552}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -687,7 +701,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.495283, b: 0.495283, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -707,10 +721,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6958130304118783083}
-        m_TargetAssemblyTypeName: PlantBuilder, Assembly-CSharp
-        m_MethodName: SetPlantToBuild
-        m_Mode: 3
+      - m_Target: {fileID: 8119440820612995552}
+        m_TargetAssemblyTypeName: Seed, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -719,6 +733,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8119440820612995552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755392261597667687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60da145c2e7ffa4c89d321350df868f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
 --- !u!1 &2755392261909696169
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +758,7 @@ GameObject:
   - component: {fileID: 2755392261909696181}
   - component: {fileID: 2755392261909696182}
   - component: {fileID: 2755392261909696183}
+  - component: {fileID: 6577792721536019519}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -821,7 +849,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.495283, b: 0.495283, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -841,10 +869,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6958130304118783083}
-        m_TargetAssemblyTypeName: PlantBuilder, Assembly-CSharp
-        m_MethodName: SetPlantToBuild
-        m_Mode: 3
+      - m_Target: {fileID: 6577792721536019519}
+        m_TargetAssemblyTypeName: Seed, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -853,6 +881,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6577792721536019519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755392261909696169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60da145c2e7ffa4c89d321350df868f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 1
 --- !u!1 &2755392262088581513
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,76 +1029,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1001 &3933317310557331478
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2755392260987472842}
-    m_Modifications:
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8439749433328750696, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-      propertyPath: m_Name
-      value: PlantBuilder
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
---- !u!4 &1039472502999498139 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4105314712667299213, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-  m_PrefabInstance: {fileID: 3933317310557331478}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6958130304118783083 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6198586842511268989, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
-  m_PrefabInstance: {fileID: 3933317310557331478}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7ca4977e4e9424469c65e0bd32b6b73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

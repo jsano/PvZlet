@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlantBuilder : MonoBehaviour
 {
@@ -15,36 +16,35 @@ public class PlantBuilder : MonoBehaviour
         }
         instance = this;
     }*/
+    //NOTE: MAYBE MAKE THESE ALL STATIC
 
     public GameObject[] allPlants;
 
-    private int[] assignedPlants;
+    public int[] assignedPlants;
     private static GameObject currentPlant;
     [HideInInspector] public static int planting = -1;
 
+    public int sun = 100;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         assignedPlants = new int[] {2, 0, 1};
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Plant1")) SetPlantToBuild(0);
-        if (Input.GetButtonDown("Plant2")) SetPlantToBuild(1);
-        if (Input.GetButtonDown("Plant3")) SetPlantToBuild(2);
-        if (Input.GetButtonDown("Plant4")) SetPlantToBuild(3);
-        if (Input.GetButtonDown("Plant5")) SetPlantToBuild(4);
-        if (Input.GetButtonDown("Plant6")) SetPlantToBuild(5);
-        if (Input.GetButtonDown("Plant7")) SetPlantToBuild(6);
-        if (Input.GetButtonDown("Plant8")) SetPlantToBuild(7);
-        if (Input.GetButtonDown("Plant9")) SetPlantToBuild(8);
+
     }
 
     public void SetPlantToBuild(int buttonID)
     {
         if (buttonID >= assignedPlants.Length) return;
-        if (buttonID == planting) planting = -1;
+        if (buttonID == planting)
+        {
+            planting = -1;
+            EventSystem.current.SetSelectedGameObject(null);
+        }
         else planting = buttonID;
         currentPlant = allPlants[assignedPlants[buttonID]];
     }
@@ -53,7 +53,9 @@ public class PlantBuilder : MonoBehaviour
     {
         GameObject g = Instantiate(currentPlant, t.transform.position, Quaternion.identity);
         t.placed = g;
+        g.GetComponent<Plant>().row = t.row;
         planting = -1;
+        //sun -= g.GetComponent<Plant>().cost;
     }
 
 }

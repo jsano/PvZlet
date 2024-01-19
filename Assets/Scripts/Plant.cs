@@ -12,6 +12,10 @@ public abstract class Plant : MonoBehaviour
     private float period = 0;
     public int HP;
     public float range;
+    public bool alwaysAttack = false;
+
+    [HideInInspector] public int row;
+    [HideInInspector] public int col;
 
     public GameObject projectile;
     protected Vector3 rightOffset;
@@ -20,7 +24,7 @@ public abstract class Plant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 2, 0);
+        rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
     }
 
@@ -31,7 +35,7 @@ public abstract class Plant : MonoBehaviour
         if (period >= atkspd)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-            if (hit)
+            if (hit || alwaysAttack)
             { 
                 Attack();
                 period = 0;

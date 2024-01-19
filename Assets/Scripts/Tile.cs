@@ -8,6 +8,9 @@ public class Tile : MonoBehaviour
     public Color hoverColor;
     private SpriteRenderer SR;
 
+    public int row;
+    public int col;
+
     public static readonly Vector2 TILE_DISTANCE = new Vector2(2, 2.4f);
 
     public GameObject placed;
@@ -24,9 +27,10 @@ public class Tile : MonoBehaviour
         
     }
 
-    void OnMouseEnter()
+    void OnMouseOver()
     {
         if (PlantBuilder.planting != -1 && placed == null) SR.color = hoverColor;
+        else SR.color = Color.clear;
     }
 
     void OnMouseExit()

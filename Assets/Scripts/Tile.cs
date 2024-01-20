@@ -19,6 +19,7 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ZombieSpawner.ROW_TO_WORLD[row] = transform.position.y;
         SR = GetComponent<SpriteRenderer>();
     }
 

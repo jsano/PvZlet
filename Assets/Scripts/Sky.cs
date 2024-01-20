@@ -9,10 +9,12 @@ public class Sky : MonoBehaviour
     public float interval;
     private float period = 0;
 
+    private Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,8 @@ public class Sky : MonoBehaviour
         if (period > interval)
         {
             period = 0;
-            Instantiate(sun, transform.position + new Vector3(Random.Range(0, Tile.TILE_DISTANCE.x * 9f), 0, 0), Quaternion.identity);
+            GameObject g = Instantiate(sun, transform.position + new Vector3(Random.Range(0, Tile.TILE_DISTANCE.x * 8f), 0, 0), Quaternion.identity);
+            g.GetComponent<Sun>().ground = cam.ViewportToWorldPoint(new Vector3(0, 0.1f)).y;
         }
     }
 }

@@ -57,7 +57,7 @@ public class Zombie : MonoBehaviour
 
     protected void Spawn()
     {
-        transform.position = new Vector3(Tile.TILE_DISTANCE.x * 7.5f, Tile.TILE_DISTANCE.y * (3 - row), 0);
+        transform.position = new Vector3(Tile.TILE_DISTANCE.x * 7.5f, ZombieSpawner.ROW_TO_WORLD[row], 0);
     }
 
     protected void Walk()

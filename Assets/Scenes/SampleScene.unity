@@ -191,6 +191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3847289951454327084, guid: 3688860150797a942803f698b660e108, type: 3}
+      propertyPath: preparation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6156869025825603018, guid: 3688860150797a942803f698b660e108, type: 3}
       propertyPath: m_Name
       value: ZombieSpawner
@@ -305,6 +309,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 696416361503115708, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696416361503115708, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696416361503115708, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696416361503115708, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2072295037502265647, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

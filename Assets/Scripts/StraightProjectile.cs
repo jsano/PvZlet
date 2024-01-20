@@ -44,7 +44,7 @@ public class StraightProjectile : MonoBehaviour
     {
         if (other.GetComponent<Zombie>() != null && !hit)
         {
-            other.GetComponent<Zombie>().ReceiveDamage(dmg);
+            Hit(other.GetComponent<Zombie>());
             hit = true;
         }
         // I was planning to have a particle system for when the projecile hits something to have a cool shatter effect
@@ -53,6 +53,11 @@ public class StraightProjectile : MonoBehaviour
         p.startColor = GetComponent<SpriteRenderer>().color;
         p0.GetComponent<ParticleSystemRenderer>().sortingOrder = layer;*/
         Destroy(gameObject);
+    }
+
+    protected virtual void Hit(Zombie other)
+    {
+        other.ReceiveDamage(dmg);
     }
 
 }

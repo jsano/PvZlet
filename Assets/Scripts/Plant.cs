@@ -22,9 +22,12 @@ public class Plant : MonoBehaviour
     protected Vector3 rightOffset;
     protected Vector3 topOffset;
 
+    private SpriteRenderer SR;
+
     // Start is called before the first frame update
     void Start()
     {
+        SR = GetComponent<SpriteRenderer>();
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
     }
@@ -67,9 +70,10 @@ public class Plant : MonoBehaviour
 
     protected IEnumerator EatenVisual()
     {
-        GetComponent<SpriteRenderer>().color -= Color.blue / 2;
-        yield return new WaitForSeconds(0.2f);
-        GetComponent<SpriteRenderer>().color += Color.blue / 2;
+        Color c = SR.material.color;
+        SR.material.color += Color.red / 2;
+        yield return new WaitForSeconds(0.1f);
+        SR.material.color = c;
     }
 
 }

@@ -11,19 +11,24 @@ public class Zombie : MonoBehaviour
     public float walkTime; // Seconds per tile
     private float period = 0;
     public float HP;
+    [HideInInspector] public float eatTime = 0.5f;
     [HideInInspector] public int row = 1; // [1-5]
 
     public GameObject projectile;
 
     private Rigidbody2D RB;
+    private SpriteRenderer SR;
 
     private GameObject eating;
     private Coroutine eatingCoroutine;
+
+    [HideInInspector] public StatMod status;
 
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
+        SR = GetComponent<SpriteRenderer>();
         Spawn();
     }
 
@@ -80,7 +85,7 @@ public class Zombie : MonoBehaviour
             RB.velocity = Vector2.zero;
             period = 0;
             p.ReceiveDamage(damage);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(eatTime);
         }
     }
 
@@ -92,9 +97,10 @@ public class Zombie : MonoBehaviour
 
     protected IEnumerator HitVisual()
     {
-        GetComponent<SpriteRenderer>().color -= Color.blue / 2;
-        yield return new WaitForSeconds(0.2f);
-        GetComponent<SpriteRenderer>().color += Color.blue / 2;
+        Color c = SR.material.color;
+        SR.material.color += Color.red / 2;
+        yield return new WaitForSeconds(0.1f);
+        SR.material.color = c;
     }
 
     protected void Die()

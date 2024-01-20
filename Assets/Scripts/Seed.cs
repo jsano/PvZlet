@@ -20,6 +20,7 @@ public class Seed : MonoBehaviour
         b = GetComponent<Button>();
         plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
         transform.Find("Text").GetComponent<TextMeshProUGUI>().text = ID + "";
+        GetComponent<Image>().color = plant.GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame

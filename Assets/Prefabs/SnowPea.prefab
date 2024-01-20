@@ -91,6 +91,7 @@ MonoBehaviour:
   recharge: 5
   damage: 1
   atkspd: 1
+  variableStartPeriod: 1
   HP: 6
   range: 3
   alwaysAttack: 0

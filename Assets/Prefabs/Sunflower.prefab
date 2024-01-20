@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.g
-      value: 0.98284096
+      value: 0.735849
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.735849
       objectReference: {fileID: 0}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
@@ -90,7 +90,8 @@ MonoBehaviour:
   cost: 50
   recharge: 5
   damage: 0
-  atkspd: 5
+  atkspd: 20
+  variableStartPeriod: 1
   HP: 6
   range: 0
   alwaysAttack: 1

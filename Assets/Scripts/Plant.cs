@@ -9,7 +9,8 @@ public class Plant : MonoBehaviour
     public float recharge;
     public float damage;
     public float atkspd;
-    private float period = 0;
+    public bool variableStartPeriod;
+    private float period;
     public int HP;
     public float range;
     public bool alwaysAttack = false;
@@ -27,6 +28,7 @@ public class Plant : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+        if (variableStartPeriod) period = Random.Range(0, atkspd / 2);
         SR = GetComponent<SpriteRenderer>();
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
@@ -38,11 +40,19 @@ public class Plant : MonoBehaviour
         period += Time.deltaTime;
         if (period >= atkspd)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-            if (hit || alwaysAttack || instant)
-            { 
-                Attack(hit.collider.gameObject.GetComponent<Zombie>());
+            if (instant || alwaysAttack)
+            {
+                Attack(null);
                 period = 0;
+            }
+            else
+            {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+                if (hit)
+                { 
+                    Attack(hit.collider.gameObject.GetComponent<Zombie>());
+                    period = 0;
+                }
             }
         }
     }

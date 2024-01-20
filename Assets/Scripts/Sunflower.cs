@@ -7,7 +7,8 @@ public class Sunflower : Plant
 
     protected override void Attack(Zombie z)
     {
-        Instantiate(projectile, transform.position + topOffset, Quaternion.identity);
+        GameObject g = Instantiate(projectile, transform.position + topOffset, Quaternion.identity);
+        g.GetComponent<Sun>().ground = transform.position.y;
     }
 
 }

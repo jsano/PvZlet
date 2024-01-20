@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5964213700757602430}
   - component: {fileID: 5911949842474577495}
   - component: {fileID: -5024108398215470033}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,7 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunValue: 25
-  lifetime: 5
+  lifetime: 10
+  ground: 0
+  speed: 2
 --- !u!58 &-5024108398215470033
 CircleCollider2D:
   m_ObjectHideFlags: 0

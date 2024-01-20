@@ -30,7 +30,7 @@ public abstract class Plant : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         period += Time.deltaTime;
         if (period >= atkspd)
@@ -42,10 +42,11 @@ public abstract class Plant : MonoBehaviour
                 period = 0;
             }
         }
-        if (HP <= 0)
-        {
-            Die();
-        }
+    }
+
+    void LateUpdate()
+    {
+        if (HP <= 0) Die();
     }
 
     protected abstract void Attack();

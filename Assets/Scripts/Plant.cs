@@ -27,11 +27,15 @@ public class Plant : MonoBehaviour
 
     [HideInInspector] public StatMod status;
 
+    void Awake()
+    {
+        SR = GetComponent<SpriteRenderer>();
+    }
+
     // Start is called before the first frame update
     public virtual void Start()
     {
         if (variableStartPeriod) period = Random.Range(0, atkspd / 2);
-        SR = GetComponent<SpriteRenderer>();
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
     }

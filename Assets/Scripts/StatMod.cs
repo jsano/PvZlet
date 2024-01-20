@@ -25,6 +25,8 @@ public class StatMod : ScriptableObject
     {
         statusName = name;
         target = z;
+        if (target.status) target.status.Remove();
+        target.status = this;
         target.walkTime *= 1 / effects[statusName].walkMod;
         target.eatTime *= 1 / effects[statusName].eatMod;
         target.StartCoroutine(Unapplication());
@@ -42,6 +44,7 @@ public class StatMod : ScriptableObject
         target.walkTime /= 1 / effects[statusName].walkMod;
         target.eatTime /= 1 / effects[statusName].eatMod;
         target.status = null;
+        target.getSpriteRenderer().material.color = Color.white;
         target = null;
     }
 

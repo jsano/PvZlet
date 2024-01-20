@@ -63,7 +63,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CherryBomb
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
 --- !u!1 &3810331270567746567 stripped
 GameObject:

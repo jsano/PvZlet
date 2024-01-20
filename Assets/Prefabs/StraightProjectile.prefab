@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4675822248470896095}
-  - component: {fileID: 8023403879151493338}
   - component: {fileID: -5282898334064680471}
+  - component: {fileID: 8023403879151493338}
   - component: {fileID: -7294238510343628029}
   - component: {fileID: -1960679440110388937}
   m_Layer: 8
@@ -35,6 +35,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5282898334064680471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858253773609595723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184a456592b02aa4e970b07d608e2da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  dmg: 0
+  dir: {x: 0, y: 0, z: 0}
+  distance: 0
+  laneSplash: 0
+  neighboringLaneSplash: 0
 --- !u!212 &8023403879151493338
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,24 +105,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5282898334064680471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858253773609595723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 184a456592b02aa4e970b07d608e2da6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  dmg: 0
-  dir: {x: 0, y: 0, z: 0}
-  distance: 0
-  laneSplash: 0
-  neighboringLaneSplash: 0
 --- !u!50 &-7294238510343628029
 Rigidbody2D:
   serializedVersion: 4

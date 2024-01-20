@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1000413504995200560}
+  - component: {fileID: -5775459341599924872}
   - component: {fileID: 558040409209105024}
   - component: {fileID: 5664219345317536759}
   - component: {fileID: 2042143766956905269}
@@ -34,6 +35,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5775459341599924872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370838069687565889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512189737ab99894cafab24dfcb0a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  recharge: 0
+  damage: 0
+  atkspd: 0
+  HP: 0
+  range: 0
+  alwaysAttack: 0
+  instant: 0
+  row: 0
+  col: 0
+  projectile: {fileID: 0}
 --- !u!212 &558040409209105024
 SpriteRenderer:
   m_ObjectHideFlags: 0

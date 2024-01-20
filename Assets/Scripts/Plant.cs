@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Plant : MonoBehaviour
+public class Plant : MonoBehaviour
 {
 
     public int cost;
@@ -49,9 +49,12 @@ public abstract class Plant : MonoBehaviour
         if (HP <= 0) Die();
     }
 
-    protected abstract void Attack();
+    protected virtual void Attack()
+    {
 
-    public virtual void ReceiveDamage(int dmg)
+    }
+
+    public void ReceiveDamage(int dmg)
     {
         HP -= dmg;
         StartCoroutine(EatenVisual());

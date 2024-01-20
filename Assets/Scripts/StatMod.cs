@@ -5,7 +5,7 @@ using UnityEngine;
 public class StatMod : ScriptableObject
 {
 
-    private class Data
+    public class Data
     {
         public float walkMod;
         public float eatMod;

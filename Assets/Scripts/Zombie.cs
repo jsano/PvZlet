@@ -18,8 +18,8 @@ public class Zombie : MonoBehaviour
     public GameObject shield;
     public GameObject projectile;
 
-    private Rigidbody2D RB;
-    private SpriteRenderer SR;
+    protected Rigidbody2D RB;
+    protected SpriteRenderer SR;
 
     private GameObject eating;
     private Coroutine eatingCoroutine;
@@ -36,7 +36,7 @@ public class Zombie : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         RaycastHit2D[] hit = Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Plant"));
         bool nothing = true;
@@ -52,10 +52,11 @@ public class Zombie : MonoBehaviour
             break;
         }
         if (nothing) Walk();
-        if (HP <= 0)
-        {
-            Die();
-        }
+    }
+
+    void LateUpdate()
+    {
+        if (HP <= 0) Die();
     }
 
     protected void Spawn()
@@ -80,6 +81,11 @@ public class Zombie : MonoBehaviour
         RB.velocity = Vector3.zero;
     }
 
+    protected void WalkConstant()
+    {
+        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x / walkTime, 0, 0); // d = rt
+    }
+
     protected IEnumerator Eat(Plant p)
     {
         eating = p.gameObject;
@@ -92,7 +98,7 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    public virtual void ReceiveDamage(float dmg)
+    public void ReceiveDamage(float dmg)
     {
         if (armor != null) dmg = armor.GetComponent<Armor>().ReceiveDamage(dmg);
         HP -= dmg;

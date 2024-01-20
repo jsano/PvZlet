@@ -28,7 +28,7 @@ public class Chomper : Plant
     {
         z.ReceiveDamage(damage);
         chewPeriod = 0;
-        SR.material.color -= Color.white / 2;
+        SR.material.color -= Color.white / 2; // will cause jank but it's ok since this will be replaced with animations
     }
 
 }

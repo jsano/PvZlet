@@ -27,7 +27,6 @@ public class StatMod : ScriptableObject
         target = z;
         target.walkTime *= 1 / effects[statusName].walkMod;
         target.eatTime *= 1 / effects[statusName].eatMod;
-        target.GetComponent<SpriteRenderer>().material.color = effects[statusName].c;
         target.StartCoroutine(Unapplication());
     }
 
@@ -42,8 +41,13 @@ public class StatMod : ScriptableObject
         if (target == null) return;
         target.walkTime /= 1 / effects[statusName].walkMod;
         target.eatTime /= 1 / effects[statusName].eatMod;
-        target.GetComponent<SpriteRenderer>().material.color = Color.white;
+        target.status = null;
         target = null;
+    }
+
+    public Color GetColor()
+    {
+        return effects[statusName].c;
     }
 
 }

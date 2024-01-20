@@ -25,6 +25,8 @@ public class Plant : MonoBehaviour
 
     protected SpriteRenderer SR;
 
+    [HideInInspector] public StatMod status;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -80,10 +82,9 @@ public class Plant : MonoBehaviour
 
     protected IEnumerator EatenVisual()
     {
-        Color c = SR.material.color;
-        SR.material.color += Color.red / 2;
+        SR.material.color = new Color(1, 0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
-        SR.material.color = c;
+        SR.material.color = (status == null) ? Color.white : status.GetColor();
     }
 
 }

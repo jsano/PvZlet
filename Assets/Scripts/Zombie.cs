@@ -14,6 +14,8 @@ public class Zombie : MonoBehaviour
     [HideInInspector] public float eatTime = 0.5f;
     [HideInInspector] public int row = 1; // [1-5]
 
+    public GameObject armor;
+    public GameObject shield;
     public GameObject projectile;
 
     private Rigidbody2D RB;
@@ -29,6 +31,7 @@ public class Zombie : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
+        if (armor != null) armor = Instantiate(armor, transform, false);
         Spawn();
     }
 
@@ -91,22 +94,27 @@ public class Zombie : MonoBehaviour
 
     public virtual void ReceiveDamage(float dmg)
     {
+        if (armor != null) dmg = armor.GetComponent<Armor>().ReceiveDamage(dmg);
         HP -= dmg;
         StartCoroutine(HitVisual());
     }
 
     protected IEnumerator HitVisual()
     {
-        Color c = SR.material.color;
-        SR.material.color += Color.red / 2;
+        SR.material.color = new Color(1, 0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
-        SR.material.color = c;
+        SR.material.color = (status == null) ? Color.white : status.GetColor();
     }
 
     protected void Die()
     {
         GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
         Destroy(gameObject);
+    }
+
+    public SpriteRenderer getSpriteRenderer()
+    {
+        return SR;
     }
 
 }

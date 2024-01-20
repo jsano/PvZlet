@@ -35,7 +35,6 @@ public class Seed : MonoBehaviour
         if (Input.GetButtonDown("Plant6") && ID == 5 && b.interactable) OnClick();
         if (Input.GetButtonDown("Plant7") && ID == 6 && b.interactable) OnClick();
         if (Input.GetButtonDown("Plant8") && ID == 7 && b.interactable) OnClick();
-        if (Input.GetButtonDown("Plant9") && ID == 8 && b.interactable) OnClick();
     }
 
     public void OnClick()

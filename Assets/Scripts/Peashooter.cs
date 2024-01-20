@@ -5,7 +5,7 @@ using UnityEngine;
 public class Peashooter : Plant
 {
 
-    protected override void Attack()
+    protected override void Attack(Zombie z)
     {
         Instantiate(projectile, transform.position + rightOffset, Quaternion.identity);
     }

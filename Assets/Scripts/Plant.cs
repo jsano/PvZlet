@@ -22,10 +22,10 @@ public class Plant : MonoBehaviour
     protected Vector3 rightOffset;
     protected Vector3 topOffset;
 
-    private SpriteRenderer SR;
+    protected SpriteRenderer SR;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         SR = GetComponent<SpriteRenderer>();
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
@@ -41,7 +41,7 @@ public class Plant : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
             if (hit || alwaysAttack || instant)
             { 
-                Attack();
+                Attack(hit.collider.gameObject.GetComponent<Zombie>());
                 period = 0;
             }
         }
@@ -52,7 +52,7 @@ public class Plant : MonoBehaviour
         if (HP <= 0) Die();
     }
 
-    protected virtual void Attack()
+    protected virtual void Attack(Zombie z)
     {
 
     }

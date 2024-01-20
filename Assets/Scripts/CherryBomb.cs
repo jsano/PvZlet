@@ -5,7 +5,7 @@ using UnityEngine;
 public class CherryBomb : Plant
 {
     
-    protected override void Attack()
+    protected override void Attack(Zombie z)
     {
         GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
         g.transform.localScale = Tile.TILE_DISTANCE * 3;

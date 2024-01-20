@@ -19,7 +19,7 @@ public class PotatoMine : Plant
         }
     }
 
-    protected override void Attack()
+    protected override void Attack(Zombie z)
     {
         GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
         g.transform.localScale = area;

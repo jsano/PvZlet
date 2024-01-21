@@ -39,7 +39,16 @@ public class Zombie : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
-        if (armor != null) armor = Instantiate(armor, transform, false);
+        if (armor != null)
+        {
+            armor = Instantiate(armor, transform, false);
+            armor.transform.localPosition = new Vector3(0, transform.localScale.y / 2, 0);
+        }
+        if (shield != null)
+        {
+            shield = Instantiate(shield, transform, false);
+            shield.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
+        }
         Spawn();
     }
 
@@ -134,7 +143,7 @@ public class Zombie : MonoBehaviour
     {
         SR.material.color = new Color(1, 0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
-        SR.material.color = (status == null) ? Color.white : status.c;
+        SR.material.color = (status == null) ? Color.white : status.colorTint;
     }
 
     /// <summary> Updates the spawner's progression score, and disappears </summary>

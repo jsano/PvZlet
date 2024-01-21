@@ -5,14 +5,20 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
 
+    /// <summary> The amount of time in seconds to wait before sending the first wave </summary>
     public float preparation;
 
+    /// <summary> The master list of all zombies in the game </summary>
     public GameObject[] allZombies;
 
     public List<List<int>> waves = new List<List<int>>();
+    /// <summary> How many lanes are in this level. Will likely either be 5 or 6 </summary>
     public int lanes;
-    public static float[] ROW_TO_WORLD; // length = lanes + 1, [0] is buffer
+    /// <summary> The global mapping between row number to world y-coordinates. Length is <c>lanes+1</c> with index 0 as a buffer </summary>
+    public static float[] ROW_TO_WORLD;
+    /// <summary> The "amount" of zombies currently in the lawn, influenced by their <c>spawnScores</c>. When low enough, the next wave will spawn </summary>
     [HideInInspector] public int currentBuild = 0;
+    /// <summary> The amount of time in seconds to wait before the next wave spawns no matter what </summary>
     private float forceSend;
 
     void Awake()

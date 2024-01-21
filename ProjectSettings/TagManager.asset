@@ -41,3 +41,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 1678508979
+    locked: 0
+  - name: Tile
+    uniqueID: 1167184511
+    locked: 0
+  - name: Plant
+    uniqueID: 3693905793
+    locked: 0
+  - name: Zombie
+    uniqueID: 2357638607
+    locked: 0
+  - name: Armor
+    uniqueID: 15438955
+    locked: 0
+  - name: Explosion
+    uniqueID: 2015531971
+    locked: 0
+  - name: Sun
+    uniqueID: 1369664763
+    locked: 0

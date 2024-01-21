@@ -6,6 +6,7 @@ public class Sky : MonoBehaviour
 {
 
     public GameObject sun;
+    /// <summary> The amount of time in seconds between falling suns </summary>
     public float interval;
     private float period = 0;
 

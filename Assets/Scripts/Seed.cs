@@ -9,7 +9,8 @@ public class Seed : MonoBehaviour
 {
 
     private PlantBuilder pb;
-    public int ID; // 0-indexed
+    /// <summary> The ID of the button, used as the index for the PlantBuilder's <c>assignedPlants</c>. 0-indexed </summary>
+    public int ID;
     private Button b;
     private Plant plant;
 
@@ -38,6 +39,7 @@ public class Seed : MonoBehaviour
         if (Input.GetButtonDown("Plant8") && ID == 7 && b.interactable) OnClick();
     }
 
+    /// <summary> Called when the button is clicked or the hotkey is pressed </summary>
     public void OnClick()
     {
         if (EventSystem.current.currentSelectedGameObject == gameObject)

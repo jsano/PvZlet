@@ -51,13 +51,16 @@ MonoBehaviour:
   recharge: 0
   damage: 0
   atkspd: 0
+  variableStartPeriod: 0
   HP: 0
   range: 0
   alwaysAttack: 0
   instant: 0
+  grounded: 0
   row: 0
   col: 0
   projectile: {fileID: 0}
+  status: {fileID: 0}
 --- !u!212 &558040409209105024
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -96,8 +99,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -601061503
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

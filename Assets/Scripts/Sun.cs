@@ -5,9 +5,13 @@ using UnityEngine;
 public class Sun : MonoBehaviour
 {
 
+    /// <summary> How much sun to give when collected </summary>
     public int sunValue;
+    /// <summary> The amount of time in seconds to last before disappearing </summary>
     public float lifetime;
+    /// <summary> The y-value in world units of its perceived ground level to stop falling </summary>
     [HideInInspector] public float ground;
+    /// <summary> How fast to fall </summary>
     public float speed;
 
     private SpriteRenderer SR;

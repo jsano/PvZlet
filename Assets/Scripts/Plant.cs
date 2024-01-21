@@ -29,7 +29,7 @@ public class Plant : MonoBehaviour
 
     /// <summary> Which row the plant is in. Takes values between [1 - <c>ZombieSpawner.lanes</c>]. Useful for lobbing plants </summary>
     [HideInInspector] public int row;
-    /// <summary> Which column the zombie is in. Takes values between [1 - 9] </summary>
+    /// <summary> Which column the plant is in. Takes values between [1 - 9] </summary>
     [HideInInspector] public int col;
 
     public GameObject projectile;
@@ -105,7 +105,7 @@ public class Plant : MonoBehaviour
     {
         SR.material.color = new Color(1, 0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
-        SR.material.color = (status == null) ? Color.white : status.c;
+        SR.material.color = (status == null) ? Color.white : status.colorTint;
     }
 
 }

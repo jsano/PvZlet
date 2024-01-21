@@ -12,7 +12,9 @@ public class StatMod : ScriptableObject
         public Color c;
     }
 
-    private string statusName;
+    public float walkMod;
+    public float eatMod;
+    public Color c;
 
     private static Dictionary<string, Data> effects = new Dictionary<string, Data>()
     {
@@ -23,12 +25,12 @@ public class StatMod : ScriptableObject
 
     public void Apply(Zombie z, string name)
     {
-        statusName = name;
         target = z;
         if (target.status) target.status.Remove();
         target.status = this;
-        target.walkTime *= 1 / effects[statusName].walkMod;
-        target.eatTime *= 1 / effects[statusName].eatMod;
+        walkMod = effects[name].walkMod;
+        eatMod = effects[name].eatMod;
+        c = effects[name].c;
         target.StartCoroutine(Unapplication());
     }
 
@@ -41,16 +43,9 @@ public class StatMod : ScriptableObject
     public void Remove()
     {
         if (target == null) return;
-        target.walkTime /= 1 / effects[statusName].walkMod;
-        target.eatTime /= 1 / effects[statusName].eatMod;
         target.status = null;
         target.getSpriteRenderer().material.color = Color.white;
         target = null;
-    }
-
-    public Color GetColor()
-    {
-        return effects[statusName].c;
     }
 
 }

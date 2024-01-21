@@ -43,23 +43,20 @@ public class Plant : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        period += Time.deltaTime;
-        if (period >= atkspd)
-        {
-            if (instant || alwaysAttack)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (hit || instant || alwaysAttack) {
+            period += Time.deltaTime;
+            if (period >= atkspd)
             {
-                Attack(null);
+                if (hit) Attack(hit.collider.gameObject.GetComponent<Zombie>());
+                else Attack(null);
                 period = 0;
             }
-            else
-            {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-                if (hit)
-                { 
-                    Attack(hit.collider.gameObject.GetComponent<Zombie>());
-                    period = 0;
-                }
-            }
+        }
+        else
+        {
+            if (variableStartPeriod) period = Random.Range(0, atkspd / 2);
+            else period = 0;
         }
     }
 
@@ -88,7 +85,7 @@ public class Plant : MonoBehaviour
     {
         SR.material.color = new Color(1, 0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
-        SR.material.color = (status == null) ? Color.white : status.GetColor();
+        SR.material.color = (status == null) ? Color.white : status.c;
     }
 
 }

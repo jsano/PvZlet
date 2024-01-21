@@ -33,8 +33,8 @@ public class PoleVaulter : Zombie
 
     private IEnumerator Jump()
     {
-        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x * 1.5f / jumpTime, 0, 0); // d = rt
-        yield return new WaitForSeconds(jumpTime);
+        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x * 1.5f / jumpTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
+        yield return new WaitForSeconds(jumpTime * ((status == null) ? 1 : 1 / status.walkMod));
         RB.velocity = Vector3.zero;
         jumped = true;
     }

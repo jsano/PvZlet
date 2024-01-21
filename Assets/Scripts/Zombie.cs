@@ -66,7 +66,7 @@ public class Zombie : MonoBehaviour
 
     protected void Walk()
     {
-        period += Time.deltaTime;
+        period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
         if (period >= walkTime / 2)
         {
             period = 0;
@@ -76,14 +76,14 @@ public class Zombie : MonoBehaviour
 
     private IEnumerator Walk_Helper()
     {
-        RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 2 / 0.5f, 0); // d = rt
-        yield return new WaitForSeconds(0.5f);
+        RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 2 / 0.5f, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
+        yield return new WaitForSeconds(0.5f * ((status == null) ? 1 : 1 / status.walkMod));
         RB.velocity = Vector3.zero;
     }
 
     protected void WalkConstant()
     {
-        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x / walkTime, 0, 0); // d = rt
+        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x / walkTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
     }
 
     protected IEnumerator Eat(Plant p)
@@ -94,7 +94,7 @@ public class Zombie : MonoBehaviour
             RB.velocity = Vector2.zero;
             period = 0;
             p.ReceiveDamage(damage);
-            yield return new WaitForSeconds(eatTime);
+            yield return new WaitForSeconds(eatTime * ((status == null) ? 1 : 1 / status.eatMod));
         }
     }
 
@@ -109,7 +109,7 @@ public class Zombie : MonoBehaviour
     {
         SR.material.color = new Color(1, 0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
-        SR.material.color = (status == null) ? Color.white : status.GetColor();
+        SR.material.color = (status == null) ? Color.white : status.c;
     }
 
     protected void Die()

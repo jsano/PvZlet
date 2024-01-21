@@ -90,7 +90,8 @@ MonoBehaviour:
   cost: 150
   recharge: 5
   damage: 500
-  atkspd: 0.5
+  atkspd: 0.75
+  variableStartPeriod: 0
   HP: 6
   range: 1
   alwaysAttack: 0
@@ -98,4 +99,5 @@ MonoBehaviour:
   row: 0
   col: 0
   projectile: {fileID: 0}
+  status: {fileID: 0}
   chewTime: 5

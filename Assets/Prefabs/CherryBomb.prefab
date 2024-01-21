@@ -87,6 +87,7 @@ MonoBehaviour:
   recharge: 45
   damage: 1000
   atkspd: 1
+  variableStartPeriod: 0
   HP: 5
   range: 0
   alwaysAttack: 1
@@ -94,3 +95,4 @@ MonoBehaviour:
   row: 0
   col: 0
   projectile: {fileID: 2610789170931917077, guid: bc301af3c85f8924ba33ada6b751375b, type: 3}
+  status: {fileID: 0}

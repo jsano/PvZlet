@@ -5,6 +5,7 @@ using UnityEngine;
 public class Chomper : Plant
 {
 
+    /// <summary> How long in seconds it takes to finish chewing a zombie. Will not call the base <c>Update</c> until it's finished chewing </summary>
     public float chewTime;
     private float chewPeriod;
 
@@ -24,6 +25,7 @@ public class Chomper : Plant
         }
     }
 
+    /// <summary> Eats a zombie, and then starts chewing </summary>
     protected override void Attack(Zombie z)
     {
         z.ReceiveDamage(damage);

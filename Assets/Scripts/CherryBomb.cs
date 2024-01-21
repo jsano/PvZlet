@@ -7,6 +7,7 @@ public class CherryBomb : Plant
 
     private Vector2 area = Tile.TILE_DISTANCE * 2.5f;
 
+    /// <summary> Explodes in a 3x3 area, and then disappears </summary>
     protected override void Attack(Zombie z)
     {
         GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);

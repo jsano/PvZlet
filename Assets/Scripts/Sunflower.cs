@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sunflower : Plant
 {
 
+    /// <summary> Drops sun </summary>
     protected override void Attack(Zombie z)
     {
         GameObject g = Instantiate(projectile, transform.position + topOffset, Quaternion.identity);

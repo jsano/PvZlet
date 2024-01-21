@@ -5,26 +5,42 @@ using UnityEngine;
 public class Plant : MonoBehaviour
 {
 
+    /// <summary> The plant's sun cost </summary>
     public int cost;
+    /// <summary> The plant's recharge in seconds </summary>
     public float recharge;
+    /// <summary> How much damage the plant deals per attack. Irrelevant if the plant fires projectiles </summary>
     public float damage;
+    /// <summary> The interval in seconds between each attack. For some, this can be the "startup" time for a singular attack </summary>
     public float atkspd;
+    /// <summary> Whether this plant should have a random initial startup time </summary>
     public bool variableStartPeriod;
     private float period;
+    /// <summary> How much HP the plant has. Most non-wall plants should have the same value </summary>
     public int HP;
+    /// <summary> How many tiles the plant can see ahead to start attacking. Irrelevant if <c>alwaysAttack</c> is true </summary>
     public float range;
+    /// <summary> Whether the plant should be allowed to attack regardless of range </summary>
     public bool alwaysAttack = false;
+    /// <summary> Whether this is an instant plant so zombies can ignore it </summary>
     public bool instant;
+    /// <summary> Whether this is a grounded plant so zombies can only interact with it if their <c>hitsGround</c> is true </summary>
+    public bool grounded;
 
+    /// <summary> Which row the plant is in. Takes values between [1 - <c>ZombieSpawner.lanes</c>]. Useful for lobbing plants </summary>
     [HideInInspector] public int row;
+    /// <summary> Which column the zombie is in. Takes values between [1 - 9] </summary>
     [HideInInspector] public int col;
 
     public GameObject projectile;
+    /// <summary> The right offset from the main plant where straight projectiles should naturally spawn </summary>
     protected Vector3 rightOffset;
+    /// <summary> The top offset from the main plant where lobbed projectiles should naturally spawn </summary>
     protected Vector3 topOffset;
 
     protected SpriteRenderer SR;
 
+    /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
 
     void Awake()
@@ -65,11 +81,15 @@ public class Plant : MonoBehaviour
         if (HP <= 0) Die();
     }
 
+    /// <summary> The plant's main attack, called at most every <c>atkspd</c> seconds. Does nothing by default, and most non-walls should override this method </summary>
+    /// <param name="z"> The zombie to attack at. Can be null if it's not necessary </param>
     protected virtual void Attack(Zombie z)
     {
 
     }
 
+    /// <summary> Called when something deals damage to this plant </summary>
+    /// <param name="dmg"> How much damage to deal </param>
     public void ReceiveDamage(int dmg)
     {
         HP -= dmg;

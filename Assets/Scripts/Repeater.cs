@@ -5,6 +5,7 @@ using UnityEngine;
 public class Repeater : Plant
 {
 
+    /// <summary> Shoots 2 peas quickly </summary>
     protected override void Attack(Zombie z)
     {
         StartCoroutine(Attack_Helper());

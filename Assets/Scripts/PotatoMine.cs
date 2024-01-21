@@ -5,6 +5,7 @@ using UnityEngine;
 public class PotatoMine : Plant
 {
 
+    /// <summary> The amount of time in seconds to activate the mine. Will not call the base <c>Update</c> until activated </summary>
     public float armingTime;
     private Vector2 area = new Vector2(Tile.TILE_DISTANCE.x * 1.5f, Tile.TILE_DISTANCE.y * 0.75f);
 
@@ -23,6 +24,7 @@ public class PotatoMine : Plant
         }
     }
 
+    /// <summary> Explodes in a little over a 1x1 area, and then disappears </summary>
     protected override void Attack(Zombie z)
     {
         GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);

@@ -14,7 +14,7 @@ public class Zombie : MonoBehaviour
     private float period = 0;
     /// <summary> How much HP the zombie has. Doesn't include armor or shields </summary>
     public float HP;
-    private float eatTime = 0.5f;
+    [HideInInspector] public float eatTime = 0.5f;
     /// <summary> Which row the zombie is in. Takes values between [1 - <c>ZombieSpawner.lanes</c>] </summary>
     [HideInInspector] public int row = 1;
     /// <summary> Whether the zombie is able to attack grounded plants like Spikeweed </summary>
@@ -30,6 +30,7 @@ public class Zombie : MonoBehaviour
     /// <summary> The currently eating plant. When the plant is dead, this would likely become null </summary>
     private GameObject eating;
     private Coroutine eatingCoroutine;
+    private Coroutine walkCoroutine;
 
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
@@ -56,7 +57,11 @@ public class Zombie : MonoBehaviour
     public virtual void Update()
     {
         GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Plant")));
-        if (toEat == null) Walk();
+        if (toEat == null)
+        {
+            if (eatingCoroutine != null) StopCoroutine(eatingCoroutine);
+            Walk();
+        }
         else
         {
             if (eating == null || toEat != eating)
@@ -78,21 +83,22 @@ public class Zombie : MonoBehaviour
         transform.position = new Vector3(Tile.TILE_DISTANCE.x * 7.5f, ZombieSpawner.ROW_TO_WORLD[row], 0);
     }
 
-    /// <summary> The zombie's staggered walking behavior. Every <c>walkTime/2</c> seconds, it moves half of a tile. Factors in movement stat effects </summary>
+    /// <summary> The zombie's staggered walking behavior. Every <c>walkTime/3</c> seconds, it moves 1/3 of a tile. Factors in movement stat effects </summary>
     protected void Walk()
     {
         period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
-        if (period >= walkTime / 2)
+        if (period >= walkTime / 3)
         {
             period = 0;
-            StartCoroutine(Walk_Helper());
+            if (walkCoroutine != null) StopCoroutine(walkCoroutine);
+            walkCoroutine = StartCoroutine(Walk_Helper());
         }
     }
 
     private IEnumerator Walk_Helper()
     {
-        RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 2 / 0.5f, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-        yield return new WaitForSeconds(0.5f * ((status == null) ? 1 : 1 / status.walkMod));
+        RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 3 / (walkTime / 6), 0) * ((status == null) ? 1 : status.walkMod); // d = rt
+        yield return new WaitForSeconds((walkTime / 6) * ((status == null) ? 1 : 1 / status.walkMod));
         RB.velocity = Vector3.zero;
     }
 
@@ -150,6 +156,7 @@ public class Zombie : MonoBehaviour
     protected void Die()
     {
         GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
+        Destroy(shield);
         Destroy(gameObject);
     }
 

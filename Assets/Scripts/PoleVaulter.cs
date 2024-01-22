@@ -17,7 +17,7 @@ public class PoleVaulter : Zombie
         if (running)
         {
             WalkConstant();
-            GameObject toJump = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position - new Vector3(Tile.TILE_DISTANCE.x / 3, 0, 0), transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Plant")));
+            GameObject toJump = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.left, Tile.TILE_DISTANCE.x / 2, LayerMask.GetMask("Plant")));
             if (toJump != null)
             {
                 running = false;
@@ -33,9 +33,10 @@ public class PoleVaulter : Zombie
 
     private IEnumerator Jump()
     {
-        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x * 1.5f / jumpTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
+        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x * 1.75f / jumpTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
         yield return new WaitForSeconds(jumpTime * ((status == null) ? 1 : 1 / status.walkMod));
         RB.velocity = Vector3.zero;
+        yield return new WaitForSeconds(0.5f);
         jumped = true;
     }
 

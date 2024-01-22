@@ -42,25 +42,29 @@ public class StraightProjectile : MonoBehaviour
         }
     }
 
-    /// <summary> Called when this projectile hits an enemy, where it registers a hit and disappears </summary>
-    void OnTriggerEnter2D(Collider2D other)
+    /// <summary> Called when this projectile hits an enemy. By default, it deals damage, and then disappears. Override this method if otherwise </summary>
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Zombie>() != null && !hit)
-        {
-            Hit(other.GetComponent<Zombie>());
-            hit = true;
+        if (hit) return;
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, transform.localScale.x, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
+        // Prioritize shield over zombie
+        foreach (RaycastHit2D h in hits) {
+            other = h.collider;
+            if (other.GetComponent<Shield>() != null)
+            {
+                Hit(other.gameObject);                
+                return;
+            }
         }
+        // No shield, just zombie
+        if (hits.Length > 0) Hit(hits[0].collider.gameObject);
     }
 
-    /// <summary> The projectile's behavior when hitting a zombie. By default, it deals damage to the zombie, and then disappears. Override this method if otherwise </summary>
-    protected virtual void Hit(Zombie other)
+    protected virtual void Hit(GameObject other)
     {
-        other.ReceiveDamage(dmg);
-        // I was planning to have a particle system for when the projecile hits something to have a cool shatter effect
-        /*GameObject p0 = Instantiate(dissolve, transform.position, transform.rotation);
-        ParticleSystem.MainModule p = p0.GetComponent<ParticleSystem>().main;
-        p.startColor = GetComponent<SpriteRenderer>().color;
-        p0.GetComponent<ParticleSystemRenderer>().sortingOrder = layer;*/
+        if (other.GetComponent<Shield>() != null) other.GetComponent<Shield>().ReceiveDamage(dmg);
+        else other.GetComponent<Zombie>().ReceiveDamage(dmg);
+        hit = true;
         Destroy(gameObject);
     }
 

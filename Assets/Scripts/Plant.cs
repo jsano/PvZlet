@@ -22,6 +22,9 @@ public class Plant : MonoBehaviour
     public float range;
     /// <summary> Whether the plant should be allowed to attack regardless of range </summary>
     public bool alwaysAttack = false;
+    /// <summary> Whether the plant is a mushroom thus nocturnal </summary>
+    public bool mushroom = false;
+    private Sky sky;
     /// <summary> Whether this is an instant plant so zombies can ignore it </summary>
     public bool instant;
     /// <summary> Whether this is a grounded plant so zombies can only interact with it if their <c>hitsGround</c> is true </summary>
@@ -54,11 +57,16 @@ public class Plant : MonoBehaviour
         if (variableStartPeriod) period = Random.Range(0, atkspd / 2);
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
+        sky = GameObject.Find("Sky").GetComponent<Sky>();
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
+        if (mushroom && !sky.night)
+        {
+            return;
+        }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
         if (hit || instant || alwaysAttack) {
             period += Time.deltaTime;

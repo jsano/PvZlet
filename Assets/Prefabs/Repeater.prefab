@@ -93,9 +93,12 @@ MonoBehaviour:
   atkspd: 1
   variableStartPeriod: 1
   HP: 6
-  range: 3
+  range: 10
   alwaysAttack: 0
+  mushroom: 0
   instant: 0
+  grounded: 0
   row: 0
   col: 0
   projectile: {fileID: 3721817652063258218, guid: 5aad780f5e39e3942bfa0fb5fd0a315e, type: 3}
+  status: {fileID: 0}

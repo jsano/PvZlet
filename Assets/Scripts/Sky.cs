@@ -10,6 +10,9 @@ public class Sky : MonoBehaviour
     public float interval;
     private float period = 0;
 
+    /// <summary> If nighttime, no sun falls and mushrooms sleep </summary>
+    public bool night;
+
     private Camera cam;
 
     // Start is called before the first frame update
@@ -21,7 +24,7 @@ public class Sky : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        period += Time.deltaTime;
+        if (!night) period += Time.deltaTime;
         if (period > interval)
         {
             period = 0;

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3057762286535259425
+--- !u!1001 &8834405675509427526
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1858253773609595723, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Name
-      value: Pea
+      value: Spore
       objectReference: {fileID: 0}
     - target: {fileID: 4675822248470896095, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_RootOrder
@@ -68,20 +68,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
     - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Color.b
-      value: 0.16078432
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Color.g
-      value: 0.69803923
+      value: 0.5613208
       objectReference: {fileID: 0}
     - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.91768426
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}

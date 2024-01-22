@@ -84,7 +84,7 @@ public class Zombie : MonoBehaviour
     }
 
     /// <summary> The zombie's staggered walking behavior. Every <c>walkTime/3</c> seconds, it moves 1/3 of a tile. Factors in movement stat effects </summary>
-    protected void Walk()
+    protected virtual void Walk()
     {
         period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
         if (period >= walkTime / 3)

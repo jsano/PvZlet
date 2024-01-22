@@ -29,11 +29,11 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waves.Add(new List<int>(new int[] { 5 }));
+        waves.Add(new List<int>(new int[] { 6 }));
         waves.Add(new List<int>(new int[] { 0, 1 }));
-        waves.Add(new List<int>(new int[] { 0, 2 }));
-        waves.Add(new List<int>(new int[] { 0, 3 }));
-        waves.Add(new List<int>(new int[] { 4, 2 }));
+        waves.Add(new List<int>(new int[] { 2, 3 }));
+        waves.Add(new List<int>(new int[] { 4, 5 }));
+        waves.Add(new List<int>(new int[] { 6, 6 }));
         StartCoroutine(Spawn());
     }
 

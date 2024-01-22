@@ -11,7 +11,7 @@ public class Zombie : MonoBehaviour
     public int damage;
     /// <summary> Amount of time in seconds it takes to fully cross 1 tile </summary>
     public float walkTime;
-    private float period = 0;
+    protected float period;
     /// <summary> How much HP the zombie has. Doesn't include armor or shields </summary>
     public float HP;
     [HideInInspector] public float eatTime = 0.5f;
@@ -26,6 +26,7 @@ public class Zombie : MonoBehaviour
 
     protected Rigidbody2D RB;
     protected SpriteRenderer SR;
+    protected BoxCollider2D BC;
 
     /// <summary> The currently eating plant. When the plant is dead, this would likely become null </summary>
     private GameObject eating;
@@ -40,6 +41,7 @@ public class Zombie : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
+        BC = GetComponent<BoxCollider2D>();
         if (armor != null)
         {
             armor = Instantiate(armor, transform, false);
@@ -72,15 +74,15 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    public virtual void LateUpdate()
     {
         if (HP <= 0) Die();
     }
 
     /// <summary> How the zombie should enter the lawn. Appears at the rightmost lane by default. Override this method if otherwise </summary>
-    protected void Spawn()
+    protected virtual void Spawn()
     {
-        transform.position = new Vector3(Tile.TILE_DISTANCE.x * 7.5f, ZombieSpawner.ROW_TO_WORLD[row], 0);
+        transform.position = new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x / 2, Tile.ROW_TO_WORLD[row], 0);
     }
 
     /// <summary> The zombie's staggered walking behavior. Every <c>walkTime/3</c> seconds, it moves 1/3 of a tile. Factors in movement stat effects </summary>
@@ -163,6 +165,11 @@ public class Zombie : MonoBehaviour
     public SpriteRenderer getSpriteRenderer()
     {
         return SR;
+    }
+
+    public bool isEating()
+    {
+        return eating != null;
     }
 
 }

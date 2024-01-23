@@ -5,13 +5,22 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
 
+    private class Coordinates
+    {
+        public int row;
+        public int col;
+    }
+
     /// <summary> The amount of time in seconds to wait before sending the first wave </summary>
     public float preparation;
 
     /// <summary> The master list of all zombies in the game </summary>
     public GameObject[] allZombies;
+    public GameObject grave;
 
-    public List<List<int>> waves = new List<List<int>>();
+    private List<List<int>> waves = new List<List<int>>();
+    private List<List<Coordinates>> graves = new List<List<Coordinates>>();
+
     /// <summary> How many lanes are in this level. Will likely either be 5 or 6 </summary>
     public int lanes;
     /// <summary> The "amount" of zombies currently in the lawn, influenced by their <c>spawnScores</c>. When low enough, the next wave will spawn </summary>
@@ -22,11 +31,11 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waves.Add(new List<int>(new int[] { allZombies.Length - 2 }));
-        waves.Add(new List<int>(new int[] { 0, 1 }));
-        waves.Add(new List<int>(new int[] { 2, 3 }));
-        waves.Add(new List<int>(new int[] { 4, 5 }));
-        waves.Add(new List<int>(new int[] { 6, 7 }));
+        waves.Add(new List<int>(new int[] { allZombies.Length - 2 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
+        waves.Add(new List<int>(new int[] { 0, 1 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 2, col = 9 } }));
+        waves.Add(new List<int>(new int[] { 2, 3 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 3, col = 9 } }));
+        waves.Add(new List<int>(new int[] { 4, 5 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 4, col = 9 } }));
+        waves.Add(new List<int>(new int[] { 6, 7 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 5, col = 9 } }));
         StartCoroutine(Spawn());
     }
 
@@ -43,6 +52,12 @@ public class ZombieSpawner : MonoBehaviour
         for (int waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
             forceSend = 30f;
+
+            foreach (Coordinates c in graves[waveNumber])
+            {
+                Tile.tileObjects[c.row, c.col].Place(grave);
+            }
+
             foreach (int i in waves[waveNumber])
             {
                 currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;

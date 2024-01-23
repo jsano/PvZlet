@@ -25,7 +25,7 @@ public class PlantBuilder : MonoBehaviour
     /// <summary> The currently picked plants for the level, represented by indices for <c>allPlants</c> </summary>
     public int[] assignedPlants;
     /// <summary> The currently selected plant object that, if clicked on a tile, will be planted </summary>
-    private static GameObject currentPlant;
+    public static GameObject currentPlant;
 
     /// <summary> How much sun the level starts with </summary>
     public int startingSun;
@@ -35,7 +35,7 @@ public class PlantBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        assignedPlants = new int[] {8, 9, 2, 3, 4, 5, 6, 10};
+        assignedPlants = new int[] {8, 9, 2, 11, 4, 5, 6, 10};
         sun = startingSun;
     }
 
@@ -55,14 +55,6 @@ public class PlantBuilder : MonoBehaviour
     {
         if (buttonID >= assignedPlants.Length) return;
         currentPlant = allPlants[assignedPlants[buttonID]];
-    }
-
-    public static void Plant(Tile t)
-    {
-        GameObject g = Instantiate(currentPlant, t.transform.position, Quaternion.identity);
-        if (!g.GetComponent<Plant>().instant) t.placed = g;
-        g.GetComponent<Plant>().row = t.row;
-        sun -= g.GetComponent<Plant>().cost;
     }
 
 }

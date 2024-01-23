@@ -8,6 +8,7 @@ public class StatMod : ScriptableObject
     /// <summary> Object to store differing data types for dictionary value purposes </summary>
     public class Data
     {
+        public float duration;
         public float walkMod;
         public float eatMod;
         public Color c;
@@ -23,7 +24,8 @@ public class StatMod : ScriptableObject
     /// <summary> The global mapping of all status effects in the game, labeled by name </summary>
     private static Dictionary<string, Data> effects = new Dictionary<string, Data>()
     {
-        {"chill", new Data{ walkMod = 0.5f, eatMod = 0.5f, c = new Color(0, 0.5f, 1, 1) } },
+        {"chill", new Data{ duration = 10, walkMod = 0.5f, eatMod = 0.5f, c = new Color(0, 0.5f, 1, 1) } },
+        {"freeze", new Data{ duration = 6, walkMod = 0, eatMod = 0, c = new Color(0, 0.5f, 1, 1) } },
     };
 
     /// <summary> The zombie this effect is applied to. Can be null if this effect is overwritten or the zombie dies </summary>
@@ -40,12 +42,12 @@ public class StatMod : ScriptableObject
         walkMod = effects[name].walkMod;
         eatMod = effects[name].eatMod;
         colorTint = effects[name].c;
-        target.StartCoroutine(Unapplication());
+        target.StartCoroutine(Unapplication(effects[name].duration));
     }
 
-    private IEnumerator Unapplication()
+    private IEnumerator Unapplication(float dur)
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(dur);
         Remove();
     }
 

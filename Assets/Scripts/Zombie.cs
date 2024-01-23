@@ -13,6 +13,8 @@ public class Zombie : Damagable
     /// <summary> Amount of time in seconds it takes to fully cross 1 tile </summary>
     public float walkTime;
     protected float period;
+    protected float stepPeriod;
+    private bool takingStep;
     /// <summary> How much HP the zombie has. Doesn't include armor or shields </summary>
     public float HP;
     [HideInInspector] public float eatTime = 0.5f;
@@ -76,7 +78,8 @@ public class Zombie : Damagable
         }
         else
         {
-            if (eating == null || toEat != eating)
+            if (status != null && status.eatMod == 0) StopEating();
+            else if (eating == null || toEat != eating)
             {
                 StopEating();
                 eatingCoroutine = StartCoroutine(Eat(toEat.GetComponent<Damagable>()));
@@ -87,7 +90,7 @@ public class Zombie : Damagable
     public virtual void LateUpdate()
     {
         if (HP <= 0) Die();
-        if (hypnotized && Tile.COL_TO_WORLD[9] * Tile.TILE_DISTANCE.x * 2 == transform.position.x) Die();
+        if (hypnotized && Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x <= transform.position.x) Die();
     }
 
     /// <summary> How the zombie should enter the lawn. Appears at the rightmost lane by default. Override this method if otherwise </summary>
@@ -103,17 +106,20 @@ public class Zombie : Damagable
         if (period >= walkTime / 3)
         {
             period = 0;
-            if (walkCoroutine != null) StopCoroutine(walkCoroutine);
-            walkCoroutine = StartCoroutine(Walk_Helper());
+            takingStep = true;
         }
-    }
-
-    private IEnumerator Walk_Helper()
-    {
-        RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 3 / (walkTime / 6), 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-        if (hypnotized) RB.velocity *= -1;
-        yield return new WaitForSeconds((walkTime / 6) * ((status == null) ? 1 : 1 / status.walkMod));
-        RB.velocity = Vector3.zero;
+        if (takingStep)
+        {
+            stepPeriod += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
+            RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 3 / (walkTime / 6), 0) * ((status == null) ? 1 : status.walkMod); // d = rt
+            if (hypnotized) RB.velocity *= -1;
+            if (stepPeriod >= walkTime / 6)
+            {
+                takingStep = false;
+                RB.velocity = Vector3.zero;
+                stepPeriod = 0;
+            }
+        }
     }
 
     /// <summary> The zombie's constant-speed walking behavior. Factors in movement stat effects </summary>
@@ -143,8 +149,10 @@ public class Zombie : Damagable
     protected IEnumerator Eat(Damagable p)
     {
         eating = p.gameObject;
+        ResetWalk();
         while (p != null)
         {
+            if (status != null && status.eatMod == 0) break;
             RB.velocity = Vector2.zero;
             period = 0;
             p.ReceiveDamage(damage, gameObject, eatsPlants);
@@ -188,6 +196,7 @@ public class Zombie : Damagable
     public virtual void Hypnotize()
     {
         StopEating();
+        ResetWalk();
         hypnotized = true;
         gameObject.layer = LayerMask.NameToLayer("Plant");
         baseMaterialColor = Color.magenta;
@@ -196,6 +205,14 @@ public class Zombie : Damagable
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
         GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
         spawnScore = 0;
+    }
+
+    public void ResetWalk()
+    {
+        period = 0;
+        stepPeriod = 0;
+        RB.velocity = Vector2.zero;
+        takingStep = false;
     }
 
     public SpriteRenderer getSpriteRenderer()

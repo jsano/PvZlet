@@ -56,12 +56,11 @@ public class Dancing : Zombie
             left != null && left.isEating() ||
             isEating() || spawning)
         {
-            RB.velocity = Vector3.zero;
-            period = 0;
-            if (up != null) up.StopForOthers();
-            if (down != null) down.StopForOthers();
-            if (right != null) right.StopForOthers();
-            if (left != null) left.StopForOthers();
+            ResetWalk();
+            if (up != null) up.ResetWalk();
+            if (down != null) down.ResetWalk();
+            if (right != null) right.ResetWalk();
+            if (left != null) left.ResetWalk();
         }
         base.LateUpdate();
     }
@@ -106,6 +105,7 @@ public class Dancing : Zombie
     {
         yield return new WaitForSeconds(1.5f);
         spawning = false;
+        ResetWalk();
     }
 
     public override void Hypnotize()

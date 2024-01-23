@@ -30,10 +30,4 @@ public class Backup : Zombie
         beingSpawned = false;
     }
 
-    public void StopForOthers()
-    {
-        RB.velocity = Vector3.zero;
-        period = 0;
-    }
-
 }

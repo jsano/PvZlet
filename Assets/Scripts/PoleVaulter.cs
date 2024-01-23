@@ -18,7 +18,7 @@ public class PoleVaulter : Zombie
         {
             WalkConstant();
             GameObject toJump = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.left, Tile.TILE_DISTANCE.x / 2, LayerMask.GetMask("Plant")));
-            if (toJump != null)
+            if (toJump != null && (status == null || status.walkMod > 0))
             {
                 running = false;
                 walkTime = noPoleWalkTime;

@@ -68,7 +68,7 @@ public class Plant : Damagable
             return;
         }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (hit || instant || alwaysAttack) {
+        if (hit /*|| instant*/ || alwaysAttack) {
             period += Time.deltaTime;
             if (period >= atkspd)
             {

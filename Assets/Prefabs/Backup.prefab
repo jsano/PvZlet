@@ -97,6 +97,6 @@ MonoBehaviour:
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}
-  eating: {fileID: 0}
+  eatsPlants: 1
   status: {fileID: 0}
   xLoc: 0

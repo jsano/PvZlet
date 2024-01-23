@@ -73,24 +73,28 @@ public class Dancing : Zombie
             if (s == "up")
             {
                 up = Instantiate(backup).GetComponent<Backup>();
+                if (hypnotized) up.Hypnotize();
                 up.row = row - 1;
                 up.xLoc = transform.position.x;
             }
             if (s == "down")
             {
                 down = Instantiate(backup).GetComponent<Backup>();
+                if (hypnotized) down.Hypnotize();
                 down.row = row + 1;
                 down.xLoc = transform.position.x;
             }
             if (s == "right")
             {
                 right = Instantiate(backup).GetComponent<Backup>();
+                if (hypnotized) right.Hypnotize();
                 right.row = row;
                 right.xLoc = transform.position.x + Tile.TILE_DISTANCE.x;
             }
             if (s == "left")
             {
                 left = Instantiate(backup).GetComponent<Backup>();
+                if (hypnotized) left.Hypnotize();
                 left.row = row;
                 left.xLoc = transform.position.x - Tile.TILE_DISTANCE.x;
             }
@@ -102,6 +106,15 @@ public class Dancing : Zombie
     {
         yield return new WaitForSeconds(1.5f);
         spawning = false;
+    }
+
+    public override void Hypnotize()
+    {
+        if (up != null) up.Hypnotize();
+        if (down != null) down.Hypnotize();
+        if (right != null) right.Hypnotize();
+        if (left != null) left.Hypnotize();
+        base.Hypnotize();
     }
 
 }

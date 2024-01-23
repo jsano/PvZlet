@@ -61,6 +61,7 @@ public class Tile : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
     }
 
+    // NOTE: not sure when I'd use this when I can just use COL_TO_WORLD?
     /// <summary> Given a x-position in world units, return the closest corresponding in-game column it belongs to </summary>
     /// <param name="x"> The x-position of the object </param>
     /// <returns> The column number the object is in, between 1-9. Can return 0 if it's off the lawn </returns>

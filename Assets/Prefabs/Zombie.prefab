@@ -103,11 +103,13 @@ MonoBehaviour:
   damage: 1
   walkTime: 3
   HP: 10
+  eatTime: 0.5
   row: 1
   hitsGround: 0
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}
+  eatsPlants: 1
   status: {fileID: 0}
 --- !u!50 &196455329693155889
 Rigidbody2D:

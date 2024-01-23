@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,10 @@ public class Zombie : Damagable
 
     protected Rigidbody2D RB;
     protected SpriteRenderer SR;
+    private Color baseMaterialColor = Color.white;
     protected BoxCollider2D BC;
 
+    public bool eatsPlants;
     /// <summary> The currently eating plant. When the plant is dead, this would likely become null </summary>
     private GameObject eating;
     private Coroutine eatingCoroutine;
@@ -35,13 +38,18 @@ public class Zombie : Damagable
 
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
+    protected bool hypnotized;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         BC = GetComponent<BoxCollider2D>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         if (armor != null)
         {
             armor = Instantiate(armor, transform, false);
@@ -58,7 +66,9 @@ public class Zombie : Damagable
     // Update is called once per frame
     public virtual void Update()
     {
-        GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Plant")));
+        int mask = hypnotized ? LayerMask.GetMask("Zombie") : LayerMask.GetMask("Plant");
+        // NOTE: (1, 1, 1) and not localscale because of hypnotized -1 x-scale
+        GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, Vector3.one, 0, Vector2.zero, 0, mask));
         if (toEat == null)
         {
             StopEating();
@@ -69,14 +79,15 @@ public class Zombie : Damagable
             if (eating == null || toEat != eating)
             {
                 StopEating();
-                eatingCoroutine = StartCoroutine(Eat(toEat.GetComponent<Plant>()));
+                eatingCoroutine = StartCoroutine(Eat(toEat.GetComponent<Damagable>()));
             }
-        }
+        }   
     }
 
     public virtual void LateUpdate()
     {
         if (HP <= 0) Die();
+        if (hypnotized && Tile.COL_TO_WORLD[9] * Tile.TILE_DISTANCE.x * 2 == transform.position.x) Die();
     }
 
     /// <summary> How the zombie should enter the lawn. Appears at the rightmost lane by default. Override this method if otherwise </summary>
@@ -100,6 +111,7 @@ public class Zombie : Damagable
     private IEnumerator Walk_Helper()
     {
         RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 3 / (walkTime / 6), 0) * ((status == null) ? 1 : status.walkMod); // d = rt
+        if (hypnotized) RB.velocity *= -1;
         yield return new WaitForSeconds((walkTime / 6) * ((status == null) ? 1 : 1 / status.walkMod));
         RB.velocity = Vector3.zero;
     }
@@ -108,6 +120,7 @@ public class Zombie : Damagable
     protected void WalkConstant()
     {
         RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x / walkTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
+        if (hypnotized) RB.velocity *= -1;
     }
 
     /// <summary> Given a list of plants in range, gets the first interactable one </summary>
@@ -117,7 +130,8 @@ public class Zombie : Damagable
     {
         for (int i = 0; i < hit.Length; i++)
         {
-            Plant p = hit[i].collider.gameObject.GetComponent<Plant>();
+            if (hit[i].collider.GetComponent<Zombie>() != null) return hit[i].collider.gameObject;
+            Plant p = hit[i].collider.GetComponent<Plant>();
             if (p.instant || p.grounded && !hitsGround) continue;
             return hit[i].collider.gameObject;
         }
@@ -126,22 +140,24 @@ public class Zombie : Damagable
 
     /// <summary> The zombie's eating behavior. Every <c>eatTime</c> seconds, it deals <c>damage</c> to the plant. Factors in eating stat effects </summary>
     /// <param name="p"> The plant being eaten </param>
-    protected IEnumerator Eat(Plant p)
+    protected IEnumerator Eat(Damagable p)
     {
         eating = p.gameObject;
         while (p != null)
         {
             RB.velocity = Vector2.zero;
             period = 0;
-            p.ReceiveDamage(damage);
+            p.ReceiveDamage(damage, gameObject, eatsPlants);
             yield return new WaitForSeconds(eatTime * ((status == null) ? 1 : 1 / status.eatMod));
         }
     }
 
-    /// <summary> Called when something deals damage to this zombie. Any armor will take priority over the main zombie </summary>
-    /// <param name="dmg"> How much damage to deal </param>
-    public override void ReceiveDamage(float dmg)
+    public override void ReceiveDamage(float dmg, GameObject source, bool eat=false)
     {
+        // Adjust for zombies
+        // NOTE: adjust plant HP and remove this in the future
+        if (source != null && source.GetComponent<Zombie>() != null) dmg *= 4;
+        // Any armor will take priority over the main zombie
         if (armor != null) dmg = armor.GetComponent<Armor>().ReceiveDamage(dmg);
         HP -= dmg;
         StartCoroutine(HitVisual());
@@ -151,7 +167,7 @@ public class Zombie : Damagable
     {
         SR.material.color = new Color(1, 0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
-        SR.material.color = (status == null) ? Color.white : status.colorTint;
+        SR.material.color = (status == null) ? baseMaterialColor : status.colorTint;
     }
 
     /// <summary> Stops all eating processes and forgets what plant the zombie was currently eating </summary>
@@ -169,9 +185,27 @@ public class Zombie : Damagable
         Destroy(gameObject);
     }
 
+    public virtual void Hypnotize()
+    {
+        StopEating();
+        hypnotized = true;
+        gameObject.layer = LayerMask.NameToLayer("Plant");
+        baseMaterialColor = Color.magenta;
+        SR.material.color = baseMaterialColor;
+        if (shield != null) shield.GetComponent<Shield>().Hypnotize();
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+        GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
+        spawnScore = 0;
+    }
+
     public SpriteRenderer getSpriteRenderer()
     {
         return SR;
+    }
+
+    public Color getBaseColor()
+    {
+        return baseMaterialColor;
     }
 
     public bool isEating()

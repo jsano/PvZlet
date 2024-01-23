@@ -54,7 +54,7 @@ public class StatMod : ScriptableObject
     {
         if (target == null) return;
         target.status = null;
-        target.getSpriteRenderer().material.color = Color.white;
+        target.getSpriteRenderer().material.color = target.getBaseColor();
         target = null;
     }
 

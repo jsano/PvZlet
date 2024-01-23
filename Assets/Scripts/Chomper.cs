@@ -28,7 +28,7 @@ public class Chomper : Plant
     /// <summary> Eats a zombie, and then starts chewing </summary>
     protected override void Attack(Zombie z)
     {
-        z.ReceiveDamage(damage);
+        z.ReceiveDamage(damage, null);
         chewPeriod = 0;
         SR.material.color -= Color.white / 2; // will cause jank but it's ok since this will be replaced with animations
     }

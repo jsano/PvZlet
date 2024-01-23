@@ -62,7 +62,7 @@ public class StraightProjectile : MonoBehaviour
 
     protected virtual void Hit(Damagable other)
     {
-        other.ReceiveDamage(dmg);
+        other.ReceiveDamage(dmg, null);
         hit = true;
         Destroy(gameObject);
     }

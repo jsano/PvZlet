@@ -85,6 +85,7 @@ MonoBehaviour:
   armor: {fileID: 0}
   shield: {fileID: 5450825092267099916, guid: 3c3cc50a30ea12149832079881fa1f5d, type: 3}
   projectile: {fileID: 0}
+  eatsPlants: 1
   status: {fileID: 0}
   angryWalkTime: 1.5
   angryEatTime: 0.25

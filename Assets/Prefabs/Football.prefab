@@ -97,4 +97,5 @@ MonoBehaviour:
   armor: {fileID: 4069347666126425492, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
   shield: {fileID: 0}
   projectile: {fileID: 0}
+  eatsPlants: 1
   status: {fileID: 0}

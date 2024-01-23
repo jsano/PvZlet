@@ -96,9 +96,7 @@ public class Plant : Damagable
 
     }
 
-    /// <summary> Called when something deals damage to this plant </summary>
-    /// <param name="dmg"> How much damage to deal </param>
-    public override void ReceiveDamage(float dmg)
+    public override void ReceiveDamage(float dmg, GameObject source, bool eat=false)
     {
         HP -= dmg;
         StartCoroutine(EatenVisual());

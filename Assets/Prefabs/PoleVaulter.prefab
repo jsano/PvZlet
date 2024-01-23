@@ -93,8 +93,10 @@ MonoBehaviour:
   HP: 16
   eatTime: 0.5
   row: 1
+  hitsGround: 0
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}
+  eatsPlants: 1
   status: {fileID: 0}
   noPoleWalkTime: 3

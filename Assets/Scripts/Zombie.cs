@@ -138,7 +138,7 @@ public class Zombie : Damagable
         {
             if (hit[i].collider.GetComponent<Zombie>() != null) return hit[i].collider.gameObject;
             Plant p = hit[i].collider.GetComponent<Plant>();
-            if (p.instant || p.grounded && !hitsGround) continue;
+            if (p.isActiveInstant() || p.grounded && !hitsGround) continue;
             return hit[i].collider.gameObject;
         }
         return null;

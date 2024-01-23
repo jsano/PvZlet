@@ -114,4 +114,9 @@ public class Plant : Damagable
         SR.material.color = (status == null) ? Color.white : status.colorTint;
     }
 
+    public bool isActiveInstant()
+    {
+        return instant && (!mushroom || sky.night);
+    }
+
 }

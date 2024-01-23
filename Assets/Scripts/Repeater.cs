@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Repeater : Plant
+public class Repeater : Peashooter
 {
 
     /// <summary> Shoots 2 peas quickly </summary>
     protected override void Attack(Zombie z)
     {
-        StartCoroutine(Attack_Helper());
+        StartCoroutine(Attack_Helper(z));
     }
 
-    private IEnumerator Attack_Helper()
+    private IEnumerator Attack_Helper(Zombie z)
     {
-        Instantiate(projectile, transform.position + rightOffset, Quaternion.identity);
+        base.Attack(z);
         yield return new WaitForSeconds(0.2f);
-        Instantiate(projectile, transform.position + rightOffset, Quaternion.identity);
+        base.Attack(z);
     }
 
 }

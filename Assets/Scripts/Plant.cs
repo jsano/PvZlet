@@ -24,7 +24,7 @@ public class Plant : MonoBehaviour
     public bool alwaysAttack = false;
     /// <summary> Whether the plant is a mushroom thus nocturnal </summary>
     public bool mushroom = false;
-    private Sky sky;
+    protected Sky sky;
     /// <summary> Whether this is an instant plant so zombies can ignore it </summary>
     public bool instant;
     /// <summary> Whether this is a grounded plant so zombies can only interact with it if their <c>hitsGround</c> is true </summary>

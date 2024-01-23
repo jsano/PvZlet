@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Zombie : MonoBehaviour
+public class Zombie : Damagable
 {
     /// <summary> How much this zombie's worth. Used for progressing waves when killed </summary>
     public int spawnScore;
@@ -61,14 +61,14 @@ public class Zombie : MonoBehaviour
         GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Plant")));
         if (toEat == null)
         {
-            if (eatingCoroutine != null) StopCoroutine(eatingCoroutine);
+            StopEating();
             Walk();
         }
         else
         {
             if (eating == null || toEat != eating)
             {
-                if (eatingCoroutine != null) StopCoroutine(eatingCoroutine);
+                StopEating();
                 eatingCoroutine = StartCoroutine(Eat(toEat.GetComponent<Plant>()));
             }
         }
@@ -82,7 +82,7 @@ public class Zombie : MonoBehaviour
     /// <summary> How the zombie should enter the lawn. Appears at the rightmost lane by default. Override this method if otherwise </summary>
     protected virtual void Spawn()
     {
-        transform.position = new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x / 2, Tile.ROW_TO_WORLD[row], 0);
+        transform.position = new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x, Tile.ROW_TO_WORLD[row], 0);
     }
 
     /// <summary> The zombie's staggered walking behavior. Every <c>walkTime/3</c> seconds, it moves 1/3 of a tile. Factors in movement stat effects </summary>
@@ -140,7 +140,7 @@ public class Zombie : MonoBehaviour
 
     /// <summary> Called when something deals damage to this zombie. Any armor will take priority over the main zombie </summary>
     /// <param name="dmg"> How much damage to deal </param>
-    public void ReceiveDamage(float dmg)
+    public override void ReceiveDamage(float dmg)
     {
         if (armor != null) dmg = armor.GetComponent<Armor>().ReceiveDamage(dmg);
         HP -= dmg;
@@ -152,6 +152,13 @@ public class Zombie : MonoBehaviour
         SR.material.color = new Color(1, 0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
         SR.material.color = (status == null) ? Color.white : status.colorTint;
+    }
+
+    /// <summary> Stops all eating processes and forgets what plant the zombie was currently eating </summary>
+    public void StopEating()
+    {
+        eating = null;
+        if (eatingCoroutine != null) StopCoroutine(eatingCoroutine);
     }
 
     /// <summary> Updates the spawner's progression score, and disappears </summary>

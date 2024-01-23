@@ -101,10 +101,6 @@ public class Dancing : Zombie
     private IEnumerator FinishSpawn()
     {
         yield return new WaitForSeconds(1.5f);
-        if (up != null) up.beingSpawned = false;
-        if (down != null) down.beingSpawned = false;
-        if (right != null) right.beingSpawned = false;
-        if (left != null) left.beingSpawned = false;
         spawning = false;
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plant : MonoBehaviour
+public class Plant : Damagable
 {
 
     /// <summary> The plant's sun cost </summary>
@@ -17,7 +17,7 @@ public class Plant : MonoBehaviour
     public bool variableStartPeriod;
     private float period;
     /// <summary> How much HP the plant has. Most non-wall plants should have the same value </summary>
-    public int HP;
+    public float HP;
     /// <summary> How many tiles the plant can see ahead to start attacking. Irrelevant if <c>alwaysAttack</c> is true </summary>
     public float range;
     /// <summary> Whether the plant should be allowed to attack regardless of range </summary>
@@ -98,7 +98,7 @@ public class Plant : MonoBehaviour
 
     /// <summary> Called when something deals damage to this plant </summary>
     /// <param name="dmg"> How much damage to deal </param>
-    public void ReceiveDamage(int dmg)
+    public override void ReceiveDamage(float dmg)
     {
         HP -= dmg;
         StartCoroutine(EatenVisual());

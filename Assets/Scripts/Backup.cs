@@ -6,7 +6,7 @@ public class Backup : Zombie
 {
 
     [HideInInspector] public float xLoc;
-    [HideInInspector] public bool beingSpawned = true;
+    private bool beingSpawned = true;
 
     public override void Update()
     {
@@ -21,6 +21,13 @@ public class Backup : Zombie
     protected override void Spawn()
     {
         transform.position = new Vector3(xLoc, Tile.ROW_TO_WORLD[row], 0);
+        StartCoroutine(FinishSpawn());
+    }
+
+    private IEnumerator FinishSpawn()
+    {
+        yield return new WaitForSeconds(1.5f);
+        beingSpawned = false;
     }
 
     public void StopForOthers()

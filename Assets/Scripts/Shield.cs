@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class Shield : Damagable
 {
 
     public float HP;
@@ -20,7 +20,7 @@ public class Shield : MonoBehaviour
         if (HP <= 0) Destroy(gameObject);
     }
 
-    public void ReceiveDamage(float dmg) // I really hate reusing code from Zombie.cs and I wish I could borrow it somehow. Maybe "Damageable" interface?
+    public override void ReceiveDamage(float dmg) // I really hate reusing code from Zombie.cs and I wish I could borrow it somehow. Maybe "Damageable" interface?
     {
         HP -= dmg;
         StartCoroutine(HitVisual());

@@ -52,18 +52,17 @@ public class StraightProjectile : MonoBehaviour
             other = h.collider;
             if (other.GetComponent<Shield>() != null)
             {
-                Hit(other.gameObject);                
+                Hit(other.GetComponent<Shield>());                
                 return;
             }
         }
         // No shield, just zombie
-        if (hits.Length > 0) Hit(hits[0].collider.gameObject);
+        if (hits.Length > 0) Hit(hits[0].collider.GetComponent<Zombie>());
     }
 
-    protected virtual void Hit(GameObject other)
+    protected virtual void Hit(Damagable other)
     {
-        if (other.GetComponent<Shield>() != null) other.GetComponent<Shield>().ReceiveDamage(dmg);
-        else other.GetComponent<Zombie>().ReceiveDamage(dmg);
+        other.ReceiveDamage(dmg);
         hit = true;
         Destroy(gameObject);
     }

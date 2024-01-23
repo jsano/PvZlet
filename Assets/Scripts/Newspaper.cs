@@ -8,13 +8,16 @@ public class Newspaper : Zombie
     public float angryWalkTime;
     public float angryEatTime;
     private bool angry = false;
+    private bool shocked = false;
 
     // Update is called once per frame
     public override void Update()
     {
         if (shield != null || angry) base.Update();
-        else
+        else if (!shocked)
         {
+            shocked = true;
+            StopEating();
             StartCoroutine(Shock());
             walkTime = angryWalkTime;
             eatTime = angryEatTime;

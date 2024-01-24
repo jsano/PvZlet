@@ -28,9 +28,11 @@ public class Tile : MonoBehaviour
     public static Tile[,] tileObjects = new Tile[7,10];
 
     /// <summary> The plant object currently planted onto this tile. Can be null if there's no plant </summary>
-    public GameObject planted;
+    private GameObject planted;
     /// <summary> The grid item currently placed onto this tile. Can be null if the tile is empty </summary>
-    public GameObject gridItem;
+    [HideInInspector] public GameObject gridItem;
+    /// <summary> Any extra plants that are part of a combined plant, in order of importance (ex. pumpkin < lilypad) </summary>
+    private List<GameObject> overlapped = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +48,11 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (planted == null && overlapped.Count > 0)
+        {
+            planted = overlapped[0];
+            overlapped.RemoveAt(0);
+        }
     }
 
     void OnMouseOver()
@@ -86,6 +92,7 @@ public class Tile : MonoBehaviour
         Plant p = g.GetComponent<Plant>();
         if (p != null)
         {
+            if (planted != null) overlapped.Add(planted);
             planted = g;
             p.row = row;
             p.col = col;
@@ -94,6 +101,7 @@ public class Tile : MonoBehaviour
         else
         {
             Destroy(planted);
+            overlapped.Clear();
             gridItem = g;
         }
     }
@@ -101,17 +109,18 @@ public class Tile : MonoBehaviour
     private bool CanPlantHere()
     {
         GameObject p = PlantBuilder.currentPlant;
-        if (p.GetComponent<GraveBuster>() != null) {
-            if (planted == null && gridItem != null && gridItem.tag == "Grave") return true;
+        if (gridItem != null)
+        {
+            if (p.GetComponent<GraveBuster>() != null && gridItem.tag == "Grave") return true;
             return false;
         }
-        if (water && !p.GetComponent<Plant>().aquatic) return false; //TODO: replace
-        /*if (p.GetComponent<LilyPad>() != null)
+        if (water)
         {
-            if (planted == null && gridItem != null && gridItem.tag == "Grave") return true;
+            if (p.GetComponent<Plant>().aquatic && planted == null) return true;
+            if (!p.GetComponent<Plant>().aquatic && planted != null && planted.tag == "LilyPad") return true;
             return false;
-        }*/
-        if (planted == null && gridItem == null) return true;
+        }
+        if (planted == null) return true;
         return false;
     }
 

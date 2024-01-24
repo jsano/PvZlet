@@ -31,8 +31,8 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waves.Add(new List<int>(new int[] { allZombies.Length - 2 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
-        waves.Add(new List<int>(new int[] { 0, 1 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 2, col = 9 } }));
+        waves.Add(new List<int>(new int[] { 8 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
+        waves.Add(new List<int>(new int[] { 0, 10, 11, 12 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 2, col = 9 } }));
         waves.Add(new List<int>(new int[] { 2, 3 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 3, col = 9 } }));
         waves.Add(new List<int>(new int[] { 4, 5 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 4, col = 9 } }));
         waves.Add(new List<int>(new int[] { 6, 7 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 5, col = 9 } }));
@@ -63,11 +63,10 @@ public class ZombieSpawner : MonoBehaviour
                 currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;
                 GameObject g = Instantiate(allZombies[i]);
                 int lane = Random.Range(1, lanes+1);
-                if (!g.GetComponent<Zombie>().aquatic)
-                {
-                    while (lane == 3 || lane == 4) lane = Random.Range(1, lanes+1);
-                }
+                if (!g.GetComponent<Zombie>().aquatic) while (lane == 3 || lane == 4) lane = Random.Range(1, lanes+1);
+                else lane = Random.Range(3, 5);
                 g.GetComponent<Zombie>().row = lane;
+                yield return new WaitForSeconds(0.2f);
             }
             int maxBuild = currentBuild;
             yield return new WaitUntil(() => currentBuild / maxBuild < 0.5f || forceSend <= 0);

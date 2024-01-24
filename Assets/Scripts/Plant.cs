@@ -45,6 +45,7 @@ public class Plant : Damagable
     protected Vector3 topOffset;
 
     protected SpriteRenderer SR;
+    protected ZombieSpawner ZS;
 
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
@@ -53,6 +54,7 @@ public class Plant : Damagable
     {
         SR = GetComponent<SpriteRenderer>();
         sky = GameObject.Find("Sky").GetComponent<Sky>();
+        ZS = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
     }
 
     // Start is called before the first frame update
@@ -70,13 +72,12 @@ public class Plant : Damagable
         {
             return;
         }
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit) hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (hit /*|| instant*/ || alwaysAttack) {
+        Zombie hit = LookInRange(row);
+        if (hit != null /*|| instant*/ || alwaysAttack) {
             period += Time.deltaTime;
             if (period >= atkspd)
             {
-                if (hit) Attack(hit.collider.gameObject.GetComponent<Zombie>());
+                if (hit) Attack(hit);
                 else Attack(null);
                 period = 0;
             }
@@ -91,6 +92,14 @@ public class Plant : Damagable
     void LateUpdate()
     {
         if (HP <= 0) Die();
+    }
+
+    protected virtual Zombie LookInRange(int row)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit) hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (hit) return hit.collider.gameObject.GetComponent<Zombie>();
+        return null;
     }
 
     /// <summary> The plant's main attack, called at most every <c>atkspd</c> seconds. Does nothing by default, and most non-walls should override this method </summary>

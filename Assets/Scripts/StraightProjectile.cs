@@ -12,6 +12,8 @@ public class StraightProjectile : MonoBehaviour
     public float dmg;
     /// <summary> The direction this projectile travels in </summary>
     [HideInInspector] public Vector3 dir;
+    /// <summary> If not 0, this projectile moves to this lane right as it's spawned </summary>
+    [HideInInspector] public int moveToLane;
     /// <summary> The number of tiles this projectile moves before disappearing </summary>
     public float distance;
     private Vector3 startPos;
@@ -31,11 +33,16 @@ public class StraightProjectile : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         RB.velocity = dir.normalized * speed;
         startPos = transform.position;
+        if (moveToLane != 0) startPos = new Vector3(transform.position.x, Tile.ROW_TO_WORLD[moveToLane], 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (moveToLane != 0 && transform.position.y != Tile.ROW_TO_WORLD[moveToLane])
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Tile.ROW_TO_WORLD[moveToLane], 0), speed * Time.deltaTime);
+        }
         if (Vector3.Distance(startPos, transform.position) / Tile.TILE_DISTANCE.x >= distance)
         {
             Destroy(gameObject);
@@ -46,6 +53,7 @@ public class StraightProjectile : MonoBehaviour
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (hit) return;
+        if (other.offset.y != 0) return; // NOTE: Maybe represent submerged with something more concrete
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, transform.localScale.x, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
         // Prioritize shield over zombie
         foreach (RaycastHit2D h in hits) {

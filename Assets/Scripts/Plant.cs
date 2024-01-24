@@ -20,6 +20,8 @@ public class Plant : Damagable
     public float HP;
     /// <summary> How many tiles the plant can see ahead to start attacking. Irrelevant if <c>alwaysAttack</c> is true </summary>
     public float range;
+    /// <summary> How many tiles the plant can see behind to start attacking. Irrelevant if <c>alwaysAttack</c> is true </summary>
+    public float backwardsRange;
     /// <summary> Whether the plant should be allowed to attack regardless of range </summary>
     public bool alwaysAttack = false;
     /// <summary> Whether the plant is a mushroom thus nocturnal </summary>
@@ -68,7 +70,8 @@ public class Plant : Damagable
         {
             return;
         }
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit) hit = Physics2D.Raycast(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
         if (hit /*|| instant*/ || alwaysAttack) {
             period += Time.deltaTime;
             if (period >= atkspd)

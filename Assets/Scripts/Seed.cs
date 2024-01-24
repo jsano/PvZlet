@@ -20,7 +20,7 @@ public class Seed : MonoBehaviour
         pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         b = GetComponent<Button>();
         plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
-        transform.Find("Text").GetComponent<TextMeshProUGUI>().text = ID + "";
+        transform.Find("Text").GetComponent<TextMeshProUGUI>().text = plant.cost + "";
         GetComponent<Image>().color = plant.GetComponent<SpriteRenderer>().color;
     }
 

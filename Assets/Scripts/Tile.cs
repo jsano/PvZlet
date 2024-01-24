@@ -14,16 +14,18 @@ public class Tile : MonoBehaviour
     public int row;
     /// <summary> Which column the tile is in. Takes values between [1 - 9] </summary>
     public int col;
+    public bool water;
+    public bool roof;
 
     /// <summary> The global distance in world units that a tile takes up </summary>
-    public static readonly Vector2 TILE_DISTANCE = new Vector2(2, 2.4f);
+    public static Vector2 TILE_DISTANCE;
 
-    /// <summary> The global mapping between row number to world y-coordinates. Length is 6 with index 0 as a buffer and index 5 never used if there's only 5 lanes </summary>
-    public static float[] ROW_TO_WORLD = new float[6];
+    /// <summary> The global mapping between row number to world y-coordinates. Length is 7 with index 0 as a buffer and index 6 never used if there's only 5 lanes </summary>
+    public static float[] ROW_TO_WORLD = new float[7];
     /// <summary> The global mapping between column number to world x-coordinates. Length is 10 with index 0 as a buffer </summary>
     public static float[] COL_TO_WORLD = new float[10];
 
-    public static Tile[,] tileObjects = new Tile[6,10];
+    public static Tile[,] tileObjects = new Tile[7,10];
 
     /// <summary> The plant object currently planted onto this tile. Can be null if there's no plant </summary>
     public GameObject planted;
@@ -33,6 +35,8 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().lanes == 6) TILE_DISTANCE = new Vector2(2, 2.24f);
+        else TILE_DISTANCE = new Vector2(2, 2.4f);
         ROW_TO_WORLD[row] = transform.position.y;
         COL_TO_WORLD[col] = transform.position.x;
         SR = GetComponent<SpriteRenderer>();
@@ -82,7 +86,7 @@ public class Tile : MonoBehaviour
         Plant p = g.GetComponent<Plant>();
         if (p != null)
         {
-            if (!p.instant) planted = g;
+            planted = g;
             p.row = row;
             p.col = col;
             PlantBuilder.sun -= p.cost;
@@ -101,6 +105,12 @@ public class Tile : MonoBehaviour
             if (planted == null && gridItem != null && gridItem.tag == "Grave") return true;
             return false;
         }
+        if (water && !p.GetComponent<Plant>().aquatic) return false; //TODO: replace
+        /*if (p.GetComponent<LilyPad>() != null)
+        {
+            if (planted == null && gridItem != null && gridItem.tag == "Grave") return true;
+            return false;
+        }*/
         if (planted == null && gridItem == null) return true;
         return false;
     }

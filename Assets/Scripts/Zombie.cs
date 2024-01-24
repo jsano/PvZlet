@@ -22,6 +22,7 @@ public class Zombie : Damagable
     [HideInInspector] public int row = 1;
     /// <summary> Whether the zombie is able to attack grounded plants like Spikeweed </summary>
     public bool hitsGround;
+    public bool aquatic;
 
     public GameObject armor;
     public GameObject shield;

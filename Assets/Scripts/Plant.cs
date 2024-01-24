@@ -29,6 +29,7 @@ public class Plant : Damagable
     public bool instant;
     /// <summary> Whether this is a grounded plant so zombies can only interact with it if their <c>hitsGround</c> is true </summary>
     public bool grounded;
+    public bool aquatic;
 
     /// <summary> Which row the plant is in. Takes values between [1 - <c>ZombieSpawner.lanes</c>]. Useful for lobbing plants </summary>
     [HideInInspector] public int row;
@@ -49,6 +50,7 @@ public class Plant : Damagable
     void Awake()
     {
         SR = GetComponent<SpriteRenderer>();
+        sky = GameObject.Find("Sky").GetComponent<Sky>();
     }
 
     // Start is called before the first frame update
@@ -57,7 +59,6 @@ public class Plant : Damagable
         if (variableStartPeriod) period = Random.Range(0, atkspd / 2);
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
-        sky = GameObject.Find("Sky").GetComponent<Sky>();
     }
 
     // Update is called once per frame

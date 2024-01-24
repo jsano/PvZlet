@@ -140,14 +140,14 @@ public class Zombie : Damagable
             if (hit[i].collider.GetComponent<Zombie>() != null) return hit[i].collider.gameObject;
             Plant p = hit[i].collider.GetComponent<Plant>();
             if (p.isActiveInstant() || p.grounded && !hitsGround) continue;
-            return hit[i].collider.gameObject;
+            return Tile.tileObjects[row, p.col].planted;
         }
         return null;
     }
 
     /// <summary> The zombie's eating behavior. Every <c>eatTime</c> seconds, it deals <c>damage</c> to the plant. Factors in eating stat effects </summary>
     /// <param name="p"> The plant being eaten </param>
-    protected IEnumerator Eat(Damagable p)
+    protected virtual IEnumerator Eat(Damagable p)
     {
         eating = p.gameObject;
         ResetWalk();

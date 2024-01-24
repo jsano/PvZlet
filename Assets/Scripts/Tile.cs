@@ -28,7 +28,7 @@ public class Tile : MonoBehaviour
     public static Tile[,] tileObjects = new Tile[7,10];
 
     /// <summary> The plant object currently planted onto this tile. Can be null if there's no plant </summary>
-    private GameObject planted;
+    [HideInInspector] public GameObject planted;
     /// <summary> The grid item currently placed onto this tile. Can be null if the tile is empty </summary>
     [HideInInspector] public GameObject gridItem;
     /// <summary> Any extra plants that are part of a combined plant, in order of importance (ex. pumpkin < lilypad) </summary>
@@ -108,16 +108,18 @@ public class Tile : MonoBehaviour
 
     private bool CanPlantHere()
     {
-        GameObject p = PlantBuilder.currentPlant;
+        Plant p = PlantBuilder.currentPlant.GetComponent<Plant>();
         if (gridItem != null)
         {
             if (p.GetComponent<GraveBuster>() != null && gridItem.tag == "Grave") return true;
             return false;
         }
+        if (p.aquatic && !water) return false;
+        if (p.grounded && (water || roof)) return false;
         if (water)
         {
-            if (p.GetComponent<Plant>().aquatic && planted == null) return true;
-            if (!p.GetComponent<Plant>().aquatic && planted != null && planted.tag == "LilyPad") return true;
+            if (p.aquatic && planted == null) return true;
+            if (!p.aquatic && planted != null && planted.tag == "LilyPad") return true;
             return false;
         }
         if (planted == null) return true;

@@ -106,6 +106,7 @@ MonoBehaviour:
   eatTime: 0.5
   row: 1
   hitsGround: 0
+  aquatic: 0
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}

@@ -35,7 +35,7 @@ public class PlantBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        assignedPlants = new int[] {16, 17, 15, 10, 14, 18, 6, 12};
+        assignedPlants = new int[] {16, 17, 15, 10, 14, 19, 6, 12};
         sun = startingSun;
     }
 

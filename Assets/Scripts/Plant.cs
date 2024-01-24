@@ -111,6 +111,7 @@ public class Plant : Damagable
 
     public override void ReceiveDamage(float dmg, GameObject source, bool eat=false)
     {
+        if (isActiveInstant()) return;
         HP -= dmg;
         StartCoroutine(EatenVisual());
     }

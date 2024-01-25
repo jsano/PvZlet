@@ -47,3 +47,5 @@ MonoBehaviour:
   sun: {fileID: 8617563865656503287, guid: 05feaa38556df174d86a9ff29af4000a, type: 3}
   interval: 10
   night: 0
+  fogColumn: 0
+  fog: {fileID: 6280449080335216864, guid: cc88e8e6db8c9df49a99064ee6bd0018, type: 3}

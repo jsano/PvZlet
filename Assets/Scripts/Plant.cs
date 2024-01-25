@@ -96,6 +96,7 @@ public class Plant : Damagable
 
     protected virtual Zombie LookInRange(int row)
     {
+        // TODO: replace with raycasting through tiles in row
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
         if (!hit) hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
         if (hit) return hit.collider.gameObject.GetComponent<Zombie>();

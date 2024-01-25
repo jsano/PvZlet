@@ -39,6 +39,7 @@ public class Tile : MonoBehaviour
     {
         if (GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().lanes == 6) TILE_DISTANCE = new Vector2(2, 2.24f);
         else TILE_DISTANCE = new Vector2(2, 2.4f);
+        //TODO: remove for roof
         ROW_TO_WORLD[row] = transform.position.y;
         COL_TO_WORLD[col] = transform.position.x;
         SR = GetComponent<SpriteRenderer>();
@@ -71,7 +72,6 @@ public class Tile : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
     }
 
-    // NOTE: not sure when I'd use this when I can just use COL_TO_WORLD?
     /// <summary> Given a x-position in world units, return the closest corresponding in-game column it belongs to </summary>
     /// <param name="x"> The x-position of the object </param>
     /// <returns> The column number the object is in, between 1-9. Can return 0 if it's off the lawn </returns>

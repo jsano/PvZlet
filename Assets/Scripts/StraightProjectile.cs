@@ -56,6 +56,11 @@ public class StraightProjectile : MonoBehaviour
     {
         if (hit) return;
         if (other.offset.y != 0) return; // NOTE: Maybe represent submerged with something more concrete
+        if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
+        {
+            Destroy(gameObject);
+            return;
+        }
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, transform.localScale.x, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
         // Prioritize shield over zombie
         foreach (RaycastHit2D h in hits) {

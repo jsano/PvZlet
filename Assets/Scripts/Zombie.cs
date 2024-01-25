@@ -54,7 +54,7 @@ public class Zombie : Damagable
     }
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         if (armor != null)
         {

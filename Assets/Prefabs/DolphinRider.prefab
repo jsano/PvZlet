@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4234486797412661520
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_Name
+      value: DolphinRider
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.39569244
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.39569244
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+--- !u!1 &3219488978084992352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+  m_PrefabInstance: {fileID: 4234486797412661520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2475251749816094009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3219488978084992352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085f9e06182701f4c87da9d2f3e904a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnScore: 3
+  damage: 1
+  walkTime: 1
+  HP: 15
+  eatTime: 0.5
+  row: 1
+  hitsGround: 0
+  aquatic: 1
+  armor: {fileID: 0}
+  shield: {fileID: 0}
+  projectile: {fileID: 0}
+  wheels: 0
+  eatsPlants: 1
+  status: {fileID: 0}
+  noPoleWalkTime: 3

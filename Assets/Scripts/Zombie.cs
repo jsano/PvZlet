@@ -33,6 +33,7 @@ public class Zombie : Damagable
     private Color baseMaterialColor = Color.white;
     protected BoxCollider2D BC;
 
+    public bool wheels;
     public bool eatsPlants;
     /// <summary> The currently eating plant. When the plant is dead, this would likely become null </summary>
     private GameObject eating;

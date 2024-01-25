@@ -8,6 +8,7 @@ TagManager:
   - LilyPad
   - Snow
   - Fire
+  - Tallnut
   layers:
   - Default
   - TransparentFX

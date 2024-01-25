@@ -9,7 +9,7 @@ public class PoleVaulter : Zombie
     private bool running = true;
     private bool jumped = false;
     private float jumpTime = 1;
-
+    private GameObject toJump;
 
     // Update is called once per frame
     public override void Update()
@@ -17,7 +17,7 @@ public class PoleVaulter : Zombie
         if (running)
         {
             WalkConstant();
-            GameObject toJump = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.left, Tile.TILE_DISTANCE.x / 2, LayerMask.GetMask("Plant")));
+            toJump = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.left, Tile.TILE_DISTANCE.x / 2, LayerMask.GetMask("Plant")));
             if (toJump != null && (status == null || status.walkMod > 0))
             {
                 running = false;
@@ -34,9 +34,17 @@ public class PoleVaulter : Zombie
     private IEnumerator Jump()
     {
         RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x * 1.75f / jumpTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-        yield return new WaitForSeconds(jumpTime * ((status == null) ? 1 : 1 / status.walkMod));
-        RB.velocity = Vector3.zero;
-        yield return new WaitForSeconds(0.5f);
+        if (toJump.tag == "Tallnut")
+        {
+            yield return new WaitUntil(() => transform.position.x <= toJump.transform.position.x + Tile.TILE_DISTANCE.x / 3);
+            RB.velocity = Vector3.zero;
+        }
+        else
+        {
+            yield return new WaitForSeconds(jumpTime * ((status == null) ? 1 : 1 / status.walkMod));
+            RB.velocity = Vector3.zero;
+            yield return new WaitForSeconds(0.5f);
+        }
         jumped = true;
     }
 

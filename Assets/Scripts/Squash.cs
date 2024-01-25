@@ -14,6 +14,7 @@ public class Squash : Plant
         {
             attacking = true;
             HP = 100000;
+            Tile.tileObjects[row, col].planted = null;
             StartCoroutine(SquashAfterDelay(z));
         }
     }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3496737334665100708
+--- !u!1001 &8949155838898158059
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.52822065
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.r
@@ -65,46 +65,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: Jalapeno
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_TagString
-      value: Fire
+      value: Torchwood
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &6254534753222394853 stripped
+--- !u!1 &1908316771321120682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 3496737334665100708}
+  m_PrefabInstance: {fileID: 8949155838898158059}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1192728224773786337
+--- !u!114 &5665101846006969241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6254534753222394853}
+  m_GameObject: {fileID: 1908316771321120682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c47355c7ae7714d95ecba94f580f7b, type: 3}
+  m_Script: {fileID: 11500000, guid: bcd37d10ff7bf6c4f9fecef861a53534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 125
-  recharge: 45
-  damage: 1000
-  atkspd: 1
+  cost: 175
+  recharge: 5
+  damage: 0
+  atkspd: 0
   variableStartPeriod: 0
   HP: 6
   range: 0
   backwardsRange: 0
-  alwaysAttack: 1
+  alwaysAttack: 0
   mushroom: 0
-  instant: 1
+  instant: 0
   grounded: 0
   aquatic: 0
   row: 0
   col: 0
-  projectile: {fileID: 1757787587344952480, guid: 5606babdd88c8f543bd132f67c899de3, type: 3}
+  projectile: {fileID: 0}
   status: {fileID: 0}
+  pea: {fileID: 3721817652063258218, guid: 5aad780f5e39e3942bfa0fb5fd0a315e, type: 3}
+  firePea: {fileID: 4739057986888161436, guid: 912e34321208150478f14e46bd56d3b6, type: 3}

@@ -86,6 +86,8 @@ MonoBehaviour:
   speed: 3
   dmg: 1
   dir: {x: 0, y: 0, z: 0}
+  moveToLane: 0
   distance: 10
   laneSplash: 0
   neighboringLaneSplash: 0
+  pea: 1

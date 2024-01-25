@@ -22,6 +22,8 @@ public class StraightProjectile : MonoBehaviour
     /// <summary> Whether this projectile has multi-lane splash damage </summary>
     public bool neighboringLaneSplash;
 
+    public bool pea;
+
     private Rigidbody2D RB;
 
     private bool hit = false;
@@ -60,6 +62,7 @@ public class StraightProjectile : MonoBehaviour
             other = h.collider;
             if (other.GetComponent<Shield>() != null)
             {
+                laneSplash = false;
                 Hit(other.GetComponent<Shield>());                
                 return;
             }
@@ -70,7 +73,12 @@ public class StraightProjectile : MonoBehaviour
 
     protected virtual void Hit(Damagable other)
     {
-        other.ReceiveDamage(dmg, null);
+        if (laneSplash)
+        {
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, transform.localScale.x * 2, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
+            foreach (RaycastHit2D h in hits) h.collider.GetComponent<Damagable>().ReceiveDamage(dmg, gameObject);
+        }
+        else other.ReceiveDamage(dmg, gameObject);
         hit = true;
         Destroy(gameObject);
     }

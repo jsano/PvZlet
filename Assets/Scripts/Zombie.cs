@@ -155,7 +155,7 @@ public class Zombie : Damagable
         while (p != null)
         {
             if (status != null && status.eatMod == 0) break;
-            RB.velocity = Vector2.zero;
+            if (!wheels) RB.velocity = Vector2.zero;
             period = 0;
             p.ReceiveDamage(damage, gameObject, eatsPlants);
             yield return new WaitForSeconds(eatTime * ((status == null) ? 1 : 1 / status.eatMod));
@@ -167,6 +167,7 @@ public class Zombie : Damagable
         // Adjust for zombies
         // NOTE: adjust plant HP and remove this in the future
         if (source != null && source.GetComponent<Zombie>() != null) dmg *= 4;
+        if (status != null && source != null && status.removedBy == source.tag) status.Remove();
         // Any armor will take priority over the main zombie
         if (armor != null) dmg = armor.GetComponent<Armor>().ReceiveDamage(dmg);
         HP -= dmg;

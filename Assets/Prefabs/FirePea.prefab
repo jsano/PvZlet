@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3057762286535259425
+--- !u!1001 &6344819634141998039
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,11 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: dmg
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
-      propertyPath: pea
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: speed
@@ -23,9 +19,17 @@ PrefabInstance:
       propertyPath: distance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
+      propertyPath: laneSplash
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1858253773609595723, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Name
-      value: Pea
+      value: FirePea
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858253773609595723, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
+      propertyPath: m_TagString
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 4675822248470896095, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_RootOrder
@@ -72,20 +76,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-    - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Color.b
-      value: 0.16078432
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Color.g
-      value: 0.69803923
+      value: 0.582752
       objectReference: {fileID: 0}
     - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}

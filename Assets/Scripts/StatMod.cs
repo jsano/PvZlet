@@ -11,6 +11,7 @@ public class StatMod : ScriptableObject
         public float duration;
         public float walkMod;
         public float eatMod;
+        public string removedBy;
         public Color c;
     }
 
@@ -18,14 +19,16 @@ public class StatMod : ScriptableObject
     public float walkMod;
     /// <summary> Zombies will eat at their normal speed <c>* eatMod</c> </summary>
     public float eatMod;
+    /// <summary> If zombies are hit by this condition, it removes the effect </summary>
+    public string removedBy;
     /// <summary> Zombies will be tinted this color </summary>
     public Color colorTint;
 
     /// <summary> The global mapping of all status effects in the game, labeled by name </summary>
     private static Dictionary<string, Data> effects = new Dictionary<string, Data>()
     {
-        {"chill", new Data{ duration = 10, walkMod = 0.5f, eatMod = 0.5f, c = new Color(0, 0.5f, 1, 1) } },
-        {"freeze", new Data{ duration = 6, walkMod = 0, eatMod = 0, c = new Color(0, 0.5f, 1, 1) } },
+        {"Chill", new Data{ duration = 10, walkMod = 0.5f, eatMod = 0.5f, removedBy = "Fire", c = new Color(0, 0.5f, 1, 1) } },
+        {"Freeze", new Data{ duration = 6, walkMod = 0, eatMod = 0, removedBy = "Fire", c = new Color(0, 0.5f, 1, 1) } },
     };
 
     /// <summary> The zombie this effect is applied to. Can be null if this effect is overwritten or the zombie dies </summary>
@@ -42,6 +45,7 @@ public class StatMod : ScriptableObject
         target.status = this;
         walkMod = effects[name].walkMod;
         eatMod = effects[name].eatMod;
+        removedBy = effects[name].removedBy;
         colorTint = effects[name].c;
         target.StartCoroutine(Unapplication(effects[name].duration));
     }
@@ -53,7 +57,7 @@ public class StatMod : ScriptableObject
     }
 
     /// <summary> Removes the effect from the target zombie by unlinking all references to each other. If already unlinked, does nothing </summary>
-    private void Remove()
+    public void Remove()
     {
         if (target == null) return;
         target.status = null;

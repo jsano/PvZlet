@@ -9,7 +9,7 @@ public class ChillPea : StraightProjectile
     protected override void Hit(Damagable other)
     {
         Zombie z = other.GetComponent<Zombie>();
-        if (z != null) ((StatMod) ScriptableObject.CreateInstance("StatMod")).Apply(z, "chill");
+        if (z != null) ((StatMod) ScriptableObject.CreateInstance("StatMod")).Apply(z, "Chill");
         base.Hit(other);
     }
 

@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6198586842511268989, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
       propertyPath: startingSun
-      value: 750
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 8439749433328750696, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
       propertyPath: m_Name

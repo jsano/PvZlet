@@ -12,7 +12,7 @@ public class Iceshroom : Plant
         {
             if (target.gameObject.layer == LayerMask.NameToLayer("Zombie"))
             {
-                ((StatMod) ScriptableObject.CreateInstance("StatMod")).Apply(target, "freeze");
+                ((StatMod) ScriptableObject.CreateInstance("StatMod")).Apply(target, "Freeze");
                 target.ReceiveDamage(damage, null);
             }
         }

@@ -31,8 +31,8 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waves.Add(new List<int>(new int[] { allZombies.Length - 1, 13 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
-        waves.Add(new List<int>(new int[] { 0, 10, 11, 12 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 2, col = 9 } }));
+        waves.Add(new List<int>(new int[] { allZombies.Length - 2, 13 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
+        waves.Add(new List<int>(new int[] { 15, 10, 11, 12 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 2, col = 9 } }));
         waves.Add(new List<int>(new int[] { 2, 3 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 3, col = 9 } }));
         waves.Add(new List<int>(new int[] { 4, 5 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 4, col = 9 } }));
         waves.Add(new List<int>(new int[] { 6, 7 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 5, col = 9 } }));
@@ -60,6 +60,21 @@ public class ZombieSpawner : MonoBehaviour
 
             foreach (int i in waves[waveNumber])
             {
+                if (i == 15) // Bobsled
+                {
+                    List<int> possible = new List<int>();
+                    for (int l = 1; l <= lanes; l++) {
+                        Tile check = Tile.tileObjects[l, 9];
+                        if (check.gridItem != null && check.gridItem.tag == "Snow") possible.Add(l);
+                    }
+                    if (possible.Count > 0)
+                    {
+                        currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;
+                        GameObject g1 = Instantiate(allZombies[i]);
+                        g1.GetComponent<Zombie>().row = possible[Random.Range(0, possible.Count)];
+                    }
+                    continue;
+                }
                 currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;
                 GameObject g = Instantiate(allZombies[i]);
                 int lane = Random.Range(1, lanes+1);
@@ -68,8 +83,8 @@ public class ZombieSpawner : MonoBehaviour
                 g.GetComponent<Zombie>().row = lane;
                 yield return new WaitForSeconds(0.2f);
             }
-            int maxBuild = currentBuild;
-            yield return new WaitUntil(() => currentBuild / maxBuild < 0.5f || forceSend <= 0);
+            float maxBuild = currentBuild;
+            yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
         }
         yield return new WaitUntil(() => currentBuild == 0);
         Debug.Log("WIN");

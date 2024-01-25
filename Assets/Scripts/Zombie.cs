@@ -32,6 +32,7 @@ public class Zombie : Damagable
     protected SpriteRenderer SR;
     private Color baseMaterialColor = Color.white;
     protected BoxCollider2D BC;
+    protected ZombieSpawner ZS;
 
     public bool wheels;
     public bool eatsPlants;
@@ -49,6 +50,7 @@ public class Zombie : Damagable
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         BC = GetComponent<BoxCollider2D>();
+        ZS = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
     }
 
     // Start is called before the first frame update
@@ -98,7 +100,7 @@ public class Zombie : Damagable
     /// <summary> How the zombie should enter the lawn. Appears at the rightmost lane by default. Override this method if otherwise </summary>
     protected virtual void Spawn()
     {
-        transform.position = new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x, Tile.ROW_TO_WORLD[row], 0);
+        if (transform.position == Vector3.zero) transform.position = new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x, Tile.ROW_TO_WORLD[row], 0);
     }
 
     /// <summary> The zombie's staggered walking behavior. Every <c>walkTime/3</c> seconds, it moves 1/3 of a tile. Factors in movement stat effects </summary>

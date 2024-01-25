@@ -65,5 +65,6 @@ MonoBehaviour:
   - {fileID: 3596509019596576079, guid: 44cb489a3980200459f1300c98dbc28f, type: 3}
   - {fileID: 1556662479261387803, guid: b13ceff3d1988514ca0efdc042fc2def, type: 3}
   - {fileID: 6560181397236200655, guid: d7866878a3b004a42aa9138ca09488af, type: 3}
+  - {fileID: 6254534753222394853, guid: 9732894ad258ac34abe5979b05cca33c, type: 3}
   assignedPlants: 
   startingSun: 75

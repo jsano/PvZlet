@@ -36,6 +36,7 @@ public class StatMod : ScriptableObject
     /// <param name="name"> The name of the status effect. Refer to <c>StatMod.effects</c> </param>
     public void Apply(Zombie z, string name)
     {
+        if (z.GetComponent<Zomboni>() != null) return; //NOTE: Maybe make "status effectable" into a field
         target = z;
         if (target.status) target.status.Remove();
         target.status = this;

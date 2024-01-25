@@ -15,6 +15,11 @@ public class Jalapeno : Plant
         {
             a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
         }
+        for (int c = 1; c < 10; c++)
+        {
+            GameObject t = Tile.tileObjects[row, c].gridItem;
+            if (t != null && t.tag == "Snow") Destroy(t);
+        }
         Destroy(gameObject);
     }
 

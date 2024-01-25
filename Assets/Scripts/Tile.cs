@@ -102,6 +102,7 @@ public class Tile : MonoBehaviour
         {
             Destroy(planted);
             overlapped.Clear();
+            Destroy(gridItem);
             gridItem = g;
         }
     }

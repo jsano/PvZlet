@@ -195,7 +195,7 @@ public class Zombie : Damagable
     }
 
     /// <summary> Updates the spawner's progression score, and disappears </summary>
-    protected void Die()
+    protected virtual void Die()
     {
         GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
         Destroy(shield);

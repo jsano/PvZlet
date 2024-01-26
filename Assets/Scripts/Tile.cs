@@ -127,4 +127,11 @@ public class Tile : MonoBehaviour
         return false;
     }
 
+    public GameObject ContainsPlant(string s)
+    {
+        if (planted != null && planted.GetComponent(s) != null) return planted;
+        foreach (GameObject g in overlapped) if (g.GetComponent(s) != null) return g;
+        return null;
+    }
+
 }

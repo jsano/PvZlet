@@ -34,7 +34,13 @@ public class PotatoMine : Plant
         {
             a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
         }
+        z.ReceiveDamage(damage, null);
         Destroy(gameObject);
+    }
+
+    public void ForceAttack(Zombie z)
+    {
+        if (armingTime <= 0) Attack(z);
     }
 
 }

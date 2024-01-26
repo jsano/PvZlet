@@ -44,6 +44,7 @@ public class Zombie : Damagable
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
     protected bool hypnotized;
+    protected bool backwards;
 
     void Awake()
     {
@@ -94,7 +95,11 @@ public class Zombie : Damagable
     public virtual void LateUpdate()
     {
         if (HP <= 0) Die();
-        if (hypnotized && Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x <= transform.position.x) Die();
+        if (hypnotized || backwards)
+        {
+            transform.localScale = new Vector3(-1, transform.localScale.y, 1);
+            if (Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x <= transform.position.x) Die();
+        }
     }
 
     /// <summary> How the zombie should enter the lawn. Appears at the rightmost lane by default. Override this method if otherwise </summary>
@@ -116,7 +121,7 @@ public class Zombie : Damagable
         {
             stepPeriod += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 3 / (walkTime / 6), 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-            if (hypnotized) RB.velocity *= -1;
+            if (hypnotized || backwards) RB.velocity *= -1;
             if (stepPeriod >= walkTime / 6)
             {
                 takingStep = false;
@@ -130,7 +135,7 @@ public class Zombie : Damagable
     protected void WalkConstant()
     {
         RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x / walkTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-        if (hypnotized) RB.velocity *= -1;
+        if (hypnotized || backwards) RB.velocity *= -1;
     }
 
     /// <summary> Given a list of plants in range, gets the first interactable one </summary>
@@ -207,7 +212,6 @@ public class Zombie : Damagable
         baseMaterialColor = Color.magenta;
         SR.material.color = baseMaterialColor;
         if (shield != null) shield.GetComponent<Shield>().Hypnotize();
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
         GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
         spawnScore = 0;
     }

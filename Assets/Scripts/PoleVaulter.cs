@@ -37,14 +37,13 @@ public class PoleVaulter : Zombie
         if (toJump.tag == "Tallnut")
         {
             yield return new WaitUntil(() => transform.position.x <= toJump.transform.position.x + Tile.TILE_DISTANCE.x / 3);
-            RB.velocity = Vector3.zero;
         }
         else
         {
             yield return new WaitForSeconds(jumpTime * ((status == null) ? 1 : 1 / status.walkMod));
-            RB.velocity = Vector3.zero;
             yield return new WaitForSeconds(0.5f);
         }
+        RB.velocity = Vector3.zero;
         jumped = true;
     }
 

@@ -39,7 +39,6 @@ public class Zombie : Damagable
     /// <summary> The currently eating plant. When the plant is dead, this would likely become null </summary>
     private GameObject eating;
     private Coroutine eatingCoroutine;
-    private Coroutine walkCoroutine;
 
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;

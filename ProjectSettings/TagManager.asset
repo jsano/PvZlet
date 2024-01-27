@@ -9,6 +9,7 @@ TagManager:
   - Snow
   - Fire
   - Tallnut
+  - Pumpkin
   layers:
   - Default
   - TransparentFX

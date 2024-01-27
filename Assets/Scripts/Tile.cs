@@ -60,6 +60,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseOver()
     {
+        Debug.Log(planted);
         if (EventSystem.current.currentSelectedGameObject != null && CanPlantHere()) SR.color = hoverColor;
         else SR.color = Color.clear;
     }
@@ -94,8 +95,16 @@ public class Tile : MonoBehaviour
         Plant p = g.GetComponent<Plant>();
         if (p != null)
         {
-            if (planted != null) overlapped.Add(planted);
-            planted = g;
+            if (planted != null)
+            {
+                if (g.tag == "Pumpkin" && planted.tag != "LilyPad") overlapped.Insert(0, g);
+                else
+                {
+                    overlapped.Add(planted);
+                    planted = g;
+                }
+            }
+            else planted = g;
             p.row = row;
             p.col = col;
             PlantBuilder.sun -= p.cost;
@@ -117,22 +126,22 @@ public class Tile : MonoBehaviour
             if (p.GetComponent<GraveBuster>() != null && gridItem.tag == "Grave") return true;
             return false;
         }
+        if (p.tag == "Pumpkin" && (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null) return true;
         if (p.aquatic && !water) return false;
         if (p.grounded && (water || roof)) return false;
         if (water)
         {
             if (p.aquatic && planted == null) return true;
-            if (!p.aquatic && planted != null && planted.tag == "LilyPad") return true;
-            return false;
+            if (!p.aquatic && ContainsPlant("LilyPad") == null) return false;
         }
-        if (planted == null) return true;
+        if (planted == null || planted.tag == "Pumpkin" || planted.tag == "LilyPad") return true;
         return false;
     }
 
     public GameObject ContainsPlant(string s)
     {
-        if (planted != null && planted.GetComponent(s) != null) return planted;
-        foreach (GameObject g in overlapped) if (g.GetComponent(s) != null) return g;
+        if (planted != null && planted.name.StartsWith(s)) return planted;
+        foreach (GameObject g in overlapped) if (g.name.StartsWith(s)) return g;
         return null;
     }
 

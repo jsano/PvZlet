@@ -36,6 +36,11 @@ public class PlantBuilder : MonoBehaviour
     void Awake()
     {
         assignedPlants = new int[] {16, 17, 20, allPlants.Length - 1, 14, 5, 23, 12};
+    }
+
+    void Start()
+    {
+        currentPlant = allPlants[assignedPlants[0]];
         sun = startingSun;
     }
 

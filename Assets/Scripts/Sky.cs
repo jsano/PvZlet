@@ -50,4 +50,38 @@ public class Sky : MonoBehaviour
             g.GetComponent<Sun>().ground = cam.ViewportToWorldPoint(new Vector3(0, 0.1f)).y;
         }
     }
+
+    public void ClearFog()
+    {
+        for (int i = 1; i <= GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().lanes; i++)
+        {
+            for (int j = 1; j <= 9; j++)
+            {
+                if (Tile.tileObjects[i, j].fog != null)
+                {
+                    SpriteRenderer sr = Tile.tileObjects[i, j].fog.GetComponent<SpriteRenderer>();
+                    sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
+                }
+            }
+        }
+        StopAllCoroutines();
+        StartCoroutine(BringFogBack());
+    }
+
+    private IEnumerator BringFogBack()
+    {
+        yield return new WaitForSeconds(45);
+        for (int i = 1; i <= GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().lanes; i++)
+        {
+            for (int j = 1; j <= 9; j++)
+            {
+                if (Tile.tileObjects[i, j].fog != null)
+                {
+                    SpriteRenderer sr = Tile.tileObjects[i, j].fog.GetComponent<SpriteRenderer>();
+                    sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+                }
+            }
+        }
+    }
+
 }

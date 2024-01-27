@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &688503646639452925
+--- !u!1001 &7948676524570330552
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,11 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.b
-      value: 0.5424528
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.g
-      value: 0.9933689
+      value: 0.9607843
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.r
@@ -65,36 +65,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: Plantern
+      value: Starfruit
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &8053689882945932476 stripped
+--- !u!1 &577908823632083961 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 688503646639452925}
+  m_PrefabInstance: {fileID: 7948676524570330552}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3329466128217312064
+--- !u!114 &-2125285211530088467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8053689882945932476}
+  m_GameObject: {fileID: 577908823632083961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c41e8798ffc79af4b8abb21f433bf186, type: 3}
+  m_Script: {fileID: 11500000, guid: d76309f1636b9fd4da33ac2c1b680694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 50
-  recharge: 30
-  damage: 0
+  cost: 175
+  recharge: 5
+  damage: 1
   atkspd: 1
-  variableStartPeriod: 0
+  variableStartPeriod: 1
   HP: 6
-  range: 0
-  backwardsRange: 0
+  range: 10
+  backwardsRange: 10
   alwaysAttack: 0
   mushroom: 0
   instant: 0
@@ -102,5 +102,5 @@ MonoBehaviour:
   aquatic: 0
   row: 0
   col: 0
-  projectile: {fileID: 0}
+  projectile: {fileID: 5044256662848631659, guid: 365473ad2d145be459568c311cdde4ee, type: 3}
   status: {fileID: 0}

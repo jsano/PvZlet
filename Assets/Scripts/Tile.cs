@@ -20,8 +20,6 @@ public class Tile : MonoBehaviour
     /// <summary> The global distance in world units that a tile takes up </summary>
     public static Vector2 TILE_DISTANCE;
 
-    /// <summary> The global mapping between row number to world y-coordinates. Length is 7 with index 0 as a buffer and index 6 never used if there's only 5 lanes </summary>
-    public static float[] ROW_TO_WORLD = new float[7];
     /// <summary> The global mapping between column number to world x-coordinates. Length is 10 with index 0 as a buffer </summary>
     public static float[] COL_TO_WORLD = new float[10];
 
@@ -39,10 +37,7 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().lanes == 6) TILE_DISTANCE = new Vector2(2, 2.24f);
-        else TILE_DISTANCE = new Vector2(2, 2.4f);
-        //TODO: remove for roof
-        ROW_TO_WORLD[row] = transform.position.y;
+        TILE_DISTANCE = new Vector2(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f);
         COL_TO_WORLD[col] = transform.position.x;
         SR = GetComponent<SpriteRenderer>();
         tileObjects[row, col] = this;

@@ -17,7 +17,6 @@ public class Newspaper : Zombie
         else if (!shocked)
         {
             shocked = true;
-            StopEating();
             StartCoroutine(Shock());
             walkTime = angryWalkTime;
             eatTime = angryEatTime;
@@ -26,6 +25,8 @@ public class Newspaper : Zombie
 
     private IEnumerator Shock()
     {
+        StopEating();
+        ResetWalk();
         yield return new WaitForSeconds(1.5f);
         angry = true;
     }

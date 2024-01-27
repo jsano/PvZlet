@@ -35,7 +35,7 @@ public class PlantBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        assignedPlants = new int[] {16, 17, 20, allPlants.Length - 1, 14, 5, 23, 12};
+        assignedPlants = new int[] {16, 17, 20, allPlants.Length - 1, 14, 5, 18, 29};
     }
 
     void Start()

@@ -8,11 +8,11 @@ public class Starfruit : Plant
     protected override Zombie LookInRange(int row)
     {
         float radius = projectile.transform.localScale.x * projectile.GetComponent<CircleCollider2D>().radius;
-        RaycastHit2D hit = Physics2D.CircleCast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), radius, Vector2.left, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit) hit = Physics2D.CircleCast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), radius, new Vector2(1, 0.5f), 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit) hit = Physics2D.CircleCast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), radius, new Vector2(1, -0.5f), 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit) hit = Physics2D.CircleCast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), radius, Vector2.up, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit) hit = Physics2D.CircleCast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), radius, Vector2.down, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        RaycastHit2D hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, Vector2.left, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, new Vector2(1, 0.5f), 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, new Vector2(1, -0.5f), 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, Vector2.up, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, Vector2.down, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
         if (hit) return hit.collider.GetComponent<Zombie>();
         return null;
     }

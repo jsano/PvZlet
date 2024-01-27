@@ -77,7 +77,7 @@ public class ZombieSpawner : MonoBehaviour
                 }
                 currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;
                 GameObject g = Instantiate(allZombies[i]);
-                int lane = 1;
+                int lane = 3;
                 if (!g.GetComponent<Zombie>().aquatic)
                     while (lane == 3 || lane == 4) lane = Random.Range(1, lanes+1);
                 else lane = Random.Range(3, 5);

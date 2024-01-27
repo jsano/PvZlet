@@ -29,11 +29,11 @@ public class Sky : MonoBehaviour
             {
                 for (int j = fogColumn; j <= 9; j++)
                 {
-                    GameObject f = Instantiate(fog, new Vector3(Tile.COL_TO_WORLD[j], Tile.ROW_TO_WORLD[i], 0), Quaternion.identity);
+                    GameObject f = Instantiate(fog, Tile.tileObjects[i, j].transform.position, Quaternion.identity);
                     f.transform.localScale = Tile.TILE_DISTANCE;
                     Tile.tileObjects[i, j].fog = f;
                 }
-                GameObject g = Instantiate(fog, new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x, Tile.ROW_TO_WORLD[i], 0), Quaternion.identity);
+                GameObject g = Instantiate(fog, new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x, Tile.tileObjects[i, 9].transform.position.y, 0), Quaternion.identity);
                 g.transform.localScale = Tile.TILE_DISTANCE;
             }
         }

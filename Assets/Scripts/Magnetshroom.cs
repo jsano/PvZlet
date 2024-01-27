@@ -68,6 +68,7 @@ public class Magnetshroom : Plant
         taken = g;
         g.transform.SetParent(transform);
         g.transform.localPosition = Vector3.zero;
+        if (g.GetComponent<Collider2D>() != null) g.GetComponent<Collider2D>().enabled = false;
     }
 
 }

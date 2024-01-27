@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Star
       objectReference: {fileID: 0}
+    - target: {fileID: 1858253773609595723, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
+      propertyPath: m_TagString
+      value: Star
+      objectReference: {fileID: 0}
     - target: {fileID: 4675822248470896095, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_RootOrder
       value: 0

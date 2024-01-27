@@ -36,15 +36,15 @@ public class StraightProjectile : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         RB.velocity = dir.normalized * speed;
         startPos = transform.position;
-        if (moveToLane != 0) startPos = new Vector3(transform.position.x, Tile.ROW_TO_WORLD[moveToLane], 0);
+        if (moveToLane != 0) startPos = new Vector3(transform.position.x, Tile.tileObjects[moveToLane, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moveToLane != 0 && transform.position.y != Tile.ROW_TO_WORLD[moveToLane])
+        if (moveToLane != 0 && transform.position.y != startPos.y)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Tile.ROW_TO_WORLD[moveToLane], 0), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, startPos.y, 0), speed * Time.deltaTime);
         }
         if (Vector3.Distance(startPos, transform.position) / Tile.TILE_DISTANCE.x >= distance)
         {
@@ -59,7 +59,13 @@ public class StraightProjectile : MonoBehaviour
         if (other.offset.y < 0 || other.offset.y > 0 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
         if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
-            Destroy(gameObject);
+            if (gameObject.tag == "Star")
+            {
+                if (dir == Vector3.up || dir == Vector3.down || dir == Vector3.left) return;
+                if (Tile.WORLD_TO_COL(transform.position.x) - Tile.WORLD_TO_COL(startPos.x) >= 2) Destroy(gameObject);
+                else return;
+            }
+            if (!sharp) Destroy(gameObject); // NOTE: Very situational, ideally only cactus spikes should ignore
             return;
         }
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, transform.localScale.x, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));

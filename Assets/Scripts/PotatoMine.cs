@@ -26,8 +26,8 @@ public class PotatoMine : Plant
 
     protected override Zombie LookInRange(int row)
     {
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Underground"));
-        if (!hit) hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Underground"));
+        RaycastHit2D hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Underground"));
+        if (!hit) hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Underground"));
         if (hit) return hit.collider.GetComponent<Zombie>();
         return null;
     }

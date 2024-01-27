@@ -99,8 +99,18 @@ public class Plant : Damagable
     protected virtual Zombie LookInRange(int row)
     {
         // TODO: replace with raycasting through tiles in row
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.left, (backwardsRange + (backwardsRange > 0 ? 0.5f : 0)) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit) hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        RaycastHit2D hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.left, (backwardsRange > 0 ? 0.5f : 0) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (backwardsRange > 0)
+        {
+            for (int i = 1; i <= backwardsRange && col - i >= 1 && !hit; i++)
+                hit = Physics2D.Raycast(new Vector2(Tile.COL_TO_WORLD[col - i] + Tile.TILE_DISTANCE.x / 2, Tile.tileObjects[row, col - i].transform.position.y), Vector2.left, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        }
+        if (!hit)
+        {
+            hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.right, 0.5f * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+            for (int i = 1; i <= range && col + i <= 9 && !hit; i++) 
+                hit = Physics2D.Raycast(new Vector2(Tile.COL_TO_WORLD[col + i] - Tile.TILE_DISTANCE.x / 2, Tile.tileObjects[row, col + i].transform.position.y), Vector2.right, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        }
         if (hit) return hit.collider.GetComponent<Zombie>();
         return null;
     }

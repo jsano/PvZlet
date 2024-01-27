@@ -33,6 +33,8 @@ public class Tile : MonoBehaviour
     [HideInInspector] public GameObject gridItem;
     /// <summary> Any extra plants that are part of a combined plant, in order of importance (ex. pumpkin < lilypad) </summary>
     private List<GameObject> overlapped = new List<GameObject>();
+    /// <summary> The fog currently covering this tile. Can be null if there's no fog </summary>
+    [HideInInspector] public GameObject fog;
 
     // Start is called before the first frame update
     void Start()
@@ -100,7 +102,7 @@ public class Tile : MonoBehaviour
         }
         else
         {
-            Destroy(planted);
+            if (planted != null && !planted.GetComponent<Plant>().isActiveInstant()) Destroy(planted);
             overlapped.Clear();
             Destroy(gridItem);
             gridItem = g;

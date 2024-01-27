@@ -18,6 +18,7 @@ public class Plant : Damagable
     private float period;
     /// <summary> How much HP the plant has. Most non-wall plants should have the same value </summary>
     public float HP;
+    private float baseHP;
     /// <summary> How many tiles the plant can see ahead to start attacking. Irrelevant if <c>alwaysAttack</c> is true </summary>
     public float range;
     /// <summary> How many tiles the plant can see behind to start attacking. Irrelevant if <c>alwaysAttack</c> is true </summary>
@@ -63,6 +64,7 @@ public class Plant : Damagable
         if (variableStartPeriod) period = Random.Range(0, atkspd / 2);
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
+        baseHP = HP;
     }
 
     // Update is called once per frame
@@ -134,6 +136,11 @@ public class Plant : Damagable
     public bool isActiveInstant()
     {
         return instant && (!mushroom || sky.night);
+    }
+
+    public void Heal(float heal)
+    {
+        HP = Mathf.Min(HP + heal, baseHP);
     }
 
 }

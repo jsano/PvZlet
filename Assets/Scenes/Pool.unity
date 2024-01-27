@@ -309,6 +309,10 @@ PrefabInstance:
       propertyPath: night
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5191242600559083052, guid: 7230c3c8064fa8e4293206bcd0b01c11, type: 3}
+      propertyPath: fogColumn
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6011924425467780080, guid: 7230c3c8064fa8e4293206bcd0b01c11, type: 3}
       propertyPath: m_RootOrder
       value: 8

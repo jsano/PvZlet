@@ -60,7 +60,6 @@ public class Tile : MonoBehaviour
 
     void OnMouseOver()
     {
-        Debug.Log(planted);
         if (EventSystem.current.currentSelectedGameObject != null && CanPlantHere()) SR.color = hoverColor;
         else SR.color = Color.clear;
     }

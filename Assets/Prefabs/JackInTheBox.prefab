@@ -97,8 +97,9 @@ MonoBehaviour:
   aquatic: 0
   armor: {fileID: 0}
   shield: {fileID: 0}
-  projectile: {fileID: 6010293583157068058, guid: 00a6405d68a884142960e8a7007e6efd, type: 3}
+  projectile: {fileID: 5992551386087060976, guid: 779b422a22fadc04fa959b730ab40c56, type: 3}
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
   maxTime: 20
+  explosion: {fileID: 6010293583157068058, guid: 00a6405d68a884142960e8a7007e6efd, type: 3}

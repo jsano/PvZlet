@@ -71,5 +71,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Helmet
       objectReference: {fileID: 0}
+    - target: {fileID: 4133930330861260839, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}

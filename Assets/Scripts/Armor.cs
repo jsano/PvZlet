@@ -19,7 +19,7 @@ public class Armor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SR.material.color = user.getSpriteRenderer().material.color;
+        if (user != null) SR.material.color = user.getSpriteRenderer().material.color;
         if (HP <= 0) Destroy(gameObject);
     }
 
@@ -28,6 +28,11 @@ public class Armor : MonoBehaviour
         float remaining = Mathf.Max(0, dmg - HP);
         HP -= dmg;
         return remaining;
+    }
+
+    public void DetachUser()
+    {
+        user = null;
     }
 
 }

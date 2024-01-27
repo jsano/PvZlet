@@ -8,7 +8,14 @@ public class Pogo : Zombie
     private GameObject toJump;
     public float noPogoWalkTime;
     private bool jumping;
-    private Coroutine jumpCoroutine;
+    private bool removed;
+
+    public override void Start()
+    {
+        base.Start();
+        projectile = Instantiate(projectile, transform, false);
+        projectile.transform.localPosition = new Vector3(0, -transform.localScale.y / 2, 0);
+    }
 
     // Update is called once per frame
     public override void Update()
@@ -18,14 +25,16 @@ public class Pogo : Zombie
         {
             WalkConstant();
             toJump = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.left, 0, LayerMask.GetMask("Plant")));
-            if (toJump != null) jumpCoroutine = StartCoroutine(Jump());
+            if (toJump != null) StartCoroutine(Jump());
         }
-        if (projectile == null)
+        if (projectile == null && !removed)
         {
-            StopCoroutine(jumpCoroutine);
+            StopAllCoroutines();
+            ResetWalk();
             walkTime = noPogoWalkTime;
-            base.Update();
+            removed = true;
         }
+        if (removed) base.Update();
     }
 
     private IEnumerator Jump()

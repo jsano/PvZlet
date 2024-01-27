@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 4211092946153602139, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4737618645765045998, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
       propertyPath: m_RootOrder
       value: 0

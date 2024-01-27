@@ -31,7 +31,7 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waves.Add(new List<int>(new int[] { allZombies.Length - 1, 18 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
+        waves.Add(new List<int>(new int[] { allZombies.Length - 1, 17 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
         waves.Add(new List<int>(new int[] { 15, 10, 11, 12 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 2, col = 9 } }));
         waves.Add(new List<int>(new int[] { 2, 3 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 3, col = 9 } }));
         waves.Add(new List<int>(new int[] { 4, 5 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 4, col = 9 } }));

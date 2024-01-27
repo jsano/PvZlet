@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4921787976391173710
+--- !u!1001 &7477712172270239789
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,15 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.b
-      value: 0.5368903
+      value: 0.37815604
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.g
-      value: 0.7905393
+      value: 0.009878943
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.r
-      value: 0.8962264
+      value: 0.6981132
       objectReference: {fileID: 0}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
@@ -65,43 +65,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: PotatoMine
+      value: Magnetshroom
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &2452155272512313359 stripped
+--- !u!1 &111553933581713004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 4921787976391173710}
+  m_PrefabInstance: {fileID: 7477712172270239789}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &433424512368411144
+--- !u!114 &6601590726363158621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452155272512313359}
+  m_GameObject: {fileID: 111553933581713004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd587bfb89162345b3827c91c066388, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cf67f457a5a54c49b90be866ace7471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 25
+  cost: 100
   recharge: 30
-  damage: 1000
-  atkspd: 0.5
+  damage: 0
+  atkspd: 0
   variableStartPeriod: 0
   HP: 6
   range: 0
   backwardsRange: 0
-  alwaysAttack: 0
-  mushroom: 0
+  alwaysAttack: 1
+  mushroom: 1
   instant: 0
   grounded: 0
   aquatic: 0
   row: 0
   col: 0
-  projectile: {fileID: 8464927645593920465, guid: 27be8d0ca4a51f742ae2937d2e4a674c, type: 3}
+  projectile: {fileID: 0}
   status: {fileID: 0}
-  armingTime: 10
+  recoverTime: 5
+  area: {x: 6, y: 4}

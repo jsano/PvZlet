@@ -7,13 +7,21 @@ public class JackInTheBox : Football
 
     public float maxTime;
     private bool exploded;
+    public GameObject explosion;
+
+    public override void Start()
+    {
+        base.Start();
+        projectile = Instantiate(projectile, transform, false);
+        projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
+    }
 
     // Update is called once per frame
     public override void Update()
     {
         if (!exploded)
         {
-            maxTime -= Time.deltaTime * Random.Range(1, 4);
+            if (projectile != null) maxTime -= Time.deltaTime * Random.Range(1, 4);
             base.Update();
             if (maxTime <= 0)
             {
@@ -30,7 +38,7 @@ public class JackInTheBox : Football
         BC.enabled = false;
         yield return new WaitForSeconds(1);
         Vector2 area = new Vector2(2.5f, 2.5f);
-        GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
+        GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
         g.transform.localScale = area * Tile.TILE_DISTANCE;
         int mask = hypnotized ? LayerMask.GetMask("Zombie") : LayerMask.GetMask("Plant");
         RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, mask);

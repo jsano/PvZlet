@@ -24,23 +24,26 @@ public class PotatoMine : Plant
         }
     }
 
+    protected override Zombie LookInRange(int row)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Underground"));
+        if (!hit) hit = Physics2D.Raycast(new Vector2(transform.position.x, Tile.ROW_TO_WORLD[row]), Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Underground"));
+        if (hit) return hit.collider.GetComponent<Zombie>();
+        return null;
+    }
+
     /// <summary> Explodes in a little over a 1x1 area, and then disappears </summary>
     protected override void Attack(Zombie z)
     {
         GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
         g.transform.localScale = area;
-        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
+        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Underground"));
         foreach (RaycastHit2D a in all)
         {
             a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
         }
         z.ReceiveDamage(damage, null);
         Destroy(gameObject);
-    }
-
-    public void ForceAttack(Zombie z)
-    {
-        if (armingTime <= 0) Attack(z);
     }
 
 }

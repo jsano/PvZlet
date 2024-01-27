@@ -99,6 +99,6 @@ MonoBehaviour:
   shield: {fileID: 0}
   projectile: {fileID: 1041247796181120633, guid: 729046af3aebb914494b0dc34f9f2b59, type: 3}
   wheels: 0
-  eatsPlants: 0
+  eatsPlants: 1
   status: {fileID: 0}
   noPogoWalkTime: 3

@@ -23,6 +23,7 @@ public class StraightProjectile : MonoBehaviour
     public bool neighboringLaneSplash;
 
     public bool pea;
+    public bool sharp;
 
     private Rigidbody2D RB;
 
@@ -55,7 +56,7 @@ public class StraightProjectile : MonoBehaviour
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (hit) return;
-        if (other.offset.y != 0) return; // NOTE: Maybe represent submerged with something more concrete
+        if (other.offset.y < 0 || other.offset.y > 0 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
         if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
             Destroy(gameObject);

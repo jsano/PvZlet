@@ -31,7 +31,7 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waves.Add(new List<int>(new int[] { allZombies.Length - 1, 14 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
+        waves.Add(new List<int>(new int[] { allZombies.Length - 1, 18 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
         waves.Add(new List<int>(new int[] { 15, 10, 11, 12 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 2, col = 9 } }));
         waves.Add(new List<int>(new int[] { 2, 3 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 3, col = 9 } }));
         waves.Add(new List<int>(new int[] { 4, 5 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 4, col = 9 } }));
@@ -77,10 +77,11 @@ public class ZombieSpawner : MonoBehaviour
                 }
                 currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;
                 GameObject g = Instantiate(allZombies[i]);
-                int lane = Random.Range(1, lanes+1);
-                if (!g.GetComponent<Zombie>().aquatic && g.GetComponent<Balloon>() == null)
+                int lane = 1;
+                if (!g.GetComponent<Zombie>().aquatic)
                     while (lane == 3 || lane == 4) lane = Random.Range(1, lanes+1);
                 else lane = Random.Range(3, 5);
+                if (g.GetComponent<Balloon>() != null) lane = Random.Range(1, lanes+1);
                 g.GetComponent<Zombie>().row = lane;
                 yield return new WaitForSeconds(0.2f);
             }

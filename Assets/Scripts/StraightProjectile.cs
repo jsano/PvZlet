@@ -32,7 +32,7 @@ public class StraightProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dir = Vector3.right;
+        if (dir == Vector3.zero) dir = Vector3.right;
         RB = GetComponent<Rigidbody2D>();
         RB.velocity = dir.normalized * speed;
         startPos = transform.position;

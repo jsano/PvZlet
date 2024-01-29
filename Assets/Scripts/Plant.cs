@@ -33,6 +33,7 @@ public class Plant : Damagable
     /// <summary> Whether this is a grounded plant so zombies can only interact with it if their <c>hitsGround</c> is true </summary>
     public bool grounded;
     public bool aquatic;
+    public bool lobbed;
 
     /// <summary> Which row the plant is in. Takes values between [1 - <c>ZombieSpawner.lanes</c>]. Useful for lobbing plants </summary>
     [HideInInspector] public int row;
@@ -98,18 +99,25 @@ public class Plant : Damagable
 
     protected virtual Zombie LookInRange(int row)
     {
-        // TODO: replace with raycasting through tiles in row
         RaycastHit2D hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.left, (backwardsRange > 0 ? 0.5f : 0) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (lobbed) hit = Physics2D.BoxCast(Tile.tileObjects[row, col].transform.position, new Vector2(0.01f, Tile.TILE_DISTANCE.y / 2), 0, Vector2.left, 0.5f * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
         if (backwardsRange > 0)
         {
             for (int i = 1; i <= backwardsRange && col - i >= 1 && !hit; i++)
-                hit = Physics2D.Raycast(new Vector2(Tile.COL_TO_WORLD[col - i] + Tile.TILE_DISTANCE.x / 2, Tile.tileObjects[row, col - i].transform.position.y), Vector2.left, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+            {
+                hit = Physics2D.Raycast(Tile.tileObjects[row, col - i].transform.position + new Vector3(Tile.TILE_DISTANCE.x / 2, 0, 0), Vector2.left, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+                if (lobbed) hit = Physics2D.BoxCast(Tile.tileObjects[row, col - i].transform.position + new Vector3(Tile.TILE_DISTANCE.x / 2, 0, 0), new Vector2(0.01f, Tile.TILE_DISTANCE.y / 2), 0, Vector2.left, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+            }
         }
         if (!hit)
         {
             hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.right, 0.5f * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-            for (int i = 1; i <= range && col + i <= 9 && !hit; i++) 
-                hit = Physics2D.Raycast(new Vector2(Tile.COL_TO_WORLD[col + i] - Tile.TILE_DISTANCE.x / 2, Tile.tileObjects[row, col + i].transform.position.y), Vector2.right, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+            if (lobbed) hit = Physics2D.BoxCast(Tile.tileObjects[row, col].transform.position, new Vector2(0.01f, Tile.TILE_DISTANCE.y / 2), 0, Vector2.right, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+            for (int i = 1; i <= range && col + i <= 9 && !hit; i++)
+            {
+                hit = Physics2D.Raycast(Tile.tileObjects[row, col + i].transform.position - new Vector3(Tile.TILE_DISTANCE.x / 2, 0, 0), Vector2.right, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+                if (lobbed) hit = Physics2D.BoxCast(Tile.tileObjects[row, col + i].transform.position - new Vector3(Tile.TILE_DISTANCE.x / 2, 0, 0), new Vector2(0.01f, Tile.TILE_DISTANCE.y / 2), 0, Vector2.right, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+            }
         }
         if (hit) return hit.collider.GetComponent<Zombie>();
         return null;

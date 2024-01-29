@@ -119,8 +119,13 @@ public class Zombie : Damagable
         if (takingStep)
         {
             stepPeriod += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
-            RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x / 3 / (walkTime / 6), 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-            if (hypnotized || backwards) RB.velocity *= -1;
+            int c = Math.Min(9, Tile.WORLD_TO_COL(transform.position.x));
+            if (c >= 2) RB.velocity = Tile.tileObjects[row, c - 1].transform.position - Tile.tileObjects[row, c].transform.position;
+            else RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x, 0);
+            RB.velocity /= 3;
+            RB.velocity /= walkTime / 6; // d = rt
+            RB.velocity *= (status == null) ? 1 : status.walkMod; 
+            if (hypnotized || backwards) RB.velocity *= new Vector2(-1, 1);
             if (stepPeriod >= walkTime / 6)
             {
                 takingStep = false;
@@ -133,8 +138,12 @@ public class Zombie : Damagable
     /// <summary> The zombie's constant-speed walking behavior. Factors in movement stat effects </summary>
     protected void WalkConstant()
     {
-        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x / walkTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-        if (hypnotized || backwards) RB.velocity *= -1;
+        int c = Math.Min(9, Tile.WORLD_TO_COL(transform.position.x));
+        if (c >= 2) RB.velocity = Tile.tileObjects[row, c - 1].transform.position - Tile.tileObjects[row, c].transform.position;
+        else RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x, 0);
+        RB.velocity /= walkTime; // d = rt
+        RB.velocity *= (status == null) ? 1 : status.walkMod; 
+        if (hypnotized || backwards) RB.velocity *= new Vector2(-1, 1);
     }
 
     /// <summary> Given a list of plants in range, gets the first interactable one </summary>

@@ -93,7 +93,7 @@ public class Tile : MonoBehaviour
             if (planted != null)
             {
                 if (g.tag == "Pumpkin" && planted.tag != "LilyPad") overlapped.Insert(0, g);
-                else
+                else if (g.tag != "CoffeeBean")
                 {
                     overlapped.Add(planted);
                     planted = g;
@@ -122,6 +122,8 @@ public class Tile : MonoBehaviour
             return false;
         }
         if (p.tag == "Pumpkin" && (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null) return true;
+        if (p.tag == "FlowerPot" && !roof) return false;
+        if (p.tag == "CoffeeBean") return planted != null && planted.GetComponent<Plant>().isSleeping();
         if (p.grounded && (water || roof)) return false;
         if (water)
         {
@@ -143,6 +145,15 @@ public class Tile : MonoBehaviour
         if (planted != null && planted.name.StartsWith(s)) return planted;
         foreach (GameObject g in overlapped) if (g.name.StartsWith(s)) return g;
         return null;
+    }
+
+    public GameObject GetEatablePlant()
+    {
+        if (planted == null) return null;
+        GameObject p = ContainsPlant("Pumpkin");
+        if (p != null) return p;
+        if (planted.GetComponent<Plant>().isActiveInstant()) return overlapped[0];
+        return planted;
     }
 
 }

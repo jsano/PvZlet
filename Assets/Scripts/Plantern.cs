@@ -24,7 +24,7 @@ public class Plantern : Plant
     {
         for (int i = Mathf.Max(1, row - 1); i <= Mathf.Min(row + 1, ZS.lanes); i++)
             for (int j = Mathf.Max(1, col - 1); j <= Mathf.Min(col + 1, 9); j++)
-                if (Tile.tileObjects[i, j].planted != null) Tile.tileObjects[i, j].planted.GetComponent<Plant>().Heal(1);
+                if (Tile.tileObjects[i, j].GetEatablePlant() != null) Tile.tileObjects[i, j].GetEatablePlant().GetComponent<Plant>().Heal(1);
     }
 
     protected override void Die()

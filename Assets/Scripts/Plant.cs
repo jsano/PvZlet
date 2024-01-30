@@ -27,6 +27,7 @@ public class Plant : Damagable
     public bool alwaysAttack = false;
     /// <summary> Whether the plant is a mushroom thus nocturnal </summary>
     public bool mushroom = false;
+    private bool sleeping = false;
     protected Sky sky;
     /// <summary> Whether this is an instant plant so zombies can ignore it </summary>
     public bool instant;
@@ -66,12 +67,13 @@ public class Plant : Damagable
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
         baseHP = HP;
+        if (mushroom && !sky.night) sleeping = true;
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
-        if (mushroom && !sky.night)
+        if (sleeping)
         {
             return;
         }
@@ -151,12 +153,22 @@ public class Plant : Damagable
 
     public bool isActiveInstant()
     {
-        return instant && (!mushroom || sky.night);
+        return instant && !sleeping;
     }
 
     public void Heal(float heal)
     {
         HP = Mathf.Min(HP + heal, baseHP);
+    }
+
+    public void Wake()
+    {
+        sleeping = false;
+    }
+
+    public bool isSleeping()
+    {
+        return sleeping;
     }
 
 }

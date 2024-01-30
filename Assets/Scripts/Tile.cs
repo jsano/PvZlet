@@ -122,14 +122,19 @@ public class Tile : MonoBehaviour
             return false;
         }
         if (p.tag == "Pumpkin" && (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null) return true;
-        if (p.aquatic && !water) return false;
         if (p.grounded && (water || roof)) return false;
         if (water)
         {
             if (p.aquatic && planted == null) return true;
             if (!p.aquatic && ContainsPlant("LilyPad") == null) return false;
         }
-        if (planted == null || planted.tag == "Pumpkin" || planted.tag == "LilyPad") return true;
+        if (roof)
+        {
+            if (p.tag == "FlowerPot" && planted == null) return true;
+            if (p.tag != "FlowerPot" && ContainsPlant("FlowerPot") == null) return false;
+        }
+        if (p.aquatic && !water) return false;
+        if (planted == null || planted.tag == "Pumpkin" || planted.tag == "LilyPad" || planted.tag == "FlowerPot") return true;
         return false;
     }
 

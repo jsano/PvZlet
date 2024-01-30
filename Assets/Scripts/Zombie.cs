@@ -39,6 +39,7 @@ public class Zombie : Damagable
     /// <summary> The currently eating plant. When the plant is dead, this would likely become null </summary>
     private GameObject eating;
     private Coroutine eatingCoroutine;
+    private bool changingLanes;
 
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
@@ -80,7 +81,7 @@ public class Zombie : Damagable
             StopEating();
             Walk();
         }
-        else
+        else if (!changingLanes)
         {
             if (status != null && status.eatMod == 0) StopEating();
             else if (eating == null || toEat != eating)
@@ -142,7 +143,7 @@ public class Zombie : Damagable
         if (c >= 2) RB.velocity = Tile.tileObjects[row, c - 1].transform.position - Tile.tileObjects[row, c].transform.position;
         else RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x, 0);
         RB.velocity /= walkTime; // d = rt
-        RB.velocity *= (status == null) ? 1 : status.walkMod; 
+        RB.velocity *= (status == null) ? 1 : status.walkMod;
         if (hypnotized || backwards) RB.velocity *= new Vector2(-1, 1);
     }
 
@@ -156,7 +157,7 @@ public class Zombie : Damagable
             if (hit[i].collider.GetComponent<Zombie>() != null) return hit[i].collider.gameObject;
             Plant p = hit[i].collider.GetComponent<Plant>();
             if (p.isActiveInstant() || p.grounded && !hitsGround) continue;
-            return Tile.tileObjects[row, p.col].GetEatablePlant();
+            return Tile.tileObjects[p.row, p.col].GetEatablePlant();
         }
         return null;
     }
@@ -167,7 +168,7 @@ public class Zombie : Damagable
     {
         eating = p.gameObject;
         ResetWalk();
-        while (p != null)
+        while (eating != null)
         {
             if (status != null && status.eatMod == 0) break;
             if (!wheels) RB.velocity = Vector2.zero;
@@ -230,6 +231,26 @@ public class Zombie : Damagable
         stepPeriod = 0;
         RB.velocity = Vector2.zero;
         takingStep = false;
+    }
+
+    public void MoveToLane(int lane, float delay)
+    {
+        changingLanes = true;
+        StartCoroutine(MoveLaneHelper(lane, delay));
+    }
+
+    private IEnumerator MoveLaneHelper(int lane, float delay)
+    {
+        StopEating();
+        yield return new WaitForSeconds(delay);
+        float targetY = Tile.tileObjects[lane, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y;
+        while (Mathf.Abs(transform.position.y - targetY) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, 0), 1.5f * Time.deltaTime * ((status == null) ? 1 : status.walkMod));
+            yield return null;
+        }
+        row = lane;
+        changingLanes = false;
     }
 
     public SpriteRenderer getSpriteRenderer()

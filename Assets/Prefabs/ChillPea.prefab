@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0925ab98aebb0a243a689df096b2b8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   dmg: 1
   dir: {x: 0, y: 0, z: 0}
   moveToLane: 0
@@ -91,3 +91,4 @@ MonoBehaviour:
   laneSplash: 0
   neighboringLaneSplash: 0
   pea: 1
+  sharp: 0

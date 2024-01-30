@@ -9,7 +9,7 @@ public class Zomboni : Football
     public override void Update()
     {
         int c = Tile.WORLD_TO_COL(transform.position.x);
-        if (c != 0 && (Tile.tileObjects[row, c].gridItem == null || Tile.tileObjects[row, c].gridItem.tag != "Snow")) Tile.tileObjects[row, c].Place(projectile);
+        if (c <= 9 && c >= 1 && (Tile.tileObjects[row, c].gridItem == null || Tile.tileObjects[row, c].gridItem.tag != "Snow")) Tile.tileObjects[row, c].Place(projectile);
         base.Update();
     }
 

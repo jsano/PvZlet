@@ -74,11 +74,12 @@ public class Tile : MonoBehaviour
     /// <returns> The column number the object is in, between 1-9. Can return 0 if it's off the lawn </returns>
     public static int WORLD_TO_COL(float x)
     {
+        if (COL_TO_WORLD[1] - x > TILE_DISTANCE.x / 2) return 0;
         for (int i = 1; i < COL_TO_WORLD.Length; i++)
         {
             if (Mathf.Abs(COL_TO_WORLD[i] - x) <= TILE_DISTANCE.x / 2) return i;
         }
-        return 0;
+        return 10;
     }
 
     /// <summary> Put a plant or grid item into this tile. If it's a grid item, overwrites any previous plant </summary>

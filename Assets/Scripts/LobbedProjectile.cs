@@ -9,10 +9,10 @@ public class LobbedProjectile : MonoBehaviour
     public float dmg;
     /// <summary> The projectile only hits zombies in this lane </summary>
     [HideInInspector] public int lane;
-    /// <summary> The number of tiles this projectile moves before disappearing </summary>
-    [HideInInspector] public float distance;
+    /// <summary> The distance this projectile moves in the air </summary>
+    [HideInInspector] public Vector2 distance;
     /// <summary> The fixed amount of time this projectile spends in the air regardless of distance </summary>
-    private float airTime;
+    private float airTime = 1.2f;
 
     /// <summary> Whether this projectile has in-lane splash damage </summary>
     public bool laneSplash;
@@ -27,13 +27,14 @@ public class LobbedProjectile : MonoBehaviour
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
-        RB.velocity = new Vector2(distance / airTime, 0.5f * 9.8f * airTime); // 0 = 1/2(-9.8)t^2 + vt
+        RB.velocity = new Vector2(distance.x / airTime, (distance.y - 0.5f * Physics2D.gravity.y * RB.gravityScale * Mathf.Pow(airTime, 2)) / airTime); // y = 1/2(-9.8)t^2 + vt
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y <= Tile.tileObjects[lane, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y - Tile.TILE_DISTANCE.y / 2)
+        int c = Mathf.Min(9, Tile.WORLD_TO_COL(transform.position.x));
+        if (transform.position.y <= Tile.tileObjects[lane, c].transform.position.y - Tile.TILE_DISTANCE.y / 2)
             Destroy(gameObject);
     }
 
@@ -41,6 +42,7 @@ public class LobbedProjectile : MonoBehaviour
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (hit) return;
+        if (other.GetComponent<Zombie>().row != lane) return;
         Hit(other.GetComponent<Zombie>());
     }
 

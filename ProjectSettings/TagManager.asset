@@ -12,6 +12,7 @@ TagManager:
   - Pumpkin
   - Metal
   - Star
+  - FlowerPot
   layers:
   - Default
   - TransparentFX

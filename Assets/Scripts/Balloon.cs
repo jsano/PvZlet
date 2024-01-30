@@ -16,7 +16,7 @@ public class Balloon : Zombie
 
     public override void ReceiveDamage(float dmg, GameObject source, bool eat = false)
     {
-        if (!popped)
+        if (!popped && source.GetComponent<StraightProjectile>() != null && source.GetComponent<StraightProjectile>().sharp)
         {
             popped = true;
             BC.offset = new Vector2(0, 0);

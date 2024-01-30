@@ -12,7 +12,7 @@ public class LobbedProjectile : MonoBehaviour
     /// <summary> The distance this projectile moves in the air </summary>
     [HideInInspector] public Vector2 distance;
     /// <summary> The fixed amount of time this projectile spends in the air regardless of distance </summary>
-    private float airTime = 1.2f;
+    private float airTime = 1f;
 
     /// <summary> Whether this projectile has in-lane splash damage </summary>
     public bool laneSplash;
@@ -33,7 +33,7 @@ public class LobbedProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int c = Mathf.Min(9, Tile.WORLD_TO_COL(transform.position.x));
+        int c = Mathf.Min(9, Mathf.Max(1, Tile.WORLD_TO_COL(transform.position.x)));
         if (transform.position.y <= Tile.tileObjects[lane, c].transform.position.y - Tile.TILE_DISTANCE.y / 2)
             Destroy(gameObject);
     }

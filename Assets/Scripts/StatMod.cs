@@ -29,6 +29,7 @@ public class StatMod : ScriptableObject
     {
         {"Chill", new Data{ duration = 10, walkMod = 0.5f, eatMod = 0.5f, removedBy = "Fire", c = new Color(0, 0.5f, 1, 1) } },
         {"Freeze", new Data{ duration = 6, walkMod = 0, eatMod = 0, removedBy = "Fire", c = new Color(0, 0.5f, 1, 1) } },
+        {"Butter", new Data{ duration = 4, walkMod = 0, eatMod = 0, removedBy = "", c = Color.yellow } },
     };
 
     /// <summary> The zombie this effect is applied to. Can be null if this effect is overwritten or the zombie dies </summary>

@@ -125,7 +125,7 @@ public class Zombie : Damagable
             else RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x, 0);
             RB.velocity /= 3;
             RB.velocity /= walkTime / 6; // d = rt
-            RB.velocity *= (status == null) ? 1 : status.walkMod; 
+            RB.velocity *= transform.localScale.x * ((status == null) ? 1 : status.walkMod); 
             if (hypnotized || backwards) RB.velocity *= new Vector2(-1, 1);
             if (stepPeriod >= walkTime / 6)
             {
@@ -143,7 +143,7 @@ public class Zombie : Damagable
         if (c >= 2) RB.velocity = Tile.tileObjects[row, c - 1].transform.position - Tile.tileObjects[row, c].transform.position;
         else RB.velocity = new Vector2(-Tile.TILE_DISTANCE.x, 0);
         RB.velocity /= walkTime; // d = rt
-        RB.velocity *= (status == null) ? 1 : status.walkMod;
+        RB.velocity *= transform.localScale.x * ((status == null) ? 1 : status.walkMod);
         if (hypnotized || backwards) RB.velocity *= new Vector2(-1, 1);
     }
 

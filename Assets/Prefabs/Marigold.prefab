@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4556146411692960297
+--- !u!1001 &6518938617591598695
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,12 +8,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_Color.b
+      value: 0.822868
+      objectReference: {fileID: 0}
+    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.g
-      value: 0.5330188
+      value: 0.26352793
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.r
-      value: 0.8077137
+      value: 0.8867924
       objectReference: {fileID: 0}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
@@ -61,43 +65,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: Fumeshroom
+      value: Marigold
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &6444885441337758824 stripped
+--- !u!1 &4340790604049461286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 4556146411692960297}
+  m_PrefabInstance: {fileID: 6518938617591598695}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6540551560604816641
+--- !u!114 &-7777056726838069562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6444885441337758824}
+  m_GameObject: {fileID: 4340790604049461286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4214dc716843c2442928f1835aaab3d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 05419be16dde85f408fe6da11959f4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 75
-  recharge: 5
-  damage: 1
+  recharge: 30
+  damage: 0
   atkspd: 1
-  variableStartPeriod: 1
-  HP: 6
-  range: 4
+  variableStartPeriod: 0
+  HP: 5
+  range: 0
   backwardsRange: 0
-  alwaysAttack: 0
-  mushroom: 1
-  instant: 0
+  alwaysAttack: 1
+  mushroom: 0
+  instant: 1
   grounded: 0
   aquatic: 0
   lobbed: 0
   row: 0
   col: 0
-  projectile: {fileID: 4395901990587457887, guid: 77e43c46dc46fdc4fa9f15263f832dc3, type: 3}
+  projectile: {fileID: 0}
   status: {fileID: 0}
+  area: {x: 3, y: 3}

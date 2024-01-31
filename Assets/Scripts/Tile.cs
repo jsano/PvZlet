@@ -106,8 +106,7 @@ public class Tile : MonoBehaviour
         }
         else
         {
-            if (planted != null && !planted.GetComponent<Plant>().isActiveInstant()) Destroy(planted);
-            overlapped.Clear();
+            RemoveAllPlants();
             Destroy(gridItem);
             gridItem = g;
         }
@@ -152,8 +151,15 @@ public class Tile : MonoBehaviour
         if (planted == null) return null;
         GameObject p = ContainsPlant("Pumpkin");
         if (p != null) return p;
-        if (planted.GetComponent<Plant>().isActiveInstant()) return overlapped[0];
+        if (planted.GetComponent<Plant>().isActiveInstant() && overlapped.Count > 0) return overlapped[0];
         return planted;
+    }
+
+    public void RemoveAllPlants()
+    {
+        foreach (GameObject g in overlapped) Destroy(g);
+        overlapped.Clear();
+        if (planted != null && !planted.GetComponent<Plant>().isActiveInstant()) Destroy(planted);
     }
 
 }

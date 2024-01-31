@@ -17,10 +17,8 @@ public class StraightProjectile : MonoBehaviour
     /// <summary> The number of tiles this projectile moves before disappearing </summary>
     public float distance;
     private Vector3 startPos;
-    /// <summary> Whether this projectile has in-lane splash damage </summary>
-    public bool laneSplash;
-    /// <summary> Whether this projectile has multi-lane splash damage </summary>
-    public bool neighboringLaneSplash;
+    /// <summary> Whether this projectile has splash damage </summary>
+    public Vector2 splash;
 
     public bool pea;
     public bool sharp;
@@ -36,7 +34,7 @@ public class StraightProjectile : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         RB.velocity = dir.normalized * speed;
         startPos = transform.position;
-        if (moveToLane != 0) startPos = new Vector3(transform.position.x, Tile.tileObjects[moveToLane, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y, 0);
+        if (moveToLane != 0) startPos = new Vector3(transform.position.x, Tile.tileObjects[moveToLane, Mathf.Min(9, Tile.WORLD_TO_COL(transform.position.x) + 1)].transform.position.y, 0);
     }
 
     // Update is called once per frame
@@ -59,6 +57,7 @@ public class StraightProjectile : MonoBehaviour
         if (other.offset.y < 0 || other.offset.y > 0 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
         if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
+            if (transform.position.y != startPos.y) return;
             if (gameObject.tag == "Star")
             {
                 if (dir == Vector3.up || dir == Vector3.down || dir == Vector3.left) return;
@@ -74,8 +73,7 @@ public class StraightProjectile : MonoBehaviour
             other = h.collider;
             if (other.GetComponent<Shield>() != null)
             {
-                laneSplash = false;
-                Hit(other.GetComponent<Shield>());                
+                Hit(other.GetComponent<Shield>(), true);                
                 return;
             }
         }
@@ -83,12 +81,12 @@ public class StraightProjectile : MonoBehaviour
         if (hits.Length > 0) Hit(hits[0].collider.GetComponent<Zombie>());
     }
 
-    protected virtual void Hit(Damagable other)
+    protected virtual void Hit(Damagable other, bool noSplash = false)
     {
-        if (laneSplash)
+        if (splash.magnitude > 0 && !noSplash)
         {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, transform.localScale.x * 2, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
-            foreach (RaycastHit2D h in hits) h.collider.GetComponent<Damagable>().ReceiveDamage(dmg, gameObject);
+            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
+            foreach (RaycastHit2D h in hits) if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope")) h.collider.GetComponent<Damagable>().ReceiveDamage(dmg, gameObject);
         }
         else other.ReceiveDamage(dmg, gameObject);
         hit = true;

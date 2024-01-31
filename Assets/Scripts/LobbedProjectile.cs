@@ -14,10 +14,8 @@ public class LobbedProjectile : MonoBehaviour
     /// <summary> The fixed amount of time this projectile spends in the air regardless of distance </summary>
     private float airTime = 1f;
 
-    /// <summary> Whether this projectile has in-lane splash damage </summary>
-    public bool laneSplash;
-    /// <summary> Whether this projectile has multi-lane splash damage </summary>
-    public bool neighboringLaneSplash;
+    /// <summary> Whether this projectile has splash damage </summary>
+    public Vector2 splash;
 
     private Rigidbody2D RB;
 
@@ -48,9 +46,9 @@ public class LobbedProjectile : MonoBehaviour
 
     protected virtual void Hit(Damagable other)
     {
-        if (laneSplash)
+        if (splash.magnitude > 0)
         {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, transform.localScale.x * 2, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
+            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
             foreach (RaycastHit2D h in hits) h.collider.GetComponent<Damagable>().ReceiveDamage(dmg, gameObject);
         }
         else other.ReceiveDamage(dmg, gameObject);

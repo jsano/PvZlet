@@ -28,9 +28,9 @@ TagManager:
   - Slope
   - Underground
   - LobbedProjectile
-  - 
-  - 
-  - 
+  - ZombieStraightProjectile
+  - ZombieLobbedProjectile
+  - LobbedShield
   - 
   - 
   - 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4542416289465510541
+--- !u!1001 &6001570701957142569
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,19 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: NewspaperZombie
+      value: LadderZombie
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
-      value: 0.49019608
+      value: 0.51063544
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.g
-      value: 0.49019608
+      value: 0.51063544
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.r
-      value: 0.49019608
+      value: 0.7075472
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder
@@ -70,36 +70,35 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
---- !u!1 &2983600573772482301 stripped
+--- !u!1 &4983193014095213657 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-  m_PrefabInstance: {fileID: 4542416289465510541}
+  m_PrefabInstance: {fileID: 6001570701957142569}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-3363448531811858210
+--- !u!114 &4529454342996454993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2983600573772482301}
+  m_GameObject: {fileID: 4983193014095213657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ef75a147d14d8478fe8a5dc65fa17c, type: 3}
+  m_Script: {fileID: 11500000, guid: db9669ca541fa2444beccb2076ae13c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnScore: 2
+  spawnScore: 5
   damage: 1
-  walkTime: 3
+  walkTime: 2
   HP: 15
   eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0
   armor: {fileID: 0}
-  shield: {fileID: 5450825092267099916, guid: 3c3cc50a30ea12149832079881fa1f5d, type: 3}
+  shield: {fileID: 5219808976696092564, guid: 7f497477a63bdb54b9ea37b15bd43bae, type: 3}
   projectile: {fileID: 0}
   wheels: 0
-  eatsPlants: 1
+  eatsPlants: 0
   status: {fileID: 0}
-  angryWalkTime: 1.5
-  angryEatTime: 0.25
+  noLadderWalkTime: 3

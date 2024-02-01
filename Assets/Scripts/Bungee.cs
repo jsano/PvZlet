@@ -69,7 +69,7 @@ public class Bungee : Zombie
         transform.position = new Vector3(Tile.COL_TO_WORLD[col], Tile.tileObjects[row, 9].transform.position.y + startHeight, 0);
     }
 
-    protected override void Die()
+    public override void Die()
     {
         Destroy(target);
         base.Die();

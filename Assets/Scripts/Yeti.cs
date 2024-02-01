@@ -16,7 +16,7 @@ public class Yeti : Zombie
         // NOTE: Currently drops money offscreen when hypnotized
     }
 
-    protected override void Die()
+    public override void Die()
     {
         Debug.Log("Lots of money");
         base.Die();

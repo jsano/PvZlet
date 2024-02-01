@@ -30,11 +30,17 @@ public class Magnetshroom : Plant
     protected override void Attack(Zombie z)
     {
         bool took = false;
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Underground"));
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Underground", "Default"));
         foreach (RaycastHit2D hit in hits)
         {
             z = hit.collider.GetComponent<Zombie>();
-            if (z.projectile != null && z.projectile.tag == "Metal")
+            if (hit.collider.GetComponent<Shield>() != null)
+            {
+                hit.transform.parent.GetComponent<Tile>().ladder = null;
+                Take(hit.collider.gameObject);
+                took = true;
+            }
+            else if (z.projectile != null && z.projectile.tag == "Metal")
             {
                 Take(z.projectile);
                 z.projectile = null;

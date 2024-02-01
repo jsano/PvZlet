@@ -25,6 +25,7 @@ public class Plant : Damagable
     public float backwardsRange;
     /// <summary> Whether the plant should be allowed to attack regardless of range </summary>
     public bool alwaysAttack = false;
+    public bool wall;
     /// <summary> Whether the plant is a mushroom thus nocturnal </summary>
     public bool mushroom = false;
     private bool sleeping = false;

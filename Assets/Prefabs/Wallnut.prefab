@@ -16,6 +16,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: wall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: recharge
       value: 30
       objectReference: {fileID: 0}

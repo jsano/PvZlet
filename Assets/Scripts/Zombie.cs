@@ -157,6 +157,7 @@ public class Zombie : Damagable
             if (hit[i].collider.GetComponent<Zombie>() != null) return hit[i].collider.gameObject;
             Plant p = hit[i].collider.GetComponent<Plant>();
             if (p.isActiveInstant() || p.grounded && !hitsGround) continue;
+            if (Tile.tileObjects[p.row, p.col].ladder != null) continue;
             return Tile.tileObjects[p.row, p.col].GetEatablePlant();
         }
         return null;
@@ -205,7 +206,7 @@ public class Zombie : Damagable
     }
 
     /// <summary> Updates the spawner's progression score, and disappears </summary>
-    protected virtual void Die()
+    public virtual void Die()
     {
         GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
         Destroy(shield);

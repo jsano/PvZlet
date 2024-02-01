@@ -31,12 +31,17 @@ public class UmbrellaLeaf : Plant
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("ZombieLobbedProjectile"))
+        if (collision.GetComponent<Bungee>() != null)
         {
-            if (visualCoroutine != null) StopCoroutine(visualCoroutine);
-            visualCoroutine = StartCoroutine(Visual());
+            collision.GetComponent<Bungee>().Die();
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("ZombieLobbedProjectile"))
+        {
             Destroy(collision.gameObject);
         }
+        else return;
+        if (visualCoroutine != null) StopCoroutine(visualCoroutine);
+        visualCoroutine = StartCoroutine(Visual());
     }
 
     private IEnumerator Visual()

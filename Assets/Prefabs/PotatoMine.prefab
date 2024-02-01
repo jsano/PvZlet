@@ -89,17 +89,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 25
   recharge: 30
-  damage: 1000
+  damage: 100
   atkspd: 0.5
   variableStartPeriod: 0
   HP: 6
   range: 0
   backwardsRange: 0
   alwaysAttack: 0
+  wall: 0
   mushroom: 0
   instant: 0
   grounded: 0
   aquatic: 0
+  lobbed: 0
   row: 0
   col: 0
   projectile: {fileID: 8464927645593920465, guid: 27be8d0ca4a51f742ae2937d2e4a674c, type: 3}

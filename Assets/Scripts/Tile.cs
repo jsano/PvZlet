@@ -156,12 +156,12 @@ public class Tile : MonoBehaviour
         return planted;
     }
 
-    public void RemoveAllPlants()
+    public void RemoveAllPlants(GameObject source = null)
     {
         Destroy(ladder);
-        foreach (GameObject g in overlapped) Destroy(g);
+        foreach (GameObject g in overlapped) g.GetComponent<Plant>().ReceiveDamage(1000, source);
         overlapped.Clear();
-        if (planted != null && !planted.GetComponent<Plant>().isActiveInstant()) Destroy(planted);
+        if (planted != null && !planted.GetComponent<Plant>().isActiveInstant()) planted.GetComponent<Plant>().ReceiveDamage(1000, source);
     }
 
 }

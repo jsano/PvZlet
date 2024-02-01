@@ -17,6 +17,7 @@ public class Zombie : Damagable
     private bool takingStep;
     /// <summary> How much HP the zombie has. Doesn't include armor or shields </summary>
     public float HP;
+    protected float baseHP;
     [HideInInspector] public float eatTime = 0.5f;
     /// <summary> Which row the zombie is in. Takes values between [1 - <c>ZombieSpawner.lanes</c>] </summary>
     [HideInInspector] public int row = 1;
@@ -67,6 +68,7 @@ public class Zombie : Damagable
             shield = Instantiate(shield, transform, false);
             shield.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
         }
+        baseHP = HP;
         Spawn();
     }
 

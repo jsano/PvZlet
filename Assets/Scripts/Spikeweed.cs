@@ -14,13 +14,14 @@ public class Spikeweed : Plant
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public override void ReceiveDamage(float dmg, GameObject source, bool eat = false)
     {
-        if (collision.GetComponent<Zombie>().wheels)
+        if (source.GetComponent<Zombie>() != null && source.GetComponent<Zombie>().wheels)
         {
-            HP -= 1;
-            collision.GetComponent<Zombie>().ReceiveDamage(1000, gameObject);
+            Die();
+            source.GetComponent<Zombie>().ReceiveDamage(1000, gameObject);
         }
+        else base.ReceiveDamage(dmg, source, eat);
     }
 
 }

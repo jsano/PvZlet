@@ -92,14 +92,16 @@ MonoBehaviour:
   damage: 1
   atkspd: 1
   variableStartPeriod: 1
-  HP: 1
-  range: 0
-  backwardsRange: 0
+  HP: 6
+  range: 0.01
+  backwardsRange: 0.01
   alwaysAttack: 0
+  wall: 0
   mushroom: 0
   instant: 0
   grounded: 1
   aquatic: 0
+  lobbed: 0
   row: 0
   col: 0
   projectile: {fileID: 0}

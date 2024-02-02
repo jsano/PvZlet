@@ -36,10 +36,13 @@ public class Sun : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButton(0)) {
-            PlantBuilder.sun += sunValue;
-            Destroy(gameObject);
-        }
+        if (Input.GetMouseButton(0)) Collect();
+    }
+
+    public void Collect()
+    {
+        PlantBuilder.sun += sunValue;
+        Destroy(gameObject);
     }
 
 }

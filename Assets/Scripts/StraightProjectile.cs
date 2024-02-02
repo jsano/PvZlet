@@ -23,7 +23,7 @@ public class StraightProjectile : MonoBehaviour
     public bool pea;
     public bool sharp;
 
-    private Rigidbody2D RB;
+    protected Rigidbody2D RB;
 
     private bool hit = false;
 
@@ -38,7 +38,7 @@ public class StraightProjectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if (moveToLane != 0 && transform.position.y != startPos.y)
         {

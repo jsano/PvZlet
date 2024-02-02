@@ -14,7 +14,7 @@ public class Gloomshroom : Plant
 
     protected override Zombie LookInRange(int row)
     {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * (range + 0.5f) * 2, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Shield"));
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * (range + 0.5f) * 2, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
         foreach (RaycastHit2D hit in hits) if (hit.collider.offset.y == 0) return hit.collider.GetComponent<Zombie>();
         return null;
     }

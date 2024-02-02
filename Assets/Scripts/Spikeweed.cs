@@ -12,6 +12,7 @@ public class Spikeweed : Plant
         {
             r.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
         }
+        base.Attack(z);
     }
 
     public override void ReceiveDamage(float dmg, GameObject source, bool eat = false)

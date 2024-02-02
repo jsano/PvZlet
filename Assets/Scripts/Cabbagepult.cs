@@ -10,6 +10,7 @@ public class Cabbagepult : Plant
         LobbedProjectile p = Instantiate(projectile, transform.position + topOffset, Quaternion.identity).GetComponent<LobbedProjectile>();
         p.distance = z.transform.position - p.transform.position;
         p.lane = row;
+        base.Attack(z);
     }
 
 }

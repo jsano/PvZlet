@@ -16,6 +16,7 @@ public class Plant : Damagable
     /// <summary> Whether this plant should have a random initial startup time </summary>
     public bool variableStartPeriod;
     private float period;
+    private bool attacking;
     /// <summary> How much HP the plant has. Most non-wall plants should have the same value </summary>
     public float HP;
     private float baseHP;
@@ -80,9 +81,10 @@ public class Plant : Damagable
         }
         Zombie hit = LookInRange(row);
         if (hit != null /*|| instant*/ || alwaysAttack) {
-            period += Time.deltaTime;
+            if (!attacking) period += Time.deltaTime;
             if (period >= atkspd)
             {
+                attacking = true;
                 if (hit) Attack(hit);
                 else Attack(null);
                 period = 0;
@@ -126,11 +128,12 @@ public class Plant : Damagable
         return null;
     }
 
-    /// <summary> The plant's main attack, called at most every <c>atkspd</c> seconds. Does nothing by default, and most non-walls should override this method </summary>
+    /// <summary> The plant's main attack, called at most every <c>atkspd</c> seconds. Does nothing by default, and most non-walls should override this method, 
+    /// but they must still call <c>base.Attack()</c> to set its <c>attacking</c> to false </summary>
     /// <param name="z"> The zombie to attack at. Can be null if it's not necessary </param>
     protected virtual void Attack(Zombie z)
     {
-
+        attacking = false;
     }
 
     public override void ReceiveDamage(float dmg, GameObject source, bool eat=false)

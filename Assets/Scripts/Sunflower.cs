@@ -10,6 +10,7 @@ public class Sunflower : Plant
     {
         GameObject g = Instantiate(projectile, transform.position + topOffset + rightOffset * Random.Range(-0.5f, 0.5f), Quaternion.identity);
         g.GetComponent<Sun>().ground = transform.position.y;
+        base.Attack(z);
     }
 
 }

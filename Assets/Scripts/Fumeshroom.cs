@@ -15,6 +15,7 @@ public class Fumeshroom : Plant
         {
             r.collider.GetComponent<Damagable>().ReceiveDamage(damage, null);
         }
+        base.Attack(z);
     }
 
 }

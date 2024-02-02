@@ -5,14 +5,14 @@ using UnityEngine;
 public class Squash : Plant
 {
 
-    private bool attacking;
+    private bool attacked;
     public Vector2 area;
 
     protected override void Attack(Zombie z)
     {
-        if (!attacking)
+        if (!attacked)
         {
-            attacking = true;
+            attacked = true;
             HP = 100000;
             Tile.tileObjects[row, col].planted = null;
             StartCoroutine(SquashAfterDelay(z));

@@ -29,6 +29,7 @@ public class Starfruit : Plant
         p.dir = Vector2.up;
         p = Instantiate(projectile, transform.position, projectile.transform.rotation).GetComponent<StraightProjectile>();
         p.dir = Vector2.down;
+        base.Attack(z);
     }
 
 }

@@ -34,9 +34,4 @@ public class Cactus : Peashooter
         return base.LookInRange(row);
     }
 
-    protected override void Attack(Zombie z)
-    {
-        base.Attack(z);
-    }
-
 }

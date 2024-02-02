@@ -19,8 +19,8 @@ public class Spikeweed : Plant
     {
         if (source.GetComponent<Zombie>() != null && source.GetComponent<Zombie>().wheels)
         {
-            Die();
             source.GetComponent<Zombie>().ReceiveDamage(1000, gameObject);
+            Die();
         }
         else base.ReceiveDamage(dmg, source, eat);
     }

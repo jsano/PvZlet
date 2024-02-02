@@ -54,6 +54,7 @@ public class PlantBuilder : MonoBehaviour
             EventSystem.current.RaycastAll(eventData, raycastResults);
             if (raycastResults.Count == 0) EventSystem.current.SetSelectedGameObject(null);
         }
+        if (Input.GetMouseButtonDown(1)) EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void SetPlantToBuild(int buttonID)

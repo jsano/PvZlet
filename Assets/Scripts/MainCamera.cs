@@ -7,7 +7,7 @@ public class MainCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Camera>().eventMask = LayerMask.GetMask("UI");
+        GetComponent<Camera>().eventMask = LayerMask.GetMask("UI", "Plant");
     }
 
     // Update is called once per frame

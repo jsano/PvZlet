@@ -10,7 +10,7 @@ public class Bobsled : Zombie
     // Update is called once per frame
     public override void Update()
     {
-        int c = Tile.WORLD_TO_COL(transform.position.x);
+        int c = Mathf.Min(9, Tile.WORLD_TO_COL(transform.position.x));
         if (c != 0 && (Tile.tileObjects[row, c].gridItem == null || Tile.tileObjects[row, c].gridItem.tag != "Snow"))
         {
             Zombie z = Instantiate(zombie, transform.position, Quaternion.identity).GetComponent<Zombie>();

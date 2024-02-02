@@ -50,6 +50,11 @@ public class StraightProjectile : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        if (hit) Destroy(gameObject);
+    }
+
     /// <summary> Called when this projectile hits an enemy. By default, it deals damage, and then disappears. Override this method if otherwise </summary>
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
@@ -73,24 +78,26 @@ public class StraightProjectile : MonoBehaviour
             other = h.collider;
             if (other.GetComponent<Shield>() != null)
             {
-                Hit(other.GetComponent<Shield>(), true);                
+                Hit(other.GetComponent<Shield>());                
                 return;
             }
         }
         // No shield, just zombie
-        if (hits.Length > 0) Hit(hits[0].collider.GetComponent<Zombie>());
+        if (hits.Length > 0)
+        {
+            if (splash.magnitude > 0)
+            {
+                RaycastHit2D[] hits1 = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
+                foreach (RaycastHit2D h in hits1) if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope")) Hit(h.collider.GetComponent<Damagable>());
+            }
+            else Hit(hits[0].collider.GetComponent<Zombie>());
+        }
     }
 
-    protected virtual void Hit(Damagable other, bool noSplash = false)
+    protected virtual void Hit(Damagable other)
     {
-        if (splash.magnitude > 0 && !noSplash)
-        {
-            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
-            foreach (RaycastHit2D h in hits) if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope")) h.collider.GetComponent<Damagable>().ReceiveDamage(dmg, gameObject);
-        }
-        else other.ReceiveDamage(dmg, gameObject);
+        other.ReceiveDamage(dmg, gameObject);
         hit = true;
-        Destroy(gameObject);
     }
 
 }

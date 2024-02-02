@@ -36,24 +36,31 @@ public class LobbedProjectile : MonoBehaviour
             Destroy(gameObject);
     }
 
+    void LateUpdate()
+    {
+        if (hit) Destroy(gameObject);
+    }
+
     /// <summary> Called when this projectile hits an enemy. By default, it deals damage, and then disappears. Override this method if otherwise </summary>
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (hit) return;
         if (other.GetComponent<Zombie>() != null && other.GetComponent<Zombie>().row != lane) return;
-        if (other.GetComponent<Damagable>() != null) Hit(other.GetComponent<Damagable>());
+        if (other.GetComponent<Damagable>() != null)
+        {
+            if (splash.magnitude > 0)
+            {
+                RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
+                foreach (RaycastHit2D h in hits) Hit(h.collider.GetComponent<Damagable>());
+            }
+            else Hit(other.GetComponent<Damagable>());
+        }
     }
 
     protected virtual void Hit(Damagable other)
     {
-        if (splash.magnitude > 0)
-        {
-            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
-            foreach (RaycastHit2D h in hits) h.collider.GetComponent<Damagable>().ReceiveDamage(dmg, gameObject);
-        }
-        else other.ReceiveDamage(dmg, gameObject);
+        other.ReceiveDamage(dmg, gameObject);
         hit = true;
-        Destroy(gameObject);
     }
 
 }

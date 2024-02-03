@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,16 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
 
-    private class Coordinates
+    public TextAsset levelZombies;
+
+    private class ZombieData
+    {
+        public int count;
+        public int ID;
+        public int row;
+    }
+
+    private class GraveData
     {
         public int row;
         public int col;
@@ -18,8 +28,8 @@ public class ZombieSpawner : MonoBehaviour
     public GameObject[] allZombies;
     public GameObject grave;
 
-    private List<List<int>> waves = new List<List<int>>();
-    private List<List<Coordinates>> graves = new List<List<Coordinates>>();
+    private List<List<ZombieData>> waves = new List<List<ZombieData>>();
+    private List<List<GraveData>> graves = new List<List<GraveData>>();
 
     /// <summary> How many lanes are in this level. Will likely either be 5 or 6 </summary>
     public int lanes;
@@ -31,11 +41,31 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waves.Add(new List<int>(new int[] { allZombies.Length - 2, 18, 14 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 1, col = 9 } }));
-        waves.Add(new List<int>(new int[] { 15, 10, 11, 12 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 2, col = 9 } }));
-        waves.Add(new List<int>(new int[] { 2, 3 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 3, col = 9 } }));
-        waves.Add(new List<int>(new int[] { 4, 5 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 4, col = 9 } }));
-        waves.Add(new List<int>(new int[] { 6, 7 })); graves.Add(new List<Coordinates>(new Coordinates[] { new Coordinates { row = 5, col = 9 } }));
+        string[] level = levelZombies.text.Split(new string[] { " ", "\n" }, StringSplitOptions.None);
+        List<ZombieData> wave = new List<ZombieData>();
+        List<GraveData> grave = new List<GraveData>();
+        for (int i = 0; i < level.Length;)
+        {
+            if (level[i].Contains("-"))
+            {
+                waves.Add(wave);
+                graves.Add(grave);
+                wave = new List<ZombieData>();
+                grave = new List<GraveData>();
+                i += 1;
+                continue;
+            }
+            try
+            {
+                wave.Add(new ZombieData { count = int.Parse(level[i]), ID = int.Parse(level[i + 1]), row = int.Parse(level[i + 2]) });
+                i += 3;
+            }
+            catch (FormatException)
+            {
+                grave.Add(new GraveData { row = int.Parse(level[i+1]), col = int.Parse(level[i+2]) });
+                i += 3;
+            }
+        }
         StartCoroutine(Spawn());
     }
 
@@ -53,37 +83,43 @@ public class ZombieSpawner : MonoBehaviour
         {
             forceSend = 30f;
 
-            foreach (Coordinates c in graves[waveNumber])
+            foreach (GraveData c in graves[waveNumber])
             {
                 Tile.tileObjects[c.row, c.col].Place(grave);
             }
 
-            foreach (int i in waves[waveNumber])
+            foreach (ZombieData i in waves[waveNumber])
             {
-                if (i == 15) // Bobsled
+                for (int x = 0; x < i.count; x++)
                 {
-                    List<int> possible = new List<int>();
-                    for (int l = 1; l <= lanes; l++) {
-                        Tile check = Tile.tileObjects[l, 9];
-                        if (check.gridItem != null && check.gridItem.tag == "Snow") possible.Add(l);
-                    }
-                    if (possible.Count > 0)
+                    if (i.ID == 15) // Bobsled
                     {
-                        currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;
-                        GameObject g1 = Instantiate(allZombies[i]);
-                        g1.GetComponent<Zombie>().row = possible[Random.Range(0, possible.Count)];
+                        List<int> possible = new List<int>();
+                        for (int l = 1; l <= lanes; l++) {
+                            Tile check = Tile.tileObjects[l, 9];
+                            if (check.gridItem != null && check.gridItem.tag == "Snow") possible.Add(l);
+                        }
+                        if (possible.Count > 0)
+                        {
+                            currentBuild += allZombies[i.ID].GetComponent<Zombie>().spawnScore;
+                            GameObject g1 = Instantiate(allZombies[i.ID]);
+                            g1.GetComponent<Zombie>().row = possible[UnityEngine.Random.Range(0, possible.Count)];
+                        }
+                        continue;
                     }
-                    continue;
+                    currentBuild += allZombies[i.ID].GetComponent<Zombie>().spawnScore;
+                    GameObject g = Instantiate(allZombies[i.ID]);
+                    int lane = i.row;
+                    if (lane == 0)
+                    {
+                        if (!g.GetComponent<Zombie>().aquatic)
+                            do lane = UnityEngine.Random.Range(1, lanes + 1); while (lane == 3 || lane == 4);
+                        else lane = UnityEngine.Random.Range(3, 5);
+                        if (g.GetComponent<Balloon>() != null) lane = UnityEngine.Random.Range(1, lanes+1);
+                    }
+                    g.GetComponent<Zombie>().row = lane;
+                    yield return new WaitForSeconds(0.2f);
                 }
-                currentBuild += allZombies[i].GetComponent<Zombie>().spawnScore;
-                GameObject g = Instantiate(allZombies[i]);
-                int lane = 3;
-                if (!g.GetComponent<Zombie>().aquatic)
-                    while (lane == 3 || lane == 4) lane = Random.Range(1, lanes+1);
-                else lane = Random.Range(3, 5);
-                if (g.GetComponent<Balloon>() != null) lane = Random.Range(1, lanes+1);
-                g.GetComponent<Zombie>().row = lane;
-                yield return new WaitForSeconds(0.2f);
             }
             float maxBuild = currentBuild;
             yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);

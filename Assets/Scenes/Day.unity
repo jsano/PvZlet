@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: preparation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3847289951454327084, guid: 3688860150797a942803f698b660e108, type: 3}
+      propertyPath: levelZombies
+      value: 
+      objectReference: {fileID: 4900000, guid: d2057e5825a0a3a4dacfd7402fb38060, type: 3}
     - target: {fileID: 6156869025825603018, guid: 3688860150797a942803f698b660e108, type: 3}
       propertyPath: m_Name
       value: ZombieSpawner

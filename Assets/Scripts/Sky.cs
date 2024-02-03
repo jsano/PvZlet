@@ -11,7 +11,7 @@ public class Sky : MonoBehaviour
     private float period = 0;
 
     /// <summary> If nighttime, no sun falls and mushrooms sleep </summary>
-    public bool night;
+    [HideInInspector] public bool night;
 
     /// <summary> If >0, fog will cover this column and beyond </summary>
     public int fogColumn;
@@ -22,6 +22,8 @@ public class Sky : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Level.Setting setting = FindFirstObjectByType<Level>().setting;
+        night = setting == Level.Setting.Night || setting == Level.Setting.Fog || setting == Level.Setting.RoofNight;
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         if (fogColumn > 0)
         {

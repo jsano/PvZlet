@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: 72d541ca85ab09a4585c5bbadf7bef45
+  - enabled: 1
     path: Assets/Scenes/Day.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Pool.unity
+    guid: 9128611fd8b90fa4bbd45afc7ba45f07
+  - enabled: 1
+    path: Assets/Scenes/Roof.unity
+    guid: 237856d43596d9b449898260ce665743
   m_configObjects: {}

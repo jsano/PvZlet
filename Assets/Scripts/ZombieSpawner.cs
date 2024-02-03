@@ -6,8 +6,6 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
 
-    public TextAsset levelZombies;
-
     private class ZombieData
     {
         public int count;
@@ -21,8 +19,7 @@ public class ZombieSpawner : MonoBehaviour
         public int col;
     }
 
-    /// <summary> The amount of time in seconds to wait before sending the first wave </summary>
-    public float preparation;
+    private float preparation;
 
     /// <summary> The master list of all zombies in the game </summary>
     public GameObject[] allZombies;
@@ -41,6 +38,9 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Level l = FindFirstObjectByType<Level>();
+        preparation = l.preparation;
+        TextAsset levelZombies = l.waves;
         string[] level = levelZombies.text.Split(new string[] { " ", "\n" }, StringSplitOptions.None);
         List<ZombieData> wave = new List<ZombieData>();
         List<GraveData> grave = new List<GraveData>();

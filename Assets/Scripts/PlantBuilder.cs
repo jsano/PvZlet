@@ -27,8 +27,6 @@ public class PlantBuilder : MonoBehaviour
     /// <summary> The currently selected plant object that, if clicked on a tile, will be planted </summary>
     public static GameObject currentPlant;
 
-    /// <summary> How much sun the level starts with </summary>
-    public int startingSun;
     /// <summary> The global amount of sun the player currently has </summary>
     public static int sun;
 
@@ -41,7 +39,7 @@ public class PlantBuilder : MonoBehaviour
     void Start()
     {
         currentPlant = allPlants[assignedPlants[0]];
-        sun = startingSun;
+        sun = FindFirstObjectByType<Level>().startingSun;
     }
 
     void Update()

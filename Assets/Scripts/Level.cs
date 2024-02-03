@@ -30,7 +30,6 @@ public class Level : MonoBehaviour
         Level g = Instantiate(l);
         DontDestroyOnLoad(g);
         SceneManager.LoadScene(l.setting.ToString());
-        //SceneManager.MoveGameObjectToScene(FindFirstObjectByType<Level>().gameObject, SceneManager.GetActiveScene());
     }
 
 }

@@ -105,6 +105,8 @@ MonoBehaviour:
   roof: 0
   planted: {fileID: 0}
   gridItem: {fileID: 0}
+  ladder: {fileID: 0}
+  fog: {fileID: 0}
 --- !u!61 &3444952105696796
 BoxCollider2D:
   m_ObjectHideFlags: 0

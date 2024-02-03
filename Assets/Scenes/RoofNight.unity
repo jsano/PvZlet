@@ -699,7 +699,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7256717130425922206, guid: c619dae03d1e87b4e92027e334794b48, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7256717130425922206, guid: c619dae03d1e87b4e92027e334794b48, type: 3}
       propertyPath: m_LocalPosition.x
@@ -747,60 +747,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c619dae03d1e87b4e92027e334794b48, type: 3}
---- !u!1001 &3795001652162678213
+--- !u!1001 &1504535878309479020
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3795001651423216828, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
-      propertyPath: m_Name
-      value: RoofBG
-      objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3795001651423216830, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+    - target: {fileID: 820292968456381069, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8164266186821333505, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}
+      propertyPath: m_Name
+      value: RoofNightBG
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 456f7db0ffcbb7447b13c3a734f5d407, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 51f0201e3ac17b745ac9857935e9e0a0, type: 3}

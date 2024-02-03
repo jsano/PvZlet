@@ -12,9 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Day.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Night.unity
+    guid: 7b1ba63acf7123c47b42f18c064b6393
+  - enabled: 1
     path: Assets/Scenes/Pool.unity
     guid: 9128611fd8b90fa4bbd45afc7ba45f07
   - enabled: 1
+    path: Assets/Scenes/Fog.unity
+    guid: 197ec564f6e6e84468c4de9f03d4ed86
+  - enabled: 1
     path: Assets/Scenes/Roof.unity
     guid: 237856d43596d9b449898260ce665743
+  - enabled: 1
+    path: Assets/Scenes/RoofNight.unity
+    guid: 634d1861635941042bb2cf6af4bbe9b5
   m_configObjects: {}

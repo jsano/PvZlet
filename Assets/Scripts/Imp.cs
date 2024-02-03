@@ -24,7 +24,7 @@ public class Imp : Zombie
     // Update is called once per frame
     public override void Update()
     {
-        if (!landed && transform.position.y <= Tile.tileObjects[row, Mathf.Min(9, Tile.WORLD_TO_COL(transform.position.x))].transform.position.y)
+        if (!landed && transform.position.y <= Tile.tileObjects[row, Mathf.Min(9, Mathf.Max(1, Tile.WORLD_TO_COL(transform.position.x)))].transform.position.y)
         {
             BC.enabled = true;
             RB.gravityScale = 0;

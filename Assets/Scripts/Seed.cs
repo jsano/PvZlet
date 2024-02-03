@@ -13,6 +13,8 @@ public class Seed : MonoBehaviour
     public int ID;
     private Button b;
     private Plant plant;
+    private Image recharge;
+    [HideInInspector] public float rechargePeriod;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +22,18 @@ public class Seed : MonoBehaviour
         pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         b = GetComponent<Button>();
         plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
+        rechargePeriod = plant.recharge;
         transform.Find("Text").GetComponent<TextMeshProUGUI>().text = plant.cost + "";
+        recharge = transform.Find("Recharge").GetComponent<Image>();
         GetComponent<Image>().color = plant.GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        b.interactable = PlantBuilder.sun >= plant.cost;
+        rechargePeriod += Time.deltaTime;
+        b.interactable = PlantBuilder.sun >= plant.cost && rechargePeriod >= plant.recharge;
+        recharge.fillAmount = (rechargePeriod / plant.recharge >= 1) ? 0 : rechargePeriod / plant.recharge;
 
         if (Input.GetButtonDown("Plant1") && ID == 0 && b.interactable) OnClick();
         if (Input.GetButtonDown("Plant2") && ID == 1 && b.interactable) OnClick();

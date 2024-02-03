@@ -32,6 +32,7 @@ public class CobCannon : Plant
         }
         if (aiming)
         {
+            SR.material.color = Color.red;
             if (Input.GetMouseButtonDown(1)) aiming = false;
             if (Input.GetMouseButtonDown(0))
             {
@@ -40,7 +41,7 @@ public class CobCannon : Plant
                 reloadPeriod = 0;
                 StartCoroutine(Update_Helper(cam.ScreenToWorldPoint(Input.mousePosition)));
             }
-        }
+        } else if (ready) SR.material.color = Color.white;
     }
 
     void OnMouseDown()
@@ -56,6 +57,7 @@ public class CobCannon : Plant
 
     private IEnumerator Update_Helper(Vector3 loc)
     {
+        SR.material.color = Color.white;
         yield return new WaitForSeconds(atkspd);
         SR.material.color -= Color.white / 2;
         GameObject p = Instantiate(projectile, new Vector2(loc.x, loc.y + Tile.TILE_DISTANCE.y * 10), Quaternion.identity);

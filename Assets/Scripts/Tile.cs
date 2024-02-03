@@ -104,6 +104,7 @@ public class Tile : MonoBehaviour
             p.row = row;
             p.col = col;
             PlantBuilder.sun -= p.cost;
+            EventSystem.current.currentSelectedGameObject.GetComponent<Seed>().rechargePeriod = 0;
         }
         else
         {

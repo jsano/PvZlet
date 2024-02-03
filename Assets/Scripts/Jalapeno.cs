@@ -7,16 +7,16 @@ public class Jalapeno : Plant
 
     protected override void Attack(Zombie z)
     {
-        Vector3 area = new Vector3(9, 0.75f);
-        GameObject g = Instantiate(projectile, new Vector2(Tile.COL_TO_WORLD[5], transform.position.y - (0.5f - area.y / 2) * Tile.TILE_DISTANCE.y), Quaternion.identity);
-        g.transform.localScale = area * Tile.TILE_DISTANCE;
-        RaycastHit2D[] all = Physics2D.BoxCastAll(g.transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
-        foreach (RaycastHit2D a in all)
-        {
-            a.collider.GetComponent<Zombie>().ReceiveDamage(damage, gameObject);
-        }
         for (int c = 1; c < 10; c++)
         {
+            Vector2 diff = Tile.tileObjects[row, Mathf.Min(9, c + 1)].transform.position - Tile.tileObjects[row, c].transform.position;
+            GameObject g = Instantiate(projectile, Tile.tileObjects[row, c].transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(diff.y, diff.x) * 180 / Mathf.PI));
+            g.transform.localScale = Tile.TILE_DISTANCE + new Vector2(0.1f, 0);
+            RaycastHit2D[] all = Physics2D.BoxCastAll(g.transform.position, g.transform.localScale, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
+            foreach (RaycastHit2D a in all)
+            {
+                a.collider.GetComponent<Zombie>().ReceiveDamage(damage, gameObject);
+            }
             GameObject t = Tile.tileObjects[row, c].gridItem;
             if (t != null && t.tag == "Snow") Destroy(t);
         }

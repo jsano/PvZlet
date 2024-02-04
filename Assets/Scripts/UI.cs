@@ -74,6 +74,11 @@ public class UI : MonoBehaviour
         }
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void MainMenu()
     {
         Level l = FindFirstObjectByType<Level>();

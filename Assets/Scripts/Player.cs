@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().name); //DEBUG
+        
     }
 
     void OnTriggerEnter2D(Collider2D collision)

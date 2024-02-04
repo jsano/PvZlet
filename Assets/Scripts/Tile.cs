@@ -56,7 +56,12 @@ public class Tile : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (EventSystem.current.currentSelectedGameObject != null && CanPlantHere()) SR.color = hoverColor;
+        GameObject g = EventSystem.current.currentSelectedGameObject;
+        if (g != null)
+        {
+            if (g.GetComponent<Seed>() != null && CanPlantHere() || g.GetComponent<Shovel>() != null) SR.color = hoverColor;
+            else SR.color = Color.clear;
+        }
         else SR.color = Color.clear;
     }
 
@@ -67,7 +72,12 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (EventSystem.current.currentSelectedGameObject != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
+        GameObject g = EventSystem.current.currentSelectedGameObject;
+        if (g != null)
+        {
+            if (g.GetComponent<Seed>() != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
+            else if (g.GetComponent<Shovel>() != null) RemoveAllPlants();
+        }
     }
 
     /// <summary> Given a x-position in world units, return the closest corresponding in-game column it belongs to </summary>

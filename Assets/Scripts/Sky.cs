@@ -19,11 +19,13 @@ public class Sky : MonoBehaviour
 
     private Camera cam;
 
+    private Level l;
+
     // Start is called before the first frame update
     void Start()
     {
-        Level.Setting setting = FindFirstObjectByType<Level>().setting;
-        night = setting == Level.Setting.Night || setting == Level.Setting.Fog || setting == Level.Setting.RoofNight;
+        l = FindFirstObjectByType<Level>();
+        night = l.setting == Level.Setting.Night || l.setting == Level.Setting.Fog || l.setting == Level.Setting.RoofNight;
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         if (fogColumn > 0)
         {
@@ -44,7 +46,7 @@ public class Sky : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!night) period += Time.deltaTime;
+        if (!night && !l.won && !Player.lost) period += Time.deltaTime;
         if (period > interval)
         {
             period = 0;

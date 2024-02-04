@@ -14,6 +14,8 @@ public class GameOver : UI
     public override void Start()
     {
         GetComponent<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        GetComponent<Canvas>().sortingLayerName = "Sun";
+        GetComponent<Canvas>().sortingOrder = 1;
     }
 
     public override void Update()

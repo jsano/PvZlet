@@ -11,6 +11,11 @@ public class Player : Damagable
     public static bool lost;
     public GameObject gameOver;
 
+    void Start()
+    {
+        lost = false;
+    }
+
     // Update is called once per frame
     void Update()
     {

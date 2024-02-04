@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2084674554, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084674554, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084674554, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084674554, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 696416361503115708, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -515,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475286795058027475, guid: 149524b6a269f0346a4b1871928b9b92, type: 3}
       propertyPath: m_Name
-      value: House
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 149524b6a269f0346a4b1871928b9b92, type: 3}

@@ -48,6 +48,7 @@ public class Seed : MonoBehaviour
     /// <summary> Called when the button is clicked or the hotkey is pressed </summary>
     public void OnClick()
     {
+        if (Time.timeScale == 0) return;
         if (EventSystem.current.currentSelectedGameObject == gameObject)
         {
             EventSystem.current.SetSelectedGameObject(null);

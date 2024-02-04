@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlantBuilder : MonoBehaviour
 {
@@ -44,15 +42,7 @@ public class PlantBuilder : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            PointerEventData eventData = new PointerEventData(EventSystem.current);
-            eventData.position = Input.mousePosition;
-            List<RaycastResult> raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData, raycastResults);
-            if (raycastResults.Count == 0) EventSystem.current.SetSelectedGameObject(null);
-        }
-        if (Input.GetMouseButtonDown(1)) EventSystem.current.SetSelectedGameObject(null);
+        
     }
 
     public void SetPlantToBuild(int buttonID)

@@ -29,6 +29,7 @@ public class Level : MonoBehaviour
     {
         Level g = Instantiate(l);
         DontDestroyOnLoad(g);
+        Time.timeScale = 1;
         SceneManager.LoadScene(l.setting.ToString());
     }
 

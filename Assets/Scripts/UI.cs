@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UI : MonoBehaviour
 {
@@ -24,6 +25,23 @@ public class UI : MonoBehaviour
     void Update()
     {
         s.text = PlantBuilder.sun + "";
+
+        if (!pauseMenu.activeInHierarchy) Time.timeScale = curTimeScale;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            PointerEventData eventData = new PointerEventData(EventSystem.current);
+            eventData.position = Input.mousePosition;
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, raycastResults);
+            if (raycastResults.Count == 0) EventSystem.current.SetSelectedGameObject(null);
+        }
+        if (Input.GetMouseButtonDown(1)) EventSystem.current.SetSelectedGameObject(null);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (EventSystem.current.currentSelectedGameObject != null) EventSystem.current.SetSelectedGameObject(null);
+            else Pause();
+        }
     }
 
     public void Pause()
@@ -44,15 +62,13 @@ public class UI : MonoBehaviour
 
     public void FastForward()
     {
-        if (Time.timeScale == 2) // revert
+        if (curTimeScale == 2) // revert
         {
-            Time.timeScale = 1;
             curTimeScale = 1;
             fastForward.GetComponent<Image>().color = fastForward.GetComponent<Button>().colors.normalColor;
         }
         else
         {
-            Time.timeScale = 2;
             curTimeScale = 2;
             fastForward.GetComponent<Image>().color = fastForward.GetComponent<Button>().colors.selectedColor;
         }

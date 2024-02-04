@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Level : MonoBehaviour
 {
 
+    [HideInInspector] public string levelName;
+
     public enum Setting
     {
         Day,
@@ -24,6 +26,11 @@ public class Level : MonoBehaviour
 
     /// <summary> The amount of time in seconds to wait before sending the first wave </summary>
     public float preparation;
+
+    void Start()
+    {
+        levelName = waves.name;
+    }
 
     public static void LoadLevel(Level l)
     {

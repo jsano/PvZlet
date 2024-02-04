@@ -34,6 +34,7 @@ public class ZombieSpawner : MonoBehaviour
     [HideInInspector] public int currentBuild = 0;
     /// <summary> The amount of time in seconds to wait before the next wave spawns no matter what </summary>
     private float forceSend;
+    private int waveNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +80,8 @@ public class ZombieSpawner : MonoBehaviour
     private IEnumerator Spawn()
     {
         yield return new WaitUntil(() => preparation <= 0);
-        for (int waveNumber = 0; waveNumber < waves.Count; waveNumber++)
+        GameObject.Find("UI").GetComponent<UI>().ShowProgress();
+        for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
             forceSend = 30f;
 
@@ -126,6 +128,12 @@ public class ZombieSpawner : MonoBehaviour
         }
         yield return new WaitUntil(() => currentBuild == 0);
         Debug.Log("WIN");
+    }
+
+    public float CompletedPercentage()
+    {
+        if (waves.Count == 1) return 1;
+        return ((float) waveNumber) / (waves.Count - 1);
     }
 
 }

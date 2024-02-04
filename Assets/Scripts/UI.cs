@@ -10,21 +10,29 @@ public class UI : MonoBehaviour
 {
 
     private TextMeshProUGUI s;
+    private Transform level;
+    public Image progressBar;
     public GameObject pauseMenu;
     public GameObject pause;
     public GameObject fastForward;
     private float curTimeScale = 1;
 
+    private ZombieSpawner zs;
+
     // Start is called before the first frame update
     void Start()
     {
         s = transform.Find("Sun").Find("Text").GetComponent<TextMeshProUGUI>();
+        level = transform.Find("Level");
+        level.Find("Name").GetComponent<TextMeshProUGUI>().text = FindFirstObjectByType<Level>().levelName;
+        zs = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
         s.text = PlantBuilder.sun + "";
+        progressBar.fillAmount = zs.CompletedPercentage();
 
         if (!pauseMenu.activeInHierarchy) Time.timeScale = curTimeScale;
 
@@ -84,6 +92,11 @@ public class UI : MonoBehaviour
         Level l = FindFirstObjectByType<Level>();
         if (l != null) SceneManager.MoveGameObjectToScene(l.gameObject, SceneManager.GetActiveScene());
         SceneManager.LoadScene(0);
+    }
+
+    public void ShowProgress()
+    {
+        level.Find("Progress").gameObject.SetActive(true);
     }
 
 }

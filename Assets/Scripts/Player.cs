@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : Damagable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    public static bool lost;
+    public GameObject gameOver;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +19,20 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("LOSE");
+        if (collision.GetComponent<Zombie>() != null && !lost)
+        {
+            lost = true;
+            gameOver.SetActive(true);
+            GameObject.Find("UI").SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            collision.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
+            collision.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        }
+    }
+
+    public override void ReceiveDamage(float dmg, GameObject source, bool eat = false)
+    {
+        return;
     }
 
 }

@@ -20,7 +20,7 @@ public class UI : MonoBehaviour
     private ZombieSpawner zs;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         s = transform.Find("Sun").Find("Text").GetComponent<TextMeshProUGUI>();
         level = transform.Find("Level");
@@ -29,7 +29,7 @@ public class UI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         s.text = PlantBuilder.sun + "";
         progressBar.fillAmount = zs.CompletedPercentage();

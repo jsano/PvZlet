@@ -36,6 +36,8 @@ public class ZombieSpawner : MonoBehaviour
     private float forceSend;
     private int waveNumber;
 
+    public LevelManager levelManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +85,7 @@ public class ZombieSpawner : MonoBehaviour
         GameObject.Find("UI").GetComponent<UI>().ShowProgress();
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
-            if (Player.lost) yield break;
+            if (LevelManager.status == LevelManager.Status.Lost) yield break;
             forceSend = 30f;
 
             foreach (GraveData c in graves[waveNumber])
@@ -128,7 +130,7 @@ public class ZombieSpawner : MonoBehaviour
             yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
         }
         yield return new WaitUntil(() => currentBuild == 0);
-        FindFirstObjectByType<Level>().Win();
+        levelManager.Win();
     }
 
     public float CompletedPercentage()

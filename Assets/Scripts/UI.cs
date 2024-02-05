@@ -84,13 +84,15 @@ public class UI : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Level l = FindFirstObjectByType<Level>();
+        Destroy(l.gameObject);
+        Level.LoadLevel(l);
     }
 
     public void MainMenu()
     {
         Level l = FindFirstObjectByType<Level>();
-        if (l != null) SceneManager.MoveGameObjectToScene(l.gameObject, SceneManager.GetActiveScene());
+        if (l != null) Destroy(l.gameObject);
         SceneManager.LoadScene(0);
     }
 

@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6156869025825603018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fa599f4dc1719140a4eb9f3c2c32fe3, type: 3}
   m_Name: 
@@ -79,3 +79,4 @@ MonoBehaviour:
   grave: {fileID: 6265875747130582572, guid: eb38c8aa8f17d1c46b577b03dca9c23b, type: 3}
   lanes: 5
   currentBuild: 0
+  levelManager: {fileID: 0}

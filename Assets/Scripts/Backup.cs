@@ -10,10 +10,8 @@ public class Backup : Zombie
 
     public override void Update()
     {
-        if (beingSpawned) BC.enabled = false;
-        else
+        if (!beingSpawned)
         {
-            BC.enabled = true;
             base.Update();
         }
     }

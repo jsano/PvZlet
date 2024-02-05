@@ -8,12 +8,11 @@ using UnityEngine.UI;
 public class Player : Damagable
 {
 
-    public static bool lost;
-    public GameObject gameOver;
+    public LevelManager levelManager;
 
     void Start()
     {
-        lost = false;
+        
     }
 
     // Update is called once per frame
@@ -24,12 +23,9 @@ public class Player : Damagable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Zombie>() != null && !lost)
+        if (collision.GetComponent<Zombie>() != null && LevelManager.status != LevelManager.Status.Lost)
         {
-            lost = true;
-            gameOver.SetActive(true);
-            GameObject.Find("UI").SetActive(false);
-            EventSystem.current.SetSelectedGameObject(null);
+            levelManager.Lose();
             collision.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
             collision.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }

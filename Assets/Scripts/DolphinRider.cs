@@ -18,12 +18,10 @@ public class DolphinRider : PoleVaulter
     {
         if (entered)
         {
-            BC.enabled = true;
             base.Update();
         }
         else
         {
-            BC.enabled = false;
             RB.velocity = new Vector2(-0.5f, 0);
         }
     }

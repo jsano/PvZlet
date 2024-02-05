@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa599f4dc1719140a4eb9f3c2c32fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preparation: 10
   allZombies:
   - {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
   - {fileID: 3771436458975516670, guid: f13f5909333d04647929d81e7daf0f41, type: 3}
@@ -73,6 +72,7 @@ MonoBehaviour:
   - {fileID: 8320229084210083158, guid: 8195ec064c33a8b4d99c08dc9e71045a, type: 3}
   - {fileID: 9192904634043088257, guid: ae730055cb308e64fa4ea6c9831a3c3f, type: 3}
   - {fileID: 5066145326785716353, guid: 1bab47dbbf166b541aa9d20407b8d962, type: 3}
+  - {fileID: 3409189286155039641, guid: a0a6bd3c9ad6cdd45837cc3500635120, type: 3}
   grave: {fileID: 6265875747130582572, guid: eb38c8aa8f17d1c46b577b03dca9c23b, type: 3}
   lanes: 5
   currentBuild: 0

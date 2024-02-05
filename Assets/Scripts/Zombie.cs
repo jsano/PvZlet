@@ -47,6 +47,8 @@ public class Zombie : Damagable
     protected bool hypnotized;
     protected bool backwards;
 
+    [HideInInspector] public bool displayOnly;
+
     void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
@@ -69,12 +71,14 @@ public class Zombie : Damagable
             shield.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
         }
         baseHP = HP;
-        Spawn();
+        if (displayOnly) gameObject.layer = LayerMask.NameToLayer("Default");
+        else Spawn();
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
+        if (displayOnly) return;
         int mask = hypnotized ? LayerMask.GetMask("Zombie") : LayerMask.GetMask("Plant");
         // NOTE: (1, 1, 1) and not localscale because of hypnotized -1 x-scale
         GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, Vector3.one, 0, Vector2.zero, 0, mask));

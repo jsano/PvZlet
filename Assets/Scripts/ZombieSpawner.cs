@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
@@ -37,10 +38,14 @@ public class ZombieSpawner : MonoBehaviour
     private int waveNumber;
 
     public LevelManager levelManager;
+    public UI UI;
+
+    private List<GameObject> displayZombies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
+        HashSet<int> unique = new HashSet<int>();
         Level l = FindFirstObjectByType<Level>();
         preparation = l.preparation;
         TextAsset levelZombies = l.waves;
@@ -60,7 +65,9 @@ public class ZombieSpawner : MonoBehaviour
             }
             try
             {
-                wave.Add(new ZombieData { count = int.Parse(level[i]), ID = int.Parse(level[i + 1]), row = int.Parse(level[i + 2]) });
+                int _ID = int.Parse(level[i + 1]);
+                wave.Add(new ZombieData { count = int.Parse(level[i]), ID = _ID, row = int.Parse(level[i + 2]) });
+                unique.Add(_ID);
                 i += 3;
             }
             catch (FormatException)
@@ -69,23 +76,33 @@ public class ZombieSpawner : MonoBehaviour
                 i += 3;
             }
         }
+        foreach (int i in unique)
+        {
+            Vector3 offset = new Vector2(UnityEngine.Random.Range(-2, 2f), UnityEngine.Random.Range(-5, 5f));
+            GameObject g = Instantiate(allZombies[i], transform.Find("Display").transform.position + offset, Quaternion.identity);
+            g.GetComponent<Zombie>().displayOnly = true;
+            displayZombies.Add(g);
+        }
         StartCoroutine(Spawn());
     }
 
     // Update is called once per frame
     void Update()
     {
-        preparation = Mathf.Max(0, preparation - Time.deltaTime);
-        forceSend -= Time.deltaTime;
+        if (LevelManager.status == LevelManager.Status.Start)
+        {
+            preparation = Mathf.Max(0, preparation - Time.deltaTime);
+            forceSend -= Time.deltaTime;
+        }
     }
 
     private IEnumerator Spawn()
     {
-        yield return new WaitUntil(() => preparation <= 0);
-        GameObject.Find("UI").GetComponent<UI>().ShowProgress();
+        yield return new WaitUntil(() => preparation <= 0 && LevelManager.status == LevelManager.Status.Start);
+        foreach (GameObject g in displayZombies) Destroy(g);
+        UI.ShowProgress();
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
-            if (LevelManager.status == LevelManager.Status.Lost) yield break;
             forceSend = 30f;
 
             foreach (GraveData c in graves[waveNumber])

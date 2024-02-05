@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
 
     public enum Status
     {
+        Intro,
         Start,
         Won,
         Lost
@@ -28,6 +29,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        status = Status.Intro;
         UI.SetActive(false);
         StartCoroutine(Start_Helper());
     }
@@ -36,9 +38,9 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         float acceleration = 10f;
-        float midpoint = mainCamera.transform.position.x + 7.5f / 2;
+        float midpoint = mainCamera.transform.position.x + 5f;
         float speed = 0;
-        while (mainCamera.transform.position.x < 7.5f)
+        while (mainCamera.transform.position.x < 10f)
         {
             if (mainCamera.transform.position.x < midpoint) speed += acceleration * Time.deltaTime;
             else speed = Mathf.Max(0.1f, speed - acceleration * Time.deltaTime);
@@ -66,7 +68,6 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ready.SetActive(false);
         UI.SetActive(true);
-        zombieSpawner.enabled = true;
         sky.enabled = true;
         status = Status.Start;
     }

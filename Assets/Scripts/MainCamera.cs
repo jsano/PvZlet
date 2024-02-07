@@ -12,12 +12,12 @@ public class MainCamera : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+        cam.eventMask = LayerMask.GetMask("UI");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (EventSystem.current.currentSelectedGameObject != null) cam.eventMask = LayerMask.GetMask("UI");
-        else cam.eventMask = LayerMask.GetMask("UI", "Plant");
+        
     }
 }

@@ -47,6 +47,7 @@ public class ZombieSpawner : MonoBehaviour
     {
         HashSet<int> unique = new HashSet<int>();
         Level l = FindFirstObjectByType<Level>();
+        lanes = (l.setting == Level.Setting.Pool || l.setting == Level.Setting.Fog) ? 6 : 5;
         preparation = l.preparation;
         TextAsset levelZombies = l.waves;
         string[] level = levelZombies.text.Split(new string[] { " ", "\n" }, StringSplitOptions.None);
@@ -135,7 +136,10 @@ public class ZombieSpawner : MonoBehaviour
                     if (lane == 0)
                     {
                         if (!g.GetComponent<Zombie>().aquatic)
-                            do lane = UnityEngine.Random.Range(1, lanes + 1); while (lane == 3 || lane == 4);
+                        {
+                            if (lanes == 6) do lane = UnityEngine.Random.Range(1, lanes + 1); while (lane == 3 || lane == 4);
+                            else lane = UnityEngine.Random.Range(1, lanes + 1);
+                        }
                         else lane = UnityEngine.Random.Range(3, 5);
                         if (g.GetComponent<Balloon>() != null) lane = UnityEngine.Random.Range(1, lanes+1);
                     }

@@ -26,10 +26,14 @@ public class LevelManager : MonoBehaviour
 
     public static Status status;
 
+    void Awake()
+    {
+        status = Status.Intro;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        status = Status.Intro;
         UI.SetActive(false);
         StartCoroutine(Start_Helper());
     }

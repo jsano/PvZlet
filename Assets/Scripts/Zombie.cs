@@ -28,6 +28,8 @@ public class Zombie : Damagable
     public GameObject armor;
     public GameObject shield;
     public GameObject projectile;
+    private SpriteRenderer armorSR;
+    private SpriteRenderer shieldSR;
 
     protected Rigidbody2D RB;
     protected SpriteRenderer SR;
@@ -64,21 +66,36 @@ public class Zombie : Damagable
         {
             armor = Instantiate(armor, transform, false);
             armor.transform.localPosition = new Vector3(0, transform.localScale.y / 2, 0);
+            armorSR = armor.GetComponent<SpriteRenderer>();
         }
         if (shield != null)
         {
             shield = Instantiate(shield, transform, false);
             shield.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
+            shieldSR = shield.GetComponent<SpriteRenderer>();
         }
         baseHP = HP;
-        if (displayOnly) gameObject.layer = LayerMask.NameToLayer("Default");
+        if (displayOnly)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+            enabled = false;
+        }
         else Spawn();
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
-        if (displayOnly) return;
+        if (armorSR != null)
+        {
+            armorSR.sortingLayerID = SR.sortingLayerID;
+            armorSR.sortingOrder = SR.sortingOrder;
+        }
+        if (shieldSR != null)
+        {
+            shieldSR.sortingLayerID = SR.sortingLayerID;
+            shieldSR.sortingOrder = SR.sortingOrder;
+        }
         int mask = hypnotized ? LayerMask.GetMask("Zombie") : LayerMask.GetMask("Plant");
         // NOTE: (1, 1, 1) and not localscale because of hypnotized -1 x-scale
         GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, Vector3.one, 0, Vector2.zero, 0, mask));

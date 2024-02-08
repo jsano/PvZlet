@@ -17,7 +17,13 @@ public class Blover : Plant
 
     private IEnumerator Blow()
     {
-        sky.ClearFog();
+        for (int i = 1; i <= ZS.lanes; i++)
+        {
+            for (int j = 1; j <= 9; j++)
+            {
+                if (Tile.tileObjects[i, j].fog != null) Tile.tileObjects[i, j].fog.Clear(45);
+            }
+        }
         while (pushTime > 0)
         {
             RaycastHit2D[] all = Physics2D.BoxCastAll(Tile.tileObjects[row, 1].transform.position, Tile.TILE_DISTANCE, 0, Vector2.right, 9 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));

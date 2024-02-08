@@ -33,7 +33,7 @@ public class Tile : MonoBehaviour
     private List<GameObject> overlapped = new List<GameObject>();
     [HideInInspector] public GameObject ladder;
     /// <summary> The fog currently covering this tile. Can be null if there's no fog </summary>
-    [HideInInspector] public GameObject fog;
+    [HideInInspector] public Fog fog;
 
     // Start is called before the first frame update
     void Start()

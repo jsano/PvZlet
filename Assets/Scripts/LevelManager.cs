@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public GameObject gameOver;
     public ZombieSpawner zombieSpawner;
     public Sky sky;
+    private Level l;
     
     public GameObject reward;
 
@@ -34,6 +35,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        l = FindFirstObjectByType<Level>();
         UI.SetActive(false);
         StartCoroutine(Start_Helper());
     }
@@ -62,6 +64,11 @@ public class LevelManager : MonoBehaviour
         }
         mainCamera.transform.position = new Vector3(0, 0, mainCamera.transform.position.z);
         yield return new WaitForSeconds(0.5f);
+        if (l.fogColumn > 0)
+        {
+            sky.enabled = true;
+            yield return new WaitForSeconds(1f);
+        }
         ready.SetActive(true);
         TextMeshProUGUI t = ready.transform.Find("Text").GetComponent<TextMeshProUGUI>();
         yield return new WaitForSeconds(0.5f);

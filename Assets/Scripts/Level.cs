@@ -24,6 +24,9 @@ public class Level : MonoBehaviour
 
     public TextAsset waves;
 
+    /// <summary> If >0, fog will cover this column and beyond </summary>
+    public int fogColumn;
+
     /// <summary> The amount of time in seconds to wait before sending the first wave </summary>
     public float preparation;
 

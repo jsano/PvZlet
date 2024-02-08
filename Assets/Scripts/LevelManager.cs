@@ -11,9 +11,14 @@ public class LevelManager : MonoBehaviour
     public GameObject UI;
     public GameObject ready;
     public GameObject gameOver;
+    public GameObject seedSelect;
+    public GameObject plants;
+    public GameObject sun;
     public ZombieSpawner zombieSpawner;
     public Sky sky;
     private Level l;
+
+    private bool letsRock;
     
     public GameObject reward;
 
@@ -43,7 +48,7 @@ public class LevelManager : MonoBehaviour
     private IEnumerator Start_Helper()
     {
         yield return new WaitForSeconds(1);
-        float acceleration = 10f;
+        float acceleration = 15f;
         float midpoint = mainCamera.transform.position.x + 5f;
         float speed = 0;
         while (mainCamera.transform.position.x < 10f)
@@ -53,7 +58,30 @@ public class LevelManager : MonoBehaviour
             mainCamera.transform.Translate(Vector3.right * speed * Time.deltaTime);
             yield return null;
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+
+        if (l.conveyor.Count == 0)
+        {
+            sun.SetActive(true);
+            plants.SetActive(true);
+            seedSelect.SetActive(true);
+            GameObject BG = seedSelect.transform.Find("BG").gameObject;
+            while (BG.transform.localPosition.y < 0)
+            {
+                BG.transform.Translate(Vector3.up * 2000 * Time.deltaTime);
+                yield return null;
+            }
+            yield return new WaitUntil(() => letsRock);
+            seedSelect.transform.Find("Start").gameObject.SetActive(false);
+            while (BG.transform.localPosition.y > -400)
+            {
+                BG.transform.Translate(Vector3.down * 2000 * Time.deltaTime);
+                yield return null;
+            }
+            seedSelect.SetActive(false);
+        }
+        
+        yield return new WaitForSeconds(0.5f);
         speed = 0;
         while (mainCamera.transform.position.x > 0)
         {
@@ -87,6 +115,11 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void LetsRock()
+    {
+        letsRock = true;
     }
 
     public void Win()

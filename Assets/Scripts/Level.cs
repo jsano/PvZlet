@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,9 +19,18 @@ public class Level : MonoBehaviour
         RoofNight
     }
 
+    [Serializable]
+    public struct Data
+    {
+        public int plant;
+        public int count;
+    }
+
     public Setting setting;
 
     public int startingSun;
+
+    public List<Data> conveyor = new List<Data>();
 
     public TextAsset waves;
 

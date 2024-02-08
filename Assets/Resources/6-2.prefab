@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: setting
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: unlockedUntil
+      value: 44
+      objectReference: {fileID: 0}
     - target: {fileID: 2449856806975317780, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -27,6 +27,7 @@ public class Seed : MonoBehaviour
         recharge = transform.Find("Recharge").GetComponent<Image>();
         recharge.fillAmount = 0;
         image = GetComponent<Image>();
+        image.color = new Color(0, 0, 0, 0.5f);
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class Seed : MonoBehaviour
             {
                 image.color = new Color(0, 0, 0, 0.5f);
                 cost.text = "";
+                plant = null;
                 return;
             }
             plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
@@ -47,6 +49,7 @@ public class Seed : MonoBehaviour
         }
         else
         {
+            if (plant == null) return;
             rechargePeriod += Time.deltaTime;
             b.interactable = PlantBuilder.sun >= plant.cost && rechargePeriod >= plant.recharge;
             recharge.fillAmount = (rechargePeriod / plant.recharge >= 1) ? 0 : rechargePeriod / plant.recharge;
@@ -67,7 +70,11 @@ public class Seed : MonoBehaviour
     {
         if (LevelManager.status == LevelManager.Status.Intro)
         {
-            if (pb.assignedPlants.Count > ID) pb.assignedPlants.RemoveAt(ID);
+            if (pb.assignedPlants.Count > ID)
+            {
+                pb.selectSeeds[pb.assignedPlants[ID]].GetComponent<Button>().interactable = true;
+                pb.assignedPlants.RemoveAt(ID);
+            }
             return;
         }
         if (Time.timeScale == 0) return;

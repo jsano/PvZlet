@@ -47,6 +47,8 @@ MonoBehaviour:
   levelName: 
   setting: 0
   startingSun: 75
+  unlockedUntil: 50
+  conveyor: []
   waves: {fileID: 0}
+  fogColumn: 0
   preparation: 18
-  reward: {fileID: 1567745852191616486, guid: b00a94b693a6a7d40b1169f268979f3e, type: 3}

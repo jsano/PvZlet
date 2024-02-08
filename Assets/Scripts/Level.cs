@@ -30,6 +30,7 @@ public class Level : MonoBehaviour
 
     public int startingSun;
 
+    public int unlockedUntil;
     public List<Data> conveyor = new List<Data>();
 
     public TextAsset waves;

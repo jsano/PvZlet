@@ -29,6 +29,9 @@ public class PlantBuilder : MonoBehaviour
     /// <summary> The global amount of sun the player currently has </summary>
     public static int sun;
 
+    public GameObject BG;
+    public GameObject selectSeed;
+    [HideInInspector] public List<GameObject> selectSeeds = new List<GameObject>();
     private TextMeshProUGUI s;
 
     // Start is called before the first frame update
@@ -40,8 +43,14 @@ public class PlantBuilder : MonoBehaviour
     void Start()
     {
         s = transform.Find("Sun").Find("Text").GetComponent<TextMeshProUGUI>();
-        //currentPlant = allPlants[assignedPlants[0]];
-        sun = FindFirstObjectByType<Level>().startingSun;
+        Level l = FindFirstObjectByType<Level>();
+        sun = l.startingSun;
+        for (int i = 0; i < Mathf.Min(l.unlockedUntil, allPlants.Length); i++)
+        {
+            GameObject g = Instantiate(selectSeed, BG.transform);
+            g.GetComponent<SelectSeed>().ID = i;
+            selectSeeds.Add(g);
+        }
     }
 
     void Update()

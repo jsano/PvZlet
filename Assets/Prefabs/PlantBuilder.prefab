@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2673504388182373056}
   - component: {fileID: 4872182362455345874}
   - component: {fileID: 535123553729732310}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 150024390743264617}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SeedSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 6807699657921649714}
   - component: {fileID: 6707273356378712236}
   - component: {fileID: 3097023829788428770}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 7435294626954798085}
   - component: {fileID: 8766459396760252582}
   - component: {fileID: 299403417820302463}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ MonoBehaviour:
     m_Right: 5
     m_Top: 5
     m_Bottom: 5
-  m_ChildAlignment: 1
+  m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 63, y: 32}
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 5778530540672600076}
   - component: {fileID: 1749467241907705591}
   - component: {fileID: 6198586842511268989}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlantBuilder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,6 +845,9 @@ MonoBehaviour:
   - {fileID: 2735885424058020558, guid: 565a4bcea34bfca46a133ba42ce4c31d, type: 3}
   - {fileID: 7637014050156741568, guid: a9ad64bbdc13323469ed9d340a034f35, type: 3}
   assignedPlants: 
+  BG: {fileID: 8223257750815460330}
+  selectSeed: {fileID: 1626570548288643753, guid: 3d193cbbe9834f746be87b220ce2ea07, type: 3}
+  selectSeeds: []
 --- !u!1001 &365368018581044232
 PrefabInstance:
   m_ObjectHideFlags: 0

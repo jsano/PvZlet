@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,8 +21,6 @@ public class LevelManager : MonoBehaviour
     private PlantBuilder pb;
 
     private bool letsRock;
-
-    public GameObject selectSeed;
     
     public GameObject reward;
 
@@ -70,11 +69,6 @@ public class LevelManager : MonoBehaviour
             plants.SetActive(true);
             seedSelect.SetActive(true);
             GameObject BG = seedSelect.transform.Find("BG").gameObject;
-            for (int i = 0; i < pb.allPlants.Length; i++)
-            {
-                GameObject g = Instantiate(selectSeed, BG.transform);
-                g.GetComponent<SelectSeed>().ID = i;
-            }
             while (BG.transform.localPosition.y < 0)
             {
                 BG.transform.Translate(Vector3.up * 2000 * Time.deltaTime);
@@ -82,6 +76,7 @@ public class LevelManager : MonoBehaviour
             }
             yield return new WaitUntil(() => letsRock);
             seedSelect.transform.Find("Start").gameObject.SetActive(false);
+            foreach (Transform g in pb.transform.Find("Plants")) g.GetComponent<Button>().interactable = false;
             while (BG.transform.localPosition.y > -400)
             {
                 BG.transform.Translate(Vector3.down * 2000 * Time.deltaTime);
@@ -143,6 +138,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         gameOver.SetActive(true);
         UI.SetActive(false);
+        pb.gameObject.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
     }
 

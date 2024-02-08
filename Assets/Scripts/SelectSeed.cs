@@ -30,6 +30,7 @@ public class SelectSeed : MonoBehaviour
     {
         if (pb.assignedPlants.Count == 8 || pb.assignedPlants.Contains(ID)) return;
         pb.assignedPlants.Add(ID);
+        GetComponent<Button>().interactable = false;
     }
 
 }

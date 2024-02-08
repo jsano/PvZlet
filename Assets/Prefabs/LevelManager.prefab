@@ -269,10 +269,10 @@ Transform:
   - {fileID: 7175623331034705837}
   - {fileID: 19128245465727883}
   - {fileID: 175120697}
-  - {fileID: 7175623330695611912}
   - {fileID: 4744460059601576445}
   - {fileID: 493549151377911597}
   - {fileID: 4644895933673649943}
+  - {fileID: 7175623330695611912}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -297,7 +297,6 @@ MonoBehaviour:
   sun: {fileID: 3931074781938011898}
   zombieSpawner: {fileID: 6807621695211350236}
   sky: {fileID: 2661162353316031795}
-  selectSeed: {fileID: 1626570548288643753, guid: 3d193cbbe9834f746be87b220ce2ea07, type: 3}
   reward: {fileID: 1567745852191616486, guid: b00a94b693a6a7d40b1169f268979f3e, type: 3}
 --- !u!1 &7175623330523217047
 GameObject:
@@ -619,7 +618,7 @@ RectTransform:
   - {fileID: 7175623331662085299}
   - {fileID: 7175623330674859915}
   m_Father: {fileID: 7175623330467181268}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1254,7 +1253,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6011924425467780080, guid: 7230c3c8064fa8e4293206bcd0b01c11, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6011924425467780080, guid: 7230c3c8064fa8e4293206bcd0b01c11, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1734,7 +1733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7909629743045981917, guid: 3688860150797a942803f698b660e108, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7909629743045981917, guid: 3688860150797a942803f698b660e108, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1907,7 +1906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4524444065124541806, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5397209966705866886, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
       propertyPath: m_AnchorMax.y

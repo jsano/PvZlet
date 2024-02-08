@@ -15,39 +15,61 @@ public class Seed : MonoBehaviour
     private Plant plant;
     private Image recharge;
     [HideInInspector] public float rechargePeriod;
+    private TextMeshProUGUI cost;
+    private Image image;
 
     // Start is called before the first frame update
     void Start()
     {
         pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         b = GetComponent<Button>();
-        plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
-        rechargePeriod = plant.recharge;
-        transform.Find("Text").GetComponent<TextMeshProUGUI>().text = plant.cost + "";
+        cost = transform.Find("Text").GetComponent<TextMeshProUGUI>();
         recharge = transform.Find("Recharge").GetComponent<Image>();
-        GetComponent<Image>().color = plant.GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
+        recharge.fillAmount = 0;
+        image = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rechargePeriod += Time.deltaTime;
-        b.interactable = PlantBuilder.sun >= plant.cost && rechargePeriod >= plant.recharge;
-        recharge.fillAmount = (rechargePeriod / plant.recharge >= 1) ? 0 : rechargePeriod / plant.recharge;
+        if (LevelManager.status == LevelManager.Status.Intro)
+        {
+            if (pb.assignedPlants.Count <= ID)
+            {
+                image.color = new Color(0, 0, 0, 0.5f);
+                cost.text = "";
+                return;
+            }
+            plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
+            rechargePeriod = plant.recharge;
+            cost.text = plant.cost + "";
+            image.color = plant.GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
+        }
+        else
+        {
+            rechargePeriod += Time.deltaTime;
+            b.interactable = PlantBuilder.sun >= plant.cost && rechargePeriod >= plant.recharge;
+            recharge.fillAmount = (rechargePeriod / plant.recharge >= 1) ? 0 : rechargePeriod / plant.recharge;
 
-        if (Input.GetButtonDown("Plant1") && ID == 0 && b.interactable) OnClick();
-        if (Input.GetButtonDown("Plant2") && ID == 1 && b.interactable) OnClick();
-        if (Input.GetButtonDown("Plant3") && ID == 2 && b.interactable) OnClick();
-        if (Input.GetButtonDown("Plant4") && ID == 3 && b.interactable) OnClick();
-        if (Input.GetButtonDown("Plant5") && ID == 4 && b.interactable) OnClick();
-        if (Input.GetButtonDown("Plant6") && ID == 5 && b.interactable) OnClick();
-        if (Input.GetButtonDown("Plant7") && ID == 6 && b.interactable) OnClick();
-        if (Input.GetButtonDown("Plant8") && ID == 7 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant1") && ID == 0 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant2") && ID == 1 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant3") && ID == 2 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant4") && ID == 3 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant5") && ID == 4 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant6") && ID == 5 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant7") && ID == 6 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant8") && ID == 7 && b.interactable) OnClick();
+        }
     }
 
     /// <summary> Called when the button is clicked or the hotkey is pressed </summary>
     public void OnClick()
     {
+        if (LevelManager.status == LevelManager.Status.Intro)
+        {
+            if (pb.assignedPlants.Count > ID) pb.assignedPlants.RemoveAt(ID);
+            return;
+        }
         if (Time.timeScale == 0) return;
         if (EventSystem.current.currentSelectedGameObject == gameObject)
         {

@@ -22,7 +22,7 @@ public class PlantBuilder : MonoBehaviour
     public GameObject[] allPlants;
 
     /// <summary> The currently picked plants for the level, represented by indices for <c>allPlants</c> </summary>
-    public List<int> assignedPlants;
+    [HideInInspector] public List<int> assignedPlants;
     /// <summary> The currently selected plant object that, if clicked on a tile, will be planted </summary>
     public static GameObject currentPlant;
 
@@ -34,13 +34,13 @@ public class PlantBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        assignedPlants = new List<int>(new int[] {33, 1, 20, allPlants.Length - 1, 14, 5, 25, 27});
+        //assignedPlants = new List<int>(new int[] {33, 1, 20, allPlants.Length - 1, 14, 5, 25, 27});
     }
 
     void Start()
     {
         s = transform.Find("Sun").Find("Text").GetComponent<TextMeshProUGUI>();
-        currentPlant = allPlants[assignedPlants[0]];
+        //currentPlant = allPlants[assignedPlants[0]];
         sun = FindFirstObjectByType<Level>().startingSun;
     }
 

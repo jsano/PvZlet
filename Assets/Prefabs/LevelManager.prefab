@@ -297,6 +297,7 @@ MonoBehaviour:
   sun: {fileID: 3931074781938011898}
   zombieSpawner: {fileID: 6807621695211350236}
   sky: {fileID: 2661162353316031795}
+  selectSeed: {fileID: 1626570548288643753, guid: 3d193cbbe9834f746be87b220ce2ea07, type: 3}
   reward: {fileID: 1567745852191616486, guid: b00a94b693a6a7d40b1169f268979f3e, type: 3}
 --- !u!1 &7175623330523217047
 GameObject:

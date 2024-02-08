@@ -17,8 +17,11 @@ public class LevelManager : MonoBehaviour
     public ZombieSpawner zombieSpawner;
     public Sky sky;
     private Level l;
+    private PlantBuilder pb;
 
     private bool letsRock;
+
+    public GameObject selectSeed;
     
     public GameObject reward;
 
@@ -40,6 +43,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         l = FindFirstObjectByType<Level>();
         UI.SetActive(false);
         StartCoroutine(Start_Helper());
@@ -66,6 +70,11 @@ public class LevelManager : MonoBehaviour
             plants.SetActive(true);
             seedSelect.SetActive(true);
             GameObject BG = seedSelect.transform.Find("BG").gameObject;
+            for (int i = 0; i < pb.allPlants.Length; i++)
+            {
+                GameObject g = Instantiate(selectSeed, BG.transform);
+                g.GetComponent<SelectSeed>().ID = i;
+            }
             while (BG.transform.localPosition.y < 0)
             {
                 BG.transform.Translate(Vector3.up * 2000 * Time.deltaTime);

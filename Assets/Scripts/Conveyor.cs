@@ -19,18 +19,19 @@ public class Conveyor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.status != LevelManager.Status.Start) return;
         period += Time.deltaTime;
         if (period >= interval)
         {
             period = 0;
             List<Level.Data> options = new List<Level.Data>();
-            foreach (Level.Data d in l.conveyor) if (d.count > 0) options.Add(d);
+            foreach (Level.Data d in l.conveyor) if (d.count > PlantBuilder.plantCounts[d.plant]) options.Add(d);
             if (options.Count == 0) return;
             GameObject g = Instantiate(conveyorSeed, transform);
             g.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -370);
             int index = Random.Range(0, options.Count);
             g.GetComponent<ConveyorSeed>().plant = options[index].plant;
-            options[index].count -= 1;
+            PlantBuilder.plantCounts[options[index].plant] += 1;
         }
     }
 

@@ -90,6 +90,7 @@ public class Seed : SeedBase
     public override void OnPlant()
     {
         rechargePeriod = 0;
+        PlantBuilder.plantCounts[pb.assignedPlants[ID]] += 1;
     }
 
 }

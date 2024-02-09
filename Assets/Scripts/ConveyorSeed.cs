@@ -10,11 +10,14 @@ public class ConveyorSeed : SeedBase
     private PlantBuilder pb;
     [HideInInspector] public int plant;
     private RectTransform RT;
+    private Rigidbody2D RB;
 
     // Start is called before the first frame update
     void Start()
     {
         RT = GetComponent<RectTransform>();
+        RB = GetComponent<Rigidbody2D>();
+        RB.velocity = Vector3.up * 100;
         pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         GetComponent<Image>().color = pb.allPlants[plant].GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
     }
@@ -22,7 +25,10 @@ public class ConveyorSeed : SeedBase
     // Update is called once per frame
     void Update()
     {
-        if (RT.anchoredPosition.y < 0) RT.anchoredPosition += Vector2.up * 100 * Time.deltaTime;
+        if (Physics2D.Raycast(RT.position + new Vector3(0, RT.sizeDelta.y, 0), Vector2.up, 10f, LayerMask.GetMask("Seed"))) RB.velocity = Vector3.zero;
+        else RB.velocity = Vector2.up * 100;
+        if (RT.anchoredPosition.y >= 0)
+        RB.velocity = Vector3.zero;
     }
 
     /// <summary> Called when the button is clicked or the hotkey is pressed </summary>

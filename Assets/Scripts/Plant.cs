@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Plant : Damagable
 {
+    /// <summary> Currently only used for <c>PlantBuilder.plantCounts</c></summary>
+    [HideInInspector] public int ID;
 
     /// <summary> The plant's sun cost </summary>
     public int cost;
@@ -80,7 +82,7 @@ public class Plant : Damagable
             return;
         }
         Zombie hit = LookInRange(row);
-        if (hit != null /*|| instant*/ || alwaysAttack) {
+        if (hit != null || alwaysAttack && LevelManager.status == LevelManager.Status.Start) {
             if (!attacking) period += Time.deltaTime;
             if (period >= atkspd)
             {
@@ -146,6 +148,11 @@ public class Plant : Damagable
     protected virtual void Die()
     {
         Destroy(gameObject);
+    }
+
+    void OnDestroy()
+    {
+        PlantBuilder.plantCounts[ID] -= 1;
     }
 
     protected IEnumerator EatenVisual()

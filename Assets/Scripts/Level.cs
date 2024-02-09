@@ -20,7 +20,7 @@ public class Level : MonoBehaviour
     }
 
     [Serializable]
-    public struct Data
+    public class Data
     {
         public int plant;
         public int count;

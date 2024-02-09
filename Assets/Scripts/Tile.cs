@@ -59,7 +59,7 @@ public class Tile : MonoBehaviour
         GameObject g = EventSystem.current.currentSelectedGameObject;
         if (g != null)
         {
-            if (g.GetComponent<Seed>() != null && CanPlantHere() || g.GetComponent<Shovel>() != null) SR.color = hoverColor;
+            if (g.GetComponent<SeedBase>() != null && CanPlantHere() || g.GetComponent<Shovel>() != null) SR.color = hoverColor;
             else SR.color = Color.clear;
         }
         else SR.color = Color.clear;
@@ -75,7 +75,7 @@ public class Tile : MonoBehaviour
         GameObject g = EventSystem.current.currentSelectedGameObject;
         if (g != null)
         {
-            if (g.GetComponent<Seed>() != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
+            if (g.GetComponent<SeedBase>() != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
             else if (g.GetComponent<Shovel>() != null) RemoveAllPlants();
         }
     }
@@ -114,7 +114,7 @@ public class Tile : MonoBehaviour
             p.row = row;
             p.col = col;
             PlantBuilder.sun -= p.cost;
-            EventSystem.current.currentSelectedGameObject.GetComponent<Seed>().rechargePeriod = 0;
+            EventSystem.current.currentSelectedGameObject.GetComponent<SeedBase>().OnPlant();
         }
         else
         {

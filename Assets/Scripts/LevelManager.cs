@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public GameObject seedSelect;
     public GameObject plants;
     public GameObject sun;
+    public GameObject conveyor;
     public ZombieSpawner zombieSpawner;
     public Sky sky;
     private Level l;
@@ -112,6 +113,7 @@ public class LevelManager : MonoBehaviour
         ready.SetActive(false);
         UI.SetActive(true);
         sky.enabled = true;
+        if (l.conveyor.Count > 0) conveyor.SetActive(true);
         status = Status.Start;
     }
 

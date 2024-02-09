@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Seed : MonoBehaviour
+public class Seed : SeedBase
 {
 
     private PlantBuilder pb;
@@ -14,7 +14,7 @@ public class Seed : MonoBehaviour
     private Button b;
     private Plant plant;
     private Image recharge;
-    [HideInInspector] public float rechargePeriod;
+    private float rechargePeriod;
     private TextMeshProUGUI cost;
     private Image image;
 
@@ -66,7 +66,7 @@ public class Seed : MonoBehaviour
     }
 
     /// <summary> Called when the button is clicked or the hotkey is pressed </summary>
-    public void OnClick()
+    public override void OnClick()
     {
         if (LevelManager.status == LevelManager.Status.Intro)
         {
@@ -85,6 +85,11 @@ public class Seed : MonoBehaviour
         }
         EventSystem.current.SetSelectedGameObject(gameObject);
         pb.SetPlantToBuild(ID);
+    }
+
+    public override void OnPlant()
+    {
+        rechargePeriod = 0;
     }
 
 }

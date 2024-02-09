@@ -295,6 +295,7 @@ MonoBehaviour:
   seedSelect: {fileID: 4752365881393886937}
   plants: {fileID: 1543787405159646498}
   sun: {fileID: 3931074781938011898}
+  conveyor: {fileID: 5330493471074042376}
   zombieSpawner: {fileID: 6807621695211350236}
   sky: {fileID: 2661162353316031795}
   reward: {fileID: 1567745852191616486, guid: b00a94b693a6a7d40b1169f268979f3e, type: 3}
@@ -2028,5 +2029,10 @@ RectTransform:
 --- !u!1 &4752365881393886937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4534688566267146826, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
+  m_PrefabInstance: {fileID: 9159680277495923859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5330493471074042376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3955303137885259419, guid: dbd648d7aa837f6458a6bf5169de6d69, type: 3}
   m_PrefabInstance: {fileID: 9159680277495923859}
   m_PrefabAsset: {fileID: 0}

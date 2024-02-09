@@ -34,17 +34,12 @@ public class PlantBuilder : MonoBehaviour
     [HideInInspector] public List<GameObject> selectSeeds = new List<GameObject>();
     private TextMeshProUGUI s;
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        //assignedPlants = new List<int>(new int[] {33, 1, 20, allPlants.Length - 1, 14, 5, 25, 27});
-    }
-
     void Start()
     {
         s = transform.Find("Sun").Find("Text").GetComponent<TextMeshProUGUI>();
         Level l = FindFirstObjectByType<Level>();
         sun = l.startingSun;
+        currentPlant = allPlants[0];
         for (int i = 0; i < Mathf.Min(l.unlockedUntil, allPlants.Length); i++)
         {
             GameObject g = Instantiate(selectSeed, BG.transform);
@@ -62,6 +57,12 @@ public class PlantBuilder : MonoBehaviour
     {
         if (buttonID >= assignedPlants.Count) return;
         currentPlant = allPlants[assignedPlants[buttonID]];
+    }
+
+    public void SetPlantIDToBuild(int plantID)
+    {
+        if (plantID >= allPlants.Length) return;
+        currentPlant = allPlants[plantID];
     }
 
 }

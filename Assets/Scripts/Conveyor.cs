@@ -7,8 +7,9 @@ public class Conveyor : MonoBehaviour
 
     public GameObject conveyorSeed;
     private Level l;
-    private float interval = 3;
+    private float interval = 5;
     private float period;
+    [HideInInspector] public int count;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class Conveyor : MonoBehaviour
         if (period >= interval)
         {
             period = 0;
+            if (count >= 8) return;
             List<Level.Data> options = new List<Level.Data>();
             foreach (Level.Data d in l.conveyor) if (d.count > PlantBuilder.plantCounts[d.plant]) options.Add(d);
             if (options.Count == 0) return;
@@ -33,6 +35,7 @@ public class Conveyor : MonoBehaviour
             int index = Random.Range(0, options.Count);
             g.GetComponent<ConveyorSeed>().plant = options[index].plant;
             PlantBuilder.plantCounts[options[index].plant] += 1;
+            count += 1;
         }
     }
 

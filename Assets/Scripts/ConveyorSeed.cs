@@ -31,8 +31,7 @@ public class ConveyorSeed : SeedBase
         //image.fillAmount += 100 * Time.deltaTime / RT.sizeDelta.y;
         if (Physics2D.Raycast(RT.position + new Vector3(0, RT.sizeDelta.y, 0), Vector2.up, 5f, LayerMask.GetMask("Seed"))) RB.velocity = Vector3.zero;
         else RB.velocity = Vector2.up * 100;
-        if (RT.anchoredPosition.y >= 0)
-        RB.velocity = Vector3.zero;
+        if (RT.anchoredPosition.y >= 0) RB.velocity = Vector3.zero;
     }
 
     /// <summary> Called when the button is clicked or the hotkey is pressed </summary>
@@ -51,6 +50,7 @@ public class ConveyorSeed : SeedBase
     public override void OnPlant()
     {
         Destroy(gameObject);
+        transform.parent.GetComponent<Conveyor>().count -= 1;
     }
 
 }

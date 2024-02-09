@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 0}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 85, y: 350}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &680996313064061538
@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conveyorSeed: {fileID: 8944283068931021166, guid: b6856d9d0139c5646a445c1241e2bc53, type: 3}
+  count: 0
 --- !u!1 &4534688566267146826
 GameObject:
   m_ObjectHideFlags: 0

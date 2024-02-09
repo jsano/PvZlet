@@ -113,7 +113,15 @@ public class LevelManager : MonoBehaviour
         ready.SetActive(false);
         UI.SetActive(true);
         sky.enabled = true;
-        if (l.conveyor.Count > 0) conveyor.SetActive(true);
+        if (l.conveyor.Count > 0)
+        {
+            conveyor.SetActive(true);
+            while (conveyor.transform.position.x < 40)
+            {
+                conveyor.transform.Translate(Vector3.right * 500 * Time.deltaTime);
+                yield return null;
+            }
+        }
         status = Status.Start;
     }
 

@@ -28,7 +28,8 @@ public class Conveyor : MonoBehaviour
             foreach (Level.Data d in l.conveyor) if (d.count > PlantBuilder.plantCounts[d.plant]) options.Add(d);
             if (options.Count == 0) return;
             GameObject g = Instantiate(conveyorSeed, transform);
-            g.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -370);
+            float pos = -(GetComponent<RectTransform>().sizeDelta.y - g.GetComponent<RectTransform>().sizeDelta.y);
+            g.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, pos);
             int index = Random.Range(0, options.Count);
             g.GetComponent<ConveyorSeed>().plant = options[index].plant;
             PlantBuilder.plantCounts[options[index].plant] += 1;

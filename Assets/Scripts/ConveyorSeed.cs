@@ -11,6 +11,7 @@ public class ConveyorSeed : SeedBase
     [HideInInspector] public int plant;
     private RectTransform RT;
     private Rigidbody2D RB;
+    private Image image;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +20,16 @@ public class ConveyorSeed : SeedBase
         RB = GetComponent<Rigidbody2D>();
         RB.velocity = Vector3.up * 100;
         pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
-        GetComponent<Image>().color = pb.allPlants[plant].GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
+        image = GetComponent<Image>();
+        image.color = pb.allPlants[plant].GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
+        //image.fillAmount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Physics2D.Raycast(RT.position + new Vector3(0, RT.sizeDelta.y, 0), Vector2.up, 10f, LayerMask.GetMask("Seed"))) RB.velocity = Vector3.zero;
+        //image.fillAmount += 100 * Time.deltaTime / RT.sizeDelta.y;
+        if (Physics2D.Raycast(RT.position + new Vector3(0, RT.sizeDelta.y, 0), Vector2.up, 5f, LayerMask.GetMask("Seed"))) RB.velocity = Vector3.zero;
         else RB.velocity = Vector2.up * 100;
         if (RT.anchoredPosition.y >= 0)
         RB.velocity = Vector3.zero;

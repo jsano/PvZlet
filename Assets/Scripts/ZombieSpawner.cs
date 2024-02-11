@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using UnityEngine;
 
@@ -28,6 +29,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private List<List<ZombieData>> waves = new List<List<ZombieData>>();
     private List<List<GraveData>> graves = new List<List<GraveData>>();
+    private HashSet<int> flagWaveNumbers = new HashSet<int>();
 
     /// <summary> How many lanes are in this level. Will likely either be 5 or 6 </summary>
     public int lanes;
@@ -57,6 +59,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             if (level[i].Contains("-"))
             {
+                wave = wave.OrderBy(_ => UnityEngine.Random.Range(0, 1f)).ToList();
                 waves.Add(wave);
                 graves.Add(grave);
                 wave = new List<ZombieData>();
@@ -69,6 +72,7 @@ public class ZombieSpawner : MonoBehaviour
                 int _ID = int.Parse(level[i + 1]);
                 wave.Add(new ZombieData { count = int.Parse(level[i]), ID = _ID, row = int.Parse(level[i + 2]) });
                 unique.Add(_ID);
+                if (_ID == 1) flagWaveNumbers.Add(waves.Count);
                 i += 3;
             }
             catch (FormatException)
@@ -148,7 +152,13 @@ public class ZombieSpawner : MonoBehaviour
                 }
             }
             float maxBuild = currentBuild;
-            yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
+            if (flagWaveNumbers.Contains(waveNumber + 1))
+            {
+                yield return new WaitUntil(() => currentBuild == 0 || forceSend <= 0);
+                //levelManager...
+                yield return new WaitForSeconds(5);
+            }
+            else yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
         }
         yield return new WaitUntil(() => currentBuild == 0);
         levelManager.Win();

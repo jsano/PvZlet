@@ -17,10 +17,12 @@ public class Sky : MonoBehaviour
 
     private Camera cam;
 
+    private Level l;
+
     // Start is called before the first frame update
     void Start()
     {
-        Level l = FindFirstObjectByType<Level>();
+        l = FindFirstObjectByType<Level>();
         night = l.setting == Level.Setting.Night || l.setting == Level.Setting.Fog || l.setting == Level.Setting.RoofNight;
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         if (l.fogColumn > 0)
@@ -42,7 +44,7 @@ public class Sky : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!night && LevelManager.status == LevelManager.Status.Start) period += Time.deltaTime;
+        if (!night && LevelManager.status == LevelManager.Status.Start && l.conveyor.Count == 0) period += Time.deltaTime;
         if (period > interval)
         {
             period = 0;

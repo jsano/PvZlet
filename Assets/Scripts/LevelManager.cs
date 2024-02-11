@@ -112,6 +112,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ready.SetActive(false);
         UI.SetActive(true);
+        zombieSpawner.levelUI.SetActive(true);
         sky.enabled = true;
         if (l.conveyor.Count > 0)
         {

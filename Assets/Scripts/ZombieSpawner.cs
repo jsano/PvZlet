@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZombieSpawner : MonoBehaviour
 {
@@ -40,15 +41,19 @@ public class ZombieSpawner : MonoBehaviour
     private int waveNumber;
 
     public LevelManager levelManager;
-    public UI UI;
+    public Image progressBar;
+    public GameObject hugeWave;
+    public GameObject levelUI;
+    public GameObject flag;
 
     private List<GameObject> displayZombies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        HashSet<int> unique = new HashSet<int>();
         Level l = FindFirstObjectByType<Level>();
+        levelUI.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = l.levelName;
+        HashSet<int> unique = new HashSet<int>();
         lanes = (l.setting == Level.Setting.Pool || l.setting == Level.Setting.Fog) ? 6 : 5;
         preparation = l.preparation;
         TextAsset levelZombies = l.waves;
@@ -71,8 +76,8 @@ public class ZombieSpawner : MonoBehaviour
             {
                 int _ID = int.Parse(level[i + 1]);
                 wave.Add(new ZombieData { count = int.Parse(level[i]), ID = _ID, row = int.Parse(level[i + 2]) });
-                unique.Add(_ID);
                 if (_ID == 1) flagWaveNumbers.Add(waves.Count);
+                else unique.Add(_ID);
                 i += 3;
             }
             catch (FormatException)
@@ -81,6 +86,14 @@ public class ZombieSpawner : MonoBehaviour
                 i += 3;
             }
         }
+
+        foreach (int i in flagWaveNumbers)
+        {
+            Transform p = levelUI.transform.Find("Progress");
+            GameObject g = Instantiate(flag, p);
+            g.GetComponent<RectTransform>().anchoredPosition = new Vector3(-(float)i / (waves.Count - 1) * (p.GetComponent<RectTransform>().sizeDelta.x - 10) - 5, 0, 0);
+        }
+        transform.Find("Display").position = new Vector3(17.5f, 0, 0);
         foreach (int i in unique)
         {
             Vector3 offset = new Vector2(UnityEngine.Random.Range(-2, 2f), UnityEngine.Random.Range(-5, 5f));
@@ -105,9 +118,10 @@ public class ZombieSpawner : MonoBehaviour
     {
         yield return new WaitUntil(() => preparation <= 0 && LevelManager.status == LevelManager.Status.Start);
         foreach (GameObject g in displayZombies) Destroy(g);
-        UI.ShowProgress();
+        levelUI.transform.Find("Progress").gameObject.SetActive(true);
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
+            progressBar.fillAmount = CompletedPercentage();
             forceSend = 30f;
 
             foreach (GraveData c in graves[waveNumber])
@@ -155,8 +169,22 @@ public class ZombieSpawner : MonoBehaviour
             if (flagWaveNumbers.Contains(waveNumber + 1))
             {
                 yield return new WaitUntil(() => currentBuild == 0 || forceSend <= 0);
-                //levelManager...
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(3);
+                hugeWave.SetActive(true);
+                TextMeshProUGUI t = hugeWave.GetComponent<TextMeshProUGUI>();
+                while (t.color.a < 1)
+                {
+                    t.color += new Color(0, 0, 0, Time.deltaTime * 10);
+                    yield return null;
+                }
+                yield return new WaitForSeconds(4);
+                while (t.color.a > 0)
+                {
+                    t.color -= new Color(0, 0, 0, Time.deltaTime * 10);
+                    yield return null;
+                }
+                hugeWave.SetActive(false);
+                yield return new WaitForSeconds(1);
             }
             else yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
         }
@@ -164,7 +192,7 @@ public class ZombieSpawner : MonoBehaviour
         levelManager.Win();
     }
 
-    public float CompletedPercentage()
+    private float CompletedPercentage()
     {
         if (waves.Count == 1) return 1;
         return ((float) waveNumber) / (waves.Count - 1);

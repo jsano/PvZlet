@@ -9,8 +9,6 @@ using UnityEngine.EventSystems;
 public class UI : MonoBehaviour
 {
 
-    private Transform level;
-    public Image progressBar;
     public GameObject pauseMenu;
     public GameObject pause;
     public GameObject fastForward;
@@ -21,16 +19,12 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        level = transform.Find("Level");
-        level.Find("Name").GetComponent<TextMeshProUGUI>().text = FindFirstObjectByType<Level>().levelName;
         zs = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
-        progressBar.fillAmount = zs.CompletedPercentage();
-
         if (!pauseMenu.activeInHierarchy) Time.timeScale = curTimeScale;
 
         if (Input.GetMouseButtonDown(0))
@@ -91,11 +85,6 @@ public class UI : MonoBehaviour
         Level l = FindFirstObjectByType<Level>();
         if (l != null) Destroy(l.gameObject);
         SceneManager.LoadScene(0);
-    }
-
-    public void ShowProgress()
-    {
-        level.Find("Progress").gameObject.SetActive(true);
     }
 
 }

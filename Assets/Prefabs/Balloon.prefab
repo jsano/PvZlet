@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3f5259d4f9e5b428a9c4b9e9a82502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Balloon Zombie
   spawnScore: 3
   damage: 1
   walkTime: 1.5
@@ -109,4 +110,6 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  textBox: {fileID: 0}
+  displayOnly: 0
   poppedWalkTime: 3

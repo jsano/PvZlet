@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9669ca541fa2444beccb2076ae13c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Ladder Zombie
   spawnScore: 5
   damage: 1
   walkTime: 2
@@ -101,4 +102,5 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 0
   status: {fileID: 0}
+  displayOnly: 0
   noLadderWalkTime: 3

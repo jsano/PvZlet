@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef96d1abae786684a8787dfa70e3b359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Gargantuar
   spawnScore: 20
   damage: 1000
   walkTime: 3
@@ -101,4 +102,5 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 0
   status: {fileID: 0}
+  displayOnly: 0
   imp: {fileID: 5066145326785716353, guid: 1bab47dbbf166b541aa9d20407b8d962, type: 3}

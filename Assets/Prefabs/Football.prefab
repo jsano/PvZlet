@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab8617191d1d094a8065ad550b6d75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Football Zombie
   spawnScore: 10
   damage: 1
   walkTime: 2
@@ -94,8 +95,11 @@ MonoBehaviour:
   eatTime: 0.5
   row: 1
   hitsGround: 0
+  aquatic: 0
   armor: {fileID: 4069347666126425492, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
   shield: {fileID: 0}
   projectile: {fileID: 0}
+  wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  displayOnly: 0

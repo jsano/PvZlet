@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9785ee879a8a544a0d425f818ba6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Digger Zombie
   spawnScore: 5
   damage: 1
   walkTime: 1
@@ -105,4 +106,5 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  displayOnly: 0
   surfaceWalkTime: 3

@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: HP
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 5360188768274288824, guid: ae730055cb308e64fa4ea6c9831a3c3f, type: 3}
+      propertyPath: zombieName
+      value: Giga-Gargantuar
+      objectReference: {fileID: 0}
     - target: {fileID: 8320301565300734055, guid: ae730055cb308e64fa4ea6c9831a3c3f, type: 3}
       propertyPath: m_Color.b
       value: 0

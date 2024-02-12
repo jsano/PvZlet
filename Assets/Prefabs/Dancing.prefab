@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de12f884bbe2067428ef055343e7b3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Dancing Zombie
   spawnScore: 10
   damage: 1
   walkTime: 1
@@ -94,11 +95,14 @@ MonoBehaviour:
   eatTime: 0.5
   row: 1
   hitsGround: 0
+  aquatic: 0
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}
+  wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  displayOnly: 0
   backup: {fileID: 6833965198594692961, guid: 2c343650ab24b2c4c9ee09221bfa6b70, type: 3}
   spawnDelay: 3
   dancingWalkTime: 4

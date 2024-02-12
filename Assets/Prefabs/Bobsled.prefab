@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5098673d115ea43929f59ead93828a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Zombie Bobsled Team
   spawnScore: 4
   damage: 0
   walkTime: 1
@@ -101,4 +102,5 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 0
   status: {fileID: 0}
+  displayOnly: 0
   zombie: {fileID: 6319703039537062804, guid: 8b727bc172440104c9955c368cbc330f, type: 3}

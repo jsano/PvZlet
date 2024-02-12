@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2450e5b738cb0d4f83ff6c5c5a293ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Catapult Zombie
   spawnScore: 10
   damage: 1000
   walkTime: 2
@@ -101,5 +102,6 @@ MonoBehaviour:
   wheels: 1
   eatsPlants: 0
   status: {fileID: 0}
+  displayOnly: 0
   count: 15
   throwInterval: 2

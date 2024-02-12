@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ef75a147d14d8478fe8a5dc65fa17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Newspaper Zombie
   spawnScore: 2
   damage: 1
   walkTime: 3
@@ -101,5 +102,6 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  displayOnly: 0
   angryWalkTime: 1.5
   angryEatTime: 0.25

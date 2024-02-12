@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c81496f5a304b2419d71118e6e22b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Snorkel
   spawnScore: 2
   damage: 1
   walkTime: 3
@@ -98,5 +99,7 @@ MonoBehaviour:
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}
+  wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  displayOnly: 0

@@ -150,6 +150,7 @@ public class LevelManager : MonoBehaviour
         gameOver.SetActive(true);
         UI.SetActive(false);
         pb.gameObject.SetActive(false);
+        zombieSpawner.gameObject.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
     }
 

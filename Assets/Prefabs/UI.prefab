@@ -1660,6 +1660,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1883363522}
   pause: {fileID: 1398074004}
   fastForward: {fileID: 1889819527}
+  textBox: {fileID: 8291094522469666631, guid: 2c7297ba35e7e3c4fa11d0714de4a536, type: 3}
 --- !u!1 &5868279750692748528
 GameObject:
   m_ObjectHideFlags: 0

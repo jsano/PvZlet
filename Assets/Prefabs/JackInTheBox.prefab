@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3eedf1fe8ed744e8d8d96a19058d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Jack-in-the-box Zombie
   spawnScore: 3
   damage: 1
   walkTime: 2
@@ -101,5 +102,6 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  displayOnly: 0
   maxTime: 20
   explosion: {fileID: 6010293583157068058, guid: 00a6405d68a884142960e8a7007e6efd, type: 3}

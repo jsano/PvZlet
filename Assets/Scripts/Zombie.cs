@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class Zombie : Damagable
 {
+    public string zombieName;
+
     /// <summary> How much this zombie's worth. Used for progressing waves when killed </summary>
     public int spawnScore;
     /// <summary> How much damage to deal to plants per bite </summary>
@@ -49,6 +52,7 @@ public class Zombie : Damagable
     protected bool hypnotized;
     protected bool backwards;
 
+    private GameObject _text;
     [HideInInspector] public bool displayOnly;
 
     void Awake()
@@ -77,8 +81,11 @@ public class Zombie : Damagable
         baseHP = HP;
         if (displayOnly)
         {
-            gameObject.layer = LayerMask.NameToLayer("Default");
+            gameObject.layer = LayerMask.NameToLayer("UI");
             enabled = false;
+            _text = Instantiate(GameObject.Find("LevelManager").transform.Find("UI").GetComponent<UI>().textBox, transform);
+            _text.transform.localPosition = new Vector3(0, -1, 0);
+            _text.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = zombieName;
         }
         else Spawn();
     }
@@ -273,6 +280,16 @@ public class Zombie : Damagable
         }
         row = lane;
         changingLanes = false;
+    }
+
+    void OnMouseEnter()
+    {
+        _text.SetActive(true);
+    }
+
+    void OnMouseExit()
+    {
+        _text.SetActive(false);
     }
 
     public SpriteRenderer getSpriteRenderer()

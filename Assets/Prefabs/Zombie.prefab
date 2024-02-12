@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e023831b6980e4d803b42964ad5aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Zombie
   spawnScore: 1
   damage: 1
   walkTime: 3
@@ -110,8 +111,11 @@ MonoBehaviour:
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}
+  wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  textBox: {fileID: 8291094522469666631, guid: 2c7297ba35e7e3c4fa11d0714de4a536, type: 3}
+  displayOnly: 0
 --- !u!50 &196455329693155889
 Rigidbody2D:
   serializedVersion: 4

@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687d95dc05bcb254cae0bc9c59db2261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieName: Pole Vaulting Zombie
   spawnScore: 3
   damage: 1
   walkTime: 2
@@ -94,9 +95,13 @@ MonoBehaviour:
   eatTime: 0.5
   row: 1
   hitsGround: 0
+  aquatic: 0
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}
+  wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  textBox: {fileID: 8291094522469666631, guid: 2c7297ba35e7e3c4fa11d0714de4a536, type: 3}
+  displayOnly: 0
   noPoleWalkTime: 3

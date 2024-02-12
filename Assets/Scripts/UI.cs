@@ -14,12 +14,12 @@ public class UI : MonoBehaviour
     public GameObject fastForward;
     private float curTimeScale = 1;
 
-    private ZombieSpawner zs;
+    public GameObject textBox;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        zs = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
+        
     }
 
     // Update is called once per frame

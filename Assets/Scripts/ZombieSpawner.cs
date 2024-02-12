@@ -121,7 +121,7 @@ public class ZombieSpawner : MonoBehaviour
         levelUI.transform.Find("Progress").gameObject.SetActive(true);
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
-            progressBar.fillAmount = CompletedPercentage();
+            progressBar.fillAmount = (waves.Count == 1) ? 1 : ((float)waveNumber) / (waves.Count - 1);
             forceSend = 30f;
 
             foreach (GraveData c in graves[waveNumber])
@@ -165,11 +165,30 @@ public class ZombieSpawner : MonoBehaviour
                     yield return new WaitForSeconds(0.2f);
                 }
             }
+
+            if (flagWaveNumbers.Contains(waveNumber))
+            {
+                for (int i = 1; i <= lanes; i++)
+                    for (int j = 1; j <= 9; j++)
+                    {
+                        Tile t = Tile.tileObjects[i, j];
+                        if (t.gridItem != null && t.gridItem.tag == "Grave")
+                        {
+                            int[] possible = new int[] {0, 2, 4};
+                            int _ID = possible[UnityEngine.Random.Range(0, possible.Length)];
+                            currentBuild += allZombies[_ID].GetComponent<Zombie>().spawnScore;
+                            GameObject g = Instantiate(allZombies[_ID], t.transform.position, Quaternion.identity);
+                            g.GetComponent<Zombie>().row = i;
+                        }
+                    }    
+            }
+
             float maxBuild = currentBuild;
+
             if (flagWaveNumbers.Contains(waveNumber + 1))
             {
                 yield return new WaitUntil(() => currentBuild == 0 || forceSend <= 0);
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(2);
                 hugeWave.SetActive(true);
                 TextMeshProUGUI t = hugeWave.GetComponent<TextMeshProUGUI>();
                 while (t.color.a < 1)
@@ -188,14 +207,8 @@ public class ZombieSpawner : MonoBehaviour
             }
             else yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
         }
-        yield return new WaitUntil(() => currentBuild == 0);
+        yield return new WaitUntil(() => currentBuild <= 0);
         levelManager.Win();
-    }
-
-    private float CompletedPercentage()
-    {
-        if (waves.Count == 1) return 1;
-        return ((float) waveNumber) / (waves.Count - 1);
     }
 
 }

@@ -86,15 +86,15 @@ public class Zombie : Damagable
     // Update is called once per frame
     public virtual void Update()
     {
-        if (armorSR != null)
+        if (armorSR != null && LevelManager.status == LevelManager.Status.Lost)
         {
             armorSR.sortingLayerID = SR.sortingLayerID;
-            armorSR.sortingOrder = SR.sortingOrder;
+            armorSR.sortingOrder = SR.sortingOrder + 1;
         }
-        if (shieldSR != null)
+        if (shieldSR != null && LevelManager.status == LevelManager.Status.Lost)
         {
             shieldSR.sortingLayerID = SR.sortingLayerID;
-            shieldSR.sortingOrder = SR.sortingOrder;
+            shieldSR.sortingOrder = SR.sortingOrder + 1;
         }
         int mask = hypnotized ? LayerMask.GetMask("Zombie") : LayerMask.GetMask("Plant");
         // NOTE: (1, 1, 1) and not localscale because of hypnotized -1 x-scale

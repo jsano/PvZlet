@@ -50,7 +50,7 @@ public class Reward : MonoBehaviour
         }
         while (whiteScreen.color.a < 1)
         {
-            whiteScreen.color += new Color(0, 0, 0, Time.deltaTime / 4);
+            whiteScreen.color += new Color(0, 0, 0, Time.deltaTime / 3);
             yield return null;
         }
         GameObject.Find("UI").GetComponent<UI>().MainMenu();

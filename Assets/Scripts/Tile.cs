@@ -127,9 +127,9 @@ public class Tile : MonoBehaviour
     private bool CanPlantHere()
     {
         Plant p = PlantBuilder.currentPlant.GetComponent<Plant>();
-        if (gridItem != null)
+        if (p.GetComponent<GraveBuster>() != null)
         {
-            if (p.GetComponent<GraveBuster>() != null && gridItem.tag == "Grave") return true;
+            if (gridItem != null && gridItem.tag == "Grave") return true;
             return false;
         }
         if (p.tag == "Pumpkin" && (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null) return true;

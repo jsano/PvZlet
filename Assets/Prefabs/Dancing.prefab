@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Dancing Zombie
   spawnScore: 10
   damage: 1
-  walkTime: 2
+  walkTime: 1
   HP: 16
   eatTime: 0.5
   row: 1

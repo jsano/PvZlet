@@ -22,11 +22,10 @@ public class Conveyor : MonoBehaviour
     void Update()
     {
         if (LevelManager.status != LevelManager.Status.Start) return;
-        period += Time.deltaTime;
+        if (count < 8) period += Time.deltaTime;
         if (period >= interval)
         {
             period = 0;
-            if (count >= 8) return;
             List<Level.Data> options = new List<Level.Data>();
             foreach (Level.Data d in l.conveyor) if (d.count > PlantBuilder.plantCounts[d.plant]) options.Add(d);
             if (options.Count == 0) return;

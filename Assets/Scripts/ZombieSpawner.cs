@@ -43,6 +43,7 @@ public class ZombieSpawner : MonoBehaviour
     public LevelManager levelManager;
     public Image progressBar;
     public GameObject hugeWave;
+    public GameObject final;
     public GameObject levelUI;
     public GameObject flag;
 
@@ -121,6 +122,8 @@ public class ZombieSpawner : MonoBehaviour
         levelUI.transform.Find("Progress").gameObject.SetActive(true);
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
+            if (waveNumber == waves.Count - 1) StartCoroutine(Final());
+
             progressBar.fillAmount = (waves.Count == 1) ? 1 : ((float)waveNumber) / (waves.Count - 1);
             forceSend = 30f;
 
@@ -209,6 +212,24 @@ public class ZombieSpawner : MonoBehaviour
         }
         yield return new WaitUntil(() => currentBuild <= 0);
         levelManager.Win();
+    }
+
+    private IEnumerator Final()
+    {
+        final.SetActive(true);
+        TextMeshProUGUI t = final.GetComponent<TextMeshProUGUI>();
+        while (t.color.a < 1)
+        {
+            t.color += new Color(0, 0, 0, Time.deltaTime * 10);
+            yield return null;
+        }
+        yield return new WaitForSeconds(1.5f);
+        while (t.color.a > 0)
+        {
+            t.color -= new Color(0, 0, 0, Time.deltaTime * 10);
+            yield return null;
+        }
+        final.SetActive(false);
     }
 
 }

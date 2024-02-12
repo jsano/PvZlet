@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Yeti
   spawnScore: 0
   damage: 1
-  walkTime: 3
+  walkTime: 4
   HP: 20
   eatTime: 0.5
   row: 1

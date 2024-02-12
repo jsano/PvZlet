@@ -98,7 +98,7 @@ MonoBehaviour:
   zombieName: Balloon Zombie
   spawnScore: 3
   damage: 1
-  walkTime: 1.5
+  walkTime: 2
   HP: 11
   eatTime: 0.5
   row: 1
@@ -110,6 +110,5 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
-  textBox: {fileID: 0}
   displayOnly: 0
-  poppedWalkTime: 3
+  poppedWalkTime: 4

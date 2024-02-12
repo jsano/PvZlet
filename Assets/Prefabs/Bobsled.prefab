@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Zombie Bobsled Team
   spawnScore: 4
   damage: 0
-  walkTime: 1
+  walkTime: 2
   HP: 20
   eatTime: 0.5
   row: 1

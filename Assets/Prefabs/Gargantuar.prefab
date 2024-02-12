@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Gargantuar
   spawnScore: 20
   damage: 1000
-  walkTime: 3
+  walkTime: 4
   HP: 150
   eatTime: 0.5
   row: 1

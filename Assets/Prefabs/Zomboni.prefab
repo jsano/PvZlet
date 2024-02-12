@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Zomboni
   spawnScore: 10
   damage: 1000
-  walkTime: 3
+  walkTime: 4
   HP: 58
   eatTime: 0.5
   row: 1

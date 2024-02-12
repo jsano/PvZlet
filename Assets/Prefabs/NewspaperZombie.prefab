@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Newspaper Zombie
   spawnScore: 2
   damage: 1
-  walkTime: 3
+  walkTime: 4
   HP: 15
   eatTime: 0.5
   row: 1
@@ -103,5 +103,5 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
-  angryWalkTime: 1.5
+  angryWalkTime: 2
   angryEatTime: 0.25

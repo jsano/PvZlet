@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Snorkel
   spawnScore: 2
   damage: 1
-  walkTime: 3
+  walkTime: 4
   HP: 10
   eatTime: 0.5
   row: 1

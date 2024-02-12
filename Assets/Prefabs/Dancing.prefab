@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Dancing Zombie
   spawnScore: 10
   damage: 1
-  walkTime: 1
+  walkTime: 2
   HP: 16
   eatTime: 0.5
   row: 1
@@ -105,4 +105,4 @@ MonoBehaviour:
   displayOnly: 0
   backup: {fileID: 6833965198594692961, guid: 2c343650ab24b2c4c9ee09221bfa6b70, type: 3}
   spawnDelay: 3
-  dancingWalkTime: 4
+  dancingWalkTime: 5

@@ -102,7 +102,7 @@ MonoBehaviour:
   zombieName: Zombie
   spawnScore: 1
   damage: 1
-  walkTime: 3
+  walkTime: 4
   HP: 10
   eatTime: 0.5
   row: 1
@@ -114,7 +114,6 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
-  textBox: {fileID: 8291094522469666631, guid: 2c7297ba35e7e3c4fa11d0714de4a536, type: 3}
   displayOnly: 0
 --- !u!50 &196455329693155889
 Rigidbody2D:

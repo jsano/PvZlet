@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Ladder Zombie
   spawnScore: 5
   damage: 1
-  walkTime: 2
+  walkTime: 3
   HP: 15
   eatTime: 0.5
   row: 1
@@ -103,4 +103,4 @@ MonoBehaviour:
   eatsPlants: 0
   status: {fileID: 0}
   displayOnly: 0
-  noLadderWalkTime: 3
+  noLadderWalkTime: 4

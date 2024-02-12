@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9830cafd5aaa9eb439d1f3b727154adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   cost: 150
   recharge: 5
   damage: 500
@@ -94,10 +95,16 @@ MonoBehaviour:
   variableStartPeriod: 0
   HP: 6
   range: 1
+  backwardsRange: 0
   alwaysAttack: 0
+  wall: 0
+  mushroom: 0
   instant: 0
+  grounded: 0
+  aquatic: 0
+  lobbed: 0
   row: 0
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
-  chewTime: 5
+  chewTime: 15

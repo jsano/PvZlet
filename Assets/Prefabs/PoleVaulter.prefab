@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Pole Vaulting Zombie
   spawnScore: 3
   damage: 1
-  walkTime: 2
+  walkTime: 3
   HP: 16
   eatTime: 0.5
   row: 1
@@ -102,6 +102,5 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
-  textBox: {fileID: 8291094522469666631, guid: 2c7297ba35e7e3c4fa11d0714de4a536, type: 3}
   displayOnly: 0
-  noPoleWalkTime: 3
+  noPoleWalkTime: 4

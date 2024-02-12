@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Pogo Zombie
   spawnScore: 5
   damage: 1
-  walkTime: 1.5
+  walkTime: 3
   HP: 16
   eatTime: 0.5
   row: 1
@@ -103,4 +103,4 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
-  noPogoWalkTime: 3
+  noPogoWalkTime: 4

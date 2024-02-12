@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Dolphin Rider Zombie
   spawnScore: 3
   damage: 1
-  walkTime: 1
+  walkTime: 2
   HP: 15
   eatTime: 0.5
   row: 1
@@ -103,4 +103,4 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
-  noPoleWalkTime: 3
+  noPoleWalkTime: 4

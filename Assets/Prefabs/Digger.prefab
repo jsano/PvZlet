@@ -94,7 +94,7 @@ MonoBehaviour:
   zombieName: Digger Zombie
   spawnScore: 5
   damage: 1
-  walkTime: 1
+  walkTime: 2
   HP: 15
   eatTime: 0.5
   row: 1

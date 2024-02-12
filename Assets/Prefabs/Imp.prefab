@@ -78,7 +78,7 @@ MonoBehaviour:
   zombieName: Imp
   spawnScore: 0
   damage: 1
-  walkTime: 2
+  walkTime: 3
   HP: 5
   eatTime: 0.5
   row: 1

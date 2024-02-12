@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -154,7 +153,6 @@ public class Zombie : Damagable
             RB.velocity = (Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c+1].transform.position) / 3;
             RB.velocity /= walkTime / 6; // d = rt
             RB.velocity *= transform.localScale.x * ((status == null) ? 1 : status.walkMod); 
-            if (hypnotized || backwards) RB.velocity *= new Vector2(-1, 1);
             if (stepPeriod >= walkTime / 6)
             {
                 takingStep = false;
@@ -171,7 +169,6 @@ public class Zombie : Damagable
         RB.velocity = Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c+1].transform.position;
         RB.velocity /= walkTime; // d = rt
         RB.velocity *= transform.localScale.x * ((status == null) ? 1 : status.walkMod);
-        if (hypnotized || backwards) RB.velocity *= new Vector2(-1, 1);
     }
 
     /// <summary> Given a list of plants in range, gets the first interactable one </summary>

@@ -90,7 +90,7 @@ MonoBehaviour:
   zombieName: Backup Dancer
   spawnScore: 0
   damage: 1
-  walkTime: 4
+  walkTime: 5
   HP: 10
   eatTime: 0.5
   row: 1
@@ -102,6 +102,5 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
-  textBox: {fileID: 0}
   displayOnly: 0
   xLoc: 0

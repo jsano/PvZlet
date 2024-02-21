@@ -82,6 +82,8 @@ public class Zombie : Damagable
         {
             gameObject.layer = LayerMask.NameToLayer("UI");
             enabled = false;
+            RB.isKinematic = true;
+            RB.velocity = Vector2.zero;
             _text = Instantiate(GameObject.Find("LevelManager").transform.Find("UI").GetComponent<UI>().textBox, transform);
             _text.transform.localPosition = new Vector3(0, -1, 0);
             _text.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = zombieName;

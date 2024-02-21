@@ -69,10 +69,10 @@ public class LevelManager : MonoBehaviour
             sun.SetActive(true);
             plants.SetActive(true);
             seedSelect.SetActive(true);
-            GameObject BG = seedSelect.transform.Find("BG").gameObject;
+            RectTransform BG = seedSelect.transform.Find("BG").GetComponent<RectTransform>();
             while (BG.transform.localPosition.y < 0)
             {
-                BG.transform.Translate(Vector3.up * 2000 * Time.deltaTime);
+                BG.anchoredPosition = BG.anchoredPosition + Vector2.up * 2000 * Time.deltaTime;
                 yield return null;
             }
             yield return new WaitUntil(() => letsRock);
@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
             foreach (Transform g in pb.transform.Find("Plants")) g.GetComponent<Button>().interactable = false;
             while (BG.transform.localPosition.y > -400)
             {
-                BG.transform.Translate(Vector3.down * 2000 * Time.deltaTime);
+                BG.anchoredPosition = BG.anchoredPosition + Vector2.down * 2000 * Time.deltaTime;
                 yield return null;
             }
             seedSelect.SetActive(false);
@@ -114,16 +114,17 @@ public class LevelManager : MonoBehaviour
         UI.SetActive(true);
         zombieSpawner.levelUI.SetActive(true);
         sky.enabled = true;
+        status = Status.Start;
         if (l.conveyor.Count > 0)
         {
             conveyor.SetActive(true);
-            while (conveyor.transform.position.x < 40)
+            RectTransform c = conveyor.GetComponent<RectTransform>();
+            while (c.anchoredPosition.x < 40)
             {
-                conveyor.transform.Translate(Vector3.right * 500 * Time.deltaTime);
+                c.anchoredPosition = c.anchoredPosition + Vector2.right * 500 * Time.deltaTime;
                 yield return null;
             }
         }
-        status = Status.Start;
     }
 
     // Update is called once per frame

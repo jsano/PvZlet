@@ -98,9 +98,12 @@ public class ZombieSpawner : MonoBehaviour
         foreach (int i in unique)
         {
             Vector3 offset = new Vector2(UnityEngine.Random.Range(-2, 2f), UnityEngine.Random.Range(-5, 5f));
+            allZombies[i].SetActive(false);
             GameObject g = Instantiate(allZombies[i], transform.Find("Display").transform.position + offset, Quaternion.identity);
             g.GetComponent<Zombie>().displayOnly = true;
             displayZombies.Add(g);
+            g.SetActive(true);
+            allZombies[i].SetActive(true);
         }
         StartCoroutine(Spawn());
     }

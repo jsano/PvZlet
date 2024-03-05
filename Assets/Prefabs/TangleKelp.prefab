@@ -87,19 +87,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a756383f114c954ab165f797ed18c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 19
   cost: 25
   recharge: 30
   damage: 1000
   atkspd: 0
   variableStartPeriod: 0
   HP: 6
-  range: 0
-  backwardsRange: 0
+  range: 0.01
+  backwardsRange: 0.01
   alwaysAttack: 0
+  wall: 0
   mushroom: 0
   instant: 0
   grounded: 0
   aquatic: 1
+  lobbed: 0
   row: 0
   col: 0
   projectile: {fileID: 0}

@@ -22,7 +22,7 @@ public class DolphinRider : PoleVaulter
         }
         else
         {
-            RB.velocity = new Vector2(-0.5f, 0);
+            RB.velocity = new Vector2(-0.25f, 0);
         }
     }
 

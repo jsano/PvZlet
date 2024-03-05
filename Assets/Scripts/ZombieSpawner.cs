@@ -153,6 +153,7 @@ public class ZombieSpawner : MonoBehaviour
                             GameObject g1 = Instantiate(allZombies[i.ID]);
                             g1.GetComponent<Zombie>().row = possible[UnityEngine.Random.Range(0, possible.Count)];
                             g1.GetComponent<Zombie>().waveNumber = waveNumber;
+                            yield return new WaitForSeconds(0.2f);
                         }
                         continue;
                     }

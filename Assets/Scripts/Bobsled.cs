@@ -21,7 +21,7 @@ public class Bobsled : Zombie
             z.row = row; 
             z = Instantiate(zombie, transform.position + new Vector3(Tile.TILE_DISTANCE.x, 0, 0), Quaternion.identity).GetComponent<Zombie>();
             z.row = row;
-            ZS.currentBuild += 4;
+            ZS.SubtractBuild(-4, waveNumber);
             Die();
         }
         WalkConstant();

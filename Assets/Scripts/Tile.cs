@@ -76,7 +76,7 @@ public class Tile : MonoBehaviour
         if (g != null)
         {
             if (g.GetComponent<SeedBase>() != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
-            else if (g.GetComponent<Shovel>() != null) RemoveAllPlants();
+            else if (g.GetComponent<Shovel>() != null) Destroy(planted);
         }
     }
 
@@ -132,6 +132,7 @@ public class Tile : MonoBehaviour
             if (gridItem != null && gridItem.tag == "Grave") return true;
             return false;
         }
+        if (gridItem != null) return false;
         if (p.tag == "Pumpkin" && (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null) return true;
         if (p.tag == "FlowerPot" && !roof) return false;
         if (p.tag == "CoffeeBean") return planted != null && planted.GetComponent<Plant>().isSleeping();

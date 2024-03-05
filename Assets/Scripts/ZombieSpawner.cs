@@ -35,7 +35,7 @@ public class ZombieSpawner : MonoBehaviour
     /// <summary> How many lanes are in this level. Will likely either be 5 or 6 </summary>
     public int lanes;
     /// <summary> The "amount" of zombies currently in the lawn, influenced by their <c>spawnScores</c>. When low enough, the next wave will spawn </summary>
-    [HideInInspector] public int currentBuild = 0;
+    private int currentBuild = 0;
     /// <summary> The amount of time in seconds to wait before the next wave spawns no matter what </summary>
     private float forceSend;
     private int waveNumber;
@@ -92,7 +92,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             Transform p = levelUI.transform.Find("Progress");
             GameObject g = Instantiate(flag, p);
-            g.GetComponent<RectTransform>().anchoredPosition = new Vector3(-(float)i / (waves.Count - 1) * (p.GetComponent<RectTransform>().sizeDelta.x - 10) - 5, 0, 0);
+            g.GetComponent<RectTransform>().anchoredPosition = new Vector3(-(float)i / (waves.Count - 1) * (p.GetComponent<RectTransform>().rect.width - 10) - 5, 0, 0);
         }
         transform.Find("Display").position = new Vector3(17.5f, 0, 0);
         foreach (int i in unique)
@@ -126,8 +126,9 @@ public class ZombieSpawner : MonoBehaviour
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
             if (waveNumber == waves.Count - 1) StartCoroutine(Final());
-
+            
             progressBar.fillAmount = (waves.Count == 1) ? 1 : ((float)waveNumber) / (waves.Count - 1);
+            currentBuild = 0;
             forceSend = 30f;
 
             foreach (GraveData c in graves[waveNumber])
@@ -151,6 +152,7 @@ public class ZombieSpawner : MonoBehaviour
                             currentBuild += allZombies[i.ID].GetComponent<Zombie>().spawnScore;
                             GameObject g1 = Instantiate(allZombies[i.ID]);
                             g1.GetComponent<Zombie>().row = possible[UnityEngine.Random.Range(0, possible.Count)];
+                            g1.GetComponent<Zombie>().waveNumber = waveNumber;
                         }
                         continue;
                     }
@@ -168,6 +170,7 @@ public class ZombieSpawner : MonoBehaviour
                         if (g.GetComponent<Balloon>() != null) lane = UnityEngine.Random.Range(1, lanes+1);
                     }
                     g.GetComponent<Zombie>().row = lane;
+                    g.GetComponent<Zombie>().waveNumber = waveNumber;
                     yield return new WaitForSeconds(0.2f);
                 }
             }
@@ -185,6 +188,7 @@ public class ZombieSpawner : MonoBehaviour
                             currentBuild += allZombies[_ID].GetComponent<Zombie>().spawnScore;
                             GameObject g = Instantiate(allZombies[_ID], t.transform.position, Quaternion.identity);
                             g.GetComponent<Zombie>().row = i;
+                            g.GetComponent<Zombie>().waveNumber = waveNumber;
                         }
                     }    
             }
@@ -233,6 +237,11 @@ public class ZombieSpawner : MonoBehaviour
             yield return null;
         }
         final.SetActive(false);
+    }
+
+    public void SubtractBuild(int build, int wave)
+    {
+        if (waveNumber == wave || waveNumber >= waves.Count) currentBuild -= build;
     }
 
 }

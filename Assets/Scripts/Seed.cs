@@ -63,11 +63,19 @@ public class Seed : SeedBase
             if (Input.GetButtonDown("Plant7") && ID == 6 && b.interactable) OnClick();
             if (Input.GetButtonDown("Plant8") && ID == 7 && b.interactable) OnClick();
         }
+
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            PlantBuilder.sun = 1000;
+            rechargePeriod = plant.recharge;
+        }
     }
 
     /// <summary> Called when the button is clicked or the hotkey is pressed </summary>
     public override void OnClick()
     {
+        if (Time.timeScale == 0 || !b.interactable) return;
         if (LevelManager.status == LevelManager.Status.Intro)
         {
             if (pb.assignedPlants.Count > ID)
@@ -77,7 +85,6 @@ public class Seed : SeedBase
             }
             return;
         }
-        if (Time.timeScale == 0) return;
         if (EventSystem.current.currentSelectedGameObject == gameObject)
         {
             EventSystem.current.SetSelectedGameObject(null);

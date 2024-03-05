@@ -87,7 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c81496f5a304b2419d71118e6e22b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Snorkel
+  zombieName: Snorkel Zombie
+  waveNumber: 0
   spawnScore: 2
   damage: 1
   walkTime: 4

@@ -8,6 +8,7 @@ public class Zombie : Damagable
 {
     public string zombieName;
 
+    [HideInInspector] public int waveNumber;
     /// <summary> How much this zombie's worth. Used for progressing waves when killed </summary>
     public int spawnScore;
     /// <summary> How much damage to deal to plants per bite </summary>
@@ -20,7 +21,7 @@ public class Zombie : Damagable
     /// <summary> How much HP the zombie has. Doesn't include armor or shields </summary>
     public float HP;
     protected float baseHP;
-    [HideInInspector] public float eatTime = 0.5f;
+    protected float eatTime = 0.5f;
     /// <summary> Which row the zombie is in. Takes values between [1 - <c>ZombieSpawner.lanes</c>] </summary>
     [HideInInspector] public int row = 1;
     /// <summary> Whether the zombie is able to attack grounded plants like Spikeweed </summary>
@@ -235,7 +236,7 @@ public class Zombie : Damagable
     /// <summary> Updates the spawner's progression score, and disappears </summary>
     public virtual void Die()
     {
-        GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
+        ZS.SubtractBuild(spawnScore, waveNumber);
         Destroy(shield);
         Destroy(gameObject);
     }
@@ -249,7 +250,7 @@ public class Zombie : Damagable
         baseMaterialColor = Color.magenta;
         SR.material.color = baseMaterialColor;
         if (shield != null) shield.GetComponent<Shield>().Hypnotize();
-        GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().currentBuild -= spawnScore;
+        ZS.SubtractBuild(spawnScore, waveNumber);
         spawnScore = 0;
     }
 

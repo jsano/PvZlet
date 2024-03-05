@@ -8,8 +8,8 @@ public class Snorkel : Zombie
     // Update is called once per frame
     public override void Update()
     {
-        int c = Tile.WORLD_TO_COL(transform.position.x);
-        if (c != 0 && Tile.tileObjects[row, c].water && !isEating()) Submerge();
+        int c = Mathf.Max(Tile.WORLD_TO_COL(transform.position.x), 1);
+        if (c < 10 && Tile.tileObjects[row, c].water && !isEating()) Submerge();
         else Unsubmerge();
         base.Update();
     }
@@ -23,7 +23,7 @@ public class Snorkel : Zombie
     private void Submerge()
     {
         BC.offset = new Vector2(0, -0.5f);
-        BC.size = new Vector2(1, 0.5f);
+        BC.size = new Vector2(1, 0.25f);
     }
 
     private void Unsubmerge()

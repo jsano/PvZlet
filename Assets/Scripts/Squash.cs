@@ -21,10 +21,11 @@ public class Squash : Plant
 
     private IEnumerator SquashAfterDelay(Zombie z)
     {
+        Vector3 dest = z.transform.position;
         yield return new WaitForSeconds(1);
         SR.sortingLayerName = "Armor";
         SR.sortingOrder = 1;
-        Vector3 dest = z.transform.position + new Vector3(0, Tile.TILE_DISTANCE.y, 0);
+        dest += new Vector3(0, Tile.TILE_DISTANCE.y, 0);
         while (transform.position != dest)
         {
             transform.position = Vector3.MoveTowards(transform.position, dest, 15 * Time.deltaTime);

@@ -20,6 +20,7 @@ public class PotatoMine : Plant
         else
         {
             base.Update();
+            HP = 100000;
             SR.material.color = Color.white;
         }
     }

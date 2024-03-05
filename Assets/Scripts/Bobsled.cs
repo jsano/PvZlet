@@ -15,12 +15,16 @@ public class Bobsled : Zombie
         {
             Zombie z = Instantiate(zombie, transform.position, Quaternion.identity).GetComponent<Zombie>();
             z.row = row;
+            z.waveNumber = waveNumber;
             z = Instantiate(zombie, transform.position + new Vector3(Tile.TILE_DISTANCE.x / 3, 0, 0), Quaternion.identity).GetComponent<Zombie>();
             z.row = row;
+            z.waveNumber = waveNumber;
             z = Instantiate(zombie, transform.position + new Vector3(Tile.TILE_DISTANCE.x * 2 / 3, 0, 0), Quaternion.identity).GetComponent<Zombie>();
-            z.row = row; 
+            z.row = row;
+            z.waveNumber = waveNumber;
             z = Instantiate(zombie, transform.position + new Vector3(Tile.TILE_DISTANCE.x, 0, 0), Quaternion.identity).GetComponent<Zombie>();
             z.row = row;
+            z.waveNumber = waveNumber;
             ZS.SubtractBuild(-4, waveNumber);
             Die();
         }

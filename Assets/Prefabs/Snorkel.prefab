@@ -93,7 +93,6 @@ MonoBehaviour:
   damage: 1
   walkTime: 4
   HP: 10
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 1

@@ -72,25 +72,21 @@ public class StraightProjectile : MonoBehaviour
             if (!sharp) Destroy(gameObject); // NOTE: Very situational, ideally only cactus spikes should ignore
             return;
         }
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, transform.localScale.x, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
         // Prioritize shield over zombie
-        foreach (RaycastHit2D h in hits) {
-            other = h.collider;
-            if (other.GetComponent<Shield>() != null)
-            {
-                Hit(other.GetComponent<Shield>());                
-                return;
-            }
+        if (other.GetComponent<Shield>() != null)
+        {
+            Hit(other.GetComponent<Shield>());                
+            return;
         }
         // No shield, just zombie
-        if (hits.Length > 0)
+        else
         {
             if (splash.magnitude > 0)
             {
                 RaycastHit2D[] hits1 = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
-                foreach (RaycastHit2D h in hits1) if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope")) Hit(h.collider.GetComponent<Damagable>());
+                foreach (RaycastHit2D h in hits1) if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope") && h.collider.offset.y == 0) Hit(h.collider.GetComponent<Damagable>());
             }
-            else Hit(hits[0].collider.GetComponent<Zombie>());
+            else Hit(other.GetComponent<Zombie>());
         }
     }
 

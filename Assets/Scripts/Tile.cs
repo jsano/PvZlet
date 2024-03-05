@@ -134,7 +134,8 @@ public class Tile : MonoBehaviour
         }
         if (gridItem != null) return false;
         if (p.tag == "Pumpkin" && (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null) return true;
-        if (p.tag == "FlowerPot" && !roof) return false;
+        if (p.tag == "LilyPad") return water && ContainsPlant("LilyPad") == null;
+        if (p.tag == "FlowerPot") return roof && ContainsPlant("FlowerPot") == null;
         if (p.tag == "CoffeeBean") return planted != null && planted.GetComponent<Plant>().isSleeping();
         if (p.grounded && (water || roof)) return false;
         if (water)

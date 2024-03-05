@@ -26,15 +26,26 @@ public class Conveyor : MonoBehaviour
         if (period >= interval)
         {
             period = 0;
-            List<Level.Data> options = new List<Level.Data>();
-            foreach (Level.Data d in l.conveyor) if (d.count > PlantBuilder.plantCounts[d.plant]) options.Add(d);
-            if (options.Count == 0) return;
+            int range = 0;
+            foreach (Level.Data d in l.conveyor) range += Mathf.Max(0, d.count - PlantBuilder.plantCounts[d.plant]);
+            if (range == 0) return;
+            int index = Random.Range(0, range);
+            int plant = 0;
+            foreach (Level.Data d in l.conveyor)
+            {
+                index -= d.count - PlantBuilder.plantCounts[d.plant];
+                if (index < 0)
+                {
+                    plant = d.plant;
+                    break;
+                }
+            }
             GameObject g = Instantiate(conveyorSeed, transform);
             float pos = -(GetComponent<RectTransform>().sizeDelta.y - g.GetComponent<RectTransform>().sizeDelta.y);
             g.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, pos);
-            int index = Random.Range(0, options.Count);
-            g.GetComponent<ConveyorSeed>().plant = options[index].plant;
-            PlantBuilder.plantCounts[options[index].plant] += 1;
+            
+            g.GetComponent<ConveyorSeed>().plant = plant;
+            PlantBuilder.plantCounts[plant] += 1;
             count += 1;
         }
     }

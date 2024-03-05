@@ -23,7 +23,7 @@ public class Snorkel : Zombie
     private void Submerge()
     {
         BC.offset = new Vector2(0, -0.5f);
-        BC.size = new Vector2(1, 0.25f);
+        BC.size = new Vector2(1, 0.01f);
     }
 
     private void Unsubmerge()

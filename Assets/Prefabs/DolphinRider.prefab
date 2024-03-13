@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Dolphin Rider Zombie
+  waveNumber: 0
   spawnScore: 3
   damage: 1
-  walkTime: 2
+  walkTime: 1
   HP: 15
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 1

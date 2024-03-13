@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Zomboni
+  waveNumber: 0
   spawnScore: 10
   damage: 1000
   walkTime: 4
   HP: 58
-  eatTime: 0.5
   row: 1
   hitsGround: 1
   aquatic: 0

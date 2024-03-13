@@ -10,6 +10,8 @@ public class DolphinRider : PoleVaulter
     public override void Start()
     {
         base.Start();
+        BC.offset = new Vector2(0, -0.5f);
+        BC.size = new Vector2(1, 0.01f);
         StartCoroutine(EnterPool());
     }
 
@@ -22,7 +24,7 @@ public class DolphinRider : PoleVaulter
         }
         else
         {
-            RB.velocity = new Vector2(-0.25f, 0);
+            RB.velocity = new Vector2(-0.5f, 0);
         }
     }
 
@@ -30,6 +32,8 @@ public class DolphinRider : PoleVaulter
     {
         yield return new WaitForSeconds(3);
         entered = true;
+        BC.offset = new Vector2(0, 0);
+        BC.size = new Vector2(1, 1);
     }
 
 }

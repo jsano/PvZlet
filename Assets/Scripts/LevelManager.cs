@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -52,14 +53,14 @@ public class LevelManager : MonoBehaviour
     private IEnumerator Start_Helper()
     {
         yield return new WaitForSeconds(1);
-        float acceleration = 15f;
-        float midpoint = mainCamera.transform.position.x + 5f;
-        float speed = 0;
-        while (mainCamera.transform.position.x < 10f)
+        Vector3 startPos = mainCamera.transform.position;
+        float moveTime = 2f;
+        float curTime = 0;
+        while (curTime < moveTime)
         {
-            if (mainCamera.transform.position.x < midpoint) speed += acceleration * Time.deltaTime;
-            else speed = Mathf.Max(0.1f, speed - acceleration * Time.deltaTime);
-            mainCamera.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            float point = -0.5f * Mathf.Atan(1f * Mathf.Cos(Mathf.PI / moveTime * curTime)) / Mathf.Atan(1f) + 0.5f;
+            mainCamera.transform.position = startPos + new Vector3(10f * point, 0, 0);
+            curTime += Time.deltaTime;
             yield return null;
         }
         yield return new WaitForSeconds(0.5f);
@@ -87,15 +88,14 @@ public class LevelManager : MonoBehaviour
         }
         
         yield return new WaitForSeconds(0.5f);
-        speed = 0;
-        while (mainCamera.transform.position.x > 0)
+        while (curTime > 0)
         {
-            if (mainCamera.transform.position.x > midpoint) speed += acceleration * Time.deltaTime;
-            else speed = Mathf.Max(0.1f, speed - acceleration * Time.deltaTime);
-            mainCamera.transform.Translate(Vector3.left * speed * Time.deltaTime);
+            float point = -0.5f * Mathf.Atan(1f * Mathf.Cos(Mathf.PI / moveTime * curTime)) / Mathf.Atan(1f) + 0.5f;
+            mainCamera.transform.position = startPos + new Vector3(10f * point, 0, 0);
+            curTime -= Time.deltaTime;
             yield return null;
         }
-        mainCamera.transform.position = new Vector3(0, 0, mainCamera.transform.position.z);
+        mainCamera.transform.position = startPos;
         yield return new WaitForSeconds(0.5f);
         if (l.fogColumn > 0)
         {

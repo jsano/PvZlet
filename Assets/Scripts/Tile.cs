@@ -134,21 +134,16 @@ public class Tile : MonoBehaviour
         }
         if (gridItem != null) return false;
         if (p.tag == "Pumpkin" && (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null) return true;
-        if (p.tag == "LilyPad") return water && ContainsPlant("LilyPad") == null;
-        if (p.tag == "FlowerPot") return roof && ContainsPlant("FlowerPot") == null;
+        if (p.tag == "LilyPad") return water && planted == null;
+        if (p.tag == "FlowerPot") return roof && planted == null;
+        else if (roof) return false;
         if (p.tag == "CoffeeBean") return planted != null && planted.GetComponent<Plant>().isSleeping();
         if (p.grounded && (water || roof)) return false;
-        if (water)
+        if (p.aquatic)
         {
-            if (p.aquatic && planted == null) return true;
-            if (!p.aquatic && ContainsPlant("LilyPad") == null) return false;
+            if (!water || ContainsPlant("LilyPad") != null) return false;
         }
-        if (roof)
-        {
-            if (p.tag == "FlowerPot" && planted == null) return true;
-            if (p.tag != "FlowerPot" && ContainsPlant("FlowerPot") == null) return false;
-        }
-        if (p.aquatic && !water) return false;
+        else if (water && ContainsPlant("LilyPad") == null) return false;
         if (planted == null || planted.tag == "Pumpkin" || planted.tag == "LilyPad" || planted.tag == "FlowerPot") return true;
         return false;
     }

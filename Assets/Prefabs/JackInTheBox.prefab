@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Jack-in-the-box Zombie
+  waveNumber: 0
   spawnScore: 3
   damage: 1
   walkTime: 3
   HP: 16
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0
@@ -103,5 +103,5 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
-  maxTime: 20
+  maxTime: 30
   explosion: {fileID: 6010293583157068058, guid: 00a6405d68a884142960e8a7007e6efd, type: 3}

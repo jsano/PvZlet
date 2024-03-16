@@ -72,10 +72,15 @@ public class StraightProjectile : MonoBehaviour
             if (!sharp) Destroy(gameObject); // NOTE: Very situational, ideally only cactus spikes should ignore
             return;
         }
-        // Prioritize shield over zombie
+        // Prioritize shield/zomboni over zombie since they can't splash
         if (other.GetComponent<Shield>() != null)
         {
             Hit(other.GetComponent<Shield>());                
+            return;
+        }
+        if (other.GetComponent<Zomboni>() != null)
+        {
+            Hit(other.GetComponent<Zomboni>());
             return;
         }
         // No shield, just zombie

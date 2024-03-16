@@ -101,6 +101,8 @@ public class ZombieSpawner : MonoBehaviour
             allZombies[i].SetActive(false);
             GameObject g = Instantiate(allZombies[i], transform.Find("Display").transform.position + offset, Quaternion.identity);
             g.GetComponent<Zombie>().displayOnly = true;
+            g.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
+            g.GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
             displayZombies.Add(g);
             g.SetActive(true);
             allZombies[i].SetActive(true);
@@ -243,7 +245,7 @@ public class ZombieSpawner : MonoBehaviour
 
     public void SubtractBuild(int build, int wave)
     {
-        if (waveNumber == wave || waveNumber >= waves.Count) currentBuild -= build;
+        if (waveNumber == wave || wave == waves.Count - 1) currentBuild -= build;
     }
 
 }

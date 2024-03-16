@@ -92,11 +92,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Digger Zombie
+  waveNumber: 0
   spawnScore: 5
   damage: 1
   walkTime: 2
   HP: 15
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0
@@ -107,4 +107,4 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
-  surfaceWalkTime: 3
+  surfaceWalkTime: 4

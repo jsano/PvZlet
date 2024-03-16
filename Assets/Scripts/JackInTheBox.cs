@@ -6,12 +6,14 @@ public class JackInTheBox : Football
 {
 
     public float maxTime;
+    private float remaining;
     private bool exploded;
     public GameObject explosion;
 
     public override void Start()
     {
         base.Start();
+        remaining = Random.Range(maxTime, 3);
         projectile = Instantiate(projectile, transform, false);
         projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
     }
@@ -21,9 +23,9 @@ public class JackInTheBox : Football
     {
         if (!exploded)
         {
-            if (projectile != null) maxTime -= Time.deltaTime * Random.Range(1, 4);
+            if (projectile != null) remaining -= Time.deltaTime;
             base.Update();
-            if (maxTime <= 0)
+            if (remaining <= 0)
             {
                 exploded = true;
                 StartCoroutine(Explode());

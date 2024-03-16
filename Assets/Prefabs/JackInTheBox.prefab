@@ -103,5 +103,5 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
-  maxTime: 30
+  maxTime: 20
   explosion: {fileID: 6010293583157068058, guid: 00a6405d68a884142960e8a7007e6efd, type: 3}

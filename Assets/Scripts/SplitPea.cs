@@ -22,6 +22,7 @@ public class SplitPea : Peashooter
         p = Instantiate(projectile, transform.position - rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
         if (p.distance != range) p.distance = range;
         p.dir = Vector3.left;
+        base.Attack(null);
     }
 
 }

@@ -8,8 +8,11 @@ public class Peashooter : Plant
     /// <summary> Shoots a single pea </summary>
     protected override void Attack(Zombie z)
     {
-        StraightProjectile p = Instantiate(projectile, transform.position + rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
-        if (p.distance != range) p.distance = range;
+        if (z != null)
+        {
+            StraightProjectile p = Instantiate(projectile, transform.position + rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
+            if (p.distance != range) p.distance = range;
+        }
         base.Attack(z);
     }
 

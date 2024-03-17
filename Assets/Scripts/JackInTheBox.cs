@@ -13,7 +13,7 @@ public class JackInTheBox : Football
     public override void Start()
     {
         base.Start();
-        remaining = Random.Range(maxTime, 3);
+        remaining = Random.Range(3, maxTime);
         projectile = Instantiate(projectile, transform, false);
         projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
     }

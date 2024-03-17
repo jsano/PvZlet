@@ -100,11 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Zombie
+  waveNumber: 0
   spawnScore: 1
   damage: 1
   walkTime: 4
   HP: 10
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0

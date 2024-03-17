@@ -20,7 +20,7 @@ public class Pogo : Zombie
     // Update is called once per frame
     public override void Update()
     {
-        if (status != null) status.walkMod = Mathf.Max(status.walkMod, 0.5f);
+        if (projectile != null && status != null) status.walkMod = Mathf.Max(status.walkMod, 0.5f);
         if (projectile != null && !jumping)
         {
             WalkConstant();
@@ -46,7 +46,7 @@ public class Pogo : Zombie
         if (toJump.tag == "Tallnut")
         {
             yield return new WaitUntil(() => transform.position.x <= toJump.transform.position.x + Tile.TILE_DISTANCE.x / 3);
-            projectile = null;
+            Destroy(projectile);
         }
         else
         {

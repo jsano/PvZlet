@@ -46,6 +46,7 @@ public class LevelManager : MonoBehaviour
     {
         pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         l = FindFirstObjectByType<Level>();
+        if (l.special != null) Instantiate(l.special);
         UI.SetActive(false);
         StartCoroutine(Start_Helper());
     }

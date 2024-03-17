@@ -15,6 +15,78 @@ PrefabInstance:
       propertyPath: setting
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: preparation
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[0].count
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[0].plant
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[1].count
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[1].plant
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[2].count
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[2].plant
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[3].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[3].plant
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[4].count
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[4].plant
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[5].count
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[5].plant
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[6].count
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[6].plant
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[7].count
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[7].plant
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 2449856806975317780, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: m_RootOrder
       value: 0

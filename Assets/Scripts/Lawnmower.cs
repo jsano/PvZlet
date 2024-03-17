@@ -28,8 +28,11 @@ public class Lawnmower : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        launched = true;
-        if (collider.GetComponent<Zombie>().row == row) collider.GetComponent<Zombie>().ReceiveDamage(100000, gameObject);
+        if (collider.GetComponent<Zombie>().row == row)
+        {
+            launched = true;
+            collider.GetComponent<Zombie>().ReceiveDamage(100000, gameObject);
+        }
     }
 
 }

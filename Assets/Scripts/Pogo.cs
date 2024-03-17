@@ -41,16 +41,17 @@ public class Pogo : Zombie
     {
         jumping = true;
         RB.velocity = Vector2.zero;
+        Vector3 loc = toJump.transform.position;
         yield return new WaitForSeconds(1);
         RB.velocity = new Vector3(-3, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-        if (toJump.tag == "Tallnut")
+        if (toJump != null && toJump.tag == "Tallnut")
         {
-            yield return new WaitUntil(() => transform.position.x <= toJump.transform.position.x + Tile.TILE_DISTANCE.x / 3);
+            yield return new WaitUntil(() => transform.position.x <= loc.x + Tile.TILE_DISTANCE.x / 3);
             Destroy(projectile);
         }
         else
         {
-            yield return new WaitUntil(() => transform.position.x <= toJump.transform.position.x - Tile.TILE_DISTANCE.x / 2);
+            yield return new WaitUntil(() => transform.position.x <= loc.x - Tile.TILE_DISTANCE.x / 2);
         }
         RB.velocity = Vector3.zero;
         jumping = false;

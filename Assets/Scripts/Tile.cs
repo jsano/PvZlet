@@ -47,10 +47,14 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (planted == null && overlapped.Count > 0)
+        if (planted == null)
         {
-            planted = overlapped[0];
-            overlapped.RemoveAt(0);
+            while (overlapped.Count > 0 && overlapped[0] == null) overlapped.RemoveAt(0);
+            if (overlapped.Count > 0)
+            {
+                planted = overlapped[0];
+                overlapped.RemoveAt(0);
+            }
         }
     }
 
@@ -133,7 +137,7 @@ public class Tile : MonoBehaviour
             return false;
         }
         if (gridItem != null) return false;
-        if (p.tag == "Pumpkin" && (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null) return true;
+        if (p.tag == "Pumpkin") return (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null;
         if (p.tag == "LilyPad") return water && planted == null;
         if (p.tag == "FlowerPot") return roof && planted == null;
         else if (roof) return false;
@@ -151,7 +155,7 @@ public class Tile : MonoBehaviour
     public GameObject ContainsPlant(string s)
     {
         if (planted != null && planted.name.StartsWith(s)) return planted;
-        foreach (GameObject g in overlapped) if (g.name.StartsWith(s)) return g;
+        foreach (GameObject g in overlapped) if (g != null && g.name.StartsWith(s)) return g;
         return null;
     }
 

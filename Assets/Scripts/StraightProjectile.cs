@@ -59,7 +59,7 @@ public class StraightProjectile : MonoBehaviour
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (hit) return;
-        if (other.offset.y < 0 || other.offset.y > 0 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
+        if (other.offset.y < 0 || other.GetComponent<BoxCollider2D>().size.y < 1 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
         if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
             if (transform.position.y != startPos.y) return;

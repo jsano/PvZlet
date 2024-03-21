@@ -60,12 +60,12 @@ public class Zombie : Damagable
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         BC = GetComponent<BoxCollider2D>();
-        ZS = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
     }
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        ZS = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
         if (armor != null)
         {
             armor = Instantiate(armor, transform, false);
@@ -184,7 +184,7 @@ public class Zombie : Damagable
             if (hit[i].collider.GetComponent<Player>() != null) return hit[i].collider.gameObject;
             if (hit[i].collider.GetComponent<Zombie>() != null) return hit[i].collider.gameObject;
             Plant p = hit[i].collider.GetComponent<Plant>();
-            if (p.isActiveInstant() || p.row != row && p.grounded && !hitsGround) continue;
+            if (p.isActiveInstant() || p.row != row || p.grounded && !hitsGround) continue;
             if (Tile.tileObjects[p.row, p.col].ladder != null) continue;
             return Tile.tileObjects[p.row, p.col].GetEatablePlant();
         }

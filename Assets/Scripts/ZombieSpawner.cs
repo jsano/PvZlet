@@ -146,8 +146,7 @@ public class ZombieSpawner : MonoBehaviour
                     {
                         List<int> possible = new List<int>();
                         for (int l = 1; l <= lanes; l++) {
-                            Tile check = Tile.tileObjects[l, 9];
-                            if (check.gridItem != null && check.gridItem.tag == "Snow") possible.Add(l);
+                            if (Tile.tileObjects[l, 9].ContainsGridItem("Snow")) possible.Add(l);
                         }
                         if (possible.Count > 0)
                         {
@@ -185,7 +184,7 @@ public class ZombieSpawner : MonoBehaviour
                     for (int j = 1; j <= 9; j++)
                     {
                         Tile t = Tile.tileObjects[i, j];
-                        if (t.gridItem != null && t.gridItem.tag == "Grave")
+                        if (t.ContainsGridItem("Grave"))
                         {
                             int[] possible = new int[] {0, 2, 4};
                             int _ID = possible[UnityEngine.Random.Range(0, possible.Length)];

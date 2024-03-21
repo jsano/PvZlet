@@ -11,8 +11,10 @@ public class Zomboni : Football
     public override void Update()
     {
         int c = Tile.WORLD_TO_COL(transform.position.x + Tile.TILE_DISTANCE.x / 2);
-        if (c <= 9 && c > 1 && c < snowedCol && (Tile.tileObjects[row, c].gridItem == null || Tile.tileObjects[row, c].gridItem.tag == "Snow"))
+        if (c <= 9 && c > 1 && c < snowedCol)
         {
+            GameObject snow = Tile.tileObjects[row, c].ContainsGridItem("Snow");
+            Destroy(snow);
             Tile.tileObjects[row, c].Place(projectile);
             snowedCol = c;
         }

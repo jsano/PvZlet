@@ -20,8 +20,8 @@ public class Jalapeno : Plant
                 a.collider.GetComponent<Zombie>().ReceiveDamage(damage, gameObject);
                 prev.Add(a.collider.gameObject);
             }
-            GameObject t = Tile.tileObjects[row, c].gridItem;
-            if (t != null && t.tag == "Snow") Destroy(t);
+            GameObject snow = Tile.tileObjects[row, c].ContainsGridItem("Snow");
+            Destroy(snow);
         }
         Destroy(gameObject);
     }

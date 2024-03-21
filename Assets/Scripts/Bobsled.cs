@@ -11,7 +11,7 @@ public class Bobsled : Zombie
     public override void Update()
     {
         int c = Mathf.Min(9, Tile.WORLD_TO_COL(transform.position.x));
-        if (c != 0 && (Tile.tileObjects[row, c].gridItem == null || Tile.tileObjects[row, c].gridItem.tag != "Snow"))
+        if (c != 0 && Tile.tileObjects[row, c].ContainsGridItem("Snow") == null)
         {
             Zombie z = Instantiate(zombie, transform.position, Quaternion.identity).GetComponent<Zombie>();
             z.row = row;

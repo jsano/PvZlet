@@ -107,3 +107,4 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
+  popsRemaining: 1

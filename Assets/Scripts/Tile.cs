@@ -27,8 +27,8 @@ public class Tile : MonoBehaviour
 
     /// <summary> The plant object currently planted onto this tile. Can be null if there's no plant </summary>
     [HideInInspector] public GameObject planted;
-    /// <summary> The grid item currently placed onto this tile. Can be null if the tile is empty </summary>
-    [HideInInspector] public GameObject gridItem;
+    /// <summary> The grid items currently placed onto this tile </summary>
+    private List<GameObject> gridItems = new List<GameObject>();
     /// <summary> Any extra plants that are part of a combined plant, in order of importance (ex. pumpkin < lilypad) </summary>
     private List<GameObject> overlapped = new List<GameObject>();
     [HideInInspector] public GameObject ladder;
@@ -49,7 +49,7 @@ public class Tile : MonoBehaviour
     {
         if (planted == null)
         {
-            while (overlapped.Count > 0 && overlapped[0] == null) overlapped.RemoveAt(0);
+            overlapped.RemoveAll(g => g == null);
             if (overlapped.Count > 0)
             {
                 planted = overlapped[0];
@@ -123,20 +123,16 @@ public class Tile : MonoBehaviour
         else
         {
             RemoveAllPlants();
-            Destroy(gridItem);
-            gridItem = g;
+            gridItems.Add(g);
         }
     }
 
     private bool CanPlantHere()
     {
         Plant p = PlantBuilder.currentPlant.GetComponent<Plant>();
-        if (p.GetComponent<GraveBuster>() != null)
-        {
-            if (gridItem != null && gridItem.tag == "Grave") return true;
-            return false;
-        }
-        if (gridItem != null) return false;
+        if (p.GetComponent<GraveBuster>() != null) return ContainsGridItem("Grave");
+        gridItems.RemoveAll(g => g == null);
+        if (gridItems.Count > 0) return false;
         if (p.tag == "Pumpkin") return (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null;
         if (p.tag == "LilyPad") return water && planted == null;
         if (p.tag == "FlowerPot") return roof && planted == null;
@@ -156,6 +152,12 @@ public class Tile : MonoBehaviour
     {
         if (planted != null && planted.name.StartsWith(s)) return planted;
         foreach (GameObject g in overlapped) if (g != null && g.name.StartsWith(s)) return g;
+        return null;
+    }
+
+    public GameObject ContainsGridItem(string s)
+    {
+        foreach (GameObject g in gridItems) if (g != null && g.name.StartsWith(s)) return g;
         return null;
     }
 

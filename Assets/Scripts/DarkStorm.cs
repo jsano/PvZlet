@@ -13,7 +13,7 @@ public class DarkStorm : MonoBehaviour
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
-        period = interval - 1;
+        period = interval - 1.5f;
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class DarkStorm : MonoBehaviour
         period += Time.deltaTime;
         if (period > interval)
         {
-            period = 0;
+            period = 0 + Random.Range(-1f, 1);
             StartCoroutine(Flash());
         }
     }
@@ -37,7 +37,7 @@ public class DarkStorm : MonoBehaviour
             whiteToGray += Time.deltaTime;
             yield return null;
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         float grayToBlack = 0;
         while (SR.color.a < 1)
         {

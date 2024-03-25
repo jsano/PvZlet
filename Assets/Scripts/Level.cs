@@ -38,6 +38,9 @@ public class Level : MonoBehaviour
     /// <summary> If >0, fog will cover this column and beyond </summary>
     public int fogColumn;
 
+    /// <summary> If >0, all columns up to and including this column will have preplanted flower pots </summary>
+    public int potColumn;
+
     /// <summary> The amount of time in seconds to wait before sending the first wave </summary>
     public float preparation;
 

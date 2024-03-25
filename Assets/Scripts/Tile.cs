@@ -117,7 +117,8 @@ public class Tile : MonoBehaviour
             p.row = row;
             p.col = col;
             PlantBuilder.sun -= p.cost;
-            EventSystem.current.currentSelectedGameObject.GetComponent<SeedBase>().OnPlant();
+            if (EventSystem.current.currentSelectedGameObject != null)
+                EventSystem.current.currentSelectedGameObject.GetComponent<SeedBase>().OnPlant();
         }
         else
         {
@@ -135,7 +136,7 @@ public class Tile : MonoBehaviour
         if (p.tag == "Pumpkin") return (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null;
         if (p.tag == "LilyPad") return water && planted == null;
         if (p.tag == "FlowerPot") return roof && planted == null;
-        else if (roof) return false;
+        else if (roof && ContainsPlant("FlowerPot") == null) return false;
         if (p.tag == "CoffeeBean") return planted != null && planted.GetComponent<Plant>().isSleeping();
         if (p.grounded && (water || roof)) return false;
         if (p.aquatic)

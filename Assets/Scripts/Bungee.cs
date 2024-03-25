@@ -7,7 +7,7 @@ public class Bungee : Zombie
 
     private bool ret;
     private float startHeight = Tile.TILE_DISTANCE.y * 10;
-    private int col;
+    [HideInInspector] public int col;
     private GameObject target;
 
     // Update is called once per frame
@@ -18,6 +18,7 @@ public class Bungee : Zombie
 
     private IEnumerator Update_Helper() 
     {
+        BC.enabled = false;
         ret = true;
         target = Instantiate(projectile, transform.position, Quaternion.identity);
         while (target.transform.position.y > Tile.tileObjects[row, col].transform.position.y)
@@ -47,26 +48,29 @@ public class Bungee : Zombie
 
     protected override void Spawn()
     {
-        row = -1;
+        List<(int, int)> found = new List<(int, int)>();
         for (int i = 1; i <= ZS.lanes; i++)
         {
-            if (row != -1) break;
-            for (int j = 1; j <= 6; j++)
+            if (row != 0 && i != row) continue;
+            for (int j = 1; j <= ZS.lanes; j++)
             {
+                if (col != 0 && j != col) continue;
                 if (Tile.tileObjects[i, j].GetEatablePlant() != null)
                 {
-                    row = i;
-                    col = j;
-                    break;
+                    found.Add((i, j));
                 }
             }
         }
-        if (row == -1)
+        if (found.Count > 0)
         {
-            row = Random.Range(1, ZS.lanes + 1);
-            col = Random.Range(1, 7);
+            int index = Random.Range(0, found.Count);
+            row = found[index].Item1;
+            col = found[index].Item2;
         }
-        transform.position = new Vector3(Tile.COL_TO_WORLD[col], Tile.tileObjects[row, 9].transform.position.y + startHeight, 0);
+        // No plant found
+        if (row == 0) row = Random.Range(1, ZS.lanes + 1);
+        if (col == 0) col = Random.Range(1, 7);
+        transform.position = new Vector3(Tile.COL_TO_WORLD[col], Tile.tileObjects[row, col].transform.position.y + startHeight, 0);
     }
 
     public override void Die()

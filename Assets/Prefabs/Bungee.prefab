@@ -23,10 +23,6 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.4245283
       objectReference: {fileID: 0}
-    - target: {fileID: 7307359797300423007, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -92,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Bungee Zombie
+  waveNumber: 0
   spawnScore: 3
   damage: 0
   walkTime: 0
   HP: 15
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0
@@ -107,3 +103,4 @@ MonoBehaviour:
   eatsPlants: 0
   status: {fileID: 0}
   displayOnly: 0
+  col: 0

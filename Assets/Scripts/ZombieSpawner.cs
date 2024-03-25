@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -174,12 +175,20 @@ public class ZombieSpawner : MonoBehaviour
                 {   
                     currentBuild += allZombies[i.ID].GetComponent<Zombie>().spawnScore;
                     GameObject g = Instantiate(allZombies[i.ID]);
-                    int index = UnityEngine.Random.Range(0, remaining.Count);
-                    g.GetComponent<Zombie>().row = remaining[index];
+                    if (i.ID == 22) // Bungee
+                    {
+                        g.GetComponent<Bungee>().row = i.row;
+                        g.GetComponent<Bungee>().col = i.col;
+                    }
+                    else
+                    {
+                        int index = UnityEngine.Random.Range(0, remaining.Count);
+                        g.GetComponent<Zombie>().row = remaining[index];
+                        remaining.RemoveAt(index);
+                        if (remaining.Count == 0) remaining = new List<int>(possible);
+                    }
                     g.GetComponent<Zombie>().waveNumber = waveNumber;
                     yield return new WaitForSeconds(0.2f);
-                    remaining.RemoveAt(index);
-                    if (remaining.Count == 0) remaining = new List<int>(possible);
                 }
             }
 

@@ -35,12 +35,12 @@ public class PlantBuilder : MonoBehaviour
     public GameObject selectSeed;
     [HideInInspector] public List<GameObject> selectSeeds = new List<GameObject>();
     private TextMeshProUGUI s;
+    private ZombieSpawner ZS;
 
     void Start()
     {
         s = transform.Find("Sun").Find("Text").GetComponent<TextMeshProUGUI>();
         Level l = FindFirstObjectByType<Level>();
-        sun = l.startingSun;
         currentPlant = allPlants[0];
         plantCounts = new int[allPlants.Length];
         for (int i = 0; i < Mathf.Min(l.unlockedUntil, allPlants.Length); i++)
@@ -49,6 +49,14 @@ public class PlantBuilder : MonoBehaviour
             g.GetComponent<SelectSeed>().ID = i;
             selectSeeds.Add(g);
         }
+
+        ZS = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
+        if (l.potColumn > 0) {
+            for (int i = 1; i <= ZS.lanes; i++)
+                for (int j = 1; j <= l.potColumn; j++) Tile.tileObjects[i, j].Place(allPlants[33]);
+        }
+        
+        sun = l.startingSun;
     }
 
     void Update()

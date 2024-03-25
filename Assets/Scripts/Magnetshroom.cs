@@ -34,9 +34,8 @@ public class Magnetshroom : Plant
         foreach (RaycastHit2D hit in hits)
         {
             z = hit.collider.GetComponent<Zombie>();
-            if (hit.collider.GetComponent<Shield>() != null)
+            if (z == null && hit.collider.tag == "Metal")
             {
-                hit.transform.parent.GetComponent<Tile>().ladder = null;
                 Take(hit.collider.gameObject);
                 took = true;
             }

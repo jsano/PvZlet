@@ -12,10 +12,12 @@ public class CherryBomb : Plant
     {
         GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
         g.transform.localScale = area * Tile.TILE_DISTANCE;
-        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
+        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Default"));
         foreach (RaycastHit2D a in all)
         {
-            a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
+            // Remove active ladders
+            if (a.collider.GetComponent<Shield>() != null) Destroy(a.collider.gameObject); 
+            else a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
         }
         Destroy(gameObject);
     }

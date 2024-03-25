@@ -31,7 +31,6 @@ public class Tile : MonoBehaviour
     private List<GameObject> gridItems = new List<GameObject>();
     /// <summary> Any extra plants that are part of a combined plant, in order of importance (ex. pumpkin < lilypad) </summary>
     private List<GameObject> overlapped = new List<GameObject>();
-    [HideInInspector] public GameObject ladder;
     /// <summary> The fog currently covering this tile. Can be null if there's no fog </summary>
     [HideInInspector] public Fog fog;
 
@@ -172,7 +171,6 @@ public class Tile : MonoBehaviour
 
     public void RemoveAllPlants(GameObject source = null)
     {
-        Destroy(ladder);
         foreach (GameObject g in overlapped) g.GetComponent<Plant>().ReceiveDamage(1000, source);
         overlapped.Clear();
         if (planted != null && !planted.GetComponent<Plant>().isActiveInstant()) planted.GetComponent<Plant>().ReceiveDamage(1000, source);

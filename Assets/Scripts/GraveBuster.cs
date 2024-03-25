@@ -11,7 +11,7 @@ public class GraveBuster : Plant
     public override void Start()
     {
         base.Start();
-        grave = Tile.tileObjects[row, col].ContainsPlant("Grave");
+        grave = Tile.tileObjects[row, col].ContainsGridItem("Grave");
     }
 
     // Update is called once per frame

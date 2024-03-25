@@ -14,6 +14,7 @@ public class ZombieSpawner : MonoBehaviour
         public int count;
         public int ID;
         public int row;
+        public int col;
     }
 
     private class GraveData
@@ -76,14 +77,22 @@ public class ZombieSpawner : MonoBehaviour
             try
             {
                 int _ID = int.Parse(level[i + 1]);
-                wave.Add(new ZombieData { count = int.Parse(level[i]), ID = _ID, row = int.Parse(level[i + 2]) });
+                if (_ID == 22)
+                {
+                    wave.Add(new ZombieData { count = int.Parse(level[i]), ID = _ID, row = int.Parse(level[i + 2]), col = int.Parse(level[i + 3]) });
+                    i += 4;
+                }
+                else
+                {
+                    wave.Add(new ZombieData { count = int.Parse(level[i]), ID = _ID, row = int.Parse(level[i + 2]) });
+                    i += 3;
+                }
                 if (_ID == 1) flagWaveNumbers.Add(waves.Count);
                 else unique.Add(_ID);
-                i += 3;
             }
             catch (FormatException)
             {
-                grave.Add(new GraveData { row = int.Parse(level[i+1]), col = int.Parse(level[i+2]) });
+                grave.Add(new GraveData { row = int.Parse(level[i + 1]), col = int.Parse(level[i + 2]) });
                 i += 3;
             }
         }
@@ -128,7 +137,7 @@ public class ZombieSpawner : MonoBehaviour
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
         {
             if (waveNumber == waves.Count - 1) StartCoroutine(Final());
-            
+
             progressBar.fillAmount = (waves.Count == 1) ? 1 : ((float)waveNumber) / (waves.Count - 1);
             currentBuild = 0;
             forceSend = 30f;
@@ -140,41 +149,37 @@ public class ZombieSpawner : MonoBehaviour
 
             foreach (ZombieData i in waves[waveNumber])
             {
-                for (int x = 0; x < i.count; x++)
+                List<int> possible = new List<int>();
+                if (i.row != 0) possible.Add(i.row);
+                else
                 {
                     if (i.ID == 15) // Bobsled
                     {
-                        List<int> possible = new List<int>();
-                        for (int l = 1; l <= lanes; l++) {
+                        for (int l = 1; l <= lanes; l++)
+                        {
                             if (Tile.tileObjects[l, 9].ContainsGridItem("Snow")) possible.Add(l);
                         }
-                        if (possible.Count > 0)
-                        {
-                            currentBuild += allZombies[i.ID].GetComponent<Zombie>().spawnScore;
-                            GameObject g1 = Instantiate(allZombies[i.ID]);
-                            g1.GetComponent<Zombie>().row = possible[UnityEngine.Random.Range(0, possible.Count)];
-                            if (i.row != 0) g1.GetComponent<Zombie>().row = i.row;
-                            g1.GetComponent<Zombie>().waveNumber = waveNumber;
-                            yield return new WaitForSeconds(0.2f);
-                        }
-                        continue;
+                        if (possible.Count == 0) continue;
                     }
+                    else if (i.ID == 18) possible.AddRange(Enumerable.Range(1, lanes)); // Balloon
+                    else if (allZombies[i.ID].GetComponent<Zombie>().aquatic) possible.AddRange(new int[] { 3, 4 });
+                    else
+                    {
+                        if (lanes == 6) possible.AddRange(new int[] { 1, 2, 5, 6 });
+                        else possible.AddRange(Enumerable.Range(1, lanes));
+                    }
+                }
+                List<int> remaining = new List<int>(possible);
+                for (int x = 0; x < i.count; x++)
+                {   
                     currentBuild += allZombies[i.ID].GetComponent<Zombie>().spawnScore;
                     GameObject g = Instantiate(allZombies[i.ID]);
-                    int lane = i.row;
-                    if (lane == 0)
-                    {
-                        if (!g.GetComponent<Zombie>().aquatic)
-                        {
-                            if (lanes == 6) do lane = UnityEngine.Random.Range(1, lanes + 1); while (lane == 3 || lane == 4);
-                            else lane = UnityEngine.Random.Range(1, lanes + 1);
-                        }
-                        else lane = UnityEngine.Random.Range(3, 5);
-                        if (g.GetComponent<Balloon>() != null) lane = UnityEngine.Random.Range(1, lanes+1);
-                    }
-                    g.GetComponent<Zombie>().row = lane;
+                    int index = UnityEngine.Random.Range(0, remaining.Count);
+                    g.GetComponent<Zombie>().row = remaining[index];
                     g.GetComponent<Zombie>().waveNumber = waveNumber;
                     yield return new WaitForSeconds(0.2f);
+                    remaining.RemoveAt(index);
+                    if (remaining.Count == 0) remaining = new List<int>(possible);
                 }
             }
 
@@ -186,14 +191,14 @@ public class ZombieSpawner : MonoBehaviour
                         Tile t = Tile.tileObjects[i, j];
                         if (t.ContainsGridItem("Grave"))
                         {
-                            int[] possible = new int[] {0, 2, 4};
+                            int[] possible = new int[] { 0, 2, 4 };
                             int _ID = possible[UnityEngine.Random.Range(0, possible.Length)];
                             currentBuild += allZombies[_ID].GetComponent<Zombie>().spawnScore;
                             GameObject g = Instantiate(allZombies[_ID], t.transform.position, Quaternion.identity);
                             g.GetComponent<Zombie>().row = i;
                             g.GetComponent<Zombie>().waveNumber = waveNumber;
                         }
-                    }    
+                    }
             }
 
             float maxBuild = currentBuild;

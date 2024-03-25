@@ -4,13 +4,17 @@
 
 Each wave contains rows of zombie data represented in the form:
 
-`[Count] [ZombieID] [Lane]`
+`[Count] [ZombieID] [Row]`
 
 Count: How many of this spawns
 
 ZombieID: Index of ZombieSpawner to spawn
 
-Lane: Which lane to spawn in. 0 for (appropriately) random
+Row: Which row to spawn in. 0 for (appropriately) random
+
+The ONE exception is Bungee Zombie (ID: 22) which needs:
+
+`[Count] [ZombieID] [Row] [Column]`
 
 Each wave can also contain rows of grave data represented in the form:
 

@@ -8,7 +8,6 @@ public class PoleVaulter : Zombie
     public float noPoleWalkTime;
     private bool running = true;
     private bool jumped = false;
-    private float jumpTime = 1;
     private GameObject toJump;
 
     // Update is called once per frame
@@ -33,17 +32,19 @@ public class PoleVaulter : Zombie
 
     private IEnumerator Jump()
     {
-        RB.velocity = new Vector3(-Tile.TILE_DISTANCE.x * 1.75f / jumpTime, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
-        if (toJump.tag == "Tallnut")
+        Vector3 loc = toJump.transform.position;
+        int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 8);
+        RB.velocity = (Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c + 1].transform.position) * ((status == null) ? 1 : status.walkMod); // d = rt
+        if (toJump != null && toJump.tag == "Tallnut")
         {
-            yield return new WaitUntil(() => transform.position.x <= toJump.transform.position.x + Tile.TILE_DISTANCE.x / 3);
+            yield return new WaitUntil(() => transform.position.x <= loc.x + Tile.TILE_DISTANCE.x / 3);
             RB.velocity = Vector3.zero;
         }
         else
         {
-            yield return new WaitForSeconds(jumpTime * ((status == null) ? 1 : 1 / status.walkMod));
+            yield return new WaitUntil(() => transform.position.x <= loc.x - 2 * Tile.TILE_DISTANCE.x / 3);
             RB.velocity = Vector3.zero;
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
         }
         jumped = true;
     }

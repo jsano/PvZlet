@@ -43,7 +43,8 @@ public class Pogo : Zombie
         RB.velocity = Vector2.zero;
         Vector3 loc = toJump.transform.position;
         yield return new WaitForSeconds(1);
-        RB.velocity = new Vector3(-3, 0, 0) * ((status == null) ? 1 : status.walkMod); // d = rt
+        int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 8);
+        RB.velocity = (Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c + 1].transform.position) * 2 * ((status == null) ? 1 : status.walkMod); // d = rt
         if (toJump != null && toJump.tag == "Tallnut")
         {
             yield return new WaitUntil(() => transform.position.x <= loc.x + Tile.TILE_DISTANCE.x / 3);

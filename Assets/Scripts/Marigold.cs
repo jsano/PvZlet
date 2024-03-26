@@ -12,9 +12,11 @@ public class Marigold : Plant
     {
         //GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
         //g.transform.localScale = area * Tile.TILE_DISTANCE;
-        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
+        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
         foreach (RaycastHit2D a in all)
         {
+            // Can't remove active ladders
+            if (a.collider.GetComponent<Shield>() != null) continue;
             if (a.transform.localScale.x < 1) continue;
             z = a.collider.GetComponent<Zombie>();
             z.HP /= 3;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DolphinRider : PoleVaulter
 {
@@ -10,8 +11,6 @@ public class DolphinRider : PoleVaulter
     public override void Start()
     {
         base.Start();
-        BC.offset = new Vector2(0, -0.5f);
-        BC.size = new Vector2(1, 0.01f);
         StartCoroutine(EnterPool());
     }
 
@@ -30,10 +29,10 @@ public class DolphinRider : PoleVaulter
 
     private IEnumerator EnterPool()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
+        gameObject.layer = LayerMask.NameToLayer("Zombie");
+        yield return new WaitForSeconds(1);
         entered = true;
-        BC.offset = new Vector2(0, 0);
-        BC.size = new Vector2(1, 1);
     }
 
 }

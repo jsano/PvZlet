@@ -26,14 +26,14 @@ public class Gargantuar : Zombie
     {
         ResetWalk();
         attacking = true;
-        Plant p1 = p.GetComponent<Plant>();
         float period = 0;
         while (period < 1.5f)
         {
             period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             yield return null;
         }
-        Tile.tileObjects[p1.row, p1.col].RemoveAllPlants(gameObject);
+        int c = Tile.WORLD_TO_COL(transform.position.x);
+        if (c >= 1 && c <= 9) Tile.tileObjects[row, c].RemoveAllPlants(gameObject);
         period = 0;
         while (period < 0.5f)
         {
@@ -47,7 +47,7 @@ public class Gargantuar : Zombie
     {
         throwing = true;
         float period = 0;
-        while (period < 1f)
+        while (period < 0.75f)
         {
             period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             yield return null;

@@ -18,7 +18,7 @@ public class Ladder : Zombie
             {
                 shield.transform.SetParent(p.transform, true);
                 shield.transform.localPosition = new Vector3(0.3f, 0, 0);
-                shield.layer = LayerMask.NameToLayer("Default");
+                shield.layer = LayerMask.NameToLayer("ExplosivesOnly");
                 shield.GetComponent<SpriteRenderer>().sortingLayerName = "Zombie";
                 shield.GetComponent<SpriteRenderer>().sortingOrder = -1;
                 shield = null;

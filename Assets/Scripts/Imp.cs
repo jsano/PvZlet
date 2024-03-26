@@ -15,7 +15,7 @@ public class Imp : Zombie
         if (flung)
         {
             RB.gravityScale = 1.5f;
-            BC.enabled = false;
+            gameObject.layer = LayerMask.NameToLayer("ExplosivesOnly");
             RB.velocity = Vector2.left * 13f;
             landed = false;
         }
@@ -26,7 +26,7 @@ public class Imp : Zombie
     {
         if (!landed && transform.position.y <= Tile.tileObjects[row, Mathf.Min(9, Mathf.Max(1, Tile.WORLD_TO_COL(transform.position.x)))].transform.position.y)
         {
-            BC.enabled = true;
+            gameObject.layer = LayerMask.NameToLayer("Zombie");
             RB.gravityScale = 0;
             RB.velocity = Vector2.zero;
             landed = true;

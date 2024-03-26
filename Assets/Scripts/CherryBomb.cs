@@ -12,7 +12,7 @@ public class CherryBomb : Plant
     {
         GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
         g.transform.localScale = area * Tile.TILE_DISTANCE;
-        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Default"));
+        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
         foreach (RaycastHit2D a in all)
         {
             // Remove active ladders

@@ -24,7 +24,7 @@ TagManager:
   - StraightProjectile
   - Shield
   - Slope
-  - Underground
+  - ExplosivesOnly
   - LobbedProjectile
   - ZombieStraightProjectile
   - ZombieLobbedProjectile

@@ -34,6 +34,7 @@ public class PoleVaulter : Zombie
     {
         Vector3 loc = toJump.transform.position;
         int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 8);
+        gameObject.layer = LayerMask.NameToLayer("ExplosivesOnly");
         RB.velocity = (Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c + 1].transform.position) * ((status == null) ? 1 : status.walkMod); // d = rt
         if (toJump != null && toJump.tag == "Tallnut")
         {
@@ -47,6 +48,7 @@ public class PoleVaulter : Zombie
             yield return new WaitForSeconds(0.5f);
         }
         jumped = true;
+        gameObject.layer = LayerMask.NameToLayer("Zombie");
     }
 
 }

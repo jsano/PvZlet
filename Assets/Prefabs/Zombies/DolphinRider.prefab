@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DolphinRider
       objectReference: {fileID: 0}
+    - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
       value: 0.39569244

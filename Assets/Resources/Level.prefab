@@ -51,4 +51,7 @@ MonoBehaviour:
   conveyor: []
   waves: {fileID: 0}
   fogColumn: 0
+  potColumn: 0
   preparation: 18
+  music: 2
+  special: {fileID: 0}

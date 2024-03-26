@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     public Sky sky;
     private Level l;
     private PlantBuilder pb;
+    public AudioSource music;
 
     private bool letsRock;
     
@@ -48,6 +49,8 @@ public class LevelManager : MonoBehaviour
         l = FindFirstObjectByType<Level>();
         if (l.special != null) Instantiate(l.special);
         UI.SetActive(false);
+        music.clip = music.GetComponent<Music>().allMusic[1];
+        music.Play();
         StartCoroutine(Start_Helper());
     }
 
@@ -103,6 +106,7 @@ public class LevelManager : MonoBehaviour
             sky.enabled = true;
             yield return new WaitForSeconds(1f);
         }
+        music.GetComponent<Music>().FadeOut(1);
         ready.SetActive(true);
         TextMeshProUGUI t = ready.transform.Find("Text").GetComponent<TextMeshProUGUI>();
         yield return new WaitForSeconds(0.5f);
@@ -126,6 +130,11 @@ public class LevelManager : MonoBehaviour
                 yield return null;
             }
         }
+        if (l.music != -1)
+        {
+            music.clip = music.GetComponent<Music>().allMusic[l.music];
+            music.Play();
+        }
     }
 
     // Update is called once per frame
@@ -147,6 +156,7 @@ public class LevelManager : MonoBehaviour
 
     public void Lose()
     {
+        music.GetComponent<Music>().FadeOut(0.5f);
         status = Status.Lost;
         Time.timeScale = 1;
         gameOver.SetActive(true);

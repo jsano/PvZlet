@@ -16,10 +16,12 @@ public class UI : MonoBehaviour
 
     public GameObject textBox;
 
+    private Music music;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
-        
+        music = GameObject.Find("Music").GetComponent<Music>();
     }
 
     // Update is called once per frame
@@ -50,12 +52,14 @@ public class UI : MonoBehaviour
             Time.timeScale = curTimeScale;
             pauseMenu.SetActive(false);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.normalColor;
+            music.FadeIn(0.25f);
         }
         else
         {
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.selectedColor;
+            music.FadeOut(0f);
         }
     }
 

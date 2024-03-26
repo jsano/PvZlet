@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: music
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: waves
       value: 
       objectReference: {fileID: 4900000, guid: d23d4262e162b434f8a4c606a24e3981, type: 3}

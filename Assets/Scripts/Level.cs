@@ -44,6 +44,8 @@ public class Level : MonoBehaviour
     /// <summary> The amount of time in seconds to wait before sending the first wave </summary>
     public float preparation;
 
+    public int music;
+
     public GameObject special;
 
     void Start()

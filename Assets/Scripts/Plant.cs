@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Plant : Damagable
@@ -31,6 +32,7 @@ public class Plant : Damagable
     /// <summary> Whether the plant is a mushroom thus nocturnal </summary>
     public bool mushroom = false;
     private bool sleeping = false;
+    private GameObject zzz;
     protected Sky sky;
     /// <summary> Whether this is an instant plant so zombies can ignore it </summary>
     public bool instant;
@@ -70,7 +72,14 @@ public class Plant : Damagable
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
         baseHP = HP;
-        if (mushroom && !sky.night) sleeping = true;
+        if (mushroom && !sky.night)
+        {
+            sleeping = true;
+            zzz = Instantiate(GameObject.Find("LevelManager").transform.Find("UI").GetComponent<UI>().textBox, transform);
+            zzz.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "ZzZ";
+            zzz.GetComponent<RectTransform>().sizeDelta = new Vector2(1, 0.5f);
+            zzz.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -78,9 +87,8 @@ public class Plant : Damagable
     {
         if (sleeping)
         {
-            SR.color = Color.gray;
             return;
-        } else SR.color = Color.white;
+        }
         Zombie hit = LookInRange(row);
         if (hit != null || alwaysAttack && LevelManager.status == LevelManager.Status.Start) {
             if (!attacking) period += Time.deltaTime;
@@ -175,6 +183,7 @@ public class Plant : Damagable
     public void Wake()
     {
         sleeping = false;
+        zzz.SetActive(false);
     }
 
     public bool isSleeping()

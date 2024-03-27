@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Catapult Zombie
+  waveNumber: 0
   spawnScore: 10
   damage: 1000
   walkTime: 2
   HP: 35
-  eatTime: 0.5
   row: 1
   hitsGround: 1
   aquatic: 0

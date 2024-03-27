@@ -18,7 +18,6 @@ public class Bungee : Zombie
 
     private IEnumerator Update_Helper() 
     {
-        BC.enabled = false;
         ret = true;
         target = Instantiate(projectile, transform.position, Quaternion.identity);
         while (target.transform.position.y > Tile.tileObjects[row, col].transform.position.y)
@@ -27,14 +26,18 @@ public class Bungee : Zombie
             yield return null;
         }
         yield return new WaitForSeconds(1f);
-        while (transform.position.y > Tile.tileObjects[row, col].transform.position.y + Tile.TILE_DISTANCE.y / 3)
+        while (transform.position.y > Tile.tileObjects[row, col].transform.position.y)
         {
             RB.velocity = Vector3.down * 15;
             yield return null;
         }
-        BC.enabled = true;
         RB.velocity = Vector3.zero;
-        yield return new WaitForSeconds(3f);
+        float timeLeft = 3f;
+        while (timeLeft > 0f)
+        {
+            timeLeft -= Time.deltaTime * ((status == null) ? 1 : status.eatMod);
+            yield return null;
+        }
         BC.enabled = false;
         Tile.tileObjects[row, col].RemoveAllPlants();
         RB.velocity = Vector3.up * 15;

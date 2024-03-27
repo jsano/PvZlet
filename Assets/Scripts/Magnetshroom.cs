@@ -22,7 +22,6 @@ public class Magnetshroom : Plant
         if (recoverPeriod > recoverTime)
         {
             Destroy(taken);
-            SR.material.color = Color.white;
             base.Update();
         }
     }
@@ -61,7 +60,6 @@ public class Magnetshroom : Plant
             if (took)
             {
                 recoverPeriod = 0;
-                SR.material.color -= Color.white / 2;
                 break;
             }
         }

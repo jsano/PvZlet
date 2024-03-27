@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Yeti
+  waveNumber: 0
   spawnScore: 0
   damage: 1
   walkTime: 4
   HP: 20
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0

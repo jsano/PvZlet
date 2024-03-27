@@ -8,17 +8,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.b
-      value: 0.18823424
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.g
-      value: 0.8490566
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.r
-      value: 0.39942494
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 319097ae75fcad54bbab71c0f96def5a, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -63,6 +55,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.6666666
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.9233333
+      objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
       value: Cactus
@@ -97,7 +97,6 @@ MonoBehaviour:
   range: 10
   backwardsRange: 0
   alwaysAttack: 0
-  wall: 0
   mushroom: 0
   instant: 0
   grounded: 0
@@ -107,3 +106,4 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 342379584761071940, guid: 51ac2beb56dfa1c438dabeeddd549b64, type: 3}
   status: {fileID: 0}
+  longSprite: {fileID: 21300000, guid: 600d8808035a601428416715b50a5133, type: 3}

@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Pogo Zombie
+  waveNumber: 0
   spawnScore: 5
   damage: 1
   walkTime: 3
   HP: 16
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0

@@ -135,6 +135,7 @@ public class LevelManager : MonoBehaviour
             music.clip = music.GetComponent<Music>().allMusic[l.music];
             music.Play();
         }
+        else music.clip = null;
     }
 
     // Update is called once per frame

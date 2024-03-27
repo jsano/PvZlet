@@ -24,20 +24,12 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6706975d644b8c4a8c93cbb40243e01, type: 3}
+    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Color.a
-      value: 0.49803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.g
-      value: 0.45461354
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9339623
+      value: 0.78431374
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SortingOrder
@@ -46,14 +38,6 @@ PrefabInstance:
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -95,6 +79,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.3333334
+      objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
       value: Pumpkin
@@ -103,5 +99,44 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Pumpkin
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+--- !u!1 &1558681202961076539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+  m_PrefabInstance: {fileID: 8353040859154214778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2145894205685474399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558681202961076539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f239d93d319934e8144860e194f5b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 30
+  cost: 125
+  recharge: 30
+  damage: 0
+  atkspd: 0
+  variableStartPeriod: 0
+  HP: 72
+  range: 0
+  backwardsRange: 0
+  alwaysAttack: 0
+  mushroom: 0
+  instant: 0
+  grounded: 0
+  aquatic: 0
+  lobbed: 0
+  row: 0
+  col: 0
+  projectile: {fileID: 0}
+  status: {fileID: 0}
+  damagedSprite1: {fileID: 21300000, guid: 31de3fc7a74756543871e587d4c8b543, type: 3}
+  damagedSprite2: {fileID: 21300000, guid: 7aef79c35942c7e418820a95d6867886, type: 3}

@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cactus : Peashooter
+public class Cactus : Plant
 {
 
     private float attack;
     private float baseY;
 
+    private Sprite normalSprite;
+    public Sprite longSprite;
+
     public override void Start()
     {
+        normalSprite = SR.sprite;
         base.Start();
         baseY = transform.position.y;
     }
@@ -17,7 +21,7 @@ public class Cactus : Peashooter
     public override void Update()
     {
         base.Update();
-        transform.position = new Vector3(transform.position.x, attack, 0);
+        transform.position = new Vector3(transform.position.x, (attack + baseY) / 2, 0);
     }
 
     protected override Zombie LookInRange(int row)
@@ -28,10 +32,22 @@ public class Cactus : Peashooter
         if (hit && hit.collider.GetComponent<BoxCollider2D>().size != Vector2.one)
         {
             attack = hit.point.y;
+            SR.sprite = longSprite;
             return hit.collider.GetComponent<Zombie>();
         }
         attack = baseY;
+        SR.sprite = normalSprite;
         return base.LookInRange(row);
+    }
+
+    protected override void Attack(Zombie z)
+    {
+        if (z != null)
+        {
+            StraightProjectile p = Instantiate(projectile, new Vector3(transform.position.x, attack) + rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
+            if (p.distance != range) p.distance = range;
+        }
+        base.Attack(z);
     }
 
 }

@@ -21,14 +21,13 @@ public class Plant : Damagable
     private bool attacking;
     /// <summary> How much HP the plant has. Most non-wall plants should have the same value </summary>
     public float HP;
-    private float baseHP;
+    protected float baseHP;
     /// <summary> How many tiles the plant can see ahead to start attacking. Irrelevant if <c>alwaysAttack</c> is true </summary>
     public float range;
     /// <summary> How many tiles the plant can see behind to start attacking. Irrelevant if <c>alwaysAttack</c> is true </summary>
     public float backwardsRange;
     /// <summary> Whether the plant should be allowed to attack regardless of range </summary>
     public bool alwaysAttack = false;
-    public bool wall;
     /// <summary> Whether the plant is a mushroom thus nocturnal </summary>
     public bool mushroom = false;
     private bool sleeping = false;

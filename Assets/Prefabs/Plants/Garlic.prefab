@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9a5dacf9ace8d49873ed7f9ff48f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   cost: 50
   recharge: 30
   damage: 0
@@ -105,3 +106,5 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
+  damagedSprite1: {fileID: 0}
+  damagedSprite2: {fileID: 0}

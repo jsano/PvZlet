@@ -14,7 +14,7 @@ public class Ladder : Zombie
         else
         {
             GameObject p = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, Vector3.one, 0, Vector2.zero, 0, LayerMask.GetMask("Plant")));
-            if (p != null && p.GetComponent<Plant>().wall)
+            if (p != null && p.GetComponent<Nut>() != null)
             {
                 shield.transform.SetParent(p.transform, true);
                 shield.transform.localPosition = new Vector3(0.3f, 0, 0);

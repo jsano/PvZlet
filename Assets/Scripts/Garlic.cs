@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Garlic : Plant
+public class Garlic : Nut
 {
 
     public override void ReceiveDamage(float dmg, GameObject source, bool eat = false)

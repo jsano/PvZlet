@@ -10,6 +10,12 @@ public class Sunshroom : Sunflower
     private float growPeriod;
     private bool grown;
 
+    public override void Start()
+    {
+        transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        base.Start();
+    }
+
     // Update is called once per frame
     public override void Update()
     {
@@ -17,6 +23,7 @@ public class Sunshroom : Sunflower
         if (!grown && growPeriod > growTime)
         {
             grown = true;
+            transform.localScale = Vector3.one;
             atkspd = grownAtkspd;
         }
         base.Update();

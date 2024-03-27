@@ -7,16 +7,25 @@ public class Scaredyshroom : Peashooter
 
     public Vector2 scareRange;
 
+    public Sprite hidingSprite;
+    private Sprite normalSprite;
+
+    public override void Start()
+    {
+        normalSprite = SR.sprite;
+        base.Start();
+    }
+
     // Update is called once per frame
     public override void Update()
     {
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, scareRange * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
         if (!hit)
         {
-            SR.material.color = Color.white;
+            SR.sprite = normalSprite;
             base.Update();
         }
-        else SR.material.color = Color.white / 2; // will cause jank but it's ok since this will be replaced with animations
+        else SR.sprite = hidingSprite;
     }
 
 }

@@ -78,8 +78,9 @@ public class Plant : Damagable
     {
         if (sleeping)
         {
+            SR.color = Color.gray;
             return;
-        }
+        } else SR.color = Color.white;
         Zombie hit = LookInRange(row);
         if (hit != null || alwaysAttack && LevelManager.status == LevelManager.Status.Start) {
             if (!attacking) period += Time.deltaTime;

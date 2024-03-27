@@ -8,17 +8,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.b
-      value: 0.75881094
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7882476
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.r
-      value: 0.7924528
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4fa01dbd89ad1024092c7a16153b5e1f, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -63,6 +55,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.6666666
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.9133333
+      objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
       value: Garlic
@@ -106,5 +106,5 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
-  damagedSprite1: {fileID: 0}
-  damagedSprite2: {fileID: 0}
+  damagedSprite1: {fileID: 21300000, guid: 9cdcc2568c84b8d45a3156850ed4d286, type: 3}
+  damagedSprite2: {fileID: 21300000, guid: 6fd36b953c669cc4bb6493a1de68cefd, type: 3}

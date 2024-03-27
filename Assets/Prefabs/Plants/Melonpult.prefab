@@ -8,17 +8,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.b
-      value: 0.058176126
+      propertyPath: m_Size.x
+      value: 2.1666667
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.g
-      value: 0.3490566
+      propertyPath: m_Size.y
+      value: 1.8133334
       objectReference: {fileID: 0}
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3af5b07696372bf48a7b911a3e6974a9, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -63,6 +63,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.1666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.8133334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.1666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.8133334
+      objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
       value: Melonpult
@@ -97,7 +113,6 @@ MonoBehaviour:
   range: 10
   backwardsRange: 0
   alwaysAttack: 0
-  wall: 0
   mushroom: 0
   instant: 0
   grounded: 0

@@ -234,7 +234,7 @@ public class ZombieSpawner : MonoBehaviour
             }
             else yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
         }
-        yield return new WaitUntil(() => currentBuild <= 0);
+        while (FindAnyObjectByType<Zombie>() != null) yield return new WaitForSeconds(0.5f);
         levelManager.Win();
     }
 

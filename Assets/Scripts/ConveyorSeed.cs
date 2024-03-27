@@ -23,6 +23,7 @@ public class ConveyorSeed : SeedBase
         image = GetComponent<Image>();
         image.color = pb.allPlants[plant].GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
         //image.fillAmount = 0;
+        transform.Find("Plant").GetComponent<Image>().sprite = pb.allPlants[plant].GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame

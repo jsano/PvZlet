@@ -8,17 +8,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.b
-      value: 0.5368903
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7905393
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Color.r
-      value: 0.8962264
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e903693ac3f798f4898636a5abab753c, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -63,6 +55,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.6666666
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.3566667
+      objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
       value: PotatoMine
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd587bfb89162345b3827c91c066388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 4
   cost: 25
   recharge: 30
   damage: 100
@@ -108,3 +108,4 @@ MonoBehaviour:
   projectile: {fileID: 8464927645593920465, guid: 27be8d0ca4a51f742ae2937d2e4a674c, type: 3}
   status: {fileID: 0}
   armingTime: 10
+  armingSprite: {fileID: 21300000, guid: 66f23707838fc4041b2ca159d9aa8701, type: 3}

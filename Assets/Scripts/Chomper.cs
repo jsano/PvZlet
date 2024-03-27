@@ -9,9 +9,13 @@ public class Chomper : Plant
     public float chewTime;
     private float chewPeriod;
 
+    private Sprite normalSprite;
+    public Sprite chewSprite;
+
     public override void Start()
     {
         chewPeriod = chewTime;
+        normalSprite = SR.sprite;
         base.Start();
     }
 
@@ -20,7 +24,7 @@ public class Chomper : Plant
         chewPeriod += Time.deltaTime;
         if (chewPeriod > chewTime)
         {
-            SR.material.color = Color.white;
+            SR.sprite = normalSprite;
             base.Update();
         }
     }
@@ -30,7 +34,7 @@ public class Chomper : Plant
     {
         z.ReceiveDamage(damage, null);
         chewPeriod = 0;
-        SR.material.color -= Color.white / 2; // will cause jank but it's ok since this will be replaced with animations
+        SR.sprite = chewSprite;
         base.Attack(z);
     }
 

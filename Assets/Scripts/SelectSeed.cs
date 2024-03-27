@@ -17,7 +17,8 @@ public class SelectSeed : MonoBehaviour
         pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         plant = pb.allPlants[ID].GetComponent<Plant>();
         transform.Find("Text").GetComponent<TextMeshProUGUI>().text = plant.cost + "";
-        GetComponent<Image>().color = plant.GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
+        //GetComponent<Image>().color = plant.GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
+        transform.Find("Plant").GetComponent<Image>().sprite = plant.GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame

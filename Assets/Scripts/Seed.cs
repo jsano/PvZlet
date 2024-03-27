@@ -17,6 +17,7 @@ public class Seed : SeedBase
     private float rechargePeriod;
     private TextMeshProUGUI cost;
     private Image image;
+    private Image plantImage;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Seed : SeedBase
         recharge.fillAmount = 0;
         image = GetComponent<Image>();
         image.color = new Color(0, 0, 0, 0.5f);
+        plantImage = transform.Find("Plant").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -40,12 +42,15 @@ public class Seed : SeedBase
                 image.color = new Color(0, 0, 0, 0.5f);
                 cost.text = "";
                 plant = null;
+                plantImage.color = Color.clear;
                 return;
             }
             plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
             rechargePeriod = plant.recharge;
             cost.text = plant.cost + "";
-            image.color = plant.GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
+            image.color = Color.white;
+            plantImage.sprite = plant.GetComponent<SpriteRenderer>().sprite;
+            plantImage.color = Color.white;
         }
         else
         {

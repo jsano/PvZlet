@@ -42,7 +42,7 @@ public class PoleVaulter : Zombie
 
     private IEnumerator Jump()
     {
-        if (projectile != null)
+        if (projectile != null && projectile.transform.localPosition.y > 0) // Pole only
         {
             projectile.transform.rotation = Quaternion.Euler(0, 0, 90);
             projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);

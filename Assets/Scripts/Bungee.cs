@@ -19,6 +19,7 @@ public class Bungee : Zombie
     private IEnumerator Update_Helper() 
     {
         ret = true;
+        gameObject.layer = LayerMask.NameToLayer("ExplosivesOnly");
         target = Instantiate(projectile, transform.position, Quaternion.identity);
         while (target.transform.position.y > Tile.tileObjects[row, col].transform.position.y)
         {
@@ -31,6 +32,7 @@ public class Bungee : Zombie
             RB.velocity = Vector3.down * 15;
             yield return null;
         }
+        gameObject.layer = LayerMask.NameToLayer("Zombie");
         RB.velocity = Vector3.zero;
         float timeLeft = 3f;
         while (timeLeft > 0f)

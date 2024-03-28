@@ -14,8 +14,8 @@ public class HomingProjectile : StraightProjectile
         {
             RB.velocity += (Vector2)(toChase.transform.position - transform.position) * 8 * Time.deltaTime;
             RB.velocity = RB.velocity.normalized * speed;
-            // NOTE: Probably wrong
-            transform.rotation = Quaternion.Euler(Vector3.RotateTowards(transform.forward, toChase.transform.position - transform.position, Time.deltaTime, 0));
+            Vector2 dir = toChase.transform.position - transform.position;
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * 180 / Mathf.PI);
         }
         base.Update();
     }

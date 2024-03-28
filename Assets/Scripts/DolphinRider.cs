@@ -11,6 +11,14 @@ public class DolphinRider : PoleVaulter
     public override void Start()
     {
         base.Start();
+        Destroy(projectile);
+        projectile = Instantiate(projectile, transform, false);
+        projectile.transform.localPosition = new Vector3(0, -transform.localScale.y / 2, 0);
+    }
+
+    protected override void Spawn()
+    {
+        base.Spawn();
         StartCoroutine(EnterPool());
     }
 

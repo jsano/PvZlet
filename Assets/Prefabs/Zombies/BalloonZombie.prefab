@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: Balloon
+      value: BalloonZombie
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
@@ -96,11 +96,11 @@ MonoBehaviour:
   spawnScore: 3
   damage: 1
   walkTime: 2
-  HP: 11
+  HP: 10
   row: 1
   hitsGround: 0
   aquatic: 1
-  armor: {fileID: 0}
+  armor: {fileID: 4057311571025880810, guid: 2cb10b909deea354eb99af4de5deeddf, type: 3}
   shield: {fileID: 0}
   projectile: {fileID: 0}
   wheels: 0

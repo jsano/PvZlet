@@ -24,8 +24,12 @@ PrefabInstance:
       value: 0.91764706
       objectReference: {fileID: 0}
     - target: {fileID: 548998502173291329, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 548998502173291329, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1243284557
       objectReference: {fileID: 0}
     - target: {fileID: 5773686462074463308, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
       propertyPath: m_RootOrder

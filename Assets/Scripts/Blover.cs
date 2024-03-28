@@ -35,7 +35,7 @@ public class Blover : Plant
                 foreach (RaycastHit2D a in all)
                 {
                     if (prev.Contains(a.collider.gameObject)) continue;
-                    if (a.collider.GetComponent<Digger>() != null || a.collider.GetComponent<Bungee>() != null) continue;
+                    if (a.collider.GetComponent<Bungee>() != null || (a.collider.GetComponent<Digger>() != null && a.collider.gameObject.layer == LayerMask.NameToLayer("ExplosivesOnly"))) continue;
                     else
                     {
                         if (row == a.collider.GetComponent<Zombie>().row)

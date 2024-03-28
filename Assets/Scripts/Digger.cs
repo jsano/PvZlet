@@ -15,6 +15,7 @@ public class Digger : Zombie
         base.Start();
         projectile = Instantiate(projectile, transform, false);
         projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
+        projectile.GetComponent<SpriteRenderer>().sortingOrder = SR.sortingOrder + 2;
     }
 
     // Update is called once per frame

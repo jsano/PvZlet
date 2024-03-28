@@ -16,6 +16,7 @@ public class PoleVaulter : Zombie
         {
             projectile = Instantiate(projectile, transform, false);
             projectile.transform.localPosition = new Vector3(0, transform.localScale.y / 2, 0);
+            projectile.GetComponent<SpriteRenderer>().sortingOrder = SR.sortingOrder + 2;
         }
         base.Start();
     }

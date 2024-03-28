@@ -148,6 +148,7 @@ public class ZombieSpawner : MonoBehaviour
                 Tile.tileObjects[c.row, c.col].Place(grave);
             }
 
+            int sortingOrder = 0;
             foreach (ZombieData i in waves[waveNumber])
             {
                 List<int> possible = new List<int>();
@@ -188,6 +189,8 @@ public class ZombieSpawner : MonoBehaviour
                         if (remaining.Count == 0) remaining = new List<int>(possible);
                     }
                     g.GetComponent<Zombie>().waveNumber = waveNumber;
+                    g.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
+                    sortingOrder += 3;
                     yield return new WaitForSeconds(0.2f);
                 }
             }
@@ -206,6 +209,8 @@ public class ZombieSpawner : MonoBehaviour
                             GameObject g = Instantiate(allZombies[_ID], t.transform.position, Quaternion.identity);
                             g.GetComponent<Zombie>().row = i;
                             g.GetComponent<Zombie>().waveNumber = waveNumber;
+                            g.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
+                            sortingOrder += 3;
                         }
                     }
             }

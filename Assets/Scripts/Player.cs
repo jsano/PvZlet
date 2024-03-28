@@ -20,11 +20,15 @@ public class Player : Damagable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Zombie>() != null && LevelManager.status != LevelManager.Status.Lost)
+        Zombie z = collision.GetComponent<Zombie>();
+        if (z != null && LevelManager.status != LevelManager.Status.Lost)
         {
             levelManager.Lose();
             collision.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
             collision.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            if (z.armor != null) z.armor.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
+            if (z.shield != null) z.shield.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
+            // TODO: handle projectile without overwriting prefabs (ex catapult)
         }
     }
 

@@ -61,9 +61,6 @@ TagManager:
   - name: Zombie
     uniqueID: 2357638607
     locked: 0
-  - name: Armor
-    uniqueID: 15438955
-    locked: 0
   - name: Projectile
     uniqueID: 1243284557
     locked: 0

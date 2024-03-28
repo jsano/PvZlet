@@ -20,12 +20,11 @@ public class Pogo : Zombie
     // Update is called once per frame
     public override void Update()
     {
-        Debug.Log(jumping);
         if (projectile != null && status != null) status.walkMod = Mathf.Max(status.walkMod, 0.5f);
         if (projectile != null && !jumping)
         {
             WalkConstant();
-            toJump = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, transform.localScale, 0, Vector2.left, 0, LayerMask.GetMask("Plant")));
+            toJump = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position - new Vector3(transform.localScale.x / 1.5f, 0, 0), new Vector2(0.1f, transform.localScale.y), 0, Vector2.left, 0, LayerMask.GetMask("Plant")));
             if (toJump != null) StartCoroutine(Jump());
         }
         if (projectile == null && !removed)
@@ -42,20 +41,26 @@ public class Pogo : Zombie
     {
         jumping = true;
         RB.velocity = Vector2.zero;
-        Vector3 loc = toJump.transform.position;
         yield return new WaitForSeconds(1);
-        int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 8);
-        RB.velocity = (Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c + 1].transform.position) * 2 * ((status == null) ? 1 : status.walkMod); // d = rt
-        if (toJump != null && toJump.tag == "Tallnut")
+        int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 9);
+        if (c == 1) RB.velocity = Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c + 1].transform.position;
+        else RB.velocity = Tile.tileObjects[row, c - 1].transform.position - Tile.tileObjects[row, c].transform.position;
+        Vector2 baseVel = RB.velocity / 0.75f; // d = rt
+        float period = 0;
+        while (period < 0.75f)
         {
-            yield return new WaitUntil(() => transform.position.x <= loc.x + Tile.TILE_DISTANCE.x / 3);
-            Destroy(projectile);
-        }
-        else
-        {
-            yield return new WaitUntil(() => transform.position.x <= loc.x - Tile.TILE_DISTANCE.x / 2);
+            RB.velocity = baseVel * ((status == null) ? 1 : status.walkMod);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 0.1f, LayerMask.GetMask("Plant"));
+            if (hit && hit.collider.tag == "Tallnut")
+            {
+                Destroy(projectile);
+                break;
+            }
+            period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
+            yield return null;
         }
         RB.velocity = Vector3.zero;
+        transform.position = new Vector2(transform.position.x, Tile.tileObjects[row, Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 9)].transform.position.y);
         jumping = false;
     }
 

@@ -6,7 +6,6 @@ public class Blover : Plant
 {
 
     private bool active;
-    public float pushTime;
 
     protected override void Attack(Zombie z)
     {
@@ -26,15 +25,29 @@ public class Blover : Plant
         }
         Zombie[] balloons = FindObjectsByType<Balloon>(FindObjectsSortMode.None);
         foreach (Zombie target in balloons) target.ReceiveDamage(1000, gameObject);
-        while (pushTime > 0)
+        float period = 0;
+        while (period < 1f)
         {
-            RaycastHit2D[] all = Physics2D.BoxCastAll(Tile.tileObjects[row, 1].transform.position, Tile.TILE_DISTANCE * new Vector2(1, 2), 0, Vector2.right, 9 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
-            foreach (RaycastHit2D a in all)
+            List<GameObject> prev = new List<GameObject>();
+            for (int c = 1; c < 10; c++)
             {
-                if (a.collider.GetComponent<Digger>() != null) continue;
-                if (row == a.collider.GetComponent<Zombie>().row) a.collider.transform.Translate(new Vector3(Tile.TILE_DISTANCE.x * 2 * Time.deltaTime, 0, 0));
+                RaycastHit2D[] all = Physics2D.BoxCastAll(Tile.tileObjects[row, c].transform.position, Tile.TILE_DISTANCE * new Vector2(1, 2), 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
+                foreach (RaycastHit2D a in all)
+                {
+                    if (prev.Contains(a.collider.gameObject)) continue;
+                    if (a.collider.GetComponent<Digger>() != null || a.collider.GetComponent<Bungee>() != null) continue;
+                    else
+                    {
+                        if (row == a.collider.GetComponent<Zombie>().row)
+                        {
+                            int c1 = Mathf.Clamp(Tile.WORLD_TO_COL(a.collider.transform.position.x), 2, 9);
+                            a.collider.transform.Translate((Tile.tileObjects[row, c1].transform.position - Tile.tileObjects[row, c1 - 1].transform.position) * 3 * Time.deltaTime);
+                            prev.Add(a.collider.gameObject);
+                        }
+                    }
+                }
             }
-            pushTime -= Time.deltaTime;
+            period += Time.deltaTime;
             yield return null;
         }
     }

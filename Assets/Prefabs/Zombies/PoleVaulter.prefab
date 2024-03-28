@@ -98,7 +98,7 @@ MonoBehaviour:
   aquatic: 0
   armor: {fileID: 0}
   shield: {fileID: 0}
-  projectile: {fileID: 0}
+  projectile: {fileID: 7107963473649887295, guid: 495d2bb2c147fce4d98acaac1abcd431, type: 3}
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}

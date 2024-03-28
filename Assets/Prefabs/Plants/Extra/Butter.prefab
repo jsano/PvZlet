@@ -14,15 +14,7 @@ PrefabInstance:
     - target: {fileID: 3761776719245865662, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-    - target: {fileID: 3761776719245865662, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
-      propertyPath: m_Color.b
-      value: 0.7607843
-      objectReference: {fileID: 0}
-    - target: {fileID: 3761776719245865662, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
-      propertyPath: m_Color.g
-      value: 0.98039216
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: af639495127edbf4a9a764ab3737370c, type: 3}
     - target: {fileID: 6828031381646548333, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -90,5 +82,4 @@ MonoBehaviour:
   dmg: 1
   lane: 0
   distance: {x: 0, y: 0}
-  laneSplash: 0
-  neighboringLaneSplash: 0
+  splash: {x: 0, y: 0}

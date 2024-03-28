@@ -56,13 +56,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
-      propertyPath: m_Color.g
-      value: 0.8235294
-      objectReference: {fileID: 0}
-    - target: {fileID: 8023403879151493338, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bf65d45398219394e8e3568641f9c4cd, type: 3}
     m_RemovedComponents:
     - {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
@@ -88,7 +84,6 @@ MonoBehaviour:
   dir: {x: 0, y: 0, z: 0}
   moveToLane: 0
   distance: 10
-  laneSplash: 0
-  neighboringLaneSplash: 0
+  splash: {x: 0, y: 0}
   pea: 1
   sharp: 0

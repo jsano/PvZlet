@@ -14,19 +14,7 @@ PrefabInstance:
     - target: {fileID: 548998502173291329, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-    - target: {fileID: 548998502173291329, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 548998502173291329, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
-      propertyPath: m_Color.g
-      value: 0.25012094
-      objectReference: {fileID: 0}
-    - target: {fileID: 548998502173291329, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4433962
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: cd209fec0b4ad9547bf67bd2735df930, type: 3}
     - target: {fileID: 548998502173291329, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -38,18 +26,6 @@ PrefabInstance:
     - target: {fileID: 5773686462074463308, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5773686462074463308, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5773686462074463308, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5773686462074463308, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5773686462074463308, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,10 +66,6 @@ PrefabInstance:
     - target: {fileID: 5773686462074463308, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5773686462074463308, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8236421346019124461, guid: 21ffb702a16c4c24cb6d17913a46e07f, type: 3}
       propertyPath: m_Name

@@ -20,6 +20,7 @@ public class Pogo : Zombie
     // Update is called once per frame
     public override void Update()
     {
+        Debug.Log(jumping);
         if (projectile != null && status != null) status.walkMod = Mathf.Max(status.walkMod, 0.5f);
         if (projectile != null && !jumping)
         {

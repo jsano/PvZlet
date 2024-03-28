@@ -8,21 +8,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1346198688662769465, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
-      propertyPath: m_Color.b
-      value: 0.754717
-      objectReference: {fileID: 0}
-    - target: {fileID: 1346198688662769465, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
-      propertyPath: m_Color.g
-      value: 0.754717
-      objectReference: {fileID: 0}
-    - target: {fileID: 1346198688662769465, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
-      propertyPath: m_Color.r
-      value: 0.754717
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17e56ee290381984b953121a924d12ed, type: 3}
     - target: {fileID: 2621319485755743866, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
       propertyPath: HP
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2621319485755743866, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
+      propertyPath: damagedSprite1
+      value: 
+      objectReference: {fileID: 21300000, guid: f2ed4bdc9a060af4494a1fc3094793ac, type: 3}
+    - target: {fileID: 2621319485755743866, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
+      propertyPath: damagedSprite2
+      value: 
+      objectReference: {fileID: 21300000, guid: a6fbd72314af5294b91088415bfee5a8, type: 3}
     - target: {fileID: 4211092946153602139, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
       propertyPath: m_Name
       value: Newspaper
@@ -74,6 +74,14 @@ PrefabInstance:
     - target: {fileID: 7735024089398972322, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
       propertyPath: m_Size.x
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735024089398972322, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735024089398972322, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}

@@ -17,15 +17,12 @@ public class Dancing : Zombie
     private bool intro = true;
     public float dancingWalkTime;
 
-    private ZombieSpawner s;
-
     // Update is called once per frame
     public override void Update()
     {
         if (transform.position.x > Tile.COL_TO_WORLD[7] && intro) WalkConstant();
         else
         {
-            s = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
             walkTime = dancingWalkTime;
             intro = false;
         }
@@ -33,10 +30,10 @@ public class Dancing : Zombie
         {
             List<string> missing = new List<string>();
             if (up == null && row > 1 && !Tile.tileObjects[row - 1, 1].water) missing.Add("up");
-            if (down == null && row < s.lanes && !Tile.tileObjects[row + 1, 1].water) missing.Add("down");
+            if (down == null && row < ZS.lanes && !Tile.tileObjects[row + 1, 1].water) missing.Add("down");
             if (right == null) missing.Add("right");
             if (left == null) missing.Add("left");
-            if (!isEating() && missing.Count > 0) spawnPeriod += Time.deltaTime;
+            if (!isEating() && missing.Count > 0) spawnPeriod += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             if (spawnPeriod > spawnDelay)
             {
                 spawnPeriod = 0;

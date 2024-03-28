@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: HP
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: -5692382312999380849, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
+      propertyPath: damagedSprite1
+      value: 
+      objectReference: {fileID: 21300000, guid: 03f3a4fcd450b41489472b1fa491dfdc, type: 3}
+    - target: {fileID: -5692382312999380849, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
+      propertyPath: damagedSprite2
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bd171f0da55da5439e715815758e329, type: 3}
     - target: {fileID: 361721534806646908, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -56,17 +64,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 652186370263569122, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 652186370263569122, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
-      propertyPath: m_Color.g
-      value: 0.4847802
-      objectReference: {fileID: 0}
-    - target: {fileID: 652186370263569122, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 19f14962baccecc41b72bc4ac9ba8524, type: 3}
     - target: {fileID: 4133930330861260839, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
       propertyPath: m_Name
       value: Cone

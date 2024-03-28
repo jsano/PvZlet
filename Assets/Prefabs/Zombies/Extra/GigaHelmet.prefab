@@ -52,13 +52,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 588451561267285841, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
-      propertyPath: m_Color.r
-      value: 0.23529412
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae4a6b5b629121440a6c541fc15fb974, type: 3}
     - target: {fileID: 3469752954540623164, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
       propertyPath: HP
       value: 136
       objectReference: {fileID: 0}
+    - target: {fileID: 3469752954540623164, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
+      propertyPath: damagedSprite1
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b663f682a4e9dd4c8c345fc64f15ded, type: 3}
+    - target: {fileID: 3469752954540623164, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
+      propertyPath: damagedSprite2
+      value: 
+      objectReference: {fileID: 21300000, guid: 85b8c12f57cfa954182a80fab81fa2ba, type: 3}
     - target: {fileID: 4069347666126425492, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
       propertyPath: m_Name
       value: GigaHelmet

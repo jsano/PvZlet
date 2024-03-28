@@ -7,6 +7,8 @@ public class Ladder : Zombie
 
     public float noLadderWalkTime;
 
+    public Sprite placedLadderSprite;
+
     // Update is called once per frame
     public override void Update()
     {
@@ -19,8 +21,10 @@ public class Ladder : Zombie
                 shield.transform.SetParent(p.transform, true);
                 shield.transform.localPosition = new Vector3(0.3f, 0, 0);
                 shield.layer = LayerMask.NameToLayer("ExplosivesOnly");
+                shield.GetComponent<SpriteRenderer>().sprite = placedLadderSprite;
                 shield.GetComponent<SpriteRenderer>().sortingLayerName = "Zombie";
                 shield.GetComponent<SpriteRenderer>().sortingOrder = -1;
+                shield.GetComponent<Shield>().enabled = false;
                 shield = null;
             }
         }

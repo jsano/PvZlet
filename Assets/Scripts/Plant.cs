@@ -58,6 +58,8 @@ public class Plant : Damagable
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
 
+    public AudioClip attackSFX;
+
     void Awake()
     {
         SR = GetComponent<SpriteRenderer>();
@@ -95,6 +97,7 @@ public class Plant : Damagable
             if (period >= atkspd)
             {
                 attacking = true;
+                if (attackSFX != null) SFX.Instance.Play(attackSFX);
                 if (hit) Attack(hit);
                 else Attack(null);
                 period = 0;

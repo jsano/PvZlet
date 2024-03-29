@@ -59,7 +59,6 @@ MonoBehaviour:
   range: 0
   backwardsRange: 0
   alwaysAttack: 0
-  wall: 0
   mushroom: 0
   instant: 0
   grounded: 0

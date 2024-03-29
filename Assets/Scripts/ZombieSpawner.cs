@@ -51,6 +51,11 @@ public class ZombieSpawner : MonoBehaviour
 
     private List<GameObject> displayZombies = new List<GameObject>();
 
+    public AudioClip zombiesAreComingFX;
+    public AudioClip hugeWaveFX;
+    public AudioClip hugeWaveStartFX;
+    public AudioClip finalWaveFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -133,6 +138,7 @@ public class ZombieSpawner : MonoBehaviour
     private IEnumerator Spawn()
     {
         yield return new WaitUntil(() => preparation <= 0 && LevelManager.status == LevelManager.Status.Start);
+        SFX.Instance.Play(zombiesAreComingFX);
         foreach (GameObject g in displayZombies) Destroy(g);
         levelUI.transform.Find("Progress").gameObject.SetActive(true);
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
@@ -221,6 +227,7 @@ public class ZombieSpawner : MonoBehaviour
             {
                 yield return new WaitUntil(() => currentBuild == 0 || forceSend <= 0);
                 yield return new WaitForSeconds(2);
+                SFX.Instance.Play(hugeWaveFX);
                 hugeWave.SetActive(true);
                 TextMeshProUGUI t = hugeWave.GetComponent<TextMeshProUGUI>();
                 while (t.color.a < 1)
@@ -236,6 +243,7 @@ public class ZombieSpawner : MonoBehaviour
                 }
                 hugeWave.SetActive(false);
                 yield return new WaitForSeconds(1);
+                SFX.Instance.Play(hugeWaveStartFX);
             }
             else yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
         }
@@ -245,6 +253,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private IEnumerator Final()
     {
+        SFX.Instance.Play(finalWaveFX);
         final.SetActive(true);
         TextMeshProUGUI t = final.GetComponent<TextMeshProUGUI>();
         while (t.color.a < 1)

@@ -21,7 +21,7 @@ public class Music : MonoBehaviour
     {
         if (!changing)
         {
-            AS.volume = PlayerPrefs.GetFloat("Music", 1);
+            AS.volume = PlayerPrefs.GetFloat("Music", 1) / 2;
         }
     }
 
@@ -55,8 +55,7 @@ public class Music : MonoBehaviour
     {
         AS.UnPause();
         float currentTime = 0;
-        float to = PlayerPrefs.GetFloat("Music", -1);
-        to = to == -1 ? 1 : to;
+        float to = PlayerPrefs.GetFloat("Music", 1) / 2;
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;

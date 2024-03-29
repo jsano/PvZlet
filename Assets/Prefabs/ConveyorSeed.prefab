@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plant: 0
+  select: {fileID: 8300000, guid: 31f494a6281336747b23c9dd723d2260, type: 3}
 --- !u!114 &6636156708251822395
 MonoBehaviour:
   m_ObjectHideFlags: 0

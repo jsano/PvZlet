@@ -11,6 +11,8 @@ public class SelectSeed : MonoBehaviour
     private PlantBuilder pb;
     private Plant plant;
 
+    public AudioClip choose;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class SelectSeed : MonoBehaviour
     public void OnClick()
     {
         if (pb.assignedPlants.Count == 8 || pb.assignedPlants.Contains(ID)) return;
+        SFX.Instance.Play(choose);
         pb.assignedPlants.Add(ID);
         GetComponent<Button>().interactable = false;
     }

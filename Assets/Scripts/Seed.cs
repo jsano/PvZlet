@@ -19,6 +19,9 @@ public class Seed : SeedBase
     private Image image;
     private Image plantImage;
 
+    public AudioClip unchoose;
+    public AudioClip select;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +90,7 @@ public class Seed : SeedBase
             {
                 pb.selectSeeds[pb.assignedPlants[ID]].GetComponent<Button>().interactable = true;
                 pb.assignedPlants.RemoveAt(ID);
+                SFX.Instance.Play(unchoose);
             }
             return;
         }
@@ -95,6 +99,7 @@ public class Seed : SeedBase
             EventSystem.current.SetSelectedGameObject(null);
             return;
         }
+        SFX.Instance.Play(select);
         EventSystem.current.SetSelectedGameObject(gameObject);
         pb.SetPlantToBuild(ID);
     }

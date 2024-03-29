@@ -13,9 +13,13 @@ public class Reward : MonoBehaviour
 
     public Image whiteScreen;
 
+    public AudioClip appear;
+    public AudioClip win;
+
     // Start is called before the first frame update
     void Start()
     {
+        SFX.Instance.Play(appear);
         startY = transform.position.y;
         RB = GetComponent<Rigidbody2D>();
         RB.velocity = new Vector3(Random.Range(-3f, 3f), 5);
@@ -34,6 +38,7 @@ public class Reward : MonoBehaviour
 
     void OnMouseDown()
     {
+        SFX.Instance.Play(win);
         GetComponent<BoxCollider2D>().enabled = false;
         StartCoroutine(Center());
     }

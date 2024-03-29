@@ -492,6 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de59157311792f64bb8e7276a2524025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  select: {fileID: 8300000, guid: dde36641af24c654e88dcd0af76cb980, type: 3}
 --- !u!1 &1398074004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,6 +1992,8 @@ MonoBehaviour:
   pause: {fileID: 1398074004}
   fastForward: {fileID: 1889819527}
   textBox: {fileID: 8291094522469666631, guid: 2c7297ba35e7e3c4fa11d0714de4a536, type: 3}
+  pauseFX: {fileID: 8300000, guid: a2780feb6fb0b7442b6a304f17191e09, type: 3}
+  unpauseFX: {fileID: 8300000, guid: 7151350c24abe0546b1efe7dc65611b4, type: 3}
 --- !u!1 &3468774643429751126
 GameObject:
   m_ObjectHideFlags: 0

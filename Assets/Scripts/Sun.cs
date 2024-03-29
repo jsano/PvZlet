@@ -13,6 +13,7 @@ public class Sun : MonoBehaviour
     [HideInInspector] public float ground;
     /// <summary> How fast to fall </summary>
     public float speed;
+    public AudioClip sound;
 
     private SpriteRenderer SR;
 
@@ -41,6 +42,7 @@ public class Sun : MonoBehaviour
 
     public void Collect()
     {
+        SFX.Instance.Play(sound);
         PlantBuilder.sun += sunValue;
         Destroy(gameObject);
     }

@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  choose: {fileID: 8300000, guid: 2dd772913d7a76347b4dd5d8da12cde7, type: 3}
 --- !u!1 &7954387105334718006
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,9 @@ public class UI : MonoBehaviour
 
     private Music music;
 
+    public AudioClip pauseFX;
+    public AudioClip unpauseFX;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -50,12 +53,14 @@ public class UI : MonoBehaviour
         if (Time.timeScale == 0) // unpause
         {
             Time.timeScale = curTimeScale;
+            SFX.Instance.Play(unpauseFX);
             pauseMenu.SetActive(false);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.normalColor;
             if (!keepMusic) music.FadeIn(0.25f);
         }
         else
         {
+            SFX.Instance.Play(pauseFX);
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.selectedColor;
@@ -79,6 +84,7 @@ public class UI : MonoBehaviour
 
     public void Restart()
     {
+        SFX.Instance.Play(unpauseFX);
         Level l = FindFirstObjectByType<Level>();
         Destroy(l.gameObject);
         Level.LoadLevel(l);
@@ -86,6 +92,7 @@ public class UI : MonoBehaviour
 
     public void MainMenu()
     {
+        SFX.Instance.Play(unpauseFX);
         Level l = FindFirstObjectByType<Level>();
         if (l != null) Destroy(l.gameObject);
         SceneManager.LoadScene(0);

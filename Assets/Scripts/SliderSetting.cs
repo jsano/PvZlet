@@ -9,8 +9,7 @@ public class SliderSetting : MonoBehaviour
     private Slider s;
     public string key;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         s = GetComponent<Slider>();
         s.value = PlayerPrefs.GetFloat(key, 1);
@@ -24,7 +23,7 @@ public class SliderSetting : MonoBehaviour
 
     public void OnValueChanged()
     {
-        PlayerPrefs.SetFloat(key, s.value);
+        if (s != null) PlayerPrefs.SetFloat(key, s.value);
     }
 
 }

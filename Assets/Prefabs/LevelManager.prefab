@@ -301,6 +301,9 @@ MonoBehaviour:
   zombieSpawner: {fileID: 6807621695211350236}
   sky: {fileID: 2661162353316031795}
   music: {fileID: 6613374441177086597}
+  letsRockSFX: {fileID: 8300000, guid: 7151350c24abe0546b1efe7dc65611b4, type: 3}
+  readySetPlant: {fileID: 8300000, guid: 6c216565948a16e4d8049b915a15934f, type: 3}
+  rollIn: {fileID: 8300000, guid: 8c6f35c05f98276499274ee2de70f48f, type: 3}
   reward: {fileID: 1567745852191616486, guid: b00a94b693a6a7d40b1169f268979f3e, type: 3}
 --- !u!1 &7175623330523217047
 GameObject:
@@ -706,6 +709,8 @@ MonoBehaviour:
   pause: {fileID: 0}
   fastForward: {fileID: 0}
   textBox: {fileID: 0}
+  pauseFX: {fileID: 0}
+  unpauseFX: {fileID: 0}
   blackScreen: {fileID: 7175623330606376266}
   text: {fileID: 7175623331662085297}
   options: {fileID: 7175623330674859912}

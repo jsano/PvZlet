@@ -14,6 +14,8 @@ public class ConveyorSeed : SeedBase
 
     private float heightScale;
 
+    public AudioClip select;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class ConveyorSeed : SeedBase
             EventSystem.current.SetSelectedGameObject(null);
             return;
         }
+        SFX.Instance.Play(select);
         EventSystem.current.SetSelectedGameObject(gameObject);
         pb.SetPlantIDToBuild(plant);
     }

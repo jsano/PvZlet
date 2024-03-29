@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class Shovel : MonoBehaviour
 {
 
+    public AudioClip select;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class Shovel : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             return;
         }
+        SFX.Instance.Play(select);
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 

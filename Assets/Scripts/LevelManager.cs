@@ -23,6 +23,10 @@ public class LevelManager : MonoBehaviour
     private PlantBuilder pb;
     public AudioSource music;
 
+    public AudioClip letsRockSFX;
+    public AudioClip readySetPlant;
+    public AudioClip rollIn;
+
     private bool letsRock;
     
     public GameObject reward;
@@ -107,11 +111,12 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         music.GetComponent<Music>().FadeOut(1);
+        SFX.Instance.Play(readySetPlant);
         ready.SetActive(true);
         TextMeshProUGUI t = ready.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         t.text = "Set...";
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         t.fontSize += 16;
         t.text = "PLANT!";
         yield return new WaitForSeconds(1f);
@@ -122,6 +127,7 @@ public class LevelManager : MonoBehaviour
         status = Status.Start;
         if (l.conveyor.Count > 0)
         {
+            SFX.Instance.Play(rollIn);
             conveyor.SetActive(true);
             RectTransform c = conveyor.GetComponent<RectTransform>();
             while (c.anchoredPosition.x < 40)
@@ -146,12 +152,14 @@ public class LevelManager : MonoBehaviour
 
     public void LetsRock()
     {
+        SFX.Instance.Play(letsRockSFX);
         letsRock = true;
     }
 
     public void Win()
     {
         status = Status.Won;
+        music.GetComponent<Music>().FadeOut(2.5f);
         Instantiate(reward);
     }
 

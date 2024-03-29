@@ -34,6 +34,10 @@ public class Tile : MonoBehaviour
     /// <summary> The fog currently covering this tile. Can be null if there's no fog </summary>
     [HideInInspector] public Fog fog;
 
+    public AudioClip plantFX;
+    public AudioClip plantWaterFX;
+    public AudioClip shovelFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +83,11 @@ public class Tile : MonoBehaviour
         if (g != null)
         {
             if (g.GetComponent<SeedBase>() != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
-            else if (g.GetComponent<Shovel>() != null) Destroy(planted);
+            else if (g.GetComponent<Shovel>() != null)
+            {
+                SFX.Instance.Play(shovelFX);
+                Destroy(planted);
+            }
         }
     }
 
@@ -117,6 +125,8 @@ public class Tile : MonoBehaviour
             p.row = row;
             p.col = col;
             PlantBuilder.sun -= p.cost;
+            if (p.aquatic) SFX.Instance.Play(plantWaterFX);
+            else SFX.Instance.Play(plantFX);
             if (EventSystem.current.currentSelectedGameObject != null)
                 EventSystem.current.currentSelectedGameObject.GetComponent<SeedBase>().OnPlant();
         }

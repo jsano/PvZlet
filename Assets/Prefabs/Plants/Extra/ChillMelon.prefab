@@ -83,3 +83,8 @@ MonoBehaviour:
   lane: 0
   distance: {x: 0, y: 0}
   splash: {x: 2, y: 2.5}
+  hitSFX:
+  - {fileID: 8300000, guid: a7ae4bce094d2494e8bbba174ec3181f, type: 3}
+  - {fileID: 8300000, guid: ecceaffdbb3a2ad46853dfe840e240ef, type: 3}
+  sparkle: {fileID: 8300000, guid: 7315f2fd68f351a4f8f8e70fe19bfc22, type: 3}
+  effectSFX: {fileID: 8300000, guid: 6f769b76eff77a746b80cf0eb775ac5c, type: 3}

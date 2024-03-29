@@ -105,9 +105,9 @@ MonoBehaviour:
   roof: 0
   planted: {fileID: 0}
   fog: {fileID: 0}
-  plantFX: {fileID: 8300000, guid: 418ba134a05958e47b16d46020ed4039, type: 3}
-  plantWaterFX: {fileID: 8300000, guid: 789890ddea4666640aa7445d77f3f3cd, type: 3}
-  shovelFX: {fileID: 8300000, guid: f3fbfd7fdb311244abbaeee2bc9183d3, type: 3}
+  plantSFX: {fileID: 8300000, guid: 418ba134a05958e47b16d46020ed4039, type: 3}
+  plantWaterSFX: {fileID: 8300000, guid: 789890ddea4666640aa7445d77f3f3cd, type: 3}
+  shovelSFX: {fileID: 8300000, guid: f3fbfd7fdb311244abbaeee2bc9183d3, type: 3}
 --- !u!61 &3444952105696796
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -83,4 +83,8 @@ MonoBehaviour:
   splash: {x: 0, y: 0}
   pea: 0
   sharp: 1
+  hitSFX:
+  - {fileID: 8300000, guid: 4460435d6e6eed84ba7bd0f2107c99ed, type: 3}
+  - {fileID: 8300000, guid: e958a4d860da9f94ab8a172b165a7bc0, type: 3}
+  - {fileID: 8300000, guid: 05ebb0ed02b2567448523dc90916840a, type: 3}
   toChase: {fileID: 0}

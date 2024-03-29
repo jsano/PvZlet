@@ -37,8 +37,8 @@ public class PotatoMine : Plant
 
     protected override Zombie LookInRange(int row)
     {
-        RaycastHit2D hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Underground"));
-        if (!hit) hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Underground"));
+        RaycastHit2D hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.left, (backwardsRange + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
+        if (!hit) hit = Physics2D.Raycast(Tile.tileObjects[row, col].transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
         if (hit) return hit.collider.GetComponent<Zombie>();
         return null;
     }
@@ -48,7 +48,7 @@ public class PotatoMine : Plant
     {
         GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
         g.transform.localScale = area;
-        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Underground"));
+        RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
         foreach (RaycastHit2D a in all)
         {
             a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);

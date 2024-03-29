@@ -11,6 +11,8 @@ public class Cactus : Plant
     private Sprite normalSprite;
     public Sprite longSprite;
 
+    public AudioClip grow;
+
     public override void Start()
     {
         normalSprite = SR.sprite;
@@ -31,6 +33,7 @@ public class Cactus : Plant
             hit = Physics2D.BoxCast(Tile.tileObjects[row, col + i].transform.position + new Vector3(-Tile.TILE_DISTANCE.x / 2, 3 * Tile.TILE_DISTANCE.y / 8, 0), new Vector2(0.01f, Tile.TILE_DISTANCE.y / 4), 0, Vector2.right, Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
         if (hit && hit.collider.GetComponent<BoxCollider2D>().size != Vector2.one)
         {
+            if (hit.point.y != attack) SFX.Instance.Play(grow);
             attack = hit.point.y;
             SR.sprite = longSprite;
             return hit.collider.GetComponent<Zombie>();

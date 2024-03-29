@@ -87,3 +87,9 @@ MonoBehaviour:
   splash: {x: 0, y: 0}
   pea: 1
   sharp: 0
+  hitSFX:
+  - {fileID: 8300000, guid: 4460435d6e6eed84ba7bd0f2107c99ed, type: 3}
+  - {fileID: 8300000, guid: e958a4d860da9f94ab8a172b165a7bc0, type: 3}
+  - {fileID: 8300000, guid: 05ebb0ed02b2567448523dc90916840a, type: 3}
+  sparkle: {fileID: 8300000, guid: 7315f2fd68f351a4f8f8e70fe19bfc22, type: 3}
+  effectSFX: {fileID: 8300000, guid: 6f769b76eff77a746b80cf0eb775ac5c, type: 3}

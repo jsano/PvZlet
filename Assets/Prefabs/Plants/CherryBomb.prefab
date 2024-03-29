@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 6.51
+      value: 2.17
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 5
+      value: 1.6666666
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
@@ -97,7 +97,6 @@ MonoBehaviour:
   range: 0
   backwardsRange: 0
   alwaysAttack: 1
-  wall: 0
   mushroom: 0
   instant: 1
   grounded: 0
@@ -107,4 +106,7 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 2610789170931917077, guid: bc301af3c85f8924ba33ada6b751375b, type: 3}
   status: {fileID: 0}
+  attackSFX1: {fileID: 8300000, guid: 45adb37a07fbec4459b23e868c3519ea, type: 3}
+  attackSFX2: {fileID: 0}
   area: {x: 2.5, y: 2.5}
+  buildup: {fileID: 8300000, guid: 59958fea84a408848b742b4a6c15f63c, type: 3}

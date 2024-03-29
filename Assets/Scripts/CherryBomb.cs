@@ -7,6 +7,14 @@ public class CherryBomb : Plant
 
     public Vector2 area;
 
+    public AudioClip buildup;
+
+    public override void Start()
+    {
+        SFX.Instance.Play(buildup);
+        base.Start();
+    }
+
     /// <summary> Explodes in a 3x3 area, and then disappears </summary>
     protected override void Attack(Zombie z)
     {

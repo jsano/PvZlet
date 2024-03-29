@@ -8,6 +8,8 @@ public class UmbrellaLeaf : Plant
     public GameObject shield;
     private Coroutine visualCoroutine;
 
+    public AudioClip boing;
+
     public override void Start()
     {
         base.Start();
@@ -25,6 +27,7 @@ public class UmbrellaLeaf : Plant
             Destroy(collision.gameObject);
         }
         else return;
+        SFX.Instance.Play(boing);
         if (visualCoroutine != null) StopCoroutine(visualCoroutine);
         visualCoroutine = StartCoroutine(Visual());
     }

@@ -10,6 +10,8 @@ public class SFX : MonoBehaviour
     private static SFX instance;
     public static SFX Instance { get { return instance; } }
 
+    private HashSet<AudioClip> cooldown = new HashSet<AudioClip>();
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -31,13 +33,22 @@ public class SFX : MonoBehaviour
 
     public void Play(AudioClip clip)
     {
+        if (cooldown.Contains(clip)) return;
         AS.PlayOneShot(clip);
+        StartCoroutine(refresh(clip));
     }
 
     public void PlayLoop(AudioClip clip)
     {
         AS.clip = clip;
         AS.Play();
+    }
+
+    private IEnumerator refresh(AudioClip clip)
+    {
+        cooldown.Add(clip);
+        yield return new WaitForSeconds(0.2f);
+        cooldown.Remove(clip);
     }
 
 }

@@ -21,8 +21,10 @@ public class LobbedProjectile : MonoBehaviour
 
     private bool hit = false;
 
+    public AudioClip[] hitSFX;
+
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         RB.velocity = new Vector2(distance.x / airTime, (distance.y - 0.5f * Physics2D.gravity.y * RB.gravityScale * Mathf.Pow(airTime, 2)) / airTime); // y = 1/2(-9.8)t^2 + vt
@@ -46,6 +48,7 @@ public class LobbedProjectile : MonoBehaviour
     {
         if (hit) return;
         if (other.GetComponent<Zombie>() != null && other.GetComponent<Zombie>().row != lane) return;
+        if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         if (other.GetComponent<Damagable>() != null)
         {
             if (splash.magnitude > 0)

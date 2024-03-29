@@ -97,7 +97,6 @@ MonoBehaviour:
   range: 0.01
   backwardsRange: 0.01
   alwaysAttack: 0
-  wall: 0
   mushroom: 0
   instant: 0
   grounded: 0
@@ -107,5 +106,7 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 8464927645593920465, guid: 27be8d0ca4a51f742ae2937d2e4a674c, type: 3}
   status: {fileID: 0}
+  attackSFX1: {fileID: 8300000, guid: 67179ac87dada8742bd3e070acb51876, type: 3}
+  attackSFX2: {fileID: 0}
   armingTime: 10
   armingSprite: {fileID: 21300000, guid: 66f23707838fc4041b2ca159d9aa8701, type: 3}

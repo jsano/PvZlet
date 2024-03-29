@@ -122,4 +122,6 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
+  attackSFX1: {fileID: 8300000, guid: 4460435d6e6eed84ba7bd0f2107c99ed, type: 3}
+  attackSFX2: {fileID: 8300000, guid: e958a4d860da9f94ab8a172b165a7bc0, type: 3}
   popsRemaining: 3

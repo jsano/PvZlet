@@ -106,4 +106,7 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
+  attackSFX1: {fileID: 8300000, guid: 45adb37a07fbec4459b23e868c3519ea, type: 3}
+  attackSFX2: {fileID: 0}
   area: {x: 3, y: 3}
+  buildup: {fileID: 8300000, guid: 59958fea84a408848b742b4a6c15f63c, type: 3}

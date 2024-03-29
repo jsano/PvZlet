@@ -23,6 +23,22 @@ PrefabInstance:
       propertyPath: distance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
+      propertyPath: hitSFX.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
+      propertyPath: hitSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4460435d6e6eed84ba7bd0f2107c99ed, type: 3}
+    - target: {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
+      propertyPath: hitSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e958a4d860da9f94ab8a172b165a7bc0, type: 3}
+    - target: {fileID: -5282898334064680471, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
+      propertyPath: hitSFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 05ebb0ed02b2567448523dc90916840a, type: 3}
     - target: {fileID: 1858253773609595723, guid: e5ddf7a05f9f09c478a248b37512dbb7, type: 3}
       propertyPath: m_Name
       value: Pea

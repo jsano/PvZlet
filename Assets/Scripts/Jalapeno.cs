@@ -5,6 +5,14 @@ using UnityEngine;
 public class Jalapeno : Plant
 {
 
+    public AudioClip buildup;
+
+    public override void Start()
+    {
+        SFX.Instance.Play(buildup);
+        base.Start();
+    }
+
     protected override void Attack(Zombie z)
     {
         List<GameObject> prev = new List<GameObject>();

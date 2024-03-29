@@ -15,6 +15,7 @@ public class StatMod : ScriptableObject
         public Color c;
     }
 
+    public string statusName;
     /// <summary> Zombies will move at their normal speed <c>* walkMod</c> </summary>
     public float walkMod;
     /// <summary> Zombies will eat at their normal speed <c>* eatMod</c> </summary>
@@ -38,12 +39,14 @@ public class StatMod : ScriptableObject
     /// <summary> Required function for the status effect to take place. Applies the modifiers and removes itself after time </summary>
     /// <param name="z"> The zombie to apply the effect to </param>
     /// <param name="name"> The name of the status effect. Refer to <c>StatMod.effects</c> </param>
-    public void Apply(Zombie z, string name)
+    public void Apply(Zombie z, string name, AudioClip sfx = null)
     {
         if (z.GetComponent<Zomboni>() != null || z.GetComponent<Bobsled>() != null) return; //NOTE: Maybe make "status effectable" into a field
         target = z;
+        if (sfx != null && (target.status == null || target.status.statusName != name)) SFX.Instance.Play(sfx);
         if (target.status) target.status.Remove();
         target.status = this;
+        statusName = name;
         walkMod = effects[name].walkMod;
         eatMod = effects[name].eatMod;
         removedBy = effects[name].removedBy;

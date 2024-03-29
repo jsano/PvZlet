@@ -27,8 +27,10 @@ public class StraightProjectile : MonoBehaviour
 
     private bool hit = false;
 
+    public AudioClip[] hitSFX;
+
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         if (dir == Vector3.zero) dir = Vector3.right;
         RB = GetComponent<Rigidbody2D>();
@@ -72,6 +74,7 @@ public class StraightProjectile : MonoBehaviour
             if (!sharp) Destroy(gameObject); // NOTE: Very situational, ideally only cactus spikes should ignore
             return;
         }
+        if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         // Prioritize shield/zomboni over zombie since they can't splash
         if (other.GetComponent<Shield>() != null)
         {

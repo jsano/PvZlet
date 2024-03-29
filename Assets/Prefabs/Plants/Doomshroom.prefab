@@ -97,7 +97,6 @@ MonoBehaviour:
   range: 0
   backwardsRange: 0
   alwaysAttack: 1
-  wall: 0
   mushroom: 1
   instant: 1
   grounded: 0
@@ -107,5 +106,8 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 8990773574722080084, guid: 830f6489669611f44875fb827531aa72, type: 3}
   status: {fileID: 0}
+  attackSFX1: {fileID: 8300000, guid: 65430e86f7239ba4da208f36eee67770, type: 3}
+  attackSFX2: {fileID: 0}
   area: {x: 6, y: 6}
+  buildup: {fileID: 8300000, guid: 59958fea84a408848b742b4a6c15f63c, type: 3}
   crater: {fileID: 1257109371683293466, guid: 02254e2d78d3c8248850b8786e8ef66b, type: 3}

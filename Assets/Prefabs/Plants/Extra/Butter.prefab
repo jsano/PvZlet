@@ -83,3 +83,5 @@ MonoBehaviour:
   lane: 0
   distance: {x: 0, y: 0}
   splash: {x: 0, y: 0}
+  hitSFX:
+  - {fileID: 8300000, guid: c22910a8f97a8cd4181942919fa5a8d6, type: 3}

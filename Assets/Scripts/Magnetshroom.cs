@@ -10,6 +10,8 @@ public class Magnetshroom : Plant
     public Vector2 area;
     private GameObject taken;
 
+    public AudioClip take;
+
     public override void Start()
     {
         recoverPeriod = recoverTime;
@@ -59,6 +61,7 @@ public class Magnetshroom : Plant
             }
             if (took)
             {
+                SFX.Instance.Play(take);
                 recoverPeriod = 0;
                 break;
             }

@@ -5,8 +5,11 @@ using UnityEngine;
 public class Fumeshroom : Plant
 {
 
+    public AudioClip[] hitSFX;
+
     protected override void Attack(Zombie z)
     {
+        SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         GameObject g = Instantiate(projectile, transform.position + rightOffset, Quaternion.identity);
         g.transform.localScale = new Vector3(Tile.TILE_DISTANCE.x * range, 1, 1);
         g.transform.position += new Vector3(Tile.TILE_DISTANCE.x * range / 2, 0, 0);

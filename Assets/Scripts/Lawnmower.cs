@@ -9,6 +9,8 @@ public class Lawnmower : MonoBehaviour
     private bool launched;
     public int row;
 
+    public AudioClip mow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class Lawnmower : MonoBehaviour
     {
         if (collider.GetComponent<Zombie>().row == row)
         {
+            if (!launched) SFX.Instance.Play(mow);
             launched = true;
             collider.GetComponent<Zombie>().ReceiveDamage(100000, gameObject);
         }

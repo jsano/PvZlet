@@ -19,6 +19,7 @@ public class SplitPea : Peashooter
         if (p.distance != range) p.distance = range;
         p.dir = Vector3.left;
         yield return new WaitForSeconds(0.2f);
+        SFX.Instance.Play(Random.Range(0, 1f) < 0.5f ? attackSFX2 : attackSFX1);
         p = Instantiate(projectile, transform.position - rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
         if (p.distance != range) p.distance = range;
         p.dir = Vector3.left;

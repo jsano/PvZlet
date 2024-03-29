@@ -222,4 +222,7 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
+  attackSFX1: {fileID: 0}
+  attackSFX2: {fileID: 0}
   shield: {fileID: 5170131184157633736}
+  boing: {fileID: 8300000, guid: b3ef9bc31b150f943902318c8b4b65e5, type: 3}

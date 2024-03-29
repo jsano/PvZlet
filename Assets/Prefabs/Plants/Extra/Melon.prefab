@@ -72,6 +72,18 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8697127967471704554, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
+      propertyPath: hitSFX.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697127967471704554, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
+      propertyPath: hitSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a7ae4bce094d2494e8bbba174ec3181f, type: 3}
+    - target: {fileID: 8697127967471704554, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
+      propertyPath: hitSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ecceaffdbb3a2ad46853dfe840e240ef, type: 3}
+    - target: {fileID: 8697127967471704554, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
       propertyPath: neighboringLaneSplash
       value: 1
       objectReference: {fileID: 0}

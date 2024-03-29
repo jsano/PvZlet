@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   row: 0
+  mow: {fileID: 8300000, guid: 4290f8b4a6f28c945af186785679c057, type: 3}
 --- !u!61 &1826719514512177518
 BoxCollider2D:
   m_ObjectHideFlags: 0

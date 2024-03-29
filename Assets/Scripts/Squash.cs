@@ -8,10 +8,14 @@ public class Squash : Plant
     private bool attacked;
     public Vector2 area;
 
+    public AudioClip[] see;
+    public AudioClip squashFX;
+
     protected override void Attack(Zombie z)
     {
         if (!attacked)
         {
+            SFX.Instance.Play(see[Random.Range(0, see.Length)]);
             attacked = true;
             HP = 100000;
             Tile.tileObjects[row, col].planted = null;
@@ -23,8 +27,7 @@ public class Squash : Plant
     {
         Vector3 dest = z.transform.position;
         yield return new WaitForSeconds(1);
-        SR.sortingLayerName = "Armor";
-        SR.sortingOrder = 1;
+        SR.sortingLayerName = "Projectile";
         dest += new Vector3(0, Tile.TILE_DISTANCE.y, 0);
         while (transform.position != dest)
         {
@@ -43,6 +46,8 @@ public class Squash : Plant
         {
             a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
         }
+        SFX.Instance.Play(squashFX);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 

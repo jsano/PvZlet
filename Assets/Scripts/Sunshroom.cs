@@ -10,6 +10,7 @@ public class Sunshroom : Sunflower
     private float growPeriod;
     private bool grown;
 
+    public AudioClip grow;
     public override void Start()
     {
         transform.localScale = new Vector3(0.5f, 0.5f, 1);
@@ -23,6 +24,7 @@ public class Sunshroom : Sunflower
         if (!grown && growPeriod > growTime)
         {
             grown = true;
+            SFX.Instance.Play(grow);
             transform.localScale = Vector3.one;
             atkspd = grownAtkspd;
         }

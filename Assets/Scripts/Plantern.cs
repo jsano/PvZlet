@@ -5,6 +5,14 @@ using UnityEngine;
 public class Plantern : Plant
 {
 
+    public AudioClip start;
+
+    public override void Start()
+    {
+        SFX.Instance.Play(start);
+        base.Start();
+    }
+
     // Update is called once per frame
     public override void Update()
     {

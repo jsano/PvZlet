@@ -21,8 +21,7 @@ public class Music : MonoBehaviour
     {
         if (!changing)
         {
-            float vol = PlayerPrefs.GetFloat("Music", -1);
-            AS.volume = vol == -1 ? 1 : vol;
+            AS.volume = PlayerPrefs.GetFloat("Music", 1);
         }
     }
 

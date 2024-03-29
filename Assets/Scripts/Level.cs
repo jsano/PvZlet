@@ -55,6 +55,7 @@ public class Level : MonoBehaviour
 
     public static void LoadLevel(Level l)
     {
+        if (Time.timeScale == 0) return;
         Level g = Instantiate(l);
         DontDestroyOnLoad(g);
         Time.timeScale = 1;

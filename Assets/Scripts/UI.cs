@@ -45,21 +45,21 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void Pause()
+    public void Pause(bool keepMusic = false)
     {
         if (Time.timeScale == 0) // unpause
         {
             Time.timeScale = curTimeScale;
             pauseMenu.SetActive(false);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.normalColor;
-            music.FadeIn(0.25f);
+            if (!keepMusic) music.FadeIn(0.25f);
         }
         else
         {
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.selectedColor;
-            music.FadeOut(0f);
+            if (!keepMusic) music.FadeOut(0f);
         }
     }
 

@@ -11,7 +11,7 @@ public class Garlic : Nut
         {
             Zombie z = source.GetComponent<Zombie>();
             int newRow;
-            if (z.row == ZS.lanes) newRow = z.row - 1;
+            if (z.row == ZombieSpawner.Instance.lanes) newRow = z.row - 1;
             else if (z.row == 1) newRow = z.row + 1;
             else newRow = z.row + 1 - 2 * Random.Range(0, 2);
             z.MoveToLane(newRow, 2);

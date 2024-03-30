@@ -16,7 +16,7 @@ public class Blover : Plant
 
     private IEnumerator Blow()
     {
-        for (int i = 1; i <= ZS.lanes; i++)
+        for (int i = 1; i <= ZombieSpawner.Instance.lanes; i++)
         {
             for (int j = 1; j <= 9; j++)
             {

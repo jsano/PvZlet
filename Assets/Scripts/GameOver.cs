@@ -11,6 +11,9 @@ public class GameOver : UI
     public TextMeshProUGUI text;
     public GameObject options;
 
+    public AudioClip song;
+    public AudioClip no;
+
     public override void Start()
     {
         GetComponent<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -25,6 +28,7 @@ public class GameOver : UI
 
     void OnEnable()
     {
+        SFX.Instance.Play(song);
         StartCoroutine(GO());
     }
 
@@ -35,6 +39,7 @@ public class GameOver : UI
             blackScreen.color += new Color(0, 0, 0, Time.deltaTime / 2);
             yield return null;
         }
+        SFX.Instance.Play(no);
         while (text.color.a < 1)
         {
             text.color += new Color(0, 0, 0, Time.deltaTime / 2);

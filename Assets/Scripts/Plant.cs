@@ -53,7 +53,6 @@ public class Plant : Damagable
     protected Vector3 topOffset;
 
     protected SpriteRenderer SR;
-    protected ZombieSpawner ZS;
 
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
@@ -65,7 +64,6 @@ public class Plant : Damagable
     {
         SR = GetComponent<SpriteRenderer>();
         sky = GameObject.Find("Sky").GetComponent<Sky>();
-        ZS = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
     }
 
     // Start is called before the first frame update
@@ -169,7 +167,7 @@ public class Plant : Damagable
 
     void OnDestroy()
     {
-        PlantBuilder.plantCounts[ID] -= 1;
+        PlantBuilder.Instance.plantCounts[ID] -= 1;
     }
 
     protected IEnumerator EatenVisual()

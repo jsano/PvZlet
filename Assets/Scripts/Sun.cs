@@ -48,7 +48,7 @@ public class Sun : MonoBehaviour
     public void Collect()
     {
         SFX.Instance.Play(sound);
-        PlantBuilder.sun += PlayerPrefs.GetInt("50Sun", 0) == 1 ? 50 : sunValue;
+        PlantBuilder.Instance.sun += PlayerPrefs.GetInt("50Sun", 0) == 1 ? 50 : sunValue;
         Destroy(gameObject);
     }
 

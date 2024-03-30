@@ -27,7 +27,7 @@ public class Sky : MonoBehaviour
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         if (l.fogColumn > 0)
         {
-            for (int i = 1; i <= GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().lanes; i++)
+            for (int i = 1; i <= ZombieSpawner.Instance.lanes; i++)
             {
                 for (int j = l.fogColumn; j <= 9; j++)
                 {

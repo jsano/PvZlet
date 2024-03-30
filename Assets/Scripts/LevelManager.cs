@@ -17,10 +17,8 @@ public class LevelManager : MonoBehaviour
     public GameObject plants;
     public GameObject sun;
     public GameObject conveyor;
-    public ZombieSpawner zombieSpawner;
     public Sky sky;
     private Level l;
-    private PlantBuilder pb;
     public AudioSource music;
 
     public AudioClip letsRockSFX;
@@ -49,7 +47,6 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         l = FindFirstObjectByType<Level>();
         if (l.special != null) Instantiate(l.special);
         UI.SetActive(false);
@@ -86,7 +83,7 @@ public class LevelManager : MonoBehaviour
             }
             yield return new WaitUntil(() => letsRock);
             seedSelect.transform.Find("Start").gameObject.SetActive(false);
-            foreach (Transform g in pb.transform.Find("Plants")) g.GetComponent<Button>().interactable = false;
+            foreach (Transform g in PlantBuilder.Instance.transform.Find("Plants")) g.GetComponent<Button>().interactable = false;
             while (BG.transform.localPosition.y > -400)
             {
                 BG.anchoredPosition = BG.anchoredPosition + Vector2.down * 2000 * Time.deltaTime;
@@ -122,7 +119,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ready.SetActive(false);
         UI.SetActive(true);
-        zombieSpawner.levelUI.SetActive(true);
+        ZombieSpawner.Instance.levelUI.SetActive(true);
         sky.enabled = true;
         status = Status.Start;
         if (l.conveyor.Count > 0)
@@ -170,8 +167,8 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         gameOver.SetActive(true);
         UI.SetActive(false);
-        pb.gameObject.SetActive(false);
-        zombieSpawner.gameObject.SetActive(false);
+        PlantBuilder.Instance.gameObject.SetActive(false);
+        ZombieSpawner.Instance.gameObject.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
     }
 

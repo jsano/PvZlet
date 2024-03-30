@@ -28,6 +28,7 @@ public class Squash : Plant
         Vector3 dest = z.transform.position;
         yield return new WaitForSeconds(1);
         SR.sortingLayerName = "Projectile";
+        GetComponent<BoxCollider2D>().enabled = false;
         dest += new Vector3(0, Tile.TILE_DISTANCE.y, 0);
         while (transform.position != dest)
         {

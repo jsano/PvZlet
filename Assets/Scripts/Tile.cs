@@ -82,7 +82,7 @@ public class Tile : MonoBehaviour
         GameObject g = EventSystem.current.currentSelectedGameObject;
         if (g != null)
         {
-            if (g.GetComponent<SeedBase>() != null && CanPlantHere()) Place(PlantBuilder.currentPlant);
+            if (g.GetComponent<SeedBase>() != null && CanPlantHere()) Place(PlantBuilder.Instance.currentPlant);
             else if (g.GetComponent<Shovel>() != null)
             {
                 SFX.Instance.Play(shovelSFX);
@@ -124,7 +124,7 @@ public class Tile : MonoBehaviour
             else planted = g;
             p.row = row;
             p.col = col;
-            PlantBuilder.sun -= p.cost;
+            PlantBuilder.Instance.sun -= p.cost;
             if (EventSystem.current.currentSelectedGameObject != null)
             {
                 EventSystem.current.currentSelectedGameObject.GetComponent<SeedBase>().OnPlant();
@@ -141,7 +141,7 @@ public class Tile : MonoBehaviour
 
     private bool CanPlantHere()
     {
-        Plant p = PlantBuilder.currentPlant.GetComponent<Plant>();
+        Plant p = PlantBuilder.Instance.currentPlant.GetComponent<Plant>();
         if (p.GetComponent<GraveBuster>() != null) return ContainsGridItem("Grave");
         gridItems.RemoveAll(g => g == null);
         if (gridItems.Count > 0) return false;

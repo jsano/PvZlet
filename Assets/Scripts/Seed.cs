@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Seed : SeedBase
 {
 
-    private PlantBuilder pb;
     /// <summary> The ID of the button, used as the index for the PlantBuilder's <c>assignedPlants</c>. 0-indexed </summary>
     public int ID;
     private Button b;
@@ -26,7 +25,6 @@ public class Seed : SeedBase
     // Start is called before the first frame update
     void Start()
     {
-        pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
         b = GetComponent<Button>();
         cost = transform.Find("Text").GetComponent<TextMeshProUGUI>();
         recharge = transform.Find("Recharge").GetComponent<Image>();
@@ -41,7 +39,7 @@ public class Seed : SeedBase
     {
         if (LevelManager.status == LevelManager.Status.Intro)
         {
-            if (pb.assignedPlants.Count <= ID)
+            if (PlantBuilder.Instance.assignedPlants.Count <= ID)
             {
                 image.color = new Color(0, 0, 0, 0.5f);
                 cost.text = "";
@@ -49,7 +47,7 @@ public class Seed : SeedBase
                 plantImage.color = Color.clear;
                 return;
             }
-            plant = pb.allPlants[pb.assignedPlants[ID]].GetComponent<Plant>();
+            plant = PlantBuilder.Instance.allPlants[PlantBuilder.Instance.assignedPlants[ID]].GetComponent<Plant>();
             rechargePeriod = plant.recharge;
             cost.text = plant.cost + "";
             image.color = Color.white;
@@ -60,7 +58,7 @@ public class Seed : SeedBase
         {
             if (plant == null) return;
             rechargePeriod += Time.deltaTime;
-            b.interactable = PlantBuilder.sun >= plant.cost && rechargePeriod >= plant.recharge;
+            b.interactable = PlantBuilder.Instance.sun >= plant.cost && rechargePeriod >= plant.recharge;
             recharge.fillAmount = (rechargePeriod / plant.recharge >= 1) ? 0 : rechargePeriod / plant.recharge;
 
             if (Input.GetButtonDown("Plant1") && ID == 0) OnClick();
@@ -92,10 +90,10 @@ public class Seed : SeedBase
         }
         if (LevelManager.status == LevelManager.Status.Intro)
         {
-            if (pb.assignedPlants.Count > ID)
+            if (PlantBuilder.Instance.assignedPlants.Count > ID)
             {
-                pb.selectSeeds[pb.assignedPlants[ID]].GetComponent<Button>().interactable = true;
-                pb.assignedPlants.RemoveAt(ID);
+                PlantBuilder.Instance.selectSeeds[PlantBuilder.Instance.assignedPlants[ID]].GetComponent<Button>().interactable = true;
+                PlantBuilder.Instance.assignedPlants.RemoveAt(ID);
                 SFX.Instance.Play(unchoose);
             }
             return;
@@ -107,13 +105,13 @@ public class Seed : SeedBase
         }
         SFX.Instance.Play(select);
         EventSystem.current.SetSelectedGameObject(gameObject);
-        pb.SetPlantToBuild(ID);
+        PlantBuilder.Instance.SetPlantToBuild(ID);
     }
 
     public override void OnPlant()
     {
         rechargePeriod = 0;
-        PlantBuilder.plantCounts[pb.assignedPlants[ID]] += 1;
+        PlantBuilder.Instance.plantCounts[PlantBuilder.Instance.assignedPlants[ID]] += 1;
     }
 
 }

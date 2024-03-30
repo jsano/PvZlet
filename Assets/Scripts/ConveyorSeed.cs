@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ConveyorSeed : SeedBase
 {
 
-    private PlantBuilder pb;
     [HideInInspector] public int plant;
     private RectTransform RT;
     private Image image;
@@ -20,12 +19,11 @@ public class ConveyorSeed : SeedBase
     void Start()
     {
         RT = GetComponent<RectTransform>();
-        pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
-        heightScale = pb.GetComponent<RectTransform>().rect.size.y / RT.rect.size.y;
+        heightScale = PlantBuilder.Instance.GetComponent<RectTransform>().rect.size.y / RT.rect.size.y;
         image = GetComponent<Image>();
-        image.color = pb.allPlants[plant].GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
+        image.color = PlantBuilder.Instance.allPlants[plant].GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
         //image.fillAmount = 0;
-        transform.Find("Plant").GetComponent<Image>().sprite = pb.allPlants[plant].GetComponent<SpriteRenderer>().sprite;
+        transform.Find("Plant").GetComponent<Image>().sprite = PlantBuilder.Instance.allPlants[plant].GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame
@@ -47,7 +45,7 @@ public class ConveyorSeed : SeedBase
         }
         SFX.Instance.Play(select);
         EventSystem.current.SetSelectedGameObject(gameObject);
-        pb.SetPlantIDToBuild(plant);
+        PlantBuilder.Instance.SetPlantIDToBuild(plant);
     }
 
     public override void OnPlant()

@@ -10,6 +10,23 @@ using UnityEngine.UI;
 public class ZombieSpawner : MonoBehaviour
 {
 
+    private static ZombieSpawner instance;
+    public static ZombieSpawner Instance { get { return instance; } }
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            l = FindFirstObjectByType<Level>();
+            lanes = (l.setting == Level.Setting.Pool || l.setting == Level.Setting.Fog) ? 6 : 5;
+        }
+    }
+
     private class ZombieData
     {
         public int count;
@@ -42,6 +59,7 @@ public class ZombieSpawner : MonoBehaviour
     private float forceSend;
     private int waveNumber;
 
+    private Level l;
     public LevelManager levelManager;
     public Image progressBar;
     public GameObject hugeWave;
@@ -60,10 +78,8 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Level l = FindFirstObjectByType<Level>();
         levelUI.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = l.levelName;
         HashSet<int> unique = new HashSet<int>();
-        lanes = (l.setting == Level.Setting.Pool || l.setting == Level.Setting.Fog) ? 6 : 5;
         preparation = l.preparation;
         TextAsset levelZombies = l.waves;
         string[] level = levelZombies.text.Split(new string[] { " ", "\n" }, StringSplitOptions.None);

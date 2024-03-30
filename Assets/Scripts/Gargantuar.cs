@@ -72,7 +72,7 @@ public class Gargantuar : Zombie
     public override void Die()
     {
         dead = true;
-        ZS.SubtractBuild(spawnScore, waveNumber);
+        ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
         SFX.Instance.Play(death);
         StartCoroutine(Death());
     }

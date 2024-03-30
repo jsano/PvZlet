@@ -8,7 +8,6 @@ public class SelectSeed : MonoBehaviour
 {
 
     public int ID;
-    private PlantBuilder pb;
     private Plant plant;
 
     public AudioClip choose;
@@ -16,10 +15,8 @@ public class SelectSeed : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pb = GameObject.Find("PlantBuilder").GetComponent<PlantBuilder>();
-        plant = pb.allPlants[ID].GetComponent<Plant>();
+        plant = PlantBuilder.Instance.allPlants[ID].GetComponent<Plant>();
         transform.Find("Text").GetComponent<TextMeshProUGUI>().text = plant.cost + "";
-        //GetComponent<Image>().color = plant.GetComponent<SpriteRenderer>().color + new Color(0, 0, 0, 1);
         transform.Find("Plant").GetComponent<Image>().sprite = plant.GetComponent<SpriteRenderer>().sprite;
     }
 
@@ -31,9 +28,9 @@ public class SelectSeed : MonoBehaviour
 
     public void OnClick()
     {
-        if (pb.assignedPlants.Count == 8 || pb.assignedPlants.Contains(ID)) return;
+        if (PlantBuilder.Instance.assignedPlants.Count == 8 || PlantBuilder.Instance.assignedPlants.Contains(ID)) return;
         SFX.Instance.Play(choose);
-        pb.assignedPlants.Add(ID);
+        PlantBuilder.Instance.assignedPlants.Add(ID);
         GetComponent<Button>().interactable = false;
     }
 

@@ -59,10 +59,10 @@ public class Bungee : Zombie
     protected override void Spawn()
     {
         List<(int, int)> found = new List<(int, int)>();
-        for (int i = 1; i <= ZS.lanes; i++)
+        for (int i = 1; i <= ZombieSpawner.Instance.lanes; i++)
         {
             if (row != 0 && i != row) continue;
-            for (int j = 1; j <= ZS.lanes; j++)
+            for (int j = 1; j <= ZombieSpawner.Instance.lanes; j++)
             {
                 if (col != 0 && j != col) continue;
                 if (Tile.tileObjects[i, j].GetEatablePlant() != null)
@@ -78,7 +78,7 @@ public class Bungee : Zombie
             col = found[index].Item2;
         }
         // No plant found
-        if (row == 0) row = Random.Range(1, ZS.lanes + 1);
+        if (row == 0) row = Random.Range(1, ZombieSpawner.Instance.lanes + 1);
         if (col == 0) col = Random.Range(1, 7);
         transform.position = new Vector3(Tile.COL_TO_WORLD[col], Tile.tileObjects[row, col].transform.position.y + startHeight, 0);
     }

@@ -14,7 +14,7 @@ public class Threepeater : Peashooter
     protected override Zombie LookInRange(int r)
     {
         Zombie z = base.LookInRange(row);
-        if (z == null && row < ZS.lanes) z = base.LookInRange(row + 1);
+        if (z == null && row < ZombieSpawner.Instance.lanes) z = base.LookInRange(row + 1);
         if (z == null && row > 1) z = base.LookInRange(row - 1);
         return z;
     }
@@ -29,7 +29,7 @@ public class Threepeater : Peashooter
         }
         else StartCoroutine(Attack_Helper(z));
         base.Attack(z);
-        if (row < ZS.lanes)
+        if (row < ZombieSpawner.Instance.lanes)
         {
             StraightProjectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<StraightProjectile>();
             if (p.distance != range) p.distance = range;

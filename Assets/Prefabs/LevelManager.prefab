@@ -714,6 +714,8 @@ MonoBehaviour:
   blackScreen: {fileID: 7175623330606376266}
   text: {fileID: 7175623331662085297}
   options: {fileID: 7175623330674859912}
+  song: {fileID: 8300000, guid: dd5ce947486028442add0c66de197873, type: 3}
+  no: {fileID: 8300000, guid: c8b7fff251c37344283510b29154c5e8, type: 3}
 --- !u!1 &7175623330927092173
 GameObject:
   m_ObjectHideFlags: 0

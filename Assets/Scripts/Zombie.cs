@@ -38,7 +38,6 @@ public class Zombie : Damagable
     protected SpriteRenderer SR;
     private Color baseMaterialColor = Color.white;
     protected BoxCollider2D BC;
-    protected ZombieSpawner ZS;
 
     public bool wheels;
     public bool eatsPlants;
@@ -67,7 +66,6 @@ public class Zombie : Damagable
     // Start is called before the first frame update
     public virtual void Start()
     {
-        ZS = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
         if (armor != null)
         {
             armor = Instantiate(armor, transform, false);
@@ -196,7 +194,7 @@ public class Zombie : Damagable
             if (status != null && status.eatMod == 0) break;
             if (!wheels) RB.velocity = Vector2.zero;
             period = 0;
-            if (SFX.Instance.zombieEat.Length > 0)
+            if (LevelManager.status != LevelManager.Status.Lost && SFX.Instance.zombieEat.Length > 0)
             {
                 if (eating.GetComponent<Nut>() != null) SFX.Instance.Play(SFX.Instance.zombieEatNut);
                 else SFX.Instance.Play(SFX.Instance.zombieEat[UnityEngine.Random.Range(0, SFX.Instance.zombieEat.Length)]);
@@ -237,7 +235,7 @@ public class Zombie : Damagable
     /// <summary> Updates the spawner's progression score, and disappears </summary>
     public virtual void Die()
     {
-        ZS.SubtractBuild(spawnScore, waveNumber);
+        ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
         Destroy(shield);
         Destroy(gameObject);
     }
@@ -252,7 +250,7 @@ public class Zombie : Damagable
         baseMaterialColor = Color.magenta;
         SR.material.color = baseMaterialColor;
         if (shield != null) shield.GetComponent<Shield>().Hypnotize();
-        ZS.SubtractBuild(spawnScore, waveNumber);
+        ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
         spawnScore = 0;
     }
 

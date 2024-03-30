@@ -34,7 +34,7 @@ public class Dancing : Zombie
         {
             List<string> missing = new List<string>();
             if (up == null && row > 1 && !Tile.tileObjects[row - 1, 1].water) missing.Add("up");
-            if (down == null && row < ZS.lanes && !Tile.tileObjects[row + 1, 1].water) missing.Add("down");
+            if (down == null && row < ZombieSpawner.Instance.lanes && !Tile.tileObjects[row + 1, 1].water) missing.Add("down");
             if (right == null) missing.Add("right");
             if (left == null) missing.Add("left");
             if (!isEating() && missing.Count > 0) spawnPeriod += Time.deltaTime * ((status == null) ? 1 : status.walkMod);

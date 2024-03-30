@@ -26,8 +26,16 @@ public class Player : Damagable
             levelManager.Lose();
             collision.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
             collision.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            if (z.armor != null) z.armor.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
-            if (z.shield != null) z.shield.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
+            if (z.armor != null)
+            {
+                z.armor.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
+                z.armor.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            }
+            if (z.shield != null)
+            {
+                z.shield.GetComponent<SpriteRenderer>().sortingLayerName = "Sun";
+                z.armor.GetComponent<SpriteRenderer>().sortingOrder = 4;
+            }
             // TODO: handle projectile without overwriting prefabs (ex catapult)
         }
     }

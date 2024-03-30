@@ -49,6 +49,7 @@ public class LobbedProjectile : MonoBehaviour
         if (hit) return;
         if (other.GetComponent<Shield>() != null) return;
         if (other.GetComponent<Zombie>() != null && other.GetComponent<Zombie>().row != lane) return;
+        if (other.GetComponent<Plant>() != null && other.GetComponent<Plant>().row != lane) return;
         if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         if (other.GetComponent<Damagable>() != null)
         {

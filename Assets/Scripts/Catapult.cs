@@ -10,14 +10,14 @@ public class Catapult : Football
     private float throwPeriod;
 
     public AudioClip shoot;
-    
+    public AudioClip explosion;
 
     // Update is called once per frame
     public override void Update()
     {
         Tile target = null;
         for (int i = 9; i >= 1; i--) {
-            GameObject p = Tile.tileObjects[row, i].GetEatablePlant();
+            GameObject p = Tile.tileObjects[row, i].GetEatablePlant(true);
             if (p != null)
             {
                 target = Tile.tileObjects[row, i];
@@ -28,7 +28,7 @@ public class Catapult : Football
         if (!(count == 0 || target == null || transform.position.x > Tile.tileObjects[row, 9].transform.position.x))
         {
             ResetWalk();
-            throwPeriod += Time.deltaTime;
+            throwPeriod += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             if (throwPeriod >= throwInterval)
             {
                 SFX.Instance.Play(shoot);
@@ -39,6 +39,12 @@ public class Catapult : Football
                 count -= 1;
             }
         }
+    }
+
+    public override void Die()
+    {
+        SFX.Instance.Play(explosion);
+        base.Die();
     }
 
 }

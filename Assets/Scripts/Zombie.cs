@@ -180,17 +180,7 @@ public class Zombie : Damagable
             if (hit[i].collider.GetComponent<Zombie>() != null) return hit[i].collider.gameObject;
             Plant p = hit[i].collider.GetComponent<Plant>();
             if (p.isActiveInstant() || p.row != row || p.grounded && !hitsGround) continue;
-            bool laddered = false;
-            foreach (Transform t in p.transform)
-            {
-                if (t.name.StartsWith("Ladder"))
-                {
-                    laddered = true;
-                    break;
-                }
-            }
-            if (laddered) continue;
-            return Tile.tileObjects[p.row, p.col].GetEatablePlant();
+            return Tile.tileObjects[p.row, p.col].GetEatablePlant(wheels || hitsGround);
         }
         return null;
     }

@@ -173,8 +173,22 @@ public class Tile : MonoBehaviour
         return null;
     }
 
-    public GameObject GetEatablePlant()
+    public GameObject GetEatablePlant(bool ignoreLadder = false)
     {
+        if (!ignoreLadder)
+        {
+            if (planted != null)
+                foreach (Transform t in planted.transform)
+                    if (t.name.StartsWith("Ladder"))
+                        return null;
+            foreach (GameObject g in overlapped)
+            {
+                if (g == null) continue;
+                foreach (Transform t in g.transform)
+                    if (t.name.StartsWith("Ladder"))
+                        return null;
+            } 
+        }
         if (planted == null) return null;
         GameObject p = ContainsPlant("Pumpkin");
         if (p != null) return p;

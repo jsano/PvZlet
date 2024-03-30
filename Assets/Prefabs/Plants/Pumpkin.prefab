@@ -84,6 +84,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2
       objectReference: {fileID: 0}
@@ -138,5 +142,7 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
+  attackSFX1: {fileID: 0}
+  attackSFX2: {fileID: 0}
   damagedSprite1: {fileID: 21300000, guid: 31de3fc7a74756543871e587d4c8b543, type: 3}
   damagedSprite2: {fileID: 21300000, guid: 7aef79c35942c7e418820a95d6867886, type: 3}

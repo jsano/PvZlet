@@ -5,7 +5,7 @@ using UnityEngine;
 public class Kernelpult : Plant
 {
 
-    private int butter = 3;
+    private int butter = 4;
     private int count;
     public GameObject butterProjectile;
 

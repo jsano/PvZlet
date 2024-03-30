@@ -107,3 +107,4 @@ MonoBehaviour:
   count: 15
   throwInterval: 2
   shoot: {fileID: 8300000, guid: a88fc23292082b645b31deca64b55345, type: 3}
+  explosion: {fileID: 8300000, guid: 35c1eca297008c64f908103303fe2ccb, type: 3}

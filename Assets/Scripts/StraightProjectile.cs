@@ -64,7 +64,7 @@ public class StraightProjectile : MonoBehaviour
         if (other.offset.y < 0 || other.GetComponent<BoxCollider2D>().size.y < 1 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
         if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
-            if (transform.position.y != startPos.y) return;
+            if (moveToLane != 0 && transform.position.y != startPos.y) return;
             if (gameObject.tag == "Star")
             {
                 if (dir == Vector3.up || dir == Vector3.down || dir == Vector3.left) return;
@@ -74,6 +74,7 @@ public class StraightProjectile : MonoBehaviour
             if (!sharp) Destroy(gameObject); // NOTE: Very situational, ideally only cactus spikes should ignore
             return;
         }
+        //TODO: backwards shots hit zombies on other lanes on roof. Probably fix
         if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         // Prioritize shield/zomboni over zombie since they can't splash
         if (other.GetComponent<Shield>() != null)

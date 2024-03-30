@@ -13,13 +13,14 @@ public class UmbrellaLeaf : Plant
     public override void Start()
     {
         base.Start();
-        shield.transform.localScale = Tile.TILE_DISTANCE * 2.5f;
+        shield.transform.localScale = Tile.TILE_DISTANCE * 3f;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Bungee>() != null)
         {
+            SFX.Instance.Play(boing);
             collision.GetComponent<Bungee>().Die();
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("ZombieLobbedProjectile"))
@@ -27,7 +28,6 @@ public class UmbrellaLeaf : Plant
             Destroy(collision.gameObject);
         }
         else return;
-        SFX.Instance.Play(boing);
         if (visualCoroutine != null) StopCoroutine(visualCoroutine);
         visualCoroutine = StartCoroutine(Visual());
     }

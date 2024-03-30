@@ -56,19 +56,25 @@ public class UI : MonoBehaviour
             SFX.Instance.Play(unpauseFX);            
             pauseMenu.SetActive(false);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.normalColor;
-            if (!keepMusic) music.FadeIn(0.25f);
+            if (!keepMusic)
+            {
+                music.FadeIn(0.25f);
+                foreach (AudioSource a in FindObjectsByType<AudioSource>(FindObjectsSortMode.None)) if (a.loop && !a.isPlaying) a.UnPause();
+            }
             else GameObject.Find("Block").GetComponent<Image>().raycastTarget = false;
-            foreach (AudioSource a in FindObjectsByType<AudioSource>(FindObjectsSortMode.None)) if (a.loop && !a.isPlaying) a.UnPause();
         }
         else
         {
-            foreach (AudioSource a in FindObjectsByType<AudioSource>(FindObjectsSortMode.None)) if (a.loop && a.isPlaying) a.Pause();
+            if (!keepMusic)
+            {
+                music.FadeOut(0f);
+                foreach (AudioSource a in FindObjectsByType<AudioSource>(FindObjectsSortMode.None)) if (a.loop && a.isPlaying) a.Pause();
+            }
+            else GameObject.Find("Block").GetComponent<Image>().raycastTarget = true;
             SFX.Instance.Play(pauseFX);
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.selectedColor;
-            if (!keepMusic) music.FadeOut(0f);
-            else GameObject.Find("Block").GetComponent<Image>().raycastTarget = true;
         }
     }
 

@@ -103,5 +103,11 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
+  enterSFX: {fileID: 0}
   maxTime: 20
   explosion: {fileID: 6010293583157068058, guid: 00a6405d68a884142960e8a7007e6efd, type: 3}
+  boingSFX: {fileID: 8300000, guid: b3ef9bc31b150f943902318c8b4b65e5, type: 3}
+  gaspSFX:
+  - {fileID: 8300000, guid: 08734a9ac7b914a47b7422bcf235dcc7, type: 3}
+  - {fileID: 8300000, guid: b283db1f12ba1b44590af3dc66a50ef4, type: 3}
+  explosionSFX: {fileID: 8300000, guid: 35c1eca297008c64f908103303fe2ccb, type: 3}

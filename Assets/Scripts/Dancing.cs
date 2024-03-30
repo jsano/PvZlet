@@ -17,12 +17,16 @@ public class Dancing : Zombie
     private bool intro = true;
     public float dancingWalkTime;
 
+    public AudioClip song;
+    public AudioClip rise;
+
     // Update is called once per frame
     public override void Update()
     {
         if (transform.position.x > Tile.COL_TO_WORLD[7] && intro) WalkConstant();
         else
         {
+            if (intro) SFX.Instance.Play(song, true);
             walkTime = dancingWalkTime;
             intro = false;
         }
@@ -36,6 +40,7 @@ public class Dancing : Zombie
             if (!isEating() && missing.Count > 0) spawnPeriod += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             if (spawnPeriod > spawnDelay)
             {
+                SFX.Instance.Play(rise);
                 spawnPeriod = 0;
                 spawning = true;
                 SpawnBackups(missing);

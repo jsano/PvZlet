@@ -107,4 +107,6 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
+  enterSFX: {fileID: 8300000, guid: e3d34b9889a088c4b9da23db1d5e6912, type: 3}
   poppedWalkTime: 4
+  popSFX: {fileID: 8300000, guid: 3867139b0f63ac34b8b23e792929d1cb, type: 3}

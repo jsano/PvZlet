@@ -9,6 +9,8 @@ public class Ladder : Zombie
 
     public Sprite placedLadderSprite;
 
+    public AudioClip placeSFX;
+
     // Update is called once per frame
     public override void Update()
     {
@@ -18,6 +20,7 @@ public class Ladder : Zombie
             GameObject p = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, Vector3.one, 0, Vector2.zero, 0, LayerMask.GetMask("Plant")));
             if (p != null && p.GetComponent<Nut>() != null)
             {
+                SFX.Instance.Play(placeSFX);
                 shield.transform.SetParent(p.transform, true);
                 shield.transform.localPosition = new Vector3(0.3f, 0, 0);
                 shield.layer = LayerMask.NameToLayer("ExplosivesOnly");

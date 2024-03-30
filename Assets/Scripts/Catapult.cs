@@ -8,6 +8,8 @@ public class Catapult : Football
     public int count;
     public float throwInterval;
     private float throwPeriod;
+
+    public AudioClip shoot;
     
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class Catapult : Football
             throwPeriod += Time.deltaTime;
             if (throwPeriod >= throwInterval)
             {
+                SFX.Instance.Play(shoot);
                 throwPeriod = 0;
                 LobbedProjectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<LobbedProjectile>();
                 p.distance = target.transform.position - transform.position;

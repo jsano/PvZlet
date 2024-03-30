@@ -51,10 +51,11 @@ public class ZombieSpawner : MonoBehaviour
 
     private List<GameObject> displayZombies = new List<GameObject>();
 
-    public AudioClip zombiesAreComingFX;
-    public AudioClip hugeWaveFX;
-    public AudioClip hugeWaveStartFX;
-    public AudioClip finalWaveFX;
+    public AudioClip graveRiseSFX;
+    public AudioClip zombiesAreComingSFX;
+    public AudioClip hugeWaveSFX;
+    public AudioClip hugeWaveStartSFX;
+    public AudioClip finalWaveSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -110,6 +111,7 @@ public class ZombieSpawner : MonoBehaviour
             g.GetComponent<RectTransform>().anchoredPosition = new Vector3(-(float)i / (waves.Count - 1) * (p.GetComponent<RectTransform>().rect.width - 10) - 5, 0, 0);
         }
         transform.Find("Display").position = new Vector3(17.5f, 0, 0);
+        int sortingOrder = 0;
         foreach (int i in unique)
         {
             Vector3 offset = new Vector2(UnityEngine.Random.Range(-2, 2f), UnityEngine.Random.Range(-5, 5f));
@@ -121,6 +123,8 @@ public class ZombieSpawner : MonoBehaviour
             displayZombies.Add(g);
             g.SetActive(true);
             allZombies[i].SetActive(true);
+            g.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
+            sortingOrder += 3;
         }
         StartCoroutine(Spawn());
     }
@@ -138,7 +142,7 @@ public class ZombieSpawner : MonoBehaviour
     private IEnumerator Spawn()
     {
         yield return new WaitUntil(() => preparation <= 0 && LevelManager.status == LevelManager.Status.Start);
-        SFX.Instance.Play(zombiesAreComingFX);
+        SFX.Instance.Play(zombiesAreComingSFX);
         foreach (GameObject g in displayZombies) Destroy(g);
         levelUI.transform.Find("Progress").gameObject.SetActive(true);
         for (waveNumber = 0; waveNumber < waves.Count; waveNumber++)
@@ -209,6 +213,7 @@ public class ZombieSpawner : MonoBehaviour
                         Tile t = Tile.tileObjects[i, j];
                         if (t.ContainsGridItem("Grave"))
                         {
+                            SFX.Instance.Play(graveRiseSFX);
                             int[] possible = new int[] { 0, 2, 4 };
                             int _ID = possible[UnityEngine.Random.Range(0, possible.Length)];
                             currentBuild += allZombies[_ID].GetComponent<Zombie>().spawnScore;
@@ -227,7 +232,7 @@ public class ZombieSpawner : MonoBehaviour
             {
                 yield return new WaitUntil(() => currentBuild == 0 || forceSend <= 0);
                 yield return new WaitForSeconds(2);
-                SFX.Instance.Play(hugeWaveFX);
+                SFX.Instance.Play(hugeWaveSFX);
                 hugeWave.SetActive(true);
                 TextMeshProUGUI t = hugeWave.GetComponent<TextMeshProUGUI>();
                 while (t.color.a < 1)
@@ -243,7 +248,7 @@ public class ZombieSpawner : MonoBehaviour
                 }
                 hugeWave.SetActive(false);
                 yield return new WaitForSeconds(1);
-                SFX.Instance.Play(hugeWaveStartFX);
+                SFX.Instance.Play(hugeWaveStartSFX);
             }
             else yield return new WaitUntil(() => (currentBuild / maxBuild < 0.5f) || forceSend <= 0);
         }
@@ -253,7 +258,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private IEnumerator Final()
     {
-        SFX.Instance.Play(finalWaveFX);
+        SFX.Instance.Play(finalWaveSFX);
         final.SetActive(true);
         TextMeshProUGUI t = final.GetComponent<TextMeshProUGUI>();
         while (t.color.a < 1)

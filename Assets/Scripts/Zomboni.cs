@@ -7,6 +7,9 @@ public class Zomboni : Football
 
     private int snowedCol = 10;
 
+    public AudioClip[] hitSFX;
+    public AudioClip explosion;
+
     // Update is called once per frame
     public override void Update()
     {
@@ -19,6 +22,18 @@ public class Zomboni : Football
             snowedCol = c;
         }
         base.Update();
+    }
+
+    public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
+    {
+        SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
+        return base.ReceiveDamage(dmg, source, eat, disintegrating);
+    }
+
+    public override void Die()
+    {
+        SFX.Instance.Play(explosion);
+        base.Die();
     }
 
 }

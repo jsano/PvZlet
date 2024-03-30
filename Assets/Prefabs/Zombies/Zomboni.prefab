@@ -103,3 +103,8 @@ MonoBehaviour:
   eatsPlants: 0
   status: {fileID: 0}
   displayOnly: 0
+  enterSFX: {fileID: 8300000, guid: 2969b33b755f66d4ba03ddb7841980ef, type: 3}
+  hitSFX:
+  - {fileID: 8300000, guid: 3a35a04678d699f45acfda81dd828766, type: 3}
+  - {fileID: 8300000, guid: ae8cbcd9fad630c41b5acd62e37f76a5, type: 3}
+  explosion: {fileID: 8300000, guid: 35c1eca297008c64f908103303fe2ccb, type: 3}

@@ -17,6 +17,9 @@ public class SFX : MonoBehaviour
     public AudioClip gulp;
     public AudioClip hypnotize;
 
+    public AudioClip jackSong;
+    private AudioSource jackAS;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -27,6 +30,7 @@ public class SFX : MonoBehaviour
         {
             instance = this;
             AS = GetComponent<AudioSource>();
+            jackAS = transform.Find("Jack").GetComponent<AudioSource>();
         }
     }
 
@@ -34,14 +38,28 @@ public class SFX : MonoBehaviour
     void Update()
     {
         AS.volume = PlayerPrefs.GetFloat("SFX", 1);
+        jackAS.volume = PlayerPrefs.GetFloat("SFX", 1);
+
+        bool found = false;
+        foreach (JackInTheBox a in FindObjectsByType<JackInTheBox>(FindObjectsSortMode.None))
+        {
+            if (!a.displayOnly && a.projectile != null)
+            {
+                found = true;
+                if (!jackAS.isPlaying) jackAS.Play();
+                break;
+            }
+        }
+        if (!found) jackAS.Stop();
     }
 
-    public void Play(AudioClip clip)
+    public void Play(AudioClip clip, bool singular = false)
     {
         int cur;
         cooldown.TryGetValue(clip, out cur);
+        if (singular && cur > 0) return;
         AS.PlayOneShot(clip, 1 - 0.2f * cur);
-        StartCoroutine(refresh(clip));
+        StartCoroutine(refresh(clip, singular));
     }
 
     public void PlayLoop(AudioClip clip)
@@ -50,11 +68,11 @@ public class SFX : MonoBehaviour
         AS.Play();
     }
 
-    private IEnumerator refresh(AudioClip clip)
+    private IEnumerator refresh(AudioClip clip, bool singular)
     {
         if (cooldown.ContainsKey(clip)) cooldown[clip] += 1;
         else cooldown[clip] = 1;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(singular ? 2 : 0.25f);
         cooldown[clip] -= 1;
     }
 

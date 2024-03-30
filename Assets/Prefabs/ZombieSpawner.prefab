@@ -365,10 +365,11 @@ MonoBehaviour:
   final: {fileID: 870192802584633168}
   levelUI: {fileID: 8849092682830327255}
   flag: {fileID: 8778634233572808151, guid: d2bf956d80329bb48bdb6bb7e81ab6dc, type: 3}
-  zombiesAreComingFX: {fileID: 8300000, guid: 5afa4df3d11e9c84084e4a5231c09dda, type: 3}
-  hugeWaveFX: {fileID: 8300000, guid: a7b6bbedeba00e441998611f2eac9af7, type: 3}
-  hugeWaveStartFX: {fileID: 8300000, guid: 5c65318d8f8f2114fb869fb7677792c8, type: 3}
-  finalWaveFX: {fileID: 8300000, guid: 125742b53931e764da5e3cfbdcee387e, type: 3}
+  graveRiseSFX: {fileID: 8300000, guid: 9d9c05add295ad144b1f4c2da030f6e3, type: 3}
+  zombiesAreComingSFX: {fileID: 8300000, guid: 5afa4df3d11e9c84084e4a5231c09dda, type: 3}
+  hugeWaveSFX: {fileID: 8300000, guid: a7b6bbedeba00e441998611f2eac9af7, type: 3}
+  hugeWaveStartSFX: {fileID: 8300000, guid: 5c65318d8f8f2114fb869fb7677792c8, type: 3}
+  finalWaveSFX: {fileID: 8300000, guid: 125742b53931e764da5e3cfbdcee387e, type: 3}
 --- !u!114 &4606710317454442741
 MonoBehaviour:
   m_ObjectHideFlags: 0

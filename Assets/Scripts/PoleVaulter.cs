@@ -10,6 +10,8 @@ public class PoleVaulter : Zombie
     private bool jumped = false;
     private GameObject toJump;
 
+    public AudioClip jumpSFX;
+
     public override void Start()
     {
         if (projectile != null)
@@ -50,6 +52,7 @@ public class PoleVaulter : Zombie
             projectile.transform.SetParent(null);
             projectile.GetComponent<DestroyAfterAnimation>().enabled = true;
         }
+        SFX.Instance.Play(jumpSFX);
         int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 9);
         if (c == 1) RB.velocity = (Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c + 1].transform.position) * 2;
         else if (c == 2) RB.velocity = (Tile.tileObjects[row, c - 1].transform.position - Tile.tileObjects[row, c].transform.position) * 2;

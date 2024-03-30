@@ -10,6 +10,10 @@ public class JackInTheBox : Football
     private bool exploded;
     public GameObject explosion;
 
+    public AudioClip boingSFX;
+    public AudioClip[] gaspSFX;
+    public AudioClip explosionSFX;
+
     public override void Start()
     {
         base.Start();
@@ -28,6 +32,7 @@ public class JackInTheBox : Football
             base.Update();
             if (remaining <= 0)
             {
+                projectile = null;
                 exploded = true;
                 StartCoroutine(Explode());
             }
@@ -39,7 +44,11 @@ public class JackInTheBox : Football
         RB.velocity = Vector3.zero;
         StopEating();
         BC.enabled = false;
-        yield return new WaitForSeconds(1);
+        SFX.Instance.Play(boingSFX);
+        yield return new WaitForSeconds(0.25f);
+        SFX.Instance.Play(gaspSFX[Random.Range(0, gaspSFX.Length)]);
+        yield return new WaitForSeconds(0.75f);
+        SFX.Instance.Play(explosionSFX);
         Vector2 area = new Vector2(2.5f, 2.5f);
         GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
         g.transform.localScale = area * Tile.TILE_DISTANCE;

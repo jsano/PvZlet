@@ -8,6 +8,8 @@ public class Balloon : Zombie
     public float poppedWalkTime;
     private bool popped;
 
+    public AudioClip popSFX;
+
     public override void Update()
     {
         if (!popped && status != null) status.walkMod = Mathf.Max(status.walkMod, 0.5f);
@@ -31,6 +33,7 @@ public class Balloon : Zombie
         base.ReceiveDamage(dmg, source, eat, disintegrating);
         if (!popped && (armor == null || armor.GetComponent<Armor>().HP <= 0))
         {
+            SFX.Instance.Play(popSFX);
             popped = true;
             BC.offset = new Vector2(0, 0);
             BC.size = new Vector2(1, 1);

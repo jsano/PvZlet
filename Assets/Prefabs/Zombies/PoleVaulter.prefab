@@ -103,4 +103,6 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
+  enterSFX: {fileID: 0}
   noPoleWalkTime: 4
+  jumpSFX: {fileID: 8300000, guid: fe9c3bcf01157a14fafa481c50395ac2, type: 3}

@@ -10,6 +10,9 @@ public class Bungee : Zombie
     [HideInInspector] public int col;
     private GameObject target;
 
+    public AudioClip[] descend;
+    public AudioClip take;
+
     // Update is called once per frame
     public override void Update()
     {
@@ -26,6 +29,7 @@ public class Bungee : Zombie
             target.transform.Translate(Vector3.down * 12 * Time.deltaTime);
             yield return null;
         }
+        SFX.Instance.Play(descend[Random.Range(0, descend.Length)]);
         yield return new WaitForSeconds(1f);
         while (transform.position.y > Tile.tileObjects[row, col].transform.position.y)
         {
@@ -40,6 +44,7 @@ public class Bungee : Zombie
             timeLeft -= Time.deltaTime * ((status == null) ? 1 : status.eatMod);
             yield return null;
         }
+        SFX.Instance.Play(take);
         BC.enabled = false;
         Tile.tileObjects[row, col].RemoveAllPlants();
         RB.velocity = Vector3.up * 15;

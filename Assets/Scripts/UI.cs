@@ -53,14 +53,16 @@ public class UI : MonoBehaviour
         if (Time.timeScale == 0) // unpause
         {
             Time.timeScale = curTimeScale;
-            SFX.Instance.Play(unpauseFX);
+            SFX.Instance.Play(unpauseFX);            
             pauseMenu.SetActive(false);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.normalColor;
             if (!keepMusic) music.FadeIn(0.25f);
+            foreach (AudioSource a in FindObjectsByType<AudioSource>(FindObjectsSortMode.None)) a.UnPause();
         }
         else
         {
             SFX.Instance.Play(pauseFX);
+            foreach (AudioSource a in FindObjectsByType<AudioSource>(FindObjectsSortMode.None)) a.Pause();
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
             pause.GetComponent<Image>().color = pause.GetComponent<Button>().colors.selectedColor;
@@ -92,7 +94,7 @@ public class UI : MonoBehaviour
 
     public void MainMenu()
     {
-        SFX.Instance.Play(unpauseFX);
+        if (LevelManager.status != LevelManager.Status.Won) SFX.Instance.Play(unpauseFX);
         Level l = FindFirstObjectByType<Level>();
         if (l != null) Destroy(l.gameObject);
         SceneManager.LoadScene(0);

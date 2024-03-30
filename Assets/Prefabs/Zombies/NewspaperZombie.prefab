@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Newspaper Zombie
+  waveNumber: 0
   spawnScore: 2
   damage: 1
   walkTime: 4
   HP: 15
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0
@@ -103,5 +103,10 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
+  enterSFX: {fileID: 0}
   angryWalkTime: 2
   angryEatTime: 0.25
+  ripSFX: {fileID: 8300000, guid: 898ccb1729ab0d8468c12090858d9f39, type: 3}
+  angrySFX:
+  - {fileID: 8300000, guid: 87ba3cebfd1c29c4aa00aadf0bc9bf4b, type: 3}
+  - {fileID: 8300000, guid: 0e0cd89a7bced6d4d90cc55f6909ac4c, type: 3}

@@ -55,6 +55,8 @@ public class Zombie : Damagable
     private GameObject _text;
     [HideInInspector] public bool displayOnly;
 
+    public AudioClip enterSFX;
+
     void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
@@ -129,6 +131,7 @@ public class Zombie : Damagable
     /// <summary> How the zombie should enter the lawn. Appears at the rightmost lane by default. Override this method if otherwise </summary>
     protected virtual void Spawn()
     {
+        if (enterSFX != null) SFX.Instance.Play(enterSFX, true);
         if (transform.position == Vector3.zero) transform.position = new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x, Tile.tileObjects[row, 9].transform.position.y, 0);
     }
 

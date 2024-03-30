@@ -103,4 +103,10 @@ MonoBehaviour:
   eatsPlants: 0
   status: {fileID: 0}
   displayOnly: 0
+  enterSFX: {fileID: 0}
   col: 0
+  descend:
+  - {fileID: 8300000, guid: 440711670418f2d4d9fb3905c5f57f47, type: 3}
+  - {fileID: 8300000, guid: 677289edd56f692448eecf8f8672724d, type: 3}
+  - {fileID: 8300000, guid: ba07a37f5d943f14980fd588e969f94c, type: 3}
+  take: {fileID: 8300000, guid: c05601c9f8fa9024f9fc22af4c838e94, type: 3}

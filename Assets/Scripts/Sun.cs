@@ -14,18 +14,28 @@ public class Sun : MonoBehaviour
     /// <summary> How fast to fall </summary>
     public float speed;
     public AudioClip sound;
+    private Camera cam;
 
     private SpriteRenderer SR;
 
     // Start is called before the first frame update
     void Start()
     {
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         SR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButton(0))
+        {
+            RaycastHit2D[] hits = Physics2D.RaycastAll(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0, LayerMask.GetMask("Default"));
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.collider.gameObject == gameObject) Collect();
+            }
+        }
         if (transform.position.y > ground) transform.Translate(Vector3.down * speed * Time.deltaTime);
         lifetime -= Time.deltaTime;
         if (lifetime < 0)
@@ -33,11 +43,6 @@ public class Sun : MonoBehaviour
             SR.color -= new Color(0, 0, 0, 2 * Time.deltaTime);
             if (SR.color.a <= 0) Destroy(gameObject);
         }
-    }
-
-    void OnMouseOver()
-    {
-        if (Input.GetMouseButton(0)) Collect();
     }
 
     public void Collect()

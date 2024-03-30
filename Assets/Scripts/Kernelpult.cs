@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kernelpult : Cabbagepult
+public class Kernelpult : Plant
 {
 
     private int butter = 3;
@@ -11,15 +11,20 @@ public class Kernelpult : Cabbagepult
 
     protected override void Attack(Zombie z)
     {
+        LobbedProjectile p;
         count += 1;
         if (count >= butter)
         {
-            LobbedProjectile p = Instantiate(butterProjectile, transform.position + topOffset, Quaternion.identity).GetComponent<LobbedProjectile>();
-            p.distance = z.transform.position - p.transform.position;
-            p.lane = row;
+            p = Instantiate(butterProjectile, transform.position + topOffset, Quaternion.identity).GetComponent<LobbedProjectile>();
             count = 0;
         }
-        else base.Attack(z);
+        else
+        {
+            p = Instantiate(projectile, transform.position + topOffset, Quaternion.identity).GetComponent<LobbedProjectile>();
+        }
+        p.distance = z.transform.position - p.transform.position;
+        p.lane = row;
+        base.Attack(z);
     }
 
 }

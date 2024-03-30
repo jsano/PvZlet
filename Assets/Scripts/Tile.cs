@@ -125,10 +125,12 @@ public class Tile : MonoBehaviour
             p.row = row;
             p.col = col;
             PlantBuilder.sun -= p.cost;
-            if (water) SFX.Instance.Play(plantWaterSFX);
-            else SFX.Instance.Play(plantSFX);
             if (EventSystem.current.currentSelectedGameObject != null)
+            {
                 EventSystem.current.currentSelectedGameObject.GetComponent<SeedBase>().OnPlant();
+                if (water) SFX.Instance.Play(plantWaterSFX);
+                else SFX.Instance.Play(plantSFX);
+            }
         }
         else
         {

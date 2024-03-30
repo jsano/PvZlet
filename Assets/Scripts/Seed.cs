@@ -63,14 +63,14 @@ public class Seed : SeedBase
             b.interactable = PlantBuilder.sun >= plant.cost && rechargePeriod >= plant.recharge;
             recharge.fillAmount = (rechargePeriod / plant.recharge >= 1) ? 0 : rechargePeriod / plant.recharge;
 
-            if (Input.GetButtonDown("Plant1") && ID == 0 && b.interactable) OnClick();
-            if (Input.GetButtonDown("Plant2") && ID == 1 && b.interactable) OnClick();
-            if (Input.GetButtonDown("Plant3") && ID == 2 && b.interactable) OnClick();
-            if (Input.GetButtonDown("Plant4") && ID == 3 && b.interactable) OnClick();
-            if (Input.GetButtonDown("Plant5") && ID == 4 && b.interactable) OnClick();
-            if (Input.GetButtonDown("Plant6") && ID == 5 && b.interactable) OnClick();
-            if (Input.GetButtonDown("Plant7") && ID == 6 && b.interactable) OnClick();
-            if (Input.GetButtonDown("Plant8") && ID == 7 && b.interactable) OnClick();
+            if (Input.GetButtonDown("Plant1") && ID == 0) OnClick();
+            if (Input.GetButtonDown("Plant2") && ID == 1) OnClick();
+            if (Input.GetButtonDown("Plant3") && ID == 2) OnClick();
+            if (Input.GetButtonDown("Plant4") && ID == 3) OnClick();
+            if (Input.GetButtonDown("Plant5") && ID == 4) OnClick();
+            if (Input.GetButtonDown("Plant6") && ID == 5) OnClick();
+            if (Input.GetButtonDown("Plant7") && ID == 6) OnClick();
+            if (Input.GetButtonDown("Plant8") && ID == 7) OnClick();
         }
         /*
         //DEBUG

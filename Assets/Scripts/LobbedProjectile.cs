@@ -47,6 +47,7 @@ public class LobbedProjectile : MonoBehaviour
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (hit) return;
+        if (other.GetComponent<Shield>() != null) return;
         if (other.GetComponent<Zombie>() != null && other.GetComponent<Zombie>().row != lane) return;
         if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         if (other.GetComponent<Damagable>() != null)

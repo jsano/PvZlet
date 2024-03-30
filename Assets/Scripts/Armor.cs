@@ -15,6 +15,8 @@ public class Armor : MonoBehaviour
     public Sprite damagedSprite1;
     public Sprite damagedSprite2;
 
+    public AudioClip[] hitSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +36,9 @@ public class Armor : MonoBehaviour
         if (HP <= 0) Destroy(gameObject);
     }
 
-    public float ReceiveDamage(float dmg)
+    public float ReceiveDamage(float dmg, bool disintegrating)
     {
+        if (!disintegrating) if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         float remaining = Mathf.Max(0, dmg - HP);
         HP -= dmg;
         return remaining;

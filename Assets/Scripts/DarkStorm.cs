@@ -9,11 +9,15 @@ public class DarkStorm : MonoBehaviour
     private float period;
     private SpriteRenderer SR;
 
+    public AudioClip thunder;
+    public AudioClip rain;
+
     // Start is called before the first frame update
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
         period = interval - 1.5f;
+        SFX.Instance.PlayLoop(rain);
     }
 
     // Update is called once per frame
@@ -29,6 +33,7 @@ public class DarkStorm : MonoBehaviour
 
     private IEnumerator Flash()
     {
+        SFX.Instance.Play(thunder);
         SR.color = Color.white;
         float whiteToGray = 0;
         while (SR.color.a > 0.5f)

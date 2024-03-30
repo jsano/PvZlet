@@ -6,7 +6,7 @@ public class Doomshroom : CherryBomb
 {
     
     // NOTE: will use DestroyAfterAnimation for now but will probably need its own script since it's not an "animation"
-    public GameObject crater; 
+    public GameObject crater;
 
     protected override void Attack(Zombie z)
     {

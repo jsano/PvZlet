@@ -44,7 +44,7 @@ public class Squash : Plant
         RaycastHit2D[] all = Physics2D.BoxCastAll(dest, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
         foreach (RaycastHit2D a in all)
         {
-            a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
+            a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null, disintegrating: true);
         }
         SFX.Instance.Play(squashFX);
         yield return new WaitForSeconds(1);

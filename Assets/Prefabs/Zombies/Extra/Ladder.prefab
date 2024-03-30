@@ -23,6 +23,18 @@ PrefabInstance:
       propertyPath: damagedSprite2
       value: 
       objectReference: {fileID: 21300000, guid: 007c6d92c7941a947947119464a1a444, type: 3}
+    - target: {fileID: 2621319485755743866, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
+      propertyPath: hitSFX.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621319485755743866, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
+      propertyPath: hitSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a35a04678d699f45acfda81dd828766, type: 3}
+    - target: {fileID: 2621319485755743866, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
+      propertyPath: hitSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ae8cbcd9fad630c41b5acd62e37f76a5, type: 3}
     - target: {fileID: 4211092946153602139, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
       propertyPath: m_Name
       value: Ladder
@@ -77,11 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735024089398972322, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.77
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 7735024089398972322, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.21
+      value: 2.42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a23cb5435c15a49b5c9c05c8f1c612, type: 3}

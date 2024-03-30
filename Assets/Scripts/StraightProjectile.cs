@@ -100,7 +100,7 @@ public class StraightProjectile : MonoBehaviour
 
     protected virtual void Hit(Damagable other)
     {
-        other.ReceiveDamage(dmg, gameObject);
+        other.ReceiveDamage(dmg, gameObject, disintegrating: tag == "Fire");
         hit = true;
     }
 

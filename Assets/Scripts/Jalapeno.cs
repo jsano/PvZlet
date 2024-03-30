@@ -30,7 +30,7 @@ public class Jalapeno : Plant
                 {
                     if (row == a.collider.GetComponent<Zombie>().row)
                     {
-                        a.collider.GetComponent<Zombie>().ReceiveDamage(damage, gameObject);
+                        a.collider.GetComponent<Zombie>().ReceiveDamage(damage, gameObject, disintegrating: true);
                         prev.Add(a.collider.gameObject);
                     }
                 }

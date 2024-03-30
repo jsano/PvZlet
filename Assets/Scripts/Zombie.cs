@@ -203,21 +203,28 @@ public class Zombie : Damagable
             if (status != null && status.eatMod == 0) break;
             if (!wheels) RB.velocity = Vector2.zero;
             period = 0;
-            p.ReceiveDamage(damage, gameObject, eatsPlants);
+            if (SFX.Instance.zombieEat.Length > 0)
+            {
+                if (eating.GetComponent<Nut>() != null) SFX.Instance.Play(SFX.Instance.zombieEatNut);
+                else SFX.Instance.Play(SFX.Instance.zombieEat[UnityEngine.Random.Range(0, SFX.Instance.zombieEat.Length)]);
+            }
+            float rem = p.ReceiveDamage(damage, gameObject, eatsPlants);
+            if (rem <= 0) SFX.Instance.Play(SFX.Instance.gulp);
             yield return new WaitForSeconds(eatTime * ((status == null) ? 1 : 1 / status.eatMod));
         }
     }
 
-    public override void ReceiveDamage(float dmg, GameObject source, bool eat=false)
+    public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
     {
         // Adjust for zombies
         // NOTE: adjust plant HP and remove this in the future
         if (source != null && source.GetComponent<Zombie>() != null) dmg *= 4;
         if (status != null && source != null && status.removedBy == source.tag) status.Remove();
         // Any armor will take priority over the main zombie
-        if (armor != null) dmg = armor.GetComponent<Armor>().ReceiveDamage(dmg);
+        if (armor != null) dmg = armor.GetComponent<Armor>().ReceiveDamage(dmg, disintegrating);
         HP -= dmg;
         StartCoroutine(HitVisual());
+        return HP;
     }
 
     protected IEnumerator HitVisual()
@@ -247,6 +254,7 @@ public class Zombie : Damagable
         StopEating();
         ResetWalk();
         hypnotized = true;
+        SFX.Instance.Play(SFX.Instance.hypnotize);
         gameObject.layer = LayerMask.NameToLayer("Plant");
         baseMaterialColor = Color.magenta;
         SR.material.color = baseMaterialColor;

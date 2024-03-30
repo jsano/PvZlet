@@ -19,6 +19,18 @@ PrefabInstance:
       propertyPath: damagedSprite2
       value: 
       objectReference: {fileID: 21300000, guid: 3bd171f0da55da5439e715815758e329, type: 3}
+    - target: {fileID: -5692382312999380849, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
+      propertyPath: hitSFX.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5692382312999380849, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
+      propertyPath: hitSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 34e62072ed626c640bcb2332f5326e54, type: 3}
+    - target: {fileID: -5692382312999380849, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
+      propertyPath: hitSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e99b2cd3435ba224daf1a41576a5d62e, type: 3}
     - target: {fileID: 361721534806646908, guid: df0c34782fdb96b43a192068b6cfd832, type: 3}
       propertyPath: m_RootOrder
       value: 0

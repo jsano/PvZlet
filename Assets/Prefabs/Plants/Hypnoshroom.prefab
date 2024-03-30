@@ -113,7 +113,6 @@ MonoBehaviour:
   range: 0
   backwardsRange: 0
   alwaysAttack: 0
-  wall: 0
   mushroom: 1
   instant: 0
   grounded: 0
@@ -123,3 +122,6 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
+  attackSFX1: {fileID: 0}
+  attackSFX2: {fileID: 0}
+  hypnotizeStart: {fileID: 8300000, guid: c05601c9f8fa9024f9fc22af4c838e94, type: 3}

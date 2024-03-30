@@ -32,9 +32,9 @@ public class Player : Damagable
         }
     }
 
-    public override void ReceiveDamage(float dmg, GameObject source, bool eat = false)
+    public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
     {
-        return;
+        return 1;
     }
 
 }

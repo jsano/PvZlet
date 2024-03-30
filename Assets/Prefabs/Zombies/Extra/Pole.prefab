@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4216149333063259314}
   - component: {fileID: 3685890030603953343}
+  - component: {fileID: 857993864282275440}
   m_Layer: 0
   m_Name: Pole
   m_TagString: Untagged
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &857993864282275440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107963473649887295}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89b7b8e6604bc945ad4f342b5e230ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 1.5

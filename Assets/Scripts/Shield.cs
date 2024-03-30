@@ -15,6 +15,8 @@ public class Shield : Damagable
     public Sprite damagedSprite1;
     public Sprite damagedSprite2;
 
+    public AudioClip[] hitSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +34,12 @@ public class Shield : Damagable
         if (HP <= 0) Destroy(gameObject);
     }
 
-    public override void ReceiveDamage(float dmg, GameObject source, bool eat=false) // I really hate reusing code from Zombie.cs and I wish I could borrow it somehow. Maybe "Damageable" interface?
+    public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false) // I really hate reusing code from Zombie.cs and I wish I could borrow it somehow. Maybe "Damageable" interface?
     {
+        if (!disintegrating) if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         HP -= dmg;
         StartCoroutine(HitVisual());
+        return HP;
     }
 
     protected IEnumerator HitVisual()

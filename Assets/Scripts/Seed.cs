@@ -21,6 +21,7 @@ public class Seed : SeedBase
 
     public AudioClip unchoose;
     public AudioClip select;
+    public AudioClip notReady;
 
     // Start is called before the first frame update
     void Start()
@@ -83,7 +84,12 @@ public class Seed : SeedBase
     /// <summary> Called when the button is clicked or the hotkey is pressed </summary>
     public override void OnClick()
     {
-        if (Time.timeScale == 0 || !b.interactable) return;
+        if (Time.timeScale == 0) return;
+        if (!b.interactable)
+        {
+            SFX.Instance.Play(notReady);
+            return;
+        }
         if (LevelManager.status == LevelManager.Status.Intro)
         {
             if (pb.assignedPlants.Count > ID)

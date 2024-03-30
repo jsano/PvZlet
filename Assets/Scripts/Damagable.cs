@@ -9,6 +9,7 @@ public abstract class Damagable : MonoBehaviour
     /// <param name="dmg"> How much damage to deal </param>
     /// <param name="source"> The source object that dealt the damage. Only useful for eating zombies and can be null if unimportant </param>
     /// <param name="eat"> Whether this was eating damage </param>
-    public abstract void ReceiveDamage(float dmg, GameObject source, bool eat=false);
+    /// <returns> The remaining HP this has after the interaction </returns>
+    public abstract float ReceiveDamage(float dmg, GameObject source, bool eat=false, bool disintegrating=false);
 
 }

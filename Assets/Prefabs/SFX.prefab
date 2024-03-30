@@ -141,3 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2e83e3bbc29914dbd7e1cd44f4df0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieEat:
+  - {fileID: 8300000, guid: d1102049ee0b8b2469c68b287939550e, type: 3}
+  - {fileID: 8300000, guid: de521c421fc96764aae5b5dd528cd302, type: 3}
+  zombieEatNut: {fileID: 8300000, guid: cc29aa8fe1050d94f93d6d58fe3eaed5, type: 3}
+  gulp: {fileID: 8300000, guid: e39d08fb15645bb4899442c8bdbd65b3, type: 3}
+  hypnotize: {fileID: 8300000, guid: e0cc12d19eadb7b4b9b612dadc854a5e, type: 3}

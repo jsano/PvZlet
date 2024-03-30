@@ -32,7 +32,7 @@ public class Chomper : Plant
     /// <summary> Eats a zombie, and then starts chewing </summary>
     protected override void Attack(Zombie z)
     {
-        z.ReceiveDamage(damage, null);
+        z.ReceiveDamage(damage, null, disintegrating: true);
         chewPeriod = 0;
         SR.sprite = chewSprite;
         base.Attack(z);

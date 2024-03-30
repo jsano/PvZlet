@@ -26,9 +26,9 @@ public class Balloon : Zombie
         else WalkConstant();
     }
 
-    public override void ReceiveDamage(float dmg, GameObject source, bool eat = false)
+    public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
     {
-        base.ReceiveDamage(dmg, source, eat);
+        base.ReceiveDamage(dmg, source, eat, disintegrating);
         if (!popped && (armor == null || armor.GetComponent<Armor>().HP <= 0))
         {
             popped = true;
@@ -38,6 +38,7 @@ public class Balloon : Zombie
             walkTime = poppedWalkTime;
             ResetWalk();
         }
+        return HP;
     }
 
     protected override IEnumerator Eat(Damagable p)

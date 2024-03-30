@@ -10,7 +10,12 @@ public class SFX : MonoBehaviour
     private static SFX instance;
     public static SFX Instance { get { return instance; } }
 
-    private HashSet<AudioClip> cooldown = new HashSet<AudioClip>();
+    private Dictionary<AudioClip, int> cooldown = new Dictionary<AudioClip, int>();
+
+    public AudioClip[] zombieEat;
+    public AudioClip zombieEatNut; // Idk how else to store sounds globally like this
+    public AudioClip gulp;
+    public AudioClip hypnotize;
 
     void Awake()
     {
@@ -33,8 +38,9 @@ public class SFX : MonoBehaviour
 
     public void Play(AudioClip clip)
     {
-        if (cooldown.Contains(clip)) return;
-        AS.PlayOneShot(clip);
+        int cur;
+        cooldown.TryGetValue(clip, out cur);
+        AS.PlayOneShot(clip, 1 - 0.2f * cur);
         StartCoroutine(refresh(clip));
     }
 
@@ -46,9 +52,10 @@ public class SFX : MonoBehaviour
 
     private IEnumerator refresh(AudioClip clip)
     {
-        cooldown.Add(clip);
-        yield return new WaitForSeconds(0.2f);
-        cooldown.Remove(clip);
+        if (cooldown.ContainsKey(clip)) cooldown[clip] += 1;
+        else cooldown[clip] = 1;
+        yield return new WaitForSeconds(0.25f);
+        cooldown[clip] -= 1;
     }
 
 }

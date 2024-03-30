@@ -51,9 +51,9 @@ public class PotatoMine : Plant
         RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
         foreach (RaycastHit2D a in all)
         {
-            a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
+            a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null, disintegrating: true);
         }
-        z.ReceiveDamage(damage, null);
+        //z.ReceiveDamage(damage, null);
         Destroy(gameObject);
     }
 

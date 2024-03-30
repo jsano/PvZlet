@@ -48,6 +48,7 @@ public class PoleVaulter : Zombie
             projectile.transform.rotation = Quaternion.Euler(0, 0, 90);
             projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
             projectile.transform.SetParent(null);
+            projectile.GetComponent<DestroyAfterAnimation>().enabled = true;
         }
         int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 9);
         if (c == 1) RB.velocity = (Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c + 1].transform.position) * 2;
@@ -68,7 +69,6 @@ public class PoleVaulter : Zombie
             period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             yield return null;
         }
-        Destroy(projectile);
         gameObject.layer = LayerMask.NameToLayer("Zombie");
         RB.velocity = Vector3.zero;
         transform.position = new Vector2(transform.position.x, Tile.tileObjects[row, Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 9)].transform.position.y);

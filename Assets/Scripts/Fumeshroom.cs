@@ -16,7 +16,7 @@ public class Fumeshroom : Plant
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.right, (range + 0.5f) * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie", "Shield"));
         foreach (RaycastHit2D r in hits)
         {
-            r.collider.GetComponent<Damagable>().ReceiveDamage(damage, null);
+            r.collider.GetComponent<Damagable>().ReceiveDamage(damage, null, disintegrating: true);
         }
         base.Attack(z);
     }

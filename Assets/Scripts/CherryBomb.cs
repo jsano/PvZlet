@@ -25,7 +25,7 @@ public class CherryBomb : Plant
         {
             // Remove active ladders
             if (a.collider.GetComponent<Shield>() != null) Destroy(a.collider.gameObject); 
-            else a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null);
+            else a.collider.GetComponent<Zombie>().ReceiveDamage(damage, null, disintegrating: true);
         }
         Destroy(gameObject);
     }

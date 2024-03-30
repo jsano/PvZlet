@@ -154,11 +154,12 @@ public class Plant : Damagable
         attacking = false;
     }
 
-    public override void ReceiveDamage(float dmg, GameObject source, bool eat=false)
+    public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
     {
-        if (isActiveInstant()) return;
+        if (isActiveInstant()) return HP;
         HP -= dmg;
         StartCoroutine(EatenVisual());
+        return HP;
     }
 
     protected virtual void Die()

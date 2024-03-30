@@ -34,7 +34,7 @@ public class Lawnmower : MonoBehaviour
         {
             if (!launched) SFX.Instance.Play(mow);
             launched = true;
-            collider.GetComponent<Zombie>().ReceiveDamage(100000, gameObject);
+            collider.GetComponent<Zombie>().ReceiveDamage(100000, gameObject, disintegrating: true);
         }
     }
 

@@ -14,7 +14,7 @@ public class Iceshroom : Plant
                 && target.gameObject.layer == LayerMask.NameToLayer("Zombie"))
             {
                 ((StatMod) ScriptableObject.CreateInstance("StatMod")).Apply(target, "Freeze");
-                target.ReceiveDamage(damage, null);
+                target.ReceiveDamage(damage, null, disintegrating: true);
             }
         }
         Destroy(gameObject);

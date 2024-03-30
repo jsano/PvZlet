@@ -14,9 +14,9 @@ public class Imp : Zombie
         base.Start();
         if (flung)
         {
-            RB.gravityScale = 1.5f;
+            RB.gravityScale = 1f;
             gameObject.layer = LayerMask.NameToLayer("ExplosivesOnly");
-            RB.velocity = Vector2.left * 13f;
+            RB.velocity = Vector2.left * 8f;
             landed = false;
         }
     }

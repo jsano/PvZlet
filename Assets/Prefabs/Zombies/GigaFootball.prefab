@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: zombieName
       value: Giga-Football Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 4904543073488655662, guid: 46dcb2de030506f44a397bb3eff839c6, type: 3}
+      propertyPath: unchompable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5042500414427527614, guid: 46dcb2de030506f44a397bb3eff839c6, type: 3}
       propertyPath: m_Name
       value: GigaFootball

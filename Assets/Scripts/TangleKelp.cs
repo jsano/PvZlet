@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TangleKelp : Chomper
+public class TangleKelp : Plant
 {
 
     private bool attacked;
@@ -18,12 +18,12 @@ public class TangleKelp : Chomper
             z.GetComponent<Collider2D>().enabled = false;
             StartCoroutine(Wait(z));
         }
-        
     }
 
     private IEnumerator Wait(Zombie z)
     {
         yield return new WaitForSeconds(1f);
+        z.ReceiveDamage(damage, null, disintegrating: true);
         base.Attack(z);
         Destroy(gameObject);
     }

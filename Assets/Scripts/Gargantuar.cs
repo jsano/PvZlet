@@ -41,8 +41,13 @@ public class Gargantuar : Zombie
             yield return null;
         }
         SFX.Instance.Play(smash);
-        int c = Tile.WORLD_TO_COL(transform.position.x);
-        if (c >= 1 && c <= 9) Tile.tileObjects[row, c].RemoveAllPlants(gameObject);
+        int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x + Tile.TILE_DISTANCE.x / 3), 1, 9);
+        if (Tile.tileObjects[row, c].planted != null) Tile.tileObjects[row, c].RemoveAllPlants(gameObject);
+        else
+        {
+            c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x - Tile.TILE_DISTANCE.x / 3), 1, 9);
+            Tile.tileObjects[row, c].RemoveAllPlants(gameObject);
+        }
         period = 0;
         while (period < 0.5f)
         {
@@ -72,6 +77,8 @@ public class Gargantuar : Zombie
     public override void Die()
     {
         dead = true;
+        BC.enabled = false;
+        RB.velocity = Vector2.zero;
         ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
         SFX.Instance.Play(death);
         StartCoroutine(Death());

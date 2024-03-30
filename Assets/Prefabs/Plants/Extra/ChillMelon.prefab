@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf89be8668acd04ca9ca5503de8827e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 4
+  dmg: 3
   lane: 0
   distance: {x: 0, y: 0}
   splash: {x: 2, y: 2.5}

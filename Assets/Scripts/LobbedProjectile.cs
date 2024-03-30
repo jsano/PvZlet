@@ -56,15 +56,15 @@ public class LobbedProjectile : MonoBehaviour
             if (splash.magnitude > 0)
             {
                 RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
-                foreach (RaycastHit2D h in hits) Hit(h.collider.GetComponent<Damagable>());
+                foreach (RaycastHit2D h in hits) Hit(h.collider.GetComponent<Damagable>(), h.collider == other ? dmg : dmg / 2);
             }
-            else Hit(other.GetComponent<Damagable>());
+            else Hit(other.GetComponent<Damagable>(), dmg);
         }
     }
 
-    protected virtual void Hit(Damagable other)
+    protected virtual void Hit(Damagable other, float amount)
     {
-        other.ReceiveDamage(dmg, gameObject);
+        other.ReceiveDamage(amount, gameObject);
         hit = true;
     }
 

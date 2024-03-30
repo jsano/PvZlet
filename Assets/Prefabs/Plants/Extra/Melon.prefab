@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8697127967471704554, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
       propertyPath: dmg
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8697127967471704554, guid: a43432987bcefe947a4d2959c37fea5c, type: 3}
       propertyPath: splash.x

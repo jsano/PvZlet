@@ -9,11 +9,11 @@ public class Starfruit : Plant
     {
         float radius = projectile.transform.localScale.x * projectile.GetComponent<CircleCollider2D>().radius;
         RaycastHit2D hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, Vector2.left, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit || hit.collider.offset.y > 0) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, new Vector2(1, 0.5f), 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit || hit.collider.offset.y > 0) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, new Vector2(1, -0.5f), 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit || hit.collider.offset.y > 0) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, Vector2.up, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (!hit || hit.collider.offset.y > 0) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, Vector2.down, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
-        if (hit && hit.collider.offset.y == 0) return hit.collider.GetComponent<Zombie>();
+        if (!hit || hit.collider.GetComponent<Zombie>().row != row || ColliderHidden(hit)) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, new Vector2(1, 0.5f), 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit || ColliderHidden(hit)) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, new Vector2(1, -0.5f), 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit || ColliderHidden(hit)) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, Vector2.up, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (!hit || ColliderHidden(hit)) hit = Physics2D.CircleCast(Tile.tileObjects[row, col].transform.position, radius, Vector2.down, 10 * Tile.TILE_DISTANCE.x, LayerMask.GetMask("Zombie"));
+        if (hit && !ColliderHidden(hit)) return hit.collider.GetComponent<Zombie>();
         return null;
     }
 
@@ -30,6 +30,13 @@ public class Starfruit : Plant
         p = Instantiate(projectile, transform.position, projectile.transform.rotation).GetComponent<StraightProjectile>();
         p.dir = Vector2.down;
         base.Attack(z);
+    }
+
+    private bool ColliderHidden(RaycastHit2D hit)
+    {
+        BoxCollider2D bc = hit.collider.GetComponent<BoxCollider2D>();
+        if (bc == null) return true;
+        return bc.size.y < 1;
     }
 
 }

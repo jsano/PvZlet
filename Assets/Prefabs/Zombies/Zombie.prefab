@@ -115,6 +115,7 @@ MonoBehaviour:
   eatsPlants: 1
   status: {fileID: 0}
   displayOnly: 0
+  enterSFX: {fileID: 0}
 --- !u!50 &196455329693155889
 Rigidbody2D:
   serializedVersion: 4

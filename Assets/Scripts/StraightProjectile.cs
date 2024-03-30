@@ -64,14 +64,8 @@ public class StraightProjectile : MonoBehaviour
         if (other.offset.y < 0 || other.GetComponent<BoxCollider2D>().size.y < 1 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
         if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
-            if (moveToLane != 0 && transform.position.y != startPos.y) return;
-            if (gameObject.tag == "Star")
-            {
-                if (dir == Vector3.up || dir == Vector3.down || dir == Vector3.left) return;
-                if (Tile.WORLD_TO_COL(transform.position.x) - Tile.WORLD_TO_COL(startPos.x) >= 2) Destroy(gameObject);
-                else return;
-            }
-            if (!sharp) Destroy(gameObject); // NOTE: Very situational, ideally only cactus spikes should ignore
+            // NOTE: !sharp is very situational, ideally only cactus spikes should ignore
+            if (!sharp && Tile.WORLD_TO_COL(transform.position.x) - Tile.WORLD_TO_COL(startPos.x) >= 1) Destroy(gameObject);
             return;
         }
         //TODO: backwards shots hit zombies on other lanes on roof. Probably fix
@@ -79,12 +73,12 @@ public class StraightProjectile : MonoBehaviour
         // Prioritize shield/zomboni over zombie since they can't splash
         if (other.GetComponent<Shield>() != null)
         {
-            Hit(other.GetComponent<Shield>());                
+            Hit(other.GetComponent<Shield>(), dmg);                
             return;
         }
         if (other.GetComponent<Zomboni>() != null)
         {
-            Hit(other.GetComponent<Zomboni>());
+            Hit(other.GetComponent<Zomboni>(), dmg);
             return;
         }
         // No shield, just zombie
@@ -93,15 +87,17 @@ public class StraightProjectile : MonoBehaviour
             if (splash.magnitude > 0)
             {
                 RaycastHit2D[] hits1 = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
-                foreach (RaycastHit2D h in hits1) if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope") && h.collider.offset.y == 0) Hit(h.collider.GetComponent<Damagable>());
+                foreach (RaycastHit2D h in hits1)
+                    if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope") && h.collider.GetComponent<BoxCollider2D>().size.y < 1)
+                        Hit(h.collider.GetComponent<Damagable>(), h.collider == other ? dmg : dmg / 2);
             }
-            else Hit(other.GetComponent<Zombie>());
+            else Hit(other.GetComponent<Zombie>(), dmg);
         }
     }
 
-    protected virtual void Hit(Damagable other)
+    protected virtual void Hit(Damagable other, float amount)
     {
-        other.ReceiveDamage(dmg, gameObject, disintegrating: tag == "Fire");
+        other.ReceiveDamage(amount, gameObject, disintegrating: tag == "Fire");
         hit = true;
     }
 

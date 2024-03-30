@@ -28,6 +28,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -91,7 +99,7 @@ MonoBehaviour:
   waveNumber: 0
   spawnScore: 20
   damage: 1000
-  walkTime: 4
+  walkTime: 5
   HP: 150
   row: 1
   hitsGround: 1
@@ -102,6 +110,7 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 0
   status: {fileID: 0}
+  unchompable: 1
   displayOnly: 0
   enterSFX: {fileID: 0}
   imp: {fileID: 5066145326785716353, guid: 1bab47dbbf166b541aa9d20407b8d962, type: 3}

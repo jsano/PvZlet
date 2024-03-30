@@ -50,6 +50,7 @@ public class Zombie : Damagable
     [HideInInspector] public StatMod status;
     protected bool hypnotized;
     protected bool backwards;
+    public bool unchompable;
 
     private GameObject _text;
     [HideInInspector] public bool displayOnly;
@@ -98,8 +99,7 @@ public class Zombie : Damagable
     public virtual void Update()
     {
         int mask = hypnotized ? LayerMask.GetMask("Zombie") : LayerMask.GetMask("Plant");
-        // NOTE: (1, 1, 1) and not localscale because of hypnotized -1 x-scale
-        GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, Vector3.one, 0, Vector2.zero, 0, mask));
+        GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, new Vector2(Mathf.Abs(transform.localScale.x), 1), 0, Vector2.zero, 0, mask));
         if (toEat == null)
         {
             StopEating();

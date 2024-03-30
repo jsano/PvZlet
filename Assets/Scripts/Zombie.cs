@@ -201,7 +201,7 @@ public class Zombie : Damagable
     {
         eating = p.gameObject;
         ResetWalk();
-        while (eating != null)
+        while (eating != null && eating.GetComponent<Collider2D>().enabled)
         {
             if (status != null && status.eatMod == 0) break;
             if (!wheels) RB.velocity = Vector2.zero;

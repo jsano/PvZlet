@@ -16,8 +16,8 @@ public class SFX : MonoBehaviour
     public AudioClip zombieEatNut; // Idk how else to store sounds globally like this
     public AudioClip gulp;
     public AudioClip hypnotize;
+    public AudioClip bonk;
 
-    public AudioClip jackSong;
     private AudioSource jackAS;
 
     void Awake()

@@ -72,13 +72,13 @@ public class Seed : SeedBase
             if (Input.GetButtonDown("Plant7") && ID == 6 && b.interactable) OnClick();
             if (Input.GetButtonDown("Plant8") && ID == 7 && b.interactable) OnClick();
         }
-
+        /*
         //DEBUG
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             PlantBuilder.sun = 1000;
             rechargePeriod = plant.recharge;
-        }
+        }*/
     }
 
     /// <summary> Called when the button is clicked or the hotkey is pressed </summary>

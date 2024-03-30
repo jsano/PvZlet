@@ -60,16 +60,7 @@ public class Digger : Zombie
 
     protected override void Spawn()
     {
-        bool found = false;
-        foreach (AudioSource a in FindObjectsByType<AudioSource>(FindObjectsSortMode.None))
-        {
-            if (a.clip == AS.clip && a.isPlaying)
-            {
-                found = true;
-                break;
-            }
-        }
-        if (!found) AS.Play();
+        AS.Play();
         base.Spawn();
     }
 

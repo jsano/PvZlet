@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Gargantuar
+  waveNumber: 0
   spawnScore: 20
   damage: 1000
   walkTime: 4
   HP: 150
-  eatTime: 0.5
   row: 1
   hitsGround: 1
   aquatic: 0
@@ -103,4 +103,11 @@ MonoBehaviour:
   eatsPlants: 0
   status: {fileID: 0}
   displayOnly: 0
+  enterSFX: {fileID: 0}
   imp: {fileID: 5066145326785716353, guid: 1bab47dbbf166b541aa9d20407b8d962, type: 3}
+  windup: {fileID: 8300000, guid: 731df765bff3dc045b80915ede37348e, type: 3}
+  smash: {fileID: 8300000, guid: e1933bea7005d05429ff1291218f064a, type: 3}
+  death: {fileID: 8300000, guid: 8c27213fc90c5154983b629a0315415a, type: 3}
+  impThrow:
+  - {fileID: 8300000, guid: 2ce430573fe9dc04dac43e71f79c030e, type: 3}
+  - {fileID: 8300000, guid: 75a837a8f675b5945b4d8adb5c076e32, type: 3}

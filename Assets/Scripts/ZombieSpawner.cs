@@ -132,6 +132,8 @@ public class ZombieSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.status == LevelManager.Status.Intro)
+            foreach (GameObject g in displayZombies) g.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         if (LevelManager.status == LevelManager.Status.Start)
         {
             preparation = Mathf.Max(0, preparation - Time.deltaTime);

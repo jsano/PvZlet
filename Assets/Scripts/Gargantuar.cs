@@ -9,10 +9,17 @@ public class Gargantuar : Zombie
     private bool hasImp = true;
     private bool attacking;
     private bool throwing;
+    private bool dead;
+
+    public AudioClip windup;
+    public AudioClip smash;
+    public AudioClip death;
+    public AudioClip[] impThrow;
 
     // Update is called once per frame
     public override void Update()
     {
+        if (dead) return;
         if (!attacking && hasImp && HP <= baseHP / 3 && Tile.WORLD_TO_COL(transform.position.x) >= 5)
         {
             hasImp = false;
@@ -26,12 +33,14 @@ public class Gargantuar : Zombie
     {
         ResetWalk();
         attacking = true;
+        SFX.Instance.Play(windup);
         float period = 0;
         while (period < 1.5f)
         {
             period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             yield return null;
         }
+        SFX.Instance.Play(smash);
         int c = Tile.WORLD_TO_COL(transform.position.x);
         if (c >= 1 && c <= 9) Tile.tileObjects[row, c].RemoveAllPlants(gameObject);
         period = 0;
@@ -49,6 +58,7 @@ public class Gargantuar : Zombie
         float period = 0;
         while (period < 0.75f)
         {
+            if (dead) yield break;
             period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             yield return null;
         }
@@ -56,6 +66,27 @@ public class Gargantuar : Zombie
         g.GetComponent<Imp>().flung = true;
         g.GetComponent<Imp>().row = row;
         throwing = false;
+        SFX.Instance.Play(impThrow[Random.Range(0, impThrow.Length)]);
+    }
+
+    public override void Die()
+    {
+        dead = true;
+        ZS.SubtractBuild(spawnScore, waveNumber);
+        SFX.Instance.Play(death);
+        StartCoroutine(Death());
+    }
+
+    private IEnumerator Death()
+    {
+        float period = 0;
+        while (period < 4f)
+        {
+            period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
+            yield return null;
+        }
+        SFX.Instance.Play(smash);
+        Destroy(gameObject);
     }
 
 }

@@ -63,12 +63,19 @@ public class PoleVaulter : Zombie
         while (period < 1.5f)
         {
             RB.velocity = baseVel * ((status == null) ? 1 : status.walkMod);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 0.1f, LayerMask.GetMask("Plant"));
-            if (hit && hit.collider.tag == "Tallnut")
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.left, 0.1f, LayerMask.GetMask("Plant"));
+            bool tallnut = false;
+            foreach (RaycastHit2D h in hits)
             {
-                RB.velocity = Vector3.zero;
-                break;
+                if (h.collider.tag == "Tallnut")
+                {
+                    SFX.Instance.Play(SFX.Instance.bonk);
+                    RB.velocity = Vector3.zero;
+                    tallnut = true;
+                    break;
+                }
             }
+            if (tallnut) break;
             period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             yield return null;
         }

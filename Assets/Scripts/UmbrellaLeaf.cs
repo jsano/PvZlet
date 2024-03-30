@@ -25,6 +25,7 @@ public class UmbrellaLeaf : Plant
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("ZombieLobbedProjectile"))
         {
+            if (Mathf.Abs(collision.GetComponent<LobbedProjectile>().lane - row) > 1) return;
             Destroy(collision.gameObject);
         }
         else return;

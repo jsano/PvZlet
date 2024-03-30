@@ -7,10 +7,13 @@ public class PotatoMine : Plant
 
     /// <summary> The amount of time in seconds to activate the mine. Will not call the base <c>Update</c> until activated </summary>
     public float armingTime;
+    private bool armed;
     private Vector2 area = new Vector2(Tile.TILE_DISTANCE.x * 1.5f, Tile.TILE_DISTANCE.y * 0.75f);
 
     public Sprite armingSprite;
     private Sprite normalSprite;
+
+    public AudioClip armSFX;
 
     public override void Start()
     {
@@ -29,9 +32,14 @@ public class PotatoMine : Plant
         }
         else
         {
+            if (!armed)
+            {
+                armed = true;
+                SFX.Instance.Play(armSFX);
+                SR.sprite = normalSprite;
+            }
             base.Update();
             HP = 100000;
-            SR.sprite = normalSprite;
         }
     }
 

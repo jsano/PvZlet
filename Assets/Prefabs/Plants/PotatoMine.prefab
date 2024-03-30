@@ -110,3 +110,4 @@ MonoBehaviour:
   attackSFX2: {fileID: 0}
   armingTime: 10
   armingSprite: {fileID: 21300000, guid: 66f23707838fc4041b2ca159d9aa8701, type: 3}
+  armSFX: {fileID: 8300000, guid: 8d4ff644ebfe1f84780a98d2adc873c9, type: 3}

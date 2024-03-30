@@ -51,7 +51,11 @@ public class PlantBuilder : MonoBehaviour
 
         if (l.potColumn > 0) {
             for (int i = 1; i <= ZombieSpawner.Instance.lanes; i++)
-                for (int j = 1; j <= l.potColumn; j++) Tile.tileObjects[i, j].Place(allPlants[33]);
+                for (int j = 1; j <= l.potColumn; j++)
+                {
+                    Tile.tileObjects[i, j].Place(allPlants[33]);
+                    plantCounts[33] += 1;
+                }
         }
         
         sun = l.startingSun;

@@ -23,6 +23,86 @@ PrefabInstance:
       propertyPath: potColumn
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: preparation
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[0].count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[0].plant
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[1].count
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[1].plant
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[2].count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[2].plant
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[3].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[3].plant
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[4].count
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[4].plant
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[5].count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[5].plant
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[6].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[6].plant
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[7].count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[7].plant
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[8].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: conveyor.Array.data[8].plant
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2449856806975317780, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: m_RootOrder
       value: 0

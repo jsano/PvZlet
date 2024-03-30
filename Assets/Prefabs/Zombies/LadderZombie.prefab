@@ -102,6 +102,7 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 0
   status: {fileID: 0}
+  unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
   noLadderWalkTime: 4

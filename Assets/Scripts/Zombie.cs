@@ -265,6 +265,7 @@ public class Zombie : Damagable
     public void MoveToLane(int lane, float delay)
     {
         changingLanes = true;
+        SFX.Instance.Play(SFX.Instance.yuck[UnityEngine.Random.Range(0, SFX.Instance.yuck.Length)]);
         StartCoroutine(MoveLaneHelper(lane, delay));
     }
 
@@ -275,7 +276,7 @@ public class Zombie : Damagable
         float targetY = Tile.tileObjects[lane, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y;
         while (Mathf.Abs(transform.position.y - targetY) > 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, 0), 1.5f * Time.deltaTime * ((status == null) ? 1 : status.walkMod));
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, 0), 2f * Time.deltaTime * ((status == null) ? 1 : status.walkMod));
             yield return null;
         }
         row = lane;

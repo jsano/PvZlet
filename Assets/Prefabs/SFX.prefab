@@ -147,9 +147,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: de521c421fc96764aae5b5dd528cd302, type: 3}
   zombieEatNut: {fileID: 8300000, guid: cc29aa8fe1050d94f93d6d58fe3eaed5, type: 3}
   gulp: {fileID: 8300000, guid: e39d08fb15645bb4899442c8bdbd65b3, type: 3}
+  yuck:
+  - {fileID: 8300000, guid: 08711a5b75b79a640a3672269a5ce3d2, type: 3}
+  - {fileID: 8300000, guid: c931839d4add7b94ba18694e1b0cdbc0, type: 3}
   hypnotize: {fileID: 8300000, guid: e0cc12d19eadb7b4b9b612dadc854a5e, type: 3}
   bonk: {fileID: 8300000, guid: 587dae4c413d7d94ab3184297944e1f8, type: 3}
-  jackSong: {fileID: 0}
 --- !u!1 &4934596370708493258
 GameObject:
   m_ObjectHideFlags: 0

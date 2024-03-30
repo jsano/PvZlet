@@ -202,7 +202,8 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
   surfaceWalkTime: 4
-  riseSFX: {fileID: 8300000, guid: 8d4ff644ebfe1f84780a98d2adc873c9, type: 3}
+  riseSFX: {fileID: 8300000, guid: 825585ab4077f74498ced597fce30bc1, type: 3}

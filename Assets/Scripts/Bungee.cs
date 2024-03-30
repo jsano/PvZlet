@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bungee : Zombie
@@ -34,9 +35,10 @@ public class Bungee : Zombie
         while (transform.position.y > Tile.tileObjects[row, col].transform.position.y)
         {
             RB.velocity = Vector3.down * 15;
+            if (transform.position.y - Tile.tileObjects[row, col].transform.position.y <= Tile.TILE_DISTANCE.y)
+                gameObject.layer = LayerMask.NameToLayer("Zombie");
             yield return null;
         }
-        gameObject.layer = LayerMask.NameToLayer("Zombie");
         RB.velocity = Vector3.zero;
         float timeLeft = 3f;
         while (timeLeft > 0f)

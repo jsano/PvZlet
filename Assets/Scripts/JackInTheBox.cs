@@ -17,7 +17,7 @@ public class JackInTheBox : Football
     public override void Start()
     {
         base.Start();
-        remaining = Random.Range(3, maxTime);
+        remaining = Random.Range(5, maxTime);
         projectile = Instantiate(projectile, transform, false);
         projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
         projectile.GetComponent<SpriteRenderer>().sortingOrder = SR.sortingOrder + 2;
@@ -28,7 +28,7 @@ public class JackInTheBox : Football
     {
         if (!exploded)
         {
-            if (projectile != null) remaining -= Time.deltaTime;
+            if (projectile != null) remaining -= Time.deltaTime * ((status == null) ? 1 : status.walkMod);
             base.Update();
             if (remaining <= 0)
             {

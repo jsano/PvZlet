@@ -12,8 +12,13 @@ public class CobCannon : Plant
     private bool ready;
     private Camera cam;
 
+    public GameObject target;
     public GameObject explosion;
     public Vector2 area;
+
+    public AudioClip launchSFX;
+    public AudioClip explosionSFX;
+    public AudioClip readySFX;
 
     public override void Start()
     {
@@ -26,22 +31,24 @@ public class CobCannon : Plant
     public override void Update()
     {
         if (!ready) reloadPeriod += Time.deltaTime;
-        if (reloadPeriod >= reload)
+        if (reloadPeriod >= reload && !ready)
         {
+            SFX.Instance.Play(readySFX);
             ready = true;
-            SR.material.color = Color.white;
         }
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0, LayerMask.GetMask("Plant"));
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.collider.gameObject == gameObject) OnMouseDown();
+                if (hit.collider.gameObject == gameObject && EventSystem.current.currentSelectedGameObject == null && !aiming && ready)
+                    StartCoroutine(AimDelay());
             }
         }
         if (aiming)
         {
-            SR.material.color = Color.red;
+            Vector3 world = cam.ScreenToWorldPoint(Input.mousePosition);
+            target.transform.position = new Vector3(world.x, world.y, 0);
             if (Input.GetMouseButtonDown(1)) aiming = false;
             if (Input.GetMouseButtonDown(0))
             {
@@ -57,12 +64,12 @@ public class CobCannon : Plant
                     StartCoroutine(Update_Helper(cam.ScreenToWorldPoint(Input.mousePosition)));
                 }
             }
-        } else if (ready) SR.material.color = Color.white;
-    }
-
-    void OnMouseDown()
-    {
-        if (EventSystem.current.currentSelectedGameObject == null && !aiming && ready) StartCoroutine(AimDelay());
+        }
+        else
+        {
+            target.SetActive(false);
+            if (ready) SR.color = Color.white;
+        }
     }
 
     private IEnumerator ReadyDelay()
@@ -74,20 +81,22 @@ public class CobCannon : Plant
     private IEnumerator AimDelay()
     {
         yield return new WaitForEndOfFrame();
+        target.SetActive(true);
         aiming = true;
     }
 
     private IEnumerator Update_Helper(Vector3 loc)
     {
-        SR.material.color = Color.white;
         yield return new WaitForSeconds(atkspd);
-        SR.material.color -= Color.white / 2;
-        GameObject p = Instantiate(projectile, new Vector2(loc.x, loc.y + Tile.TILE_DISTANCE.y * 10), Quaternion.identity);
+        SFX.Instance.Play(launchSFX);
+        SR.color = Color.gray;
+        GameObject p = Instantiate(projectile, new Vector2(loc.x, loc.y + Tile.TILE_DISTANCE.y * 10), Quaternion.Euler(0, 0, -90));
         while (p.transform.position.y > loc.y)
         {
-            p.transform.Translate(Vector3.down * 15 * Time.deltaTime);
+            p.transform.Translate(Vector3.down * 15 * Time.deltaTime, Space.World);
             yield return null;
         }
+        SFX.Instance.Play(explosionSFX);
         GameObject g = Instantiate(explosion, p.transform.position, Quaternion.identity);
         g.transform.localScale = area * Tile.TILE_DISTANCE;
         RaycastHit2D[] all = Physics2D.BoxCastAll(p.transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));

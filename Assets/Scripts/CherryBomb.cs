@@ -11,8 +11,8 @@ public class CherryBomb : Plant
 
     public override void Start()
     {
-        SFX.Instance.Play(buildup);
         base.Start();
+        if (!sleeping) SFX.Instance.Play(buildup);
     }
 
     /// <summary> Explodes in a 3x3 area, and then disappears </summary>

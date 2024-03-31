@@ -14,4 +14,10 @@ public class Doomshroom : CherryBomb
         base.Attack(z);
     }
 
+    public override void Wake()
+    {
+        SFX.Instance.Play(buildup);
+        base.Wake();
+    }
+
 }

@@ -76,12 +76,15 @@ public class Gargantuar : Zombie
 
     public override void Die()
     {
-        dead = true;
-        BC.enabled = false;
-        RB.velocity = Vector2.zero;
-        ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
-        SFX.Instance.Play(death);
-        StartCoroutine(Death());
+        if (!dead)
+        {
+            dead = true;
+            BC.enabled = false;
+            RB.velocity = Vector2.zero;
+            ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
+            SFX.Instance.Play(death);
+            StartCoroutine(Death());
+        }
     }
 
     private IEnumerator Death()

@@ -18,10 +18,10 @@ public class UmbrellaLeaf : Plant
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Bungee>() != null)
+        if (collision.GetComponent<Bungee>() != null || collision.GetComponent<Imp>() != null && collision.GetComponent<Imp>().flung)
         {
             SFX.Instance.Play(boing);
-            collision.GetComponent<Bungee>().Die();
+            collision.GetComponent<Zombie>().Die();
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("ZombieLobbedProjectile"))
         {

@@ -39,7 +39,7 @@ public class Tile : MonoBehaviour
     public AudioClip shovelSFX;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         TILE_DISTANCE = new Vector2(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f);
         COL_TO_WORLD[col] = transform.position.x;

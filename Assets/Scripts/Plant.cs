@@ -31,7 +31,7 @@ public class Plant : Damagable
     public bool alwaysAttack = false;
     /// <summary> Whether the plant is a mushroom thus nocturnal </summary>
     public bool mushroom = false;
-    private bool sleeping = false;
+    protected bool sleeping = false;
     private GameObject zzz;
     protected Sky sky;
     /// <summary> Whether this is an instant plant so zombies can ignore it </summary>
@@ -187,7 +187,7 @@ public class Plant : Damagable
         HP = Mathf.Min(HP + heal, baseHP);
     }
 
-    public void Wake()
+    public virtual void Wake()
     {
         sleeping = false;
         zzz.SetActive(false);

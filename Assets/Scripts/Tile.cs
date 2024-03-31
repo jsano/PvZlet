@@ -198,7 +198,7 @@ public class Tile : MonoBehaviour
 
     public void RemoveAllPlants(GameObject source = null)
     {
-        foreach (GameObject g in overlapped) g.GetComponent<Plant>().ReceiveDamage(1000, source);
+        foreach (GameObject g in overlapped) if (g != null) g.GetComponent<Plant>().ReceiveDamage(1000, source);
         overlapped.Clear();
         if (planted != null && !planted.GetComponent<Plant>().isActiveInstant()) planted.GetComponent<Plant>().ReceiveDamage(1000, source);
     }

@@ -19,8 +19,15 @@ public class TrashCan : Zombie
         if (shield != null)
         {
             Destroy(shield);
-            Plant p1 = p.GetComponent<Plant>();
-            Tile.tileObjects[p1.row, p1.col].RemoveAllPlants();
+            if (p.GetComponent<Zombie>() != null)
+            {
+                p.ReceiveDamage(100, null, disintegrating: true);
+            }
+            else
+            {
+                Plant p1 = p.GetComponent<Plant>();
+                Tile.tileObjects[p1.row, p1.col].RemoveAllPlants();
+            }
             ResetWalk();
             yield break;
         }

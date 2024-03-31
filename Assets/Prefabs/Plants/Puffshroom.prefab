@@ -114,5 +114,5 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 7157287234317082125, guid: 4e614f9c8609bd848af2fba48cf5790b, type: 3}
   status: {fileID: 0}
-  attackSFX1: {fileID: 8300000, guid: 28bcd1a66fa85e346961db0f9432218b, type: 3}
-  attackSFX2: {fileID: 0}
+  attackSFX:
+  - {fileID: 8300000, guid: 28bcd1a66fa85e346961db0f9432218b, type: 3}

@@ -2,24 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Marigold : Plant
+public class Marigold : CherryBomb
 {
 
-    public Vector2 area;
-
-    public AudioClip buildup;
-
-    public override void Start()
-    {
-        SFX.Instance.Play(buildup);
-        base.Start();
-    }
-
-    /// <summary> Explodes in a 3x3 area, and then disappears </summary>
+    /// <summary> Reduces all zombies' HP to a third in a 3x3 area, and then disappears </summary>
     protected override void Attack(Zombie z)
     {
-        //GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
-        //g.transform.localScale = area * Tile.TILE_DISTANCE;
+        GameObject g = Instantiate(projectile, transform.position, Quaternion.identity);
+        g.transform.localScale = area * Tile.TILE_DISTANCE;
         RaycastHit2D[] all = Physics2D.BoxCastAll(transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
         foreach (RaycastHit2D a in all)
         {

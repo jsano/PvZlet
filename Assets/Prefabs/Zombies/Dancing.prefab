@@ -102,6 +102,7 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
   backup: {fileID: 6833965198594692961, guid: 2c343650ab24b2c4c9ee09221bfa6b70, type: 3}

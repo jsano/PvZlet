@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         l = FindFirstObjectByType<Level>();
-        if (l.special != null) Instantiate(l.special);
+        foreach (GameObject g in l.special) Instantiate(g);
         UI.SetActive(false);
         music.clip = music.GetComponent<Music>().allMusic[1];
         music.Play();

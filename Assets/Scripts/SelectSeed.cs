@@ -9,8 +9,11 @@ public class SelectSeed : MonoBehaviour
 
     public int ID;
     private Plant plant;
+    private bool chosen;
 
     public AudioClip choose;
+    public AudioClip unchoose;
+    public AudioClip banned;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +31,25 @@ public class SelectSeed : MonoBehaviour
 
     public void OnClick()
     {
-        if (PlantBuilder.Instance.assignedPlants.Count == 8 || PlantBuilder.Instance.assignedPlants.Contains(ID)) return;
-        SFX.Instance.Play(choose);
-        PlantBuilder.Instance.assignedPlants.Add(ID);
-        GetComponent<Button>().interactable = false;
+        if (!GetComponent<Button>().interactable)
+        {
+            SFX.Instance.Play(banned);
+            return;
+        }
+        if (!chosen)
+        {
+            if (PlantBuilder.Instance.assignedPlants.Count == 8 || PlantBuilder.Instance.assignedPlants.Contains(ID)) return;
+            SFX.Instance.Play(choose);
+            PlantBuilder.Instance.assignedPlants.Add(ID);
+            GetComponent<Image>().color -= new Color(0, 0, 0, 0.5f);
+        }
+        else
+        {
+            PlantBuilder.Instance.assignedPlants.RemoveAt(PlantBuilder.Instance.assignedPlants.IndexOf(ID));
+            SFX.Instance.Play(unchoose);
+            GetComponent<Image>().color += new Color(0, 0, 0, 0.5f);
+        }
+        chosen = !chosen;
     }
 
 }

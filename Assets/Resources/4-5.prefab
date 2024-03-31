@@ -28,9 +28,17 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: special.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: conveyor.Array.size
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
+      propertyPath: special.Array.data[0]
+      value: 
+      objectReference: {fileID: 2724543409835724826, guid: 3e1691643e2fbce4ba78a1236a9478f0, type: 3}
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: conveyor.Array.data[0].count
       value: 16

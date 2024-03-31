@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 145150845176167462}
   - component: {fileID: 4491200490276006111}
   - component: {fileID: 1900525139779275581}
+  - component: {fileID: 5500681311779484114}
   m_Layer: 5
   m_Name: SelectSeed
   m_TagString: Untagged
@@ -105,7 +106,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -123,19 +124,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 145150845176167462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1900525139779275581}
-        m_TargetAssemblyTypeName: SelectSeed, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1900525139779275581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +139,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   choose: {fileID: 8300000, guid: 2dd772913d7a76347b4dd5d8da12cde7, type: 3}
+  unchoose: {fileID: 8300000, guid: 0f98c909995ae294586c4c901d52b04f, type: 3}
+  banned: {fileID: 8300000, guid: 1df089c4d3404b64980baf3babae8b5a, type: 3}
+--- !u!114 &5500681311779484114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626570548288643753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1900525139779275581}
+          m_TargetAssemblyTypeName: SelectSeed, Assembly-CSharp
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7954387105334718006
 GameObject:
   m_ObjectHideFlags: 0

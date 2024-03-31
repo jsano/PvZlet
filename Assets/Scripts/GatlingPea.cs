@@ -15,13 +15,13 @@ public class GatlingPea : Peashooter
     {
         base.Attack(z);
         yield return new WaitForSeconds(0.2f);
-        SFX.Instance.Play(Random.Range(0, 1f) < 0.5f ? attackSFX2 : attackSFX1);
+        SFX.Instance.Play(attackSFX[Random.Range(0, attackSFX.Length)]);
         base.Attack(z);
         yield return new WaitForSeconds(0.2f);
-        SFX.Instance.Play(Random.Range(0, 1f) < 0.5f ? attackSFX2 : attackSFX1);
+        SFX.Instance.Play(attackSFX[Random.Range(0, attackSFX.Length)]);
         base.Attack(z);
         yield return new WaitForSeconds(0.2f);
-        SFX.Instance.Play(Random.Range(0, 1f) < 0.5f ? attackSFX2 : attackSFX1);
+        SFX.Instance.Play(attackSFX[Random.Range(0, attackSFX.Length)]);
         base.Attack(z);
     }
 

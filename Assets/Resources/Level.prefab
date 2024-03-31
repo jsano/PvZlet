@@ -54,4 +54,4 @@ MonoBehaviour:
   potColumn: 0
   preparation: 18
   music: 2
-  special: {fileID: 0}
+  special: []

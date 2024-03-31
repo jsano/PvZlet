@@ -88,11 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieName: Football Zombie
+  waveNumber: 0
   spawnScore: 10
   damage: 1
   walkTime: 3
   HP: 14
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0
@@ -102,4 +102,6 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  unchompable: 0
   displayOnly: 0
+  enterSFX: {fileID: 0}

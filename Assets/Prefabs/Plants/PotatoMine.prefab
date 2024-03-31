@@ -106,8 +106,8 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 8464927645593920465, guid: 27be8d0ca4a51f742ae2937d2e4a674c, type: 3}
   status: {fileID: 0}
-  attackSFX1: {fileID: 8300000, guid: 67179ac87dada8742bd3e070acb51876, type: 3}
-  attackSFX2: {fileID: 0}
+  attackSFX:
+  - {fileID: 8300000, guid: 67179ac87dada8742bd3e070acb51876, type: 3}
   armingTime: 10
   armingSprite: {fileID: 21300000, guid: 66f23707838fc4041b2ca159d9aa8701, type: 3}
   armSFX: {fileID: 8300000, guid: 8d4ff644ebfe1f84780a98d2adc873c9, type: 3}

@@ -18,7 +18,6 @@ public class Seed : SeedBase
     private Image image;
     private Image plantImage;
 
-    public AudioClip unchoose;
     public AudioClip select;
     public AudioClip notReady;
 
@@ -83,19 +82,19 @@ public class Seed : SeedBase
     public override void OnClick()
     {
         if (Time.timeScale == 0) return;
-        if (!b.interactable)
-        {
-            SFX.Instance.Play(notReady);
-            return;
-        }
+
         if (LevelManager.status == LevelManager.Status.Intro)
         {
             if (PlantBuilder.Instance.assignedPlants.Count > ID)
             {
-                PlantBuilder.Instance.selectSeeds[PlantBuilder.Instance.assignedPlants[ID]].GetComponent<Button>().interactable = true;
-                PlantBuilder.Instance.assignedPlants.RemoveAt(ID);
-                SFX.Instance.Play(unchoose);
+                PlantBuilder.Instance.selectSeeds[PlantBuilder.Instance.assignedPlants[ID]].GetComponent<SelectSeed>().OnClick();
             }
+            return;
+        }
+        
+        if (!b.interactable)
+        {
+            SFX.Instance.Play(notReady);
             return;
         }
         if (EventSystem.current.currentSelectedGameObject == gameObject)

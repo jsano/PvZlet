@@ -106,6 +106,7 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 8300000, guid: 6ff61760e1c45d44788301bd75f3770c, type: 3}
   noPoleWalkTime: 4

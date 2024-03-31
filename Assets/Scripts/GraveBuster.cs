@@ -12,7 +12,7 @@ public class GraveBuster : Plant
     {
         base.Start();
         grave = Tile.tileObjects[row, col].ContainsGridItem("Grave");
-        SFX.Instance.Play(attackSFX1);
+        SFX.Instance.Play(attackSFX[Random.Range(0, attackSFX.Length)]);
     }
 
     // Update is called once per frame

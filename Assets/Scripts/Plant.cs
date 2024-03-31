@@ -57,8 +57,7 @@ public class Plant : Damagable
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
 
-    public AudioClip attackSFX1;
-    public AudioClip attackSFX2;
+    public AudioClip[] attackSFX;
 
     void Awake()
     {
@@ -96,11 +95,7 @@ public class Plant : Damagable
             if (period >= atkspd)
             {
                 attacking = true;
-                if (attackSFX1 != null)
-                {
-                    if (attackSFX2 != null) SFX.Instance.Play(Random.Range(0, 1f) < 0.5f ? attackSFX2 : attackSFX1);
-                    else SFX.Instance.Play(attackSFX1);
-                }
+                if (attackSFX.Length > 0) SFX.Instance.Play(attackSFX[Random.Range(0, attackSFX.Length)]);
                 if (hit) Attack(hit);
                 else Attack(null);
                 period = 0;

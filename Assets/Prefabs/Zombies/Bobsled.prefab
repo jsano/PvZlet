@@ -102,5 +102,7 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 0
   status: {fileID: 0}
+  unchompable: 0
   displayOnly: 0
+  enterSFX: {fileID: 0}
   zombie: {fileID: 6319703039537062804, guid: 8b727bc172440104c9955c368cbc330f, type: 3}

@@ -31,6 +31,7 @@ public class Level : MonoBehaviour
     public int startingSun;
 
     public int unlockedUntil;
+    public int[] banned;
     public List<Data> conveyor = new List<Data>();
 
     public TextAsset waves;
@@ -46,7 +47,7 @@ public class Level : MonoBehaviour
 
     public int music;
 
-    public GameObject special;
+    public GameObject[] special;
 
     void Start()
     {

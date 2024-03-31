@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlantBuilder : MonoBehaviour
 {
@@ -47,6 +49,7 @@ public class PlantBuilder : MonoBehaviour
             GameObject g = Instantiate(selectSeed, BG.transform);
             g.GetComponent<SelectSeed>().ID = i;
             selectSeeds.Add(g);
+            if (l.banned.Contains(i)) g.GetComponent<Button>().interactable = false;
         }
 
         if (l.potColumn > 0) {

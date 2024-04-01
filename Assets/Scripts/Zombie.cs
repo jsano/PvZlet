@@ -189,6 +189,7 @@ public class Zombie : Damagable
     {
         eating = p.gameObject;
         ResetWalk();
+        yield return new WaitForSeconds(eatTime / 2 * ((status == null) ? 1 : 1 / status.eatMod));
         while (eating != null && eating.GetComponent<Collider2D>().enabled)
         {
             if (status != null && status.eatMod == 0) break;
@@ -197,10 +198,10 @@ public class Zombie : Damagable
             if (LevelManager.status != LevelManager.Status.Lost && SFX.Instance.zombieEat.Length > 0)
             {
                 if (eating.GetComponent<Nut>() != null) SFX.Instance.Play(SFX.Instance.zombieEatNut);
-                else SFX.Instance.Play(SFX.Instance.zombieEat[UnityEngine.Random.Range(0, SFX.Instance.zombieEat.Length)]);
+                else if (!wheels) SFX.Instance.Play(SFX.Instance.zombieEat[UnityEngine.Random.Range(0, SFX.Instance.zombieEat.Length)]);
             }
             float rem = p.ReceiveDamage(damage, gameObject, eatsPlants);
-            if (rem <= 0) SFX.Instance.Play(SFX.Instance.gulp);
+            if (rem <= 0 && !wheels) SFX.Instance.Play(SFX.Instance.gulp);
             yield return new WaitForSeconds(eatTime * ((status == null) ? 1 : 1 / status.eatMod));
         }
     }

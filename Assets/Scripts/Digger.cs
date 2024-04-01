@@ -43,7 +43,7 @@ public class Digger : Zombie
             return;
         }
 
-        if (transform.position.x <= Tile.COL_TO_WORLD[1] - Tile.TILE_DISTANCE.x / 4)
+        if (digging && transform.position.x <= Tile.COL_TO_WORLD[1] - Tile.TILE_DISTANCE.x / 4)
         {
             AS.Stop();
             SFX.Instance.Play(riseSFX);

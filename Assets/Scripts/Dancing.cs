@@ -76,6 +76,7 @@ public class Dancing : Zombie
                 if (hypnotized) up.Hypnotize();
                 up.row = row - 1;
                 up.xLoc = transform.position.x;
+                up.waveNumber = waveNumber;
             }
             if (s == "down")
             {
@@ -83,6 +84,7 @@ public class Dancing : Zombie
                 if (hypnotized) down.Hypnotize();
                 down.row = row + 1;
                 down.xLoc = transform.position.x;
+                down.waveNumber = waveNumber;
             }
             if (s == "right")
             {
@@ -90,6 +92,7 @@ public class Dancing : Zombie
                 if (hypnotized) right.Hypnotize();
                 right.row = row;
                 right.xLoc = transform.position.x + Tile.TILE_DISTANCE.x;
+                right.waveNumber = waveNumber;
             }
             if (s == "left")
             {
@@ -97,8 +100,10 @@ public class Dancing : Zombie
                 if (hypnotized) left.Hypnotize();
                 left.row = row;
                 left.xLoc = transform.position.x - Tile.TILE_DISTANCE.x;
+                left.waveNumber = waveNumber;
             }
         }
+        ZombieSpawner.Instance.SubtractBuild(-missing.Count, waveNumber);
         StartCoroutine(FinishSpawn());
     }
 

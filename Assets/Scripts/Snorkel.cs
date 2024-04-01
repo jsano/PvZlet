@@ -8,16 +8,19 @@ public class Snorkel : Zombie
     // Update is called once per frame
     public override void Update()
     {
-        int c = Mathf.Max(Tile.WORLD_TO_COL(transform.position.x), 1);
-        if (c < 10 && Tile.tileObjects[row, c].water && !isEating()) Submerge();
-        else Unsubmerge();
+        if (!changingLanes)
+        {
+            int c = Mathf.Max(Tile.WORLD_TO_COL(transform.position.x), 1);
+            if (c < 10 && Tile.tileObjects[row, c].water && !isEating()) Submerge();
+            else Unsubmerge();
+        }
         base.Update();
     }
 
-    protected override IEnumerator Eat(Damagable p)
+    protected override void Eat(GameObject p)
     {
         Unsubmerge();
-        while (true) yield return base.Eat(p);
+        base.Eat(p);
     }
 
     private void Submerge()

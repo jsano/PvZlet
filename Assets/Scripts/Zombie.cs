@@ -15,13 +15,14 @@ public class Zombie : Damagable
     public int damage;
     /// <summary> Amount of time in seconds it takes to fully cross 1 tile </summary>
     public float walkTime;
-    protected float period;
+    protected float walkPeriod;
     protected float stepPeriod;
     private bool takingStep;
     /// <summary> How much HP the zombie has. Doesn't include armor or shields </summary>
     public float HP;
     protected float baseHP;
     protected float eatTime = 0.5f;
+    private float eatPeriod;
     /// <summary> Which row the zombie is in. Takes values between [1 - <c>ZombieSpawner.lanes</c>] </summary>
     [HideInInspector] public int row = 1;
     /// <summary> Whether the zombie is able to attack grounded plants like Spikeweed </summary>
@@ -42,9 +43,8 @@ public class Zombie : Damagable
     public bool wheels;
     public bool eatsPlants;
     /// <summary> The currently eating plant. When the plant is dead, this would likely become null </summary>
-    private GameObject eating;
-    private Coroutine eatingCoroutine;
-    private bool changingLanes;
+    protected GameObject eating;
+    protected bool changingLanes;
 
     /// <summary> Any active status effect. Will be null if there's no status </summary>
     [HideInInspector] public StatMod status;
@@ -100,20 +100,22 @@ public class Zombie : Damagable
     {
         int mask = hypnotized ? LayerMask.GetMask("Zombie") : LayerMask.GetMask("Plant");
         GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, new Vector2(Mathf.Abs(transform.localScale.x), 1), 0, Vector2.zero, 0, mask));
-        if (toEat == null)
+        if (changingLanes)
         {
-            StopEating();
+            eating = null;
+            eatPeriod = eatTime / 2;
+        }
+        else if (toEat == null)
+        {
+            eating = null;
+            eatPeriod = eatTime / 2;
             Walk();
         }
-        else if (!changingLanes)
+        else
         {
-            if (status != null && status.eatMod == 0) StopEating();
-            else if (eating == null || toEat != eating)
-            {
-                StopEating();
-                eatingCoroutine = StartCoroutine(Eat(toEat.GetComponent<Damagable>()));
-            }
-        }   
+            eating = toEat;
+            Eat(toEat);
+        }
     }
 
     public virtual void LateUpdate()
@@ -136,10 +138,10 @@ public class Zombie : Damagable
     /// <summary> The zombie's staggered walking behavior. Every <c>walkTime/3</c> seconds, it moves 1/3 of a tile. Factors in movement stat effects </summary>
     protected virtual void Walk()
     {
-        period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
-        if (period >= walkTime / 3)
+        walkPeriod += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
+        if (walkPeriod >= walkTime / 3)
         {
-            period = 0;
+            walkPeriod = 0;
             takingStep = true;
         }
         if (takingStep)
@@ -183,26 +185,22 @@ public class Zombie : Damagable
         return null;
     }
 
-    /// <summary> The zombie's eating behavior. Every <c>eatTime</c> seconds, it deals <c>damage</c> to the plant. Factors in eating stat effects </summary>
+    /// <summary> The zombie's eating behavior per frame. Every <c>eatTime</c> seconds, it deals <c>damage</c> to the plant. Factors in eating stat effects </summary>
     /// <param name="p"> The plant being eaten </param>
-    protected virtual IEnumerator Eat(Damagable p)
+    protected virtual void Eat(GameObject p)
     {
-        eating = p.gameObject;
-        ResetWalk();
-        yield return new WaitForSeconds(eatTime / 2 * ((status == null) ? 1 : 1 / status.eatMod));
-        while (eating != null && eating.GetComponent<Collider2D>().enabled)
+        if (!wheels) ResetWalk();
+        eatPeriod += Time.deltaTime * ((status == null) ? 1 : status.eatMod);
+        if (eatPeriod >= eatTime)
         {
-            if (status != null && status.eatMod == 0) break;
-            if (!wheels) RB.velocity = Vector2.zero;
-            period = 0;
+            eatPeriod = 0;
             if (LevelManager.status != LevelManager.Status.Lost && SFX.Instance.zombieEat.Length > 0)
             {
-                if (eating.GetComponent<Nut>() != null) SFX.Instance.Play(SFX.Instance.zombieEatNut);
+                if (p.GetComponent<Nut>() != null) SFX.Instance.Play(SFX.Instance.zombieEatNut);
                 else if (!wheels) SFX.Instance.Play(SFX.Instance.zombieEat[UnityEngine.Random.Range(0, SFX.Instance.zombieEat.Length)]);
             }
-            float rem = p.ReceiveDamage(damage, gameObject, eatsPlants);
+            float rem = p.GetComponent<Damagable>().ReceiveDamage(damage, gameObject, eatsPlants);
             if (rem <= 0 && !wheels) SFX.Instance.Play(SFX.Instance.gulp);
-            yield return new WaitForSeconds(eatTime * ((status == null) ? 1 : 1 / status.eatMod));
         }
     }
 
@@ -226,13 +224,6 @@ public class Zombie : Damagable
         SR.material.color = (status == null) ? baseMaterialColor : status.colorTint;
     }
 
-    /// <summary> Stops all eating processes and forgets what plant the zombie was currently eating </summary>
-    public void StopEating()
-    {
-        eating = null;
-        if (eatingCoroutine != null) StopCoroutine(eatingCoroutine);
-    }
-
     /// <summary> Updates the spawner's progression score, and disappears </summary>
     public virtual void Die()
     {
@@ -243,7 +234,6 @@ public class Zombie : Damagable
 
     public virtual void Hypnotize()
     {
-        StopEating();
         ResetWalk();
         hypnotized = true;
         SFX.Instance.Play(SFX.Instance.hypnotize);
@@ -257,7 +247,7 @@ public class Zombie : Damagable
 
     public void ResetWalk()
     {
-        period = 0;
+        walkPeriod = 0;
         stepPeriod = 0;
         RB.velocity = Vector2.zero;
         takingStep = false;
@@ -266,14 +256,13 @@ public class Zombie : Damagable
     public void MoveToLane(int lane, float delay)
     {
         changingLanes = true;
-        SFX.Instance.Play(SFX.Instance.yuck[UnityEngine.Random.Range(0, SFX.Instance.yuck.Length)]);
         StartCoroutine(MoveLaneHelper(lane, delay));
     }
 
     private IEnumerator MoveLaneHelper(int lane, float delay)
     {
-        StopEating();
         yield return new WaitForSeconds(delay);
+        SFX.Instance.Play(SFX.Instance.yuck[UnityEngine.Random.Range(0, SFX.Instance.yuck.Length)]);
         float targetY = Tile.tileObjects[lane, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y;
         while (Mathf.Abs(transform.position.y - targetY) > 0.1f)
         {

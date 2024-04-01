@@ -29,10 +29,18 @@ public class Gargantuar : Zombie
         if (!attacking && !throwing) base.Update();
     }
 
-    protected override IEnumerator Eat(Damagable p)
+    protected override void Eat(GameObject p)
+    {
+        if (!attacking)
+        {
+            attacking = true;
+            StartCoroutine(Attack());
+        }
+    }
+
+    private IEnumerator Attack() 
     {
         ResetWalk();
-        attacking = true;
         SFX.Instance.Play(windup);
         float period = 0;
         while (period < 1.5f)

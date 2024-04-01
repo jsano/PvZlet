@@ -44,10 +44,10 @@ public class Balloon : Zombie
         return HP;
     }
 
-    protected override IEnumerator Eat(Damagable p)
+    protected override void Eat(GameObject p)
     {
-        if (!popped && p.GetComponent<Player>() == null) yield break;
-        while (true) yield return base.Eat(p);
+        if (!popped && p.GetComponent<Player>() == null) return;
+        base.Eat(p);
     }
 
 }

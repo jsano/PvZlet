@@ -29,7 +29,6 @@ public class Newspaper : Zombie
 
     private IEnumerator Shock()
     {
-        StopEating();
         ResetWalk();
         float wait = 0;
         while (wait < 1.5f)

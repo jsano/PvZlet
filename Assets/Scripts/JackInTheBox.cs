@@ -42,7 +42,6 @@ public class JackInTheBox : Football
     private IEnumerator Explode()
     {
         RB.velocity = Vector3.zero;
-        StopEating();
         BC.enabled = false;
         SFX.Instance.Play(boingSFX);
         yield return new WaitForSeconds(0.25f);

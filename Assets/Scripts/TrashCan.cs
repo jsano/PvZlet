@@ -14,14 +14,14 @@ public class TrashCan : Zombie
         base.Update();
     }
 
-    protected override IEnumerator Eat(Damagable p)
+    protected override void Eat(GameObject p)
     {
         if (shield != null)
         {
             Destroy(shield);
             if (p.GetComponent<Zombie>() != null)
             {
-                p.ReceiveDamage(100, null, disintegrating: true);
+                p.GetComponent<Damagable>().ReceiveDamage(100, null, disintegrating: true);
             }
             else
             {
@@ -29,9 +29,8 @@ public class TrashCan : Zombie
                 Tile.tileObjects[p1.row, p1.col].RemoveAllPlants();
             }
             ResetWalk();
-            yield break;
         }
-        while (true) yield return base.Eat(p);
+        else base.Eat(p);
     }
 
 }

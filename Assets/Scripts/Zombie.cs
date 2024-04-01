@@ -247,7 +247,7 @@ public class Zombie : Damagable
 
     public void ResetWalk()
     {
-        walkPeriod = 0;
+        walkPeriod = walkTime / 6;
         stepPeriod = 0;
         RB.velocity = Vector2.zero;
         takingStep = false;
@@ -262,9 +262,8 @@ public class Zombie : Damagable
     private IEnumerator MoveLaneHelper(int lane, float delay)
     {
         yield return new WaitForSeconds(delay);
-        SFX.Instance.Play(SFX.Instance.yuck[UnityEngine.Random.Range(0, SFX.Instance.yuck.Length)]);
         float targetY = Tile.tileObjects[lane, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y;
-        while (Mathf.Abs(transform.position.y - targetY) > 0.1f)
+        while (Mathf.Abs(transform.position.y - targetY) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, 0), 2f * Time.deltaTime * ((status == null) ? 1 : status.walkMod));
             yield return null;

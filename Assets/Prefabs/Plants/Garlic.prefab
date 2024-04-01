@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4fa01dbd89ad1024092c7a16153b5e1f, type: 3}
+      objectReference: {fileID: 21300000, guid: 3521bf8f4ff9b204dae8466ac289f815, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.6666666
+      value: 1.4533334
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.9133333
+      value: 1.6666666
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9a5dacf9ace8d49873ed7f9ff48f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 36
   cost: 50
   recharge: 30
   damage: 0
@@ -106,5 +106,9 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
-  damagedSprite1: {fileID: 21300000, guid: 9cdcc2568c84b8d45a3156850ed4d286, type: 3}
-  damagedSprite2: {fileID: 21300000, guid: 6fd36b953c669cc4bb6493a1de68cefd, type: 3}
+  attackSFX: []
+  damagedSprite1: {fileID: 21300000, guid: 126d62121eee97d44b2cde60627de153, type: 3}
+  damagedSprite2: {fileID: 21300000, guid: 92586442d7b773442b45bc94f4a9747b, type: 3}
+  yuckSFX:
+  - {fileID: 8300000, guid: 08711a5b75b79a640a3672269a5ce3d2, type: 3}
+  - {fileID: 8300000, guid: c931839d4add7b94ba18694e1b0cdbc0, type: 3}

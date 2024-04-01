@@ -15,7 +15,6 @@ public class SFX : MonoBehaviour
     public AudioClip[] zombieEat;
     public AudioClip zombieEatNut; // Idk how else to store sounds globally like this
     public AudioClip gulp;
-    public AudioClip[] yuck;
     public AudioClip hypnotize;
     public AudioClip bonk;
 

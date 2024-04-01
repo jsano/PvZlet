@@ -936,7 +936,10 @@ MonoBehaviour:
   - {fileID: 7829174334912979477, guid: 0fe024cdb575c3f429bc90550e70c35d, type: 3}
   - {fileID: 2735885424058020558, guid: 565a4bcea34bfca46a133ba42ce4c31d, type: 3}
   - {fileID: 7637014050156741568, guid: a9ad64bbdc13323469ed9d340a034f35, type: 3}
+  plantCounts: 
   assignedPlants: 
+  currentPlant: {fileID: 0}
+  sun: 0
   BG: {fileID: 8223257750815460330}
   selectSeed: {fileID: 1626570548288643753, guid: 3d193cbbe9834f746be87b220ce2ea07, type: 3}
   selectSeeds: []

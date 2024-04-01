@@ -34,6 +34,13 @@ public class ZombieSpawner : MonoBehaviour
         public int row;
         public int col;
     }
+    /* TODO: MAYBE HANDLE GROUPS
+    group
+    2 0
+    2 2
+    2 4
+    endgroup  <-all together in one random lane
+     */
 
     private class GraveData
     {

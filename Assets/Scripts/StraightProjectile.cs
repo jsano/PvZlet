@@ -19,13 +19,12 @@ public class StraightProjectile : MonoBehaviour
     private Vector3 startPos;
     /// <summary> Whether this projectile has splash damage </summary>
     public Vector2 splash;
+    public int targets;
 
     public bool pea;
     public bool sharp;
 
     protected Rigidbody2D RB;
-
-    private bool hit = false;
 
     public AudioClip[] hitSFX;
 
@@ -54,13 +53,13 @@ public class StraightProjectile : MonoBehaviour
 
     void LateUpdate()
     {
-        if (hit) Destroy(gameObject);
+        if (targets <= 0) Destroy(gameObject);
     }
 
     /// <summary> Called when this projectile hits an enemy. By default, it deals damage, and then disappears. Override this method if otherwise </summary>
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (hit) return;
+        if (targets <= 0) return;
         if (other.offset.y < 0 || other.GetComponent<BoxCollider2D>().size.y < 1 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
         if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
@@ -98,7 +97,7 @@ public class StraightProjectile : MonoBehaviour
     protected virtual void Hit(Damagable other, float amount)
     {
         other.ReceiveDamage(amount, gameObject, disintegrating: tag == "Fire");
-        hit = true;
+        targets -= 1;
     }
 
 }

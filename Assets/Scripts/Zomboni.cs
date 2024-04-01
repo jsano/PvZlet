@@ -26,7 +26,7 @@ public class Zomboni : Football
 
     public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
     {
-        SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
+        if (!disintegrating) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         return base.ReceiveDamage(dmg, source, eat, disintegrating);
     }
 

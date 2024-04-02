@@ -24,16 +24,14 @@ public class Threepeater : Peashooter
         if (row > 1)
         {
             StraightProjectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<StraightProjectile>();
-            if (p.distance != range) p.distance = range;
-            p.moveToLane = row - 1;
+            p.Setup(gameObject, Vector3.right, row - 1);
         }
         else StartCoroutine(Attack_Helper(z));
         base.Attack(z);
         if (row < ZombieSpawner.Instance.lanes)
         {
             StraightProjectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<StraightProjectile>();
-            if (p.distance != range) p.distance = range;
-            p.moveToLane = row + 1;
+            p.Setup(gameObject, Vector3.right, row + 1);
         }
         else StartCoroutine(Attack_Helper(z));
     }

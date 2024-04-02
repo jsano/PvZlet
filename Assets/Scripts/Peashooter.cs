@@ -11,7 +11,7 @@ public class Peashooter : Plant
         if (z != null)
         {
             StraightProjectile p = Instantiate(projectile, transform.position + rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
-            if (p.distance != range) p.distance = range;
+            p.Setup(gameObject, Vector3.right);
         }
         base.Attack(z);
     }

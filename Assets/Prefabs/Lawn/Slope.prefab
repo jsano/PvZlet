@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3520617242983149476}
   - component: {fileID: 1798823860814801871}
   - component: {fileID: 4044128769969878040}
+  - component: {fileID: -2572512549367968352}
   m_Layer: 10
   m_Name: Slope
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1393499979825206079}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 15, z: 1}
+  m_LocalScale: {x: 0.2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,3 +112,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2572512549367968352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393499979825206079}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc97b479c8f1cee488e89724a37185ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0, g: 0, b: 0, a: 0}
+  row: 0
+  col: 0
+  water: 0
+  roof: 0
+  planted: {fileID: 0}
+  fog: {fileID: 0}
+  plantSFX: {fileID: 0}
+  plantWaterSFX: {fileID: 0}
+  shovelSFX: {fileID: 0}

@@ -20,15 +20,15 @@ public class Starfruit : Plant
     protected override void Attack(Zombie z)
     {
         StraightProjectile p = Instantiate(projectile, transform.position, projectile.transform.rotation).GetComponent<StraightProjectile>();
-        p.dir = Vector2.left;
+        p.Setup(gameObject, Vector3.left);
         p = Instantiate(projectile, transform.position, projectile.transform.rotation).GetComponent<StraightProjectile>();
-        p.dir = new Vector2(1, 0.5f);
+        p.Setup(gameObject, new Vector2(1, 0.5f));
         p = Instantiate(projectile, transform.position, projectile.transform.rotation).GetComponent<StraightProjectile>();
-        p.dir = new Vector2(1, -0.5f);
+        p.Setup(gameObject, new Vector2(1, -0.5f));
         p = Instantiate(projectile, transform.position, projectile.transform.rotation).GetComponent<StraightProjectile>();
-        p.dir = Vector2.up;
+        p.Setup(gameObject, Vector3.up);
         p = Instantiate(projectile, transform.position, projectile.transform.rotation).GetComponent<StraightProjectile>();
-        p.dir = Vector2.down;
+        p.Setup(gameObject, Vector3.down);
         base.Attack(z);
     }
 

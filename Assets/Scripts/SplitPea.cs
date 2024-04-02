@@ -25,13 +25,11 @@ public class SplitPea : Peashooter
     private IEnumerator Attack_Backwards(Zombie z)
     {
         StraightProjectile p = Instantiate(projectile, transform.position - rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
-        if (p.distance != range) p.distance = range;
-        p.dir = Vector3.left;
+        p.Setup(gameObject, Vector3.left);
         yield return new WaitForSeconds(0.2f);
         SFX.Instance.Play(attackSFX[Random.Range(0, attackSFX.Length)]);
         p = Instantiate(projectile, transform.position - rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
-        if (p.distance != range) p.distance = range;
-        p.dir = Vector3.left;
+        p.Setup(gameObject, Vector3.left);
         base.Attack(null);
     }
 

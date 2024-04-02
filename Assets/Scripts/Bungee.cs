@@ -35,7 +35,7 @@ public class Bungee : Zombie
         while (transform.position.y > Tile.tileObjects[row, col].transform.position.y)
         {
             RB.velocity = Vector3.down * 15;
-            if (transform.position.y - Tile.tileObjects[row, col].transform.position.y <= Tile.TILE_DISTANCE.y)
+            if (transform.position.y - Tile.tileObjects[row, col].transform.position.y <= Tile.TILE_DISTANCE.y / 2)
                 gameObject.layer = LayerMask.NameToLayer("Zombie");
             yield return null;
         }

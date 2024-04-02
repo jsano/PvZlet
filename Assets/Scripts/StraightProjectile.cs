@@ -10,12 +10,13 @@ public class StraightProjectile : MonoBehaviour
     //public GameObject dissolve;
     /// <summary> The amount of damage per projectile </summary>
     public float dmg;
-    /// <summary> The direction this projectile travels in </summary>
-    [HideInInspector] public Vector3 dir;
-    /// <summary> If not 0, this projectile moves to this lane right as it's spawned </summary>
-    [HideInInspector] public int moveToLane;
+    private GameObject parent;
+    private int lane;
+    private Vector3 dir;
+    private int moveToLane;
     /// <summary> The number of tiles this projectile moves before disappearing </summary>
-    public float distance;
+    private float distance;
+    private int blockAtSlopeColumn;
     private Vector3 startPos;
     /// <summary> Whether this projectile has splash damage </summary>
     public Vector2 splash;
@@ -28,14 +29,40 @@ public class StraightProjectile : MonoBehaviour
 
     public AudioClip[] hitSFX;
 
+    /// <summary> Required function for setting up this projectile after <c>Instantiate</c>ing </summary>
+    /// <param name="parent"> The game object that fired this projectile </param>
+    /// <param name="dir"> The direction this projectile travels in </param>
+    /// <param name="moveToLane"> If set, this projectile moves to this lane right as it's spawned </param>
+    public void Setup(GameObject parent, Vector3 dir, int moveToLane = 0, int blockAtSlopeColumn = 0)
+    {
+        this.parent = parent;
+        this.dir = dir;
+        this.moveToLane = moveToLane;
+        this.blockAtSlopeColumn = blockAtSlopeColumn;
+    }
+
     // Start is called before the first frame update
     public virtual void Start()
     {
-        if (dir == Vector3.zero) dir = Vector3.right;
         RB = GetComponent<Rigidbody2D>();
         RB.velocity = dir.normalized * speed;
-        startPos = transform.position;
-        if (moveToLane != 0) startPos = new Vector3(transform.position.x, Tile.tileObjects[moveToLane, Mathf.Min(9, Tile.WORLD_TO_COL(transform.position.x) + 1)].transform.position.y, 0);
+        startPos = parent.transform.position;
+        if (parent.GetComponent<Plant>() != null)
+        {
+            lane = parent.GetComponent<Plant>().row;
+            distance = parent.GetComponent<Plant>().range;
+        }
+        else
+        {
+            lane = parent.GetComponent<Zombie>().row;
+            distance = 10; // Probably no puffshroom zombies
+        }
+        if (moveToLane != 0)
+        {
+            lane = moveToLane;
+            startPos = new Vector3(parent.transform.position.x, Tile.tileObjects[moveToLane, Mathf.Min(9, Tile.WORLD_TO_COL(parent.transform.position.x) + 1)].transform.position.y, 0);
+        }
+        if (blockAtSlopeColumn == 0) blockAtSlopeColumn = Tile.WORLD_TO_COL(parent.transform.position.x) + 1;
     }
 
     // Update is called once per frame
@@ -63,11 +90,12 @@ public class StraightProjectile : MonoBehaviour
         if (other.offset.y < 0 || other.GetComponent<BoxCollider2D>().size.y < 1 && !sharp) return; // NOTE: Maybe represent submerged with something more concrete
         if (other.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
-            // NOTE: !sharp is very situational, ideally only cactus spikes should ignore
-            if (!sharp && Tile.WORLD_TO_COL(transform.position.x) - Tile.WORLD_TO_COL(startPos.x) >= 1) Destroy(gameObject);
+            if ((dir.y != 0 || other.GetComponent<Tile>().row == lane) && other.GetComponent<Tile>().col == blockAtSlopeColumn) Destroy(gameObject);
             return;
         }
-        //TODO: backwards shots hit zombies on other lanes on roof. Probably fix
+        if (other.GetComponent<Zombie>() != null && other.GetComponent<Zombie>().row != lane && dir.y == 0) return;
+        if (other.GetComponent<Plant>() != null && other.GetComponent<Plant>().row != lane && dir.y == 0) return;
+
         if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
         // Prioritize shield/zomboni over zombie since they can't splash
         if (other.GetComponent<Shield>() != null)
@@ -87,7 +115,7 @@ public class StraightProjectile : MonoBehaviour
             {
                 RaycastHit2D[] hits1 = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * splash, 0, Vector2.zero, 0, Physics2D.GetLayerCollisionMask(gameObject.layer));
                 foreach (RaycastHit2D h in hits1)
-                    if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope") && h.collider.GetComponent<BoxCollider2D>().size.y < 1)
+                    if (h.collider.gameObject.layer != LayerMask.NameToLayer("Slope") && h.collider.GetComponent<BoxCollider2D>().size.y >= 1)
                         Hit(h.collider.GetComponent<Damagable>(), h.collider == other ? dmg : dmg / 2);
             }
             else Hit(other.GetComponent<Zombie>(), dmg);
@@ -98,6 +126,26 @@ public class StraightProjectile : MonoBehaviour
     {
         other.ReceiveDamage(amount, gameObject, disintegrating: tag == "Fire");
         targets -= 1;
+    }
+
+    public GameObject GetParent()
+    {
+        return parent;
+    }
+
+    public Vector3 GetDir()
+    {
+        return dir;
+    }
+
+    public float GetDistance()
+    {
+        return distance;
+    }
+
+    public int GetMoveToLane()
+    {
+        return moveToLane;
     }
 
 }

@@ -20,6 +20,7 @@ public class UmbrellaLeaf : Plant
     {
         if (collision.GetComponent<Bungee>() != null || collision.GetComponent<Imp>() != null && collision.GetComponent<Imp>().flung)
         {
+            if (Mathf.Abs(collision.GetComponent<Zombie>().row - row) > 1) return;
             SFX.Instance.Play(boing);
             collision.GetComponent<Zombie>().Die();
         }

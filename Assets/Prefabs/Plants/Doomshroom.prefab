@@ -87,10 +87,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baa567ba8c255d4c96f4b7320ed7b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 15
   cost: 175
   recharge: 45
-  damage: 1000
+  damage: 100
   atkspd: 1
   variableStartPeriod: 0
   HP: 5

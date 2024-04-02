@@ -23,7 +23,7 @@ public class Dancing : Zombie
     // Update is called once per frame
     public override void Update()
     {
-        if (transform.position.x > Tile.COL_TO_WORLD[7] && intro) WalkConstant();
+        if (transform.position.x > Tile.COL_TO_WORLD[8] && intro) WalkConstant();
         else
         {
             if (intro) SFX.Instance.Play(song, true);

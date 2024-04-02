@@ -292,6 +292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 7175623330822326911}
   UI: {fileID: 7175623331034705832}
+  pause: {fileID: 5019809132082106099}
+  fastForward: {fileID: 5019809131544231904}
+  shovel: {fileID: 5019809131595299285}
   ready: {fileID: 175120696}
   gameOver: {fileID: 7175623330695611907}
   seedSelect: {fileID: 4752365881393886937}
@@ -1763,6 +1766,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+--- !u!1 &5019809131544231904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1889819527, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+  m_PrefabInstance: {fileID: 5019809132875670631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5019809131595299285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1303322034, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+  m_PrefabInstance: {fileID: 5019809132875670631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5019809132082106099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1398074004, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+  m_PrefabInstance: {fileID: 5019809132875670631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7175623331034705832 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2755392260987472847, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}

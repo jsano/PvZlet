@@ -10,6 +10,7 @@ public class Iceshroom : Plant
         Zombie[] zombies = FindObjectsByType<Zombie>(FindObjectsSortMode.None);
         foreach (Zombie target in zombies)
         {
+            if (Tile.WORLD_TO_COL(target.transform.position.x - Tile.TILE_DISTANCE.x / 3) == 10) continue;
             if (target.GetComponent<Collider2D>().enabled && target.GetComponent<Balloon>() == null
                 && target.gameObject.layer == LayerMask.NameToLayer("Zombie"))
             {

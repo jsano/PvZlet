@@ -11,6 +11,9 @@ public class LevelManager : MonoBehaviour
 
     public Camera mainCamera;
     public GameObject UI;
+    public GameObject pause;
+    public GameObject fastForward;
+    public GameObject shovel;
     public GameObject ready;
     public GameObject gameOver;
     public GameObject seedSelect;
@@ -49,7 +52,7 @@ public class LevelManager : MonoBehaviour
     {
         l = FindFirstObjectByType<Level>();
         foreach (GameObject g in l.special) Instantiate(g);
-        UI.SetActive(false);
+        foreach (Transform t in UI.transform) t.gameObject.SetActive(false);
         music.clip = music.GetComponent<Music>().allMusic[1];
         music.Play();
         StartCoroutine(Start_Helper());
@@ -72,6 +75,7 @@ public class LevelManager : MonoBehaviour
 
         if (l.conveyor.Count == 0)
         {
+            pause.SetActive(true);
             sun.SetActive(true);
             plants.SetActive(true);
             seedSelect.SetActive(true);
@@ -82,6 +86,7 @@ public class LevelManager : MonoBehaviour
                 yield return null;
             }
             yield return new WaitUntil(() => letsRock);
+            pause.SetActive(false);
             seedSelect.transform.Find("Start").gameObject.SetActive(false);
             foreach (Transform g in PlantBuilder.Instance.transform.Find("Plants")) g.GetComponent<Button>().interactable = false;
             while (BG.transform.localPosition.y > -400)
@@ -118,7 +123,9 @@ public class LevelManager : MonoBehaviour
         t.text = "PLANT!";
         yield return new WaitForSeconds(1f);
         ready.SetActive(false);
-        UI.SetActive(true);
+        pause.SetActive(true);
+        fastForward.SetActive(true);
+        shovel.SetActive(true);
         ZombieSpawner.Instance.levelUI.SetActive(true);
         sky.enabled = true;
         status = Status.Start;

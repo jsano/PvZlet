@@ -63,7 +63,7 @@ public class Cactus : Plant
         if (z != null)
         {
             StraightProjectile p = Instantiate(projectile, new Vector3(transform.position.x, attack) + rightOffset, projectile.transform.rotation).GetComponent<StraightProjectile>();
-            p.Setup(gameObject, Vector3.right, blockAtSlopeColumn: Tile.WORLD_TO_COL(z.transform.position.x));
+            p.Setup(gameObject, Vector3.right, blockAtSlopeColumn: Tile.WORLD_TO_COL(z.transform.position.x) + 1);
         }
         base.Attack(z);
     }

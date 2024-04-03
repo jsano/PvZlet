@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4116810069385994217
+--- !u!1001 &2758908246048035521
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,19 +9,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: TrashCanZombie
+      value: Digger Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
-      value: 0.7607843
+      value: 0.13349947
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.24355985
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.r
-      value: 0.8980392
+      value: 0.3773585
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder
@@ -70,39 +74,138 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
---- !u!1 &3409189286155039641 stripped
+--- !u!1 &3469912510017093297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-  m_PrefabInstance: {fileID: 4116810069385994217}
+  m_PrefabInstance: {fileID: 2758908246048035521}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3768456146431095516
+--- !u!82 &-740813996388625047
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3469912510017093297}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f2199661202245b4da7ecb07cbe4b3e0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5554825911930405145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3409189286155039641}
+  m_GameObject: {fileID: 3469912510017093297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c8417166b3a90043927694a699bdb50, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c9785ee879a8a544a0d425f818ba6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Trash Can Zombie
+  weakness: Magnet-shroom, Potato Mine
   waveNumber: 0
-  spawnScore: 3
+  spawnScore: 5
   damage: 1
-  walkTime: 3
-  HP: 10
+  walkTime: 2
+  alternateWalkTime:
+  - 4
+  HP: 15
   row: 1
   hitsGround: 0
   aquatic: 0
   armor: {fileID: 0}
-  shield: {fileID: 634377335325293858, guid: af0396da1ab70b941ac8c9733f3607ea, type: 3}
-  projectile: {fileID: 0}
+  shield: {fileID: 0}
+  projectile: {fileID: 3715596570528950501, guid: 6e884701a5deb4b4997d8fa057cf7b99, type: 3}
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
   unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
-  noTrashWalkTime: 4
+  surfaceWalkTime: 4
+  riseSFX: {fileID: 8300000, guid: 825585ab4077f74498ced597fce30bc1, type: 3}

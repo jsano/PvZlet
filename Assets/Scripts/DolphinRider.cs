@@ -12,7 +12,7 @@ public class DolphinRider : PoleVaulter
         base.Start();
         Destroy(projectile);
         projectile = Instantiate(projectile, transform, false);
-        projectile.transform.localPosition = new Vector3(0, -transform.localScale.y / 2, 0);
+        projectile.transform.localPosition = new Vector3(0, -BC.size.y / 2, 0);
         projectile.GetComponent<SpriteRenderer>().sortingOrder = SR.sortingOrder + 2;
     }
 

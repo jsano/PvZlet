@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5496846654674917957
+--- !u!1001 &7284962863802833190
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,19 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: PoleVaulter
+      value: Catapult Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
-      value: 0.3529412
+      value: 0.09019608
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.g
-      value: 0.2
+      value: 0.42352942
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.r
-      value: 0.77254903
+      value: 0.7176471
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder
@@ -70,40 +70,42 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
---- !u!1 &6496090125786101301 stripped
+--- !u!1 &8320229084210083158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-  m_PrefabInstance: {fileID: 5496846654674917957}
+  m_PrefabInstance: {fileID: 7284962863802833190}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5054599566888126398
+--- !u!114 &7620728087968736384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6496090125786101301}
+  m_GameObject: {fileID: 8320229084210083158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687d95dc05bcb254cae0bc9c59db2261, type: 3}
+  m_Script: {fileID: 11500000, guid: c2450e5b738cb0d4f83ff6c5c5a293ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Pole Vaulting Zombie
+  weakness: Umbrella Leaf
   waveNumber: 0
-  spawnScore: 3
-  damage: 1
-  walkTime: 3
-  HP: 16
+  spawnScore: 10
+  damage: 1000
+  walkTime: 2
+  HP: 35
   row: 1
-  hitsGround: 0
+  hitsGround: 1
   aquatic: 0
   armor: {fileID: 0}
   shield: {fileID: 0}
-  projectile: {fileID: 7107963473649887295, guid: 495d2bb2c147fce4d98acaac1abcd431, type: 3}
-  wheels: 0
-  eatsPlants: 1
+  projectile: {fileID: 8287166477174494194, guid: e9e3dc382d08e734faf992995b9107eb, type: 3}
+  wheels: 1
+  eatsPlants: 0
   status: {fileID: 0}
   unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
-  noPoleWalkTime: 4
-  jumpSFX: {fileID: 8300000, guid: fe9c3bcf01157a14fafa481c50395ac2, type: 3}
+  count: 15
+  throwInterval: 2
+  shoot: {fileID: 8300000, guid: a88fc23292082b645b31deca64b55345, type: 3}
+  explosion: {fileID: 8300000, guid: 35c1eca297008c64f908103303fe2ccb, type: 3}

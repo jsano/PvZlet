@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Ladder : Zombie
 {
-
-    public float noLadderWalkTime;
-
     public Sprite placedLadderSprite;
 
     public AudioClip placeSFX;
@@ -14,7 +11,7 @@ public class Ladder : Zombie
     // Update is called once per frame
     public override void Update()
     {
-        if (shield == null) walkTime = noLadderWalkTime;
+        if (shield == null) walkTime = alternateWalkTime[0];
         else
         {
             GameObject p = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, Vector3.one, 0, Vector2.zero, 0, LayerMask.GetMask("Plant")));

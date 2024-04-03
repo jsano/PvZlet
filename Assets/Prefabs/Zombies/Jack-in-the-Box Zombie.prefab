@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &217357470937393756
+--- !u!1001 &4963252865488090421
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,23 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: BalloonZombie
+      value: Jack-in-the-Box Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
-      value: 0.43270037
+      value: 0.8632076
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.g
-      value: 0.049928807
+      value: 0.8632076
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.r
-      value: 0.6226415
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307359797300423007, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-      propertyPath: m_Size.y
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder
@@ -74,41 +70,45 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
---- !u!1 &1543100876432229932 stripped
+--- !u!1 &5948977252850800965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-  m_PrefabInstance: {fileID: 217357470937393756}
+  m_PrefabInstance: {fileID: 4963252865488090421}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5916111131505402931
+--- !u!114 &-7762568566467800377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543100876432229932}
+  m_GameObject: {fileID: 5948977252850800965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3f5259d4f9e5b428a9c4b9e9a82502, type: 3}
+  m_Script: {fileID: 11500000, guid: aa3eedf1fe8ed744e8d8d96a19058d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Balloon Zombie
-  weakness: 
+  weakness: Umbrella Leaf
   waveNumber: 0
   spawnScore: 3
   damage: 1
-  walkTime: 2
-  HP: 10
+  walkTime: 3
+  HP: 16
   row: 1
   hitsGround: 0
-  aquatic: 1
-  armor: {fileID: 4057311571025880810, guid: 2cb10b909deea354eb99af4de5deeddf, type: 3}
+  aquatic: 0
+  armor: {fileID: 0}
   shield: {fileID: 0}
-  projectile: {fileID: 0}
+  projectile: {fileID: 5992551386087060976, guid: 779b422a22fadc04fa959b730ab40c56, type: 3}
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
   unchompable: 0
   displayOnly: 0
-  enterSFX: {fileID: 8300000, guid: e3d34b9889a088c4b9da23db1d5e6912, type: 3}
-  poppedWalkTime: 4
-  popSFX: {fileID: 8300000, guid: 3867139b0f63ac34b8b23e792929d1cb, type: 3}
+  enterSFX: {fileID: 0}
+  maxTime: 20
+  explosion: {fileID: 6010293583157068058, guid: 00a6405d68a884142960e8a7007e6efd, type: 3}
+  boingSFX: {fileID: 8300000, guid: b3ef9bc31b150f943902318c8b4b65e5, type: 3}
+  gaspSFX:
+  - {fileID: 8300000, guid: 08734a9ac7b914a47b7422bcf235dcc7, type: 3}
+  - {fileID: 8300000, guid: b283db1f12ba1b44590af3dc66a50ef4, type: 3}
+  explosionSFX: {fileID: 8300000, guid: 35c1eca297008c64f908103303fe2ccb, type: 3}

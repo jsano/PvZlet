@@ -5,7 +5,6 @@ using UnityEngine;
 public class Digger : Zombie
 {
 
-    public float surfaceWalkTime;
     private bool digging = true;
     private float dazedTime = 5;
     private bool removed;
@@ -19,7 +18,7 @@ public class Digger : Zombie
         AS = GetComponent<AudioSource>();
         base.Start();
         projectile = Instantiate(projectile, transform, false);
-        projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
+        projectile.transform.localPosition = new Vector3(-BC.size.x / 2, 0, 0);
         projectile.GetComponent<SpriteRenderer>().sortingOrder = SR.sortingOrder + 2;
     }
 
@@ -32,7 +31,7 @@ public class Digger : Zombie
             AS.Stop();
             removed = true;
             dazedTime /= 2;
-            walkTime = surfaceWalkTime;
+            walkTime = alternateWalkTime[0];
             StartCoroutine(Rise());
             ResetWalk();
         }
@@ -51,7 +50,7 @@ public class Digger : Zombie
             gameObject.layer = LayerMask.NameToLayer("Zombie");
             RB.velocity = Vector3.zero;
             backwards = true;
-            walkTime = surfaceWalkTime;
+            walkTime = alternateWalkTime[0];
         }
         if (digging) WalkConstant();
         else dazedTime = Mathf.Max(0, dazedTime - Time.deltaTime);

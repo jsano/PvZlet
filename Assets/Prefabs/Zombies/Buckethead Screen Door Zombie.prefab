@@ -1,27 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3781623741934334723
+--- !u!1001 &6587365774284511225
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: armor
+      value: 
+      objectReference: {fileID: 6038959375466894261, guid: 768029d8d08ab8b49a0811483a26cf22, type: 3}
+    - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 8756953677551118028, guid: d4c539bc447926646b12668bcc3dcfca, type: 3}
+    - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: spawnScore
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: zombieName
+      value: Buckethead Screen Door Zombie
+      objectReference: {fileID: 0}
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: Dancing
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-      propertyPath: m_Color.g
-      value: 0.8588306
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-      propertyPath: m_Color.r
-      value: 0.39999998
+      value: Buckethead Screen Door Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder
@@ -67,46 +71,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
---- !u!1 &2455870977582276467 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-  m_PrefabInstance: {fileID: 3781623741934334723}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-2244585714141931117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2455870977582276467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de12f884bbe2067428ef055343e7b3e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zombieName: Dancing Zombie
-  waveNumber: 0
-  spawnScore: 10
-  damage: 1
-  walkTime: 1
-  HP: 16
-  row: 1
-  hitsGround: 0
-  aquatic: 0
-  armor: {fileID: 0}
-  shield: {fileID: 0}
-  projectile: {fileID: 0}
-  wheels: 0
-  eatsPlants: 1
-  status: {fileID: 0}
-  unchompable: 0
-  displayOnly: 0
-  enterSFX: {fileID: 0}
-  backup: {fileID: 6833965198594692961, guid: 2c343650ab24b2c4c9ee09221bfa6b70, type: 3}
-  spawnDelay: 3
-  dancingWalkTime: 5
-  song: {fileID: 8300000, guid: a1a71179198695c49a2377bb45912bac, type: 3}
-  rise: {fileID: 8300000, guid: 9d9c05add295ad144b1f4c2da030f6e3, type: 3}

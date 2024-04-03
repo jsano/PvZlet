@@ -11,6 +11,7 @@ public class Almanac : MonoBehaviour
     public static Almanac Instance { get { return instance; } }
 
     private bool activeOnPlant = true;
+    private GameObject g;
 
     public Image image;
     public TextMeshProUGUI nameText;
@@ -43,13 +44,12 @@ public class Almanac : MonoBehaviour
         ID = 0;
         foreach (Transform t in zombieButtons.transform)
         {
-            if (ID == 11 || ID == 12) continue; // Cone/buckethead ducky tube
+            if (ID == 11 || ID == 12) ID = 13; // Cone/buckethead ducky tube
             t.GetComponent<AlmanacSelectSeed>().ID = ID;
             t.GetComponent <AlmanacSelectSeed>().afterStart();
             ID++;
         }
         ShowPlants(true);
-        Show(0);
     }
 
     // Update is called once per frame
@@ -60,8 +60,10 @@ public class Almanac : MonoBehaviour
 
     public void Show(int ID)
     {
+        Destroy(g);
         if (activeOnPlant)
         {
+            image.color = Color.white;
             image.sprite = PlantBuilder.Instance.allPlants[ID].GetComponent<SpriteRenderer>().sprite;
             Plant p = PlantBuilder.Instance.allPlants[ID].GetComponent<Plant>();
             nameText.text = p.name;
@@ -73,13 +75,23 @@ public class Almanac : MonoBehaviour
         } 
         else
         {
-            image.sprite = ZombieSpawner.Instance.allZombies[0].GetComponent<SpriteRenderer>().sprite;
-            image.color = ZombieSpawner.Instance.allZombies[ID].GetComponent<SpriteRenderer>().color;
+            image.color = Color.clear;
+            g = Instantiate(ZombieSpawner.Instance.allZombies[ID], image.transform, false);
+            g.GetComponent<Zombie>().displayOnly = true;
+            g.transform.localScale = new Vector3(g.transform.localScale.x * 50, g.transform.localScale.y * 50, 1);
+            g.transform.localPosition -= new Vector3(0, image.GetComponent<RectTransform>().rect.height / 2, 0);
             Zombie z = ZombieSpawner.Instance.allZombies[ID].GetComponent<Zombie>();
             nameText.text = z.name;
-            info.text = "HP: " + z.HP + "\nSpeed: " + speed[z.walkTime];
+            info.text = "HP: " + z.HP;
+            if (ID == 25 || ID == 30) info.text += "\nSpeed: " + speed[4]; // Gargantuars
+            else if (z.walkTime > 0) info.text += "\nSpeed: " + speed[z.walkTime];
+            foreach (float s in z.alternateWalkTime)
+            {
+                info.text += ", then " + speed[s];
+            }
             if (z.weakness != "") info.text += "\nWeakness: " + z.weakness.Replace("\\n", "\n"); ;
             if (z.aquatic) info.text += "\nOnly appears in water";
+            else if (ID == 15) info.text += "\nOnly appears on ice";
             info.text += "\n\n" + zombieDescriptions[ID] + "\n\n" + zombieNotes[ID];
         }
     }
@@ -89,6 +101,7 @@ public class Almanac : MonoBehaviour
         activeOnPlant = plant;
         plantButtons.SetActive(plant);
         zombieButtons.SetActive(!plant);
+        Show(0);
     }
 
     private string[] plantDescriptions = new string[]
@@ -196,6 +209,7 @@ public class Almanac : MonoBehaviour
     };
 
     private Dictionary<float, string> speed = new Dictionary<float, string>() {
+        { 5, "Slow"},
         { 4, "Normal" },
         { 3, "Moderate" },
         { 2, "Fast" },

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e023831b6980e4d803b42964ad5aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Zombie
+  weakness: 
   waveNumber: 0
   spawnScore: 1
   damage: 1

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5586584338827586302
+--- !u!1001 &4234486797412661520
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,19 +9,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: PogoZombie
+      value: Dolphin Rider Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
-      value: 0.29411766
+      value: 0.39569244
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.g
-      value: 0.29411766
+      value: 0.39569244
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.r
-      value: 0.29411766
+      value: 0.7169812
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder
@@ -70,39 +74,42 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
---- !u!1 &6622982777447007886 stripped
+--- !u!1 &3219488978084992352 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-  m_PrefabInstance: {fileID: 5586584338827586302}
+  m_PrefabInstance: {fileID: 4234486797412661520}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4793287814037162972
+--- !u!114 &-2475251749816094009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6622982777447007886}
+  m_GameObject: {fileID: 3219488978084992352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a04cc414b6f2f4e84aa6b4188916b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 085f9e06182701f4c87da9d2f3e904a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Pogo Zombie
+  weakness: Tall-nut
   waveNumber: 0
-  spawnScore: 5
+  spawnScore: 3
   damage: 1
-  walkTime: 3
-  HP: 16
+  walkTime: 1
+  alternateWalkTime:
+  - 4
+  HP: 15
   row: 1
   hitsGround: 0
-  aquatic: 0
+  aquatic: 1
   armor: {fileID: 0}
   shield: {fileID: 0}
-  projectile: {fileID: 1041247796181120633, guid: 729046af3aebb914494b0dc34f9f2b59, type: 3}
+  projectile: {fileID: 7708181167812595275, guid: 7e4b0b80e3659814080ae5b38d0ebadb, type: 3}
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
   unchompable: 0
   displayOnly: 0
-  enterSFX: {fileID: 0}
-  noPogoWalkTime: 4
+  enterSFX: {fileID: 8300000, guid: 6ff61760e1c45d44788301bd75f3770c, type: 3}
+  noPoleWalkTime: 4
+  jumpSFX: {fileID: 8300000, guid: 29fc012fddc9f0a4e9316c75d5aaeefa, type: 3}

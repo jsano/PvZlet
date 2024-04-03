@@ -5,12 +5,10 @@ using UnityEngine;
 public class TrashCan : Zombie
 {
 
-    public float noTrashWalkTime;
-
     // Update is called once per frame
     public override void Update()
     {
-        if (shield == null) walkTime = noTrashWalkTime;
+        if (shield == null) walkTime = alternateWalkTime[0];
         base.Update();
     }
 

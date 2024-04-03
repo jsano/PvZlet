@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Zombie : Damagable
 {
-    public string zombieName;
     public string weakness;
 
     [HideInInspector] public int waveNumber;
@@ -16,6 +15,7 @@ public class Zombie : Damagable
     public int damage;
     /// <summary> Amount of time in seconds it takes to fully cross 1 tile </summary>
     public float walkTime;
+    public float[] alternateWalkTime;
     protected float walkPeriod;
     protected float stepPeriod;
     private bool takingStep;
@@ -71,14 +71,14 @@ public class Zombie : Damagable
         if (armor != null)
         {
             armor = Instantiate(armor, transform, false);
-            armor.transform.localPosition = new Vector3(0, transform.localScale.y / 2, 0);
+            armor.transform.localPosition = new Vector3(0, BC.size.y / 2, 0);
             armorSR = armor.GetComponent<SpriteRenderer>();
             armorSR.sortingOrder = SR.sortingOrder + 1;
         }
         if (shield != null)
         {
             shield = Instantiate(shield, transform, false);
-            shield.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
+            shield.transform.localPosition = new Vector3(-BC.size.x / 2, 0, 0);
             shieldSR = shield.GetComponent<SpriteRenderer>();
             shieldSR.sortingOrder = SR.sortingOrder + 2;
         }
@@ -89,9 +89,13 @@ public class Zombie : Damagable
             enabled = false;
             RB.isKinematic = true;
             RB.velocity = Vector2.zero;
-            _text = Instantiate(GameObject.Find("LevelManager").transform.Find("UI").GetComponent<UI>().textBox, transform);
-            _text.transform.localPosition = new Vector3(0, -1, 0);
-            _text.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = zombieName;
+            GameObject lm = GameObject.Find("LevelManager");
+            if (lm != null)
+            {
+                _text = Instantiate(lm.transform.Find("UI").GetComponent<UI>().textBox, transform);
+                _text.transform.localPosition = new Vector3(0, -1, 0);
+                _text.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = name.Substring(0, name.IndexOf("(")); // Might not work
+            }
         }
         else Spawn();
     }

@@ -15,7 +15,6 @@ public class Dancing : Zombie
     private bool spawning = false;
 
     private bool intro = true;
-    public float dancingWalkTime;
 
     public AudioClip song;
     public AudioClip rise;
@@ -27,7 +26,7 @@ public class Dancing : Zombie
         else
         {
             if (intro) SFX.Instance.Play(song, true);
-            walkTime = dancingWalkTime;
+            walkTime = alternateWalkTime[0];
             intro = false;
         }
         if (!intro)

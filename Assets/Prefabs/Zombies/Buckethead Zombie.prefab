@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &138639454131960802
+--- !u!1001 &1013121676917676392
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,20 +8,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-      propertyPath: shield
+      propertyPath: armor
       value: 
-      objectReference: {fileID: 8756953677551118028, guid: d4c539bc447926646b12668bcc3dcfca, type: 3}
+      objectReference: {fileID: 6038959375466894261, guid: 768029d8d08ab8b49a0811483a26cf22, type: 3}
+    - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
+      propertyPath: weakness
+      value: Magnet-shroom
+      objectReference: {fileID: 0}
     - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: spawnScore
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: zombieName
-      value: Screen Door Zombie
+      value: Buckethead Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: ScreenDoorZombie
+      value: Buckethead Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder

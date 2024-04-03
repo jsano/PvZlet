@@ -6,7 +6,6 @@ public class Pogo : Zombie
 {
 
     private GameObject toJump;
-    public float noPogoWalkTime;
     private bool jumping;
     private bool removed;
 
@@ -14,7 +13,7 @@ public class Pogo : Zombie
     {
         base.Start();
         projectile = Instantiate(projectile, transform, false);
-        projectile.transform.localPosition = new Vector3(0, -transform.localScale.y / 2, 0);
+        projectile.transform.localPosition = new Vector3(0, -BC.size.y / 2, 0);
         projectile.GetComponent<SpriteRenderer>().sortingOrder = SR.sortingOrder + 2;
     }
 
@@ -32,7 +31,7 @@ public class Pogo : Zombie
         {
             StopAllCoroutines();
             ResetWalk();
-            walkTime = noPogoWalkTime;
+            walkTime = alternateWalkTime[0];
             removed = true;
         }
         if (removed) base.Update();

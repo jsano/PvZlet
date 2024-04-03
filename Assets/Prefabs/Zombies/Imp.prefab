@@ -75,12 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ee44dfd34e9be44809753e433b0a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Imp
+  weakness: Umbrella Leaf (when thrown)
+  waveNumber: 0
   spawnScore: 0
   damage: 1
   walkTime: 3
   HP: 5
-  eatTime: 0.5
   row: 1
   hitsGround: 0
   aquatic: 0
@@ -90,5 +90,7 @@ MonoBehaviour:
   wheels: 0
   eatsPlants: 1
   status: {fileID: 0}
+  unchompable: 0
   displayOnly: 0
+  enterSFX: {fileID: 0}
   flung: 0

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Newspaper : Zombie
 {
 
-    public float angryWalkTime;
     public float angryEatTime;
     private bool angry = false;
     private bool shocked = false;
@@ -22,7 +21,7 @@ public class Newspaper : Zombie
             SFX.Instance.Play(ripSFX);
             shocked = true;
             StartCoroutine(Shock());
-            walkTime = angryWalkTime;
+            walkTime = alternateWalkTime[0];
             eatTime = angryEatTime;
         }
     }

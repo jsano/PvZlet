@@ -5,7 +5,6 @@ using UnityEngine;
 public class PoleVaulter : Zombie
 {
 
-    public float noPoleWalkTime;
     private bool running = true;
     private bool jumped = false;
     private GameObject toJump;
@@ -17,7 +16,7 @@ public class PoleVaulter : Zombie
         if (projectile != null)
         {
             projectile = Instantiate(projectile, transform, false);
-            projectile.transform.localPosition = new Vector3(0, transform.localScale.y / 2, 0);
+            projectile.transform.localPosition = new Vector3(0, BC.size.y / 2, 0);
             projectile.GetComponent<SpriteRenderer>().sortingOrder = SR.sortingOrder + 2;
         }
         base.Start();
@@ -33,7 +32,7 @@ public class PoleVaulter : Zombie
             if (toJump != null && (status == null || status.walkMod > 0))
             {
                 running = false;
-                walkTime = noPoleWalkTime;
+                walkTime = alternateWalkTime[0];
                 StartCoroutine(Jump());
             }
         }

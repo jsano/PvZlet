@@ -139,6 +139,7 @@ public class ZombieSpawner : MonoBehaviour
         int sortingOrder = 0;
         foreach (int i in unique)
         {
+            if (i == 11 || i == 12) continue; // Cone/buckethead ducky tube
             Vector3 offset = new Vector2(UnityEngine.Random.Range(-2, 2f), UnityEngine.Random.Range(-5, 5f));
             allZombies[i].SetActive(false);
             GameObject g = Instantiate(allZombies[i], transform.Find("Display").transform.position + offset, Quaternion.identity);

@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4acd43b7a47caea4c8947cc7e09bce0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Zomboni
+  weakness: Spikeweed, Spikerock\nCannot be frozen
   waveNumber: 0
   spawnScore: 10
   damage: 1000

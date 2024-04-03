@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4542416289465510541
+--- !u!1001 &6022588189126956494
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,19 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: NewspaperZombie
+      value: Football Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
-      value: 0.49019608
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.g
-      value: 0.49019608
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.r
-      value: 0.49019608
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder
@@ -70,34 +70,34 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
---- !u!1 &2983600573772482301 stripped
+--- !u!1 &5042500414427527614 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
-  m_PrefabInstance: {fileID: 4542416289465510541}
+  m_PrefabInstance: {fileID: 6022588189126956494}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-3363448531811858210
+--- !u!114 &4904543073488655662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2983600573772482301}
+  m_GameObject: {fileID: 5042500414427527614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ef75a147d14d8478fe8a5dc65fa17c, type: 3}
+  m_Script: {fileID: 11500000, guid: bab8617191d1d094a8065ad550b6d75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Newspaper Zombie
+  weakness: Magnet-shroom
   waveNumber: 0
-  spawnScore: 2
+  spawnScore: 10
   damage: 1
-  walkTime: 4
-  HP: 15
+  walkTime: 3
+  HP: 14
   row: 1
   hitsGround: 0
   aquatic: 0
-  armor: {fileID: 0}
-  shield: {fileID: 5450825092267099916, guid: 3c3cc50a30ea12149832079881fa1f5d, type: 3}
+  armor: {fileID: 4069347666126425492, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
+  shield: {fileID: 0}
   projectile: {fileID: 0}
   wheels: 0
   eatsPlants: 1
@@ -105,9 +105,3 @@ MonoBehaviour:
   unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
-  angryWalkTime: 2
-  angryEatTime: 0.25
-  ripSFX: {fileID: 8300000, guid: 898ccb1729ab0d8468c12090858d9f39, type: 3}
-  angrySFX:
-  - {fileID: 8300000, guid: 87ba3cebfd1c29c4aa00aadf0bc9bf4b, type: 3}
-  - {fileID: 8300000, guid: 0e0cd89a7bced6d4d90cc55f6909ac4c, type: 3}

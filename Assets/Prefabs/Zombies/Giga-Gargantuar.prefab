@@ -56,6 +56,10 @@ PrefabInstance:
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5360188768274288824, guid: ae730055cb308e64fa4ea6c9831a3c3f, type: 3}
+      propertyPath: weakness
+      value: Marigold
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360188768274288824, guid: ae730055cb308e64fa4ea6c9831a3c3f, type: 3}
       propertyPath: zombieName
       value: Giga-Gargantuar
       objectReference: {fileID: 0}
@@ -73,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9192904634043088257, guid: ae730055cb308e64fa4ea6c9831a3c3f, type: 3}
       propertyPath: m_Name
-      value: GigaGargantuar
+      value: Giga-Gargantuar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae730055cb308e64fa4ea6c9831a3c3f, type: 3}

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Balloon : Zombie
 {
 
-    public float poppedWalkTime;
     private bool popped;
 
     public AudioClip popSFX;
@@ -18,6 +17,7 @@ public class Balloon : Zombie
 
     protected override void Spawn()
     {
+        BC.size = new Vector2(1, 0.01f);
         base.Spawn();
         transform.position += new Vector3(0, Tile.TILE_DISTANCE.y / 2);
     }
@@ -38,7 +38,7 @@ public class Balloon : Zombie
             BC.offset = new Vector2(0, 0);
             BC.size = new Vector2(1, 1);
             transform.position = new Vector3(transform.position.x, Tile.tileObjects[row, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y);
-            walkTime = poppedWalkTime;
+            walkTime = alternateWalkTime[0];
             ResetWalk();
         }
         return HP;

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3291682378346563467
+--- !u!1001 &4765483685361109006
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,9 +8,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6666666
+      objectReference: {fileID: 0}
+    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2896790ba53020d438afbdb522e2399e, type: 3}
+      objectReference: {fileID: 21300000, guid: cbf6576ff06ba0348956ede61b8501c9, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -56,56 +64,66 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.6666666
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.0833333
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.6833333
+      value: 1.6666666
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: GatlingPea
+      value: Scaredy-shroom
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &5468528295247460810 stripped
+--- !u!1 &2623377593972913743 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 3291682378346563467}
+  m_PrefabInstance: {fileID: 4765483685361109006}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2896536199296795521
+--- !u!114 &-6760152847845523059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5468528295247460810}
+  m_GameObject: {fileID: 2623377593972913743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a45f6984224a444a8cd0d8ca7aa9cb, type: 3}
+  m_Script: {fileID: 11500000, guid: da510998f3564f84d9d559c7543d166a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  cost: 400
-  recharge: 45
+  cost: 25
+  recharge: 5
   damage: 1
+  effectiveDamage: '1\nScare range: 3x3'
   atkspd: 1.2
   variableStartPeriod: 1
   HP: 6
   range: 10
   backwardsRange: 0
   alwaysAttack: 0
-  mushroom: 0
+  mushroom: 1
   instant: 0
   grounded: 0
   aquatic: 0
   lobbed: 0
   row: 0
   col: 0
-  projectile: {fileID: 3721817652063258218, guid: 5aad780f5e39e3942bfa0fb5fd0a315e, type: 3}
+  projectile: {fileID: 7157287234317082125, guid: 4e614f9c8609bd848af2fba48cf5790b, type: 3}
   status: {fileID: 0}
   attackSFX:
-  - {fileID: 8300000, guid: 69d8ee9662c19db4db69ee57e6fda7f1, type: 3}
-  - {fileID: 8300000, guid: cd6399f572ec250448a43ca3ad2e0b45, type: 3}
+  - {fileID: 8300000, guid: 28bcd1a66fa85e346961db0f9432218b, type: 3}
+  scareRange: {x: 3, y: 3}
+  hidingSprite: {fileID: 21300000, guid: 06f22d2b2069358409fae3e4603048c2, type: 3}

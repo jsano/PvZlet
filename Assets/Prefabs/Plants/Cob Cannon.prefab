@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: CobCannon
+      value: Cob Cannon
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
@@ -112,6 +112,7 @@ MonoBehaviour:
   cost: 700
   recharge: 45
   damage: 100
+  effectiveDamage: 100
   atkspd: 1
   variableStartPeriod: 0
   HP: 6

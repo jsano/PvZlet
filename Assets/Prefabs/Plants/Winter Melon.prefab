@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4921787976391173710
+--- !u!1001 &6722437199173824375
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e903693ac3f798f4898636a5abab753c, type: 3}
+      objectReference: {fileID: 21300000, guid: 4f303239691848b4292f3e207ed0de79, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,57 +57,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.6666666
+      value: 2.1666667
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.3566667
+      value: 1.98
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: PotatoMine
+      value: Winter Melon
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &2452155272512313359 stripped
+--- !u!1 &4251573042536747318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 4921787976391173710}
+  m_PrefabInstance: {fileID: 6722437199173824375}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &433424512368411144
+--- !u!114 &5705734082801260765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452155272512313359}
+  m_GameObject: {fileID: 4251573042536747318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd587bfb89162345b3827c91c066388, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d9b91bac4018c84393bf07712dd01f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 4
-  cost: 25
-  recharge: 30
-  damage: 100
-  atkspd: 0.5
-  variableStartPeriod: 0
+  ID: 0
+  cost: 700
+  recharge: 45
+  damage: 3
+  effectiveDamage: 3
+  atkspd: 1.2
+  variableStartPeriod: 1
   HP: 6
-  range: 0.01
-  backwardsRange: 0.01
+  range: 10
+  backwardsRange: 0
   alwaysAttack: 0
   mushroom: 0
   instant: 0
   grounded: 0
   aquatic: 0
-  lobbed: 0
+  lobbed: 1
   row: 0
   col: 0
-  projectile: {fileID: 8464927645593920465, guid: 27be8d0ca4a51f742ae2937d2e4a674c, type: 3}
+  projectile: {fileID: 3626316043322968438, guid: e6e96146fda32ce41aa00a7f1b3f9f6d, type: 3}
   status: {fileID: 0}
   attackSFX:
-  - {fileID: 8300000, guid: 67179ac87dada8742bd3e070acb51876, type: 3}
-  armingTime: 10
-  armingSprite: {fileID: 21300000, guid: 66f23707838fc4041b2ca159d9aa8701, type: 3}
-  armSFX: {fileID: 8300000, guid: 8d4ff644ebfe1f84780a98d2adc873c9, type: 3}
+  - {fileID: 8300000, guid: 69d8ee9662c19db4db69ee57e6fda7f1, type: 3}
+  - {fileID: 8300000, guid: cd6399f572ec250448a43ca3ad2e0b45, type: 3}

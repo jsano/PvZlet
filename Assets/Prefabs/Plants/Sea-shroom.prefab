@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: Seashroom
+      value: Sea-shroom
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
@@ -115,6 +115,7 @@ MonoBehaviour:
   cost: 0
   recharge: 15
   damage: 1
+  effectiveDamage: 1
   atkspd: 1.2
   variableStartPeriod: 1
   HP: 4

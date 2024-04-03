@@ -23,6 +23,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             instance = this;
             l = FindFirstObjectByType<Level>();
+            if (l == null) return;
             lanes = (l.setting == Level.Setting.Pool || l.setting == Level.Setting.Fog) ? 6 : 5;
         }
     }

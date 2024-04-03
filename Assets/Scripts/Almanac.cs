@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Almanac : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class Almanac : MonoBehaviour
     public static Almanac Instance { get { return instance; } }
 
     private bool activeOnPlant = true;
+
+    public Image image;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI info;
+    public GameObject plantButtons;
+    public GameObject zombieButtons;
 
     void Awake()
     {
@@ -25,7 +33,23 @@ public class Almanac : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        int ID = 0;
+        foreach (Transform t in plantButtons.transform)
+        {
+            t.GetComponent<AlmanacSelectSeed>().ID = ID;
+            t.GetComponent<AlmanacSelectSeed>().afterStart();
+            ID++;
+        }
+        ID = 0;
+        foreach (Transform t in zombieButtons.transform)
+        {
+            if (ID == 11 || ID == 12) continue; // Cone/buckethead ducky tube
+            t.GetComponent<AlmanacSelectSeed>().ID = ID;
+            t.GetComponent <AlmanacSelectSeed>().afterStart();
+            ID++;
+        }
+        ShowPlants(true);
+        Show(0);
     }
 
     // Update is called once per frame
@@ -36,13 +60,35 @@ public class Almanac : MonoBehaviour
 
     public void Show(int ID)
     {
-
+        if (activeOnPlant)
+        {
+            image.sprite = PlantBuilder.Instance.allPlants[ID].GetComponent<SpriteRenderer>().sprite;
+            Plant p = PlantBuilder.Instance.allPlants[ID].GetComponent<Plant>();
+            nameText.text = p.name;
+            info.text = "Cost: " + p.cost + "\nRecharge: " + p.recharge;
+            if (p.effectiveDamage != "") info.text += "\nDamage: " + p.effectiveDamage.Replace("\\n", "\n"); ;
+            if (p.aquatic) info.text += "\nCan only planted in water";
+            else if (ID == 33) info.text += "\nCan only be planted in roof";
+            info.text += "\n\n" + plantDescriptions[ID] + "\n\n" + plantNotes[ID];
+        } 
+        else
+        {
+            image.sprite = ZombieSpawner.Instance.allZombies[0].GetComponent<SpriteRenderer>().sprite;
+            image.color = ZombieSpawner.Instance.allZombies[ID].GetComponent<SpriteRenderer>().color;
+            Zombie z = ZombieSpawner.Instance.allZombies[ID].GetComponent<Zombie>();
+            nameText.text = z.name;
+            info.text = "HP: " + z.HP + "\nSpeed: " + speed[z.walkTime];
+            if (z.weakness != "") info.text += "\nWeakness: " + z.weakness.Replace("\\n", "\n"); ;
+            if (z.aquatic) info.text += "\nOnly appears in water";
+            info.text += "\n\n" + zombieDescriptions[ID] + "\n\n" + zombieNotes[ID];
+        }
     }
 
     public void ShowPlants(bool plant)
     {
-        if (activeOnPlant == plant) return;
         activeOnPlant = plant;
+        plantButtons.SetActive(plant);
+        zombieButtons.SetActive(!plant);
     }
 
     private string[] plantDescriptions = new string[]
@@ -127,7 +173,7 @@ public class Almanac : MonoBehaviour
         "Hopefully the added ability gives this more use outside of Fog levels",
         "This thing was excruciating to code so y'all better use it",
         "With the new ability, maybe I should retexture this to Hurrikale",
-        "I genuinely can't think of a single way to make this not useless without stat inflation. This thing might actually be hopeless please help",
+        "I genuinely can't think of a single way to make it not useless without stat inflation. This thing might actually be hopeless please help",
         "I still can't find a good sprite for it that has the limbs pointed the way I want it to",
         "How did the PvZ devs manage to have the plant sprites layered in between the front and back parts of the pumpkin, I need to know",
         "This thing was also annoying to code yet I have a level banning it...",
@@ -147,6 +193,23 @@ public class Almanac : MonoBehaviour
         "This was the absolute most I could come up with to give this plant even an iota of relevance",
         "spikerock",
         "There's no way in hell I'm coding a 2-tile plant with the framework I've built up"
+    };
+
+    private Dictionary<float, string> speed = new Dictionary<float, string>() {
+        { 4, "Normal" },
+        { 3, "Moderate" },
+        { 2, "Fast" },
+        { 1, "SPEED" },
+    };
+
+    private string[] zombieDescriptions = new string[]
+    {
+
+    };
+
+    private string[] zombieNotes = new string[]
+    {
+
     };
 
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,19 +14,19 @@ public class AlmanacSelectSeed : MonoBehaviour
 
     public AudioClip select;
 
-    // Start is called before the first frame update
-    void Start()
+    public void afterStart()
     {
         if (isPlant)
         {
             plant = PlantBuilder.Instance.allPlants[ID].GetComponent<Plant>();
             transform.Find("Plant").GetComponent<Image>().sprite = plant.GetComponent<SpriteRenderer>().sprite;
+            transform.Find("Text").GetComponent<TextMeshProUGUI>().text = PlantBuilder.Instance.allPlants[ID].GetComponent<Plant>().cost + "";
         }
         else
         {
             zombie = ZombieSpawner.Instance.allZombies[ID].GetComponent<Zombie>();
-            transform.Find("Plant").GetComponent<Image>().sprite = zombie.GetComponent<SpriteRenderer>().sprite;
-            transform.Find("Plant").GetComponent<Image>().color = zombie.GetComponent<SpriteRenderer>().color;
+            transform.Find("Plant").GetComponent<Image>().sprite = ZombieSpawner.Instance.allZombies[0].GetComponent<SpriteRenderer>().sprite;
+            transform.Find("Plant").GetComponent<Image>().color = ZombieSpawner.Instance.allZombies[ID].GetComponent<SpriteRenderer>().color;
         }
     }
 

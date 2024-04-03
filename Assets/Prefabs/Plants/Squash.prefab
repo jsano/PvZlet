@@ -91,6 +91,7 @@ MonoBehaviour:
   cost: 75
   recharge: 30
   damage: 100
+  effectiveDamage: 100
   atkspd: 0
   variableStartPeriod: 0
   HP: 6
@@ -106,8 +107,7 @@ MonoBehaviour:
   col: 0
   projectile: {fileID: 0}
   status: {fileID: 0}
-  attackSFX1: {fileID: 0}
-  attackSFX2: {fileID: 0}
+  attackSFX: []
   area: {x: 1, y: 0.75}
   see:
   - {fileID: 8300000, guid: a6e18090985778747bd9bb63314456cc, type: 3}

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4556146411692960297
+--- !u!1001 &2842231554832753746
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,9 +8,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_Size.y
+      value: 1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5bfa38e8577e164409bd11939722ef63, type: 3}
+      objectReference: {fileID: 21300000, guid: d7e54f858ac7692418f75a3411f51ff2, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -56,59 +64,66 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.6666666
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.6933334
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: Fumeshroom
+      value: Kernel-pult
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &6444885441337758824 stripped
+--- !u!1 &4700588845103667731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 4556146411692960297}
+  m_PrefabInstance: {fileID: 2842231554832753746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6540551560604816641
+--- !u!114 &2995669306071930911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6444885441337758824}
+  m_GameObject: {fileID: 4700588845103667731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4214dc716843c2442928f1835aaab3d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9dd65442e7deef7488e99ddef1507eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 10
-  cost: 75
+  ID: 34
+  cost: 125
   recharge: 5
   damage: 1
+  effectiveDamage: '0.5\nButter damage: 2'
   atkspd: 1.2
   variableStartPeriod: 1
   HP: 6
-  range: 4
+  range: 10
   backwardsRange: 0
   alwaysAttack: 0
-  mushroom: 1
+  mushroom: 0
   instant: 0
   grounded: 0
   aquatic: 0
-  lobbed: 0
+  lobbed: 1
   row: 0
   col: 0
-  projectile: {fileID: 4395901990587457887, guid: 77e43c46dc46fdc4fa9f15263f832dc3, type: 3}
+  projectile: {fileID: 7609598252979357268, guid: af570167b2622bf4b9236821d2395aad, type: 3}
   status: {fileID: 0}
   attackSFX:
-  - {fileID: 8300000, guid: bd6a46bf5e00c2f41af89994a4ba194f, type: 3}
-  hitSFX:
-  - {fileID: 8300000, guid: 4460435d6e6eed84ba7bd0f2107c99ed, type: 3}
-  - {fileID: 8300000, guid: e958a4d860da9f94ab8a172b165a7bc0, type: 3}
-  - {fileID: 8300000, guid: 05ebb0ed02b2567448523dc90916840a, type: 3}
+  - {fileID: 8300000, guid: 69d8ee9662c19db4db69ee57e6fda7f1, type: 3}
+  - {fileID: 8300000, guid: cd6399f572ec250448a43ca3ad2e0b45, type: 3}
+  butterProjectile: {fileID: 2113315570845669114, guid: 634214e592ca7e84795e2a2ff9136dcb, type: 3}

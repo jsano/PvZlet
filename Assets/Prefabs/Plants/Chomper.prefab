@@ -91,6 +91,7 @@ MonoBehaviour:
   cost: 150
   recharge: 5
   damage: 10
+  effectiveDamage: 10 (if unable to eat)
   atkspd: 0.75
   variableStartPeriod: 0
   HP: 6

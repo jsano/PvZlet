@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8230775964316282172
+--- !u!1001 &3291682378346563467
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 291846c1fff74594bac6ba36187844e1, type: 3}
+      objectReference: {fileID: 21300000, guid: 2896790ba53020d438afbdb522e2399e, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,57 +57,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.6666666
+      value: 2.0833333
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.5966667
+      value: 1.6833333
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: Doomshroom
+      value: Gatling Pea
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &1473782145356010365 stripped
+--- !u!1 &5468528295247460810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 8230775964316282172}
+  m_PrefabInstance: {fileID: 3291682378346563467}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2655011529695924687
+--- !u!114 &2896536199296795521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473782145356010365}
+  m_GameObject: {fileID: 5468528295247460810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5baa567ba8c255d4c96f4b7320ed7b91, type: 3}
+  m_Script: {fileID: 11500000, guid: 18a45f6984224a444a8cd0d8ca7aa9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 15
-  cost: 175
+  ID: 0
+  cost: 400
   recharge: 45
-  damage: 100
-  atkspd: 1
-  variableStartPeriod: 0
-  HP: 5
-  range: 0
+  damage: 1
+  effectiveDamage: 4
+  atkspd: 1.2
+  variableStartPeriod: 1
+  HP: 6
+  range: 10
   backwardsRange: 0
-  alwaysAttack: 1
-  mushroom: 1
-  instant: 1
+  alwaysAttack: 0
+  mushroom: 0
+  instant: 0
   grounded: 0
   aquatic: 0
   lobbed: 0
   row: 0
   col: 0
-  projectile: {fileID: 8990773574722080084, guid: 830f6489669611f44875fb827531aa72, type: 3}
+  projectile: {fileID: 3721817652063258218, guid: 5aad780f5e39e3942bfa0fb5fd0a315e, type: 3}
   status: {fileID: 0}
   attackSFX:
-  - {fileID: 8300000, guid: 65430e86f7239ba4da208f36eee67770, type: 3}
-  area: {x: 6, y: 6}
-  buildup: {fileID: 8300000, guid: 59958fea84a408848b742b4a6c15f63c, type: 3}
-  crater: {fileID: 1257109371683293466, guid: 02254e2d78d3c8248850b8786e8ef66b, type: 3}
+  - {fileID: 8300000, guid: 69d8ee9662c19db4db69ee57e6fda7f1, type: 3}
+  - {fileID: 8300000, guid: cd6399f572ec250448a43ca3ad2e0b45, type: 3}

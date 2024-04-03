@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2127510642060032372
+--- !u!1001 &5759567126995720239
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,17 +8,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Size.x
-      value: 2.1666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Size.y
-      value: 1.8133334
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3af5b07696372bf48a7b911a3e6974a9, type: 3}
+      objectReference: {fileID: 21300000, guid: 9eba8a530ffa980499ba4dfbc21ee5eb, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -64,63 +56,56 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 2.1666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 1.8133334
-      objectReference: {fileID: 0}
-    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.1666667
+      value: 2.2433333
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.8133334
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: Melonpult
+      value: Split Pea
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &8920528619189487413 stripped
+--- !u!1 &3000644083396896366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 2127510642060032372}
+  m_PrefabInstance: {fileID: 5759567126995720239}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-3735468550937099008
+--- !u!114 &2660463266814787667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8920528619189487413}
+  m_GameObject: {fileID: 3000644083396896366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9b91bac4018c84393bf07712dd01f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 793840f11ba0131468b0bda2e7e0fc22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  cost: 300
+  cost: 125
   recharge: 5
-  damage: 3
+  damage: 1
+  effectiveDamage: 1 (forward), 2 (backwards)
   atkspd: 1.2
   variableStartPeriod: 1
   HP: 6
   range: 10
-  backwardsRange: 0
+  backwardsRange: 10
   alwaysAttack: 0
   mushroom: 0
   instant: 0
   grounded: 0
   aquatic: 0
-  lobbed: 1
+  lobbed: 0
   row: 0
   col: 0
-  projectile: {fileID: 6063078557640841384, guid: b88b6131c399d6443bb2c1946c329f92, type: 3}
+  projectile: {fileID: 3721817652063258218, guid: 5aad780f5e39e3942bfa0fb5fd0a315e, type: 3}
   status: {fileID: 0}
   attackSFX:
   - {fileID: 8300000, guid: 69d8ee9662c19db4db69ee57e6fda7f1, type: 3}

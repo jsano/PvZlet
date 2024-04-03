@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4765483685361109006
+--- !u!1001 &4556146411692960297
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,17 +8,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Size.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_Size.y
-      value: 1.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cbf6576ff06ba0348956ede61b8501c9, type: 3}
+      objectReference: {fileID: 21300000, guid: 5bfa38e8577e164409bd11939722ef63, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -64,53 +56,46 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 1.6666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.2
+      value: 1.6666666
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.6666666
+      value: 1.6933334
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: Scaredyshroom
+      value: Fume-shroom
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &2623377593972913743 stripped
+--- !u!1 &6444885441337758824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 4765483685361109006}
+  m_PrefabInstance: {fileID: 4556146411692960297}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-6760152847845523059
+--- !u!114 &6540551560604816641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2623377593972913743}
+  m_GameObject: {fileID: 6444885441337758824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da510998f3564f84d9d559c7543d166a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4214dc716843c2442928f1835aaab3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  cost: 25
+  ID: 10
+  cost: 75
   recharge: 5
   damage: 1
+  effectiveDamage: 1
   atkspd: 1.2
   variableStartPeriod: 1
   HP: 6
-  range: 10
+  range: 4
   backwardsRange: 0
   alwaysAttack: 0
   mushroom: 1
@@ -120,9 +105,11 @@ MonoBehaviour:
   lobbed: 0
   row: 0
   col: 0
-  projectile: {fileID: 7157287234317082125, guid: 4e614f9c8609bd848af2fba48cf5790b, type: 3}
+  projectile: {fileID: 4395901990587457887, guid: 77e43c46dc46fdc4fa9f15263f832dc3, type: 3}
   status: {fileID: 0}
   attackSFX:
-  - {fileID: 8300000, guid: 28bcd1a66fa85e346961db0f9432218b, type: 3}
-  scareRange: {x: 3, y: 3}
-  hidingSprite: {fileID: 21300000, guid: 06f22d2b2069358409fae3e4603048c2, type: 3}
+  - {fileID: 8300000, guid: bd6a46bf5e00c2f41af89994a4ba194f, type: 3}
+  hitSFX:
+  - {fileID: 8300000, guid: 4460435d6e6eed84ba7bd0f2107c99ed, type: 3}
+  - {fileID: 8300000, guid: e958a4d860da9f94ab8a172b165a7bc0, type: 3}
+  - {fileID: 8300000, guid: 05ebb0ed02b2567448523dc90916840a, type: 3}

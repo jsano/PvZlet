@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6722437199173824375
+--- !u!1001 &6133228982828021791
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 558040409209105024, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4f303239691848b4292f3e207ed0de79, type: 3}
+      objectReference: {fileID: 21300000, guid: 060bd6fa7e603e845bbd76709f258669, type: 3}
     - target: {fileID: 1000413504995200560, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,40 +57,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.1666667
+      value: 2.0633333
       objectReference: {fileID: 0}
     - target: {fileID: 2042143766956905269, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.98
+      value: 1.6666666
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: WinterMelon
+      value: Snow Pea
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
---- !u!1 &4251573042536747318 stripped
+--- !u!1 &3699673488840132190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
-  m_PrefabInstance: {fileID: 6722437199173824375}
+  m_PrefabInstance: {fileID: 6133228982828021791}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5705734082801260765
+--- !u!114 &-2352662300858711398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4251573042536747318}
+  m_GameObject: {fileID: 3699673488840132190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9b91bac4018c84393bf07712dd01f0, type: 3}
+  m_Script: {fileID: 11500000, guid: b47d5b69dee01744fae783c1ba90fd03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  cost: 700
-  recharge: 45
-  damage: 4
+  cost: 175
+  recharge: 5
+  damage: 1
+  effectiveDamage: 1
   atkspd: 1.2
   variableStartPeriod: 1
   HP: 6
@@ -101,10 +102,10 @@ MonoBehaviour:
   instant: 0
   grounded: 0
   aquatic: 0
-  lobbed: 1
+  lobbed: 0
   row: 0
   col: 0
-  projectile: {fileID: 3626316043322968438, guid: e6e96146fda32ce41aa00a7f1b3f9f6d, type: 3}
+  projectile: {fileID: 6592628194833937617, guid: f7813e9524df4454da9d575809eb2990, type: 3}
   status: {fileID: 0}
   attackSFX:
   - {fileID: 8300000, guid: 69d8ee9662c19db4db69ee57e6fda7f1, type: 3}

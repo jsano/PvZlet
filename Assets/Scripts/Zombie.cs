@@ -7,6 +7,7 @@ using UnityEngine;
 public class Zombie : Damagable
 {
     public string zombieName;
+    public string weakness;
 
     [HideInInspector] public int waveNumber;
     /// <summary> How much this zombie's worth. Used for progressing waves when killed </summary>

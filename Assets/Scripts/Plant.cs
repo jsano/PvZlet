@@ -14,6 +14,8 @@ public class Plant : Damagable
     public float recharge;
     /// <summary> How much damage the plant deals per attack. Irrelevant if the plant fires projectiles </summary>
     public float damage;
+    /// <summary> How much damage the almanac should say the plant does </summary>
+    public string effectiveDamage;
     /// <summary> The interval in seconds between each attack. For some, this can be the "startup" time for a singular attack </summary>
     public float atkspd;
     /// <summary> Whether this plant should have a random initial startup time </summary>

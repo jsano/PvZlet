@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Almanac : MonoBehaviour
@@ -18,6 +20,8 @@ public class Almanac : MonoBehaviour
     public TextMeshProUGUI info;
     public GameObject plantButtons;
     public GameObject zombieButtons;
+
+    public static int previousSceneIndex;
 
     void Awake()
     {
@@ -83,6 +87,8 @@ public class Almanac : MonoBehaviour
             Zombie z = ZombieSpawner.Instance.allZombies[ID].GetComponent<Zombie>();
             nameText.text = z.name;
             info.text = "HP: " + z.HP;
+            if (z.armor != null) info.text += ", " + z.armor.GetComponent<Armor>().HP + " (armor)";
+            if (z.shield != null) info.text += ", " + z.shield.GetComponent<Shield>().HP + " (shield)";
             if (ID == 25 || ID == 30) info.text += "\nSpeed: " + speed[4]; // Gargantuars
             else if (z.walkTime > 0) info.text += "\nSpeed: " + speed[z.walkTime];
             foreach (float s in z.alternateWalkTime)
@@ -102,6 +108,11 @@ public class Almanac : MonoBehaviour
         plantButtons.SetActive(plant);
         zombieButtons.SetActive(!plant);
         Show(0);
+    }
+
+    public void Exit()
+    {
+        SceneManager.LoadScene(previousSceneIndex);
     }
 
     private string[] plantDescriptions = new string[]
@@ -218,12 +229,70 @@ public class Almanac : MonoBehaviour
 
     private string[] zombieDescriptions = new string[]
     {
-
+        "A regular zombie",
+        "Signals a huge wave of zombies to approach",
+        "A zombie whose cone grants more HP than normal",
+        "Runs and leaps over the first encountered plant",
+        "A zombie whose bucket grants much more HP than normal",
+        "Holds a newspaper as a shield, but runs and eats faster when it's destroyed",
+        "Holds a screen door as a shield that greatly protects it from straight projectiles",
+        "A zombie whose helmet grants very high HP",
+        "Summons four backup dancers around itself, endlessly replacing those that die",
+        "A backup zombie",
+        "A zombie well-equipped for water travel",
+        "", "",
+        "Hides underwater except when eating a plant",
+        "Crushes plants it drives over and lays ice in its path",
+        "Carries 4 Bobsled Zombies in its bobsled where there is ice, and then unloads them afterwards",
+        "Rides a dolphin very quickly and leaps over the first encountered plant",
+        "Explodes after some amount of time, killing all plants nearby",
+        "Flies high above the ground, avoiding most plants",
+        "Digs to the other side of the lawn, and then walks backwards away from the house",
+        "Continuously jumps over plants",
+        "A rare zombie that escapes quickly after appearing",
+        "Descends onto a tile and steals a plant",
+        "Holds a ladder as a shield, and places it over an obstacle for zombies to climb over",
+        "Lobs basketballs towards the rightmost plant, then drives forward after running out of projectiles",
+        "A huge zombie with monstrous HP that smashes plants it encounters and throws an Imp after losing 2/3 of its health",
+        "A small zombie",
+        "Destroys the first plant it encounters",
+        "A zombie equipped with the highest levels of protection",
+        "A zombie with twice as much HP as a regular Football Zombie",
+        "A huge zombie with twice as much HP as a regular Gargantuar",
     };
 
     private string[] zombieNotes = new string[]
     {
-
+        "Imagine being this guy",
+        "What would happen if this was somehow spawned between flag waves? The universe may never know",
+        "The quintissential damage threshold",
+        "Blover and the roof setting singlehandedly made coding the jump a nightmare",
+        "buckethead",
+        "I really want to do the meme here, but I won't for the sake of balance",
+        "I considered having the screen door reflect projectiles, but I'm not sure how ok that would be",
+        "It alone makes Hypno-shroom not completely worthless even in vanilla",
+        "Across all plants and zombies this is the only one I've ever just given up on. It still works on a surface level, but one Snow Pea and the whole team's desynchronized. Too bad though, I'm done",
+        "I can't decide on if it be invincible while spawning since it makes sense but feels annoying to play again",
+        "Technically nothing in the code prevents a normal Basic from appearing in the pool, but let's pretend otherwise",
+        "", "",
+        "I made the hurtbox really small and low, but that's really it. Hopefully it works",
+        "It actually slows down over time in vanilla. I don't get why they made it like that and I didn't incorporate that here",
+        "I don't know how long the ice trail needs to be for this to spawn in vanilla so there's no cutoff here unfortunately",
+        "dolphinrider",
+        "The way the song has to play in-game made me make an entire new AudioSource object just for this thing. I hate everything",
+        "This is probably the single most impactful change from the entire game by letting catapults target it. I await to see where this goes",
+        "digger",
+        "I never liked this zombie in my opinion due to its redundancy, but oh well",
+        "There's no shop here so I have no idea what to do when he dies",
+        "bungee",
+        "This thing was also annoying to code...",
+        "In my opinion, having it shoot the rightmost plant and not the leftmost is a good thing because it opens a new strategy of whether to put Umbrella Leafs in the front or tank them with wall plants. At least it feels better than \"put Umbrella Leaf and win\"",
+        "gargantuar",
+        "Isn't it crazy how in all games this zombie is either equal to objectively stronger than a Basic? I don't feel like that should be",
+        "Now, squash zombie will feel less defining I guess",
+        "I've actually never played PvZ Plus yet",
+        "I don't know whether it's better for Chomper to be able to eat this or not, but it can't for now",
+        "gigagargantuar",
     };
 
 }

@@ -294,6 +294,7 @@ MonoBehaviour:
   UI: {fileID: 7175623331034705832}
   pause: {fileID: 5019809132082106099}
   fastForward: {fileID: 5019809131544231904}
+  almanac: {fileID: 5264184782596362364}
   shovel: {fileID: 5019809131595299285}
   ready: {fileID: 175120696}
   gameOver: {fileID: 7175623330695611907}
@@ -1779,6 +1780,11 @@ GameObject:
 --- !u!1 &5019809132082106099 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1398074004, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
+  m_PrefabInstance: {fileID: 5019809132875670631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5264184782596362364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 911932626204144667, guid: 6d8dee13b42cb0f43af9e9113e3a0a59, type: 3}
   m_PrefabInstance: {fileID: 5019809132875670631}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7175623331034705832 stripped

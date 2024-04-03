@@ -108,4 +108,10 @@ public class UI : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void toAlmanac()
+    {
+        Almanac.previousSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene("Almanac");
+    }
+
 }

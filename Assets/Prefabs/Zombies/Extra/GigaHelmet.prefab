@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ae4a6b5b629121440a6c541fc15fb974, type: 3}
     - target: {fileID: 3469752954540623164, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
       propertyPath: HP
-      value: 136
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 3469752954540623164, guid: f13dc90699ddf524182bc9a7d8c85a80, type: 3}
       propertyPath: damagedSprite1

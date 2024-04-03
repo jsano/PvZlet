@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public GameObject UI;
     public GameObject pause;
     public GameObject fastForward;
+    public GameObject almanac;
     public GameObject shovel;
     public GameObject ready;
     public GameObject gameOver;
@@ -76,6 +77,7 @@ public class LevelManager : MonoBehaviour
         if (l.conveyor.Count == 0)
         {
             pause.SetActive(true);
+            almanac.SetActive(true);
             sun.SetActive(true);
             plants.SetActive(true);
             seedSelect.SetActive(true);
@@ -87,6 +89,7 @@ public class LevelManager : MonoBehaviour
             }
             yield return new WaitUntil(() => letsRock);
             pause.SetActive(false);
+            almanac.SetActive(false);
             seedSelect.transform.Find("Start").gameObject.SetActive(false);
             foreach (Transform g in PlantBuilder.Instance.transform.Find("Plants")) g.GetComponent<Button>().interactable = false;
             while (BG.transform.localPosition.y > -400)

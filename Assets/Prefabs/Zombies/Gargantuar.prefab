@@ -95,11 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef96d1abae786684a8787dfa70e3b359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Gargantuar
+  weakness: 
   waveNumber: 0
   spawnScore: 20
   damage: 1000
   walkTime: 5
+  alternateWalkTime: []
   HP: 150
   row: 1
   hitsGround: 1

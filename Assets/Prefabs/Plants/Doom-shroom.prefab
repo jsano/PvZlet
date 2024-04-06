@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 15
-  cost: 175
+  cost: 200
   recharge: 45
   damage: 100
   effectiveDamage: 100

@@ -91,9 +91,9 @@ MonoBehaviour:
   waveNumber: 0
   spawnScore: 5
   damage: 1
-  walkTime: 3
+  walkTime: 4
   alternateWalkTime:
-  - 4
+  - 5
   HP: 15
   row: 1
   hitsGround: 0
@@ -107,6 +107,5 @@ MonoBehaviour:
   unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
-  noLadderWalkTime: 4
   placedLadderSprite: {fileID: 21300000, guid: 03bd4a138387c21408501ef827f575d8, type: 3}
   placeSFX: {fileID: 8300000, guid: e93884af4b1351440bb86aaac8ae695c, type: 3}

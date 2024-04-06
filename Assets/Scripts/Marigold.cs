@@ -15,8 +15,8 @@ public class Marigold : CherryBomb
         {
             // Can't remove active ladders
             if (a.collider.GetComponent<Shield>() != null) continue;
-            if (a.transform.localScale.x < 1) continue;
             z = a.collider.GetComponent<Zombie>();
+            if (a.transform.localScale.x < 1) z.Die();
             z.HP /= 3;
             if (z.armor != null) z.armor.GetComponent<Armor>().HP /= 3;
             if (z.shield != null) z.shield.GetComponent<Shield>().HP /= 3;

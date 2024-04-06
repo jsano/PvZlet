@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: Conehead
+      value: Conehead Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 8033238826010351254, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_RootOrder

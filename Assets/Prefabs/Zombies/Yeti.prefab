@@ -87,11 +87,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec31daae99f25a240a3ad74cd86c3cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Yeti
+  weakness: 
   waveNumber: 0
   spawnScore: 0
   damage: 1
-  walkTime: 4
+  walkTime: 5
+  alternateWalkTime: []
   HP: 20
   row: 1
   hitsGround: 0

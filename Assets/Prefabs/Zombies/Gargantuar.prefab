@@ -99,7 +99,7 @@ MonoBehaviour:
   waveNumber: 0
   spawnScore: 20
   damage: 1000
-  walkTime: 5
+  walkTime: 6
   alternateWalkTime: []
   HP: 150
   row: 1

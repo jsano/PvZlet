@@ -91,9 +91,9 @@ MonoBehaviour:
   waveNumber: 0
   spawnScore: 3
   damage: 1
-  walkTime: 2
+  walkTime: 3
   alternateWalkTime:
-  - 4
+  - 5
   HP: 10
   row: 1
   hitsGround: 0

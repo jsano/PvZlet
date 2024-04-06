@@ -74,6 +74,7 @@ public class Plant : Damagable
         rightOffset = new Vector3(Tile.TILE_DISTANCE.x / 3, 0);
         topOffset = new Vector3(0, Tile.TILE_DISTANCE.y / 2);
         baseHP = HP;
+        SR.sortingOrder += row;
         if (mushroom && !sky.night)
         {
             sleeping = true;

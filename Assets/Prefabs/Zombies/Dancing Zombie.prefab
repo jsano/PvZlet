@@ -91,7 +91,7 @@ MonoBehaviour:
   waveNumber: 0
   spawnScore: 10
   damage: 1
-  walkTime: 1
+  walkTime: 2
   alternateWalkTime:
   - 5
   HP: 16
@@ -109,6 +109,5 @@ MonoBehaviour:
   enterSFX: {fileID: 0}
   backup: {fileID: 6833965198594692961, guid: 2c343650ab24b2c4c9ee09221bfa6b70, type: 3}
   spawnDelay: 3
-  dancingWalkTime: 5
   song: {fileID: 8300000, guid: a1a71179198695c49a2377bb45912bac, type: 3}
   rise: {fileID: 8300000, guid: 9d9c05add295ad144b1f4c2da030f6e3, type: 3}

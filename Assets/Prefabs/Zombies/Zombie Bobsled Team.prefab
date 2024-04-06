@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: Bobsled
+      value: Zombie Bobsled Team
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
@@ -87,11 +87,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5098673d115ea43929f59ead93828a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Zombie Bobsled Team
+  weakness: 
   waveNumber: 0
   spawnScore: 4
   damage: 0
-  walkTime: 1
+  walkTime: 2
+  alternateWalkTime: []
   HP: 20
   row: 1
   hitsGround: 0

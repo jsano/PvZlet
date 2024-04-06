@@ -91,9 +91,9 @@ MonoBehaviour:
   waveNumber: 0
   spawnScore: 2
   damage: 1
-  walkTime: 4
+  walkTime: 5
   alternateWalkTime:
-  - 2
+  - 3
   HP: 15
   row: 1
   hitsGround: 0
@@ -107,7 +107,6 @@ MonoBehaviour:
   unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
-  angryWalkTime: 2
   angryEatTime: 0.25
   ripSFX: {fileID: 8300000, guid: 898ccb1729ab0d8468c12090858d9f39, type: 3}
   angrySFX:

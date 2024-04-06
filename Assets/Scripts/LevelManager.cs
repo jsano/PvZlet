@@ -166,6 +166,9 @@ public class LevelManager : MonoBehaviour
     public void Win()
     {
         status = Status.Won;
+        pause.SetActive(false);
+        fastForward.SetActive(false);
+        if (Time.timeScale > 1) UI.GetComponent<UI>().FastForward(); // unfastforward
         music.GetComponent<Music>().FadeOut(2.5f);
         Instantiate(reward);
     }
@@ -174,7 +177,7 @@ public class LevelManager : MonoBehaviour
     {
         music.GetComponent<Music>().FadeOut(0.5f);
         status = Status.Lost;
-        Time.timeScale = 1;
+        if (Time.timeScale > 1) UI.GetComponent<UI>().FastForward(); // unfastforward
         gameOver.SetActive(true);
         UI.SetActive(false);
         PlantBuilder.Instance.gameObject.SetActive(false);

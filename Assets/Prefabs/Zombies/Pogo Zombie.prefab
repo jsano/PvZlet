@@ -93,7 +93,7 @@ MonoBehaviour:
   damage: 1
   walkTime: 3
   alternateWalkTime:
-  - 4
+  - 5
   HP: 16
   row: 1
   hitsGround: 0
@@ -107,4 +107,3 @@ MonoBehaviour:
   unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
-  noPogoWalkTime: 4

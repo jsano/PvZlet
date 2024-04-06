@@ -89,7 +89,7 @@ public class Almanac : MonoBehaviour
             info.text = "HP: " + z.HP;
             if (z.armor != null) info.text += ", " + z.armor.GetComponent<Armor>().HP + " (armor)";
             if (z.shield != null) info.text += ", " + z.shield.GetComponent<Shield>().HP + " (shield)";
-            if (ID == 25 || ID == 30) info.text += "\nSpeed: " + speed[4]; // Gargantuars
+            if (ID == 25 || ID == 30) info.text += "\nSpeed: " + speed[5]; // Gargantuars
             else if (z.walkTime > 0) info.text += "\nSpeed: " + speed[z.walkTime];
             foreach (float s in z.alternateWalkTime)
             {
@@ -155,7 +155,7 @@ public class Almanac : MonoBehaviour
         "Wakes up a sleeping plant",
         "Diverts zombies to other lanes",
         "Blocks descending zombies and projectiles in an area",
-        "Shrinks zombies in an area, reducing their remaining HP to a third",
+        "Shrinks zombies in an area, reducing their remaining HP to a third. If they've already been shrunk, eliminates them",
         "Lobs melons that do heavy splash damage",
         "Shoots four peas at a time",
         "Produces two suns regularly",
@@ -171,10 +171,10 @@ public class Almanac : MonoBehaviour
     {
         "I really like what Brutal Mode EX+ did with it where each shot buffs its attack speed a tiny bit, capping at 1.5x. Maybe I should do that...",
         "Do not plant these in the back",
-        "cherry bomb",
-        "wallnut",
+        "I will not buff its recharge and break the game like PvZ 2 did",
+        "RIP to this if I ever decide to implement Torchlight Zombies",
         "I kept its ability to hit Digger zombies while they're underground",
-        "snowpea",
+        "My personal favorite plant for anyone who cares",
         "I really like what Brutal Mode EX+ did with it where the time it takes to chew depends on the HP of the zombie. Maybe I should do that...",
         "I balanced everything around this",
         "I really want to nerf this but then it makes night roof even more difficult so it's rough",
@@ -182,14 +182,14 @@ public class Almanac : MonoBehaviour
         "In vanilla it pierces the roof slope, but not here",
         "It might be cool to make this 0 recharge with 50 sun",
         "Hopefully the price cut and Giga-Football zombies makes this finally not suck",
-        "scaredyshroom",
+        "I still don't know why they added this to PvZ 2",
         "Instead of applying chill it just freezes longer, like Iceberg Lettuce plant food",
         "I won't nerf it as hard as PvZ Expansion did",
-        "lilypad",
+        "Unlike vanilla, Potato mines can be planted here. Maybe they shouldn't?",
         "Right after it detects a zombie and before it jumps, it should have infinite HP",
         "If planted in row 1 or 5, it shoots 2 peas in its lane to compensate. Why it wasn't normally like this I'll never know",
-        "Currenlty zombies still jump / do all kinds of stuff before it dies. Hopefully nothing breaks because of it",
-        "jalapeno",
+        "Currently zombies still jump / do all kinds of stuff before it dies. Hopefully nothing breaks because of it",
+        "I really like what Brutal Mode EX did where it attacks in a cross. Maybe I should do that...",
         "Can't be placed in roof like in vanilla",
         "I know a lot of mods offer different tiers of fire peas, and maybe I'll do that if I feel like it",
         "I always debate on whether this should block Balloon zombies, but it doesn't yet",
@@ -208,23 +208,23 @@ public class Almanac : MonoBehaviour
         "This allows Doomshroom-main-DPS strategies so it's automatically a good plant",
         "I might have this also kill jumps but I'm not sure how balanced that would be",
         "It's Shrinking Violet now. Never again with the coin stuff",
-        "melonpult",
-        "I wanted to standardize prices but I'm not sure if this is balanced",
-        "twinsunflower",
+        "I've realized there's no intermediary lobbing plant between Cabbage and Melon, so if I ever decide to add more, maybe Pepper-pult would fill that role?",
+        "I wanted to standardize prices but I'm not sure if this price is balanced",
+        "Of all special plants from vanilla, this is the one I want to lower the recharge of the most. I don't know how game-breaking that would be though",
         "Hopefully the new world 6 zombies make this not as broken",
         "With the ordering of plants in the original, I'm forced to introduce this plant when there's no water for the rest of the campaign. I hate everything",
         "Hopefully the price increase makes this not as broken",
         "This was the absolute most I could come up with to give this plant even an iota of relevance",
-        "spikerock",
+        "On one hand I want to let this tank a lot of Gargantuar hits but on the other hand it would then be too good against them so it's rough",
         "There's no way in hell I'm coding a 2-tile plant with the framework I've built up"
     };
 
     private Dictionary<float, string> speed = new Dictionary<float, string>() {
-        { 5, "Slow"},
-        { 4, "Normal" },
-        { 3, "Moderate" },
-        { 2, "Fast" },
-        { 1, "SPEED" },
+        { 6, "Slow"},
+        { 5, "Normal" },
+        { 4, "Moderate" },
+        { 3, "Fast" },
+        { 2, "SPEED" },
     };
 
     private string[] zombieDescriptions = new string[]
@@ -267,7 +267,7 @@ public class Almanac : MonoBehaviour
         "What would happen if this was somehow spawned between flag waves? The universe may never know",
         "The quintissential damage threshold",
         "Blover and the roof setting singlehandedly made coding the jump a nightmare",
-        "buckethead",
+        "This thing makes you realize most plants in this game just doesn't do a lot of damage",
         "I really want to do the meme here, but I won't for the sake of balance",
         "I considered having the screen door reflect projectiles, but I'm not sure how ok that would be",
         "It alone makes Hypno-shroom not completely worthless even in vanilla",
@@ -278,21 +278,21 @@ public class Almanac : MonoBehaviour
         "I made the hurtbox really small and low, but that's really it. Hopefully it works",
         "It actually slows down over time in vanilla. I don't get why they made it like that and I didn't incorporate that here",
         "I don't know how long the ice trail needs to be for this to spawn in vanilla so there's no cutoff here unfortunately",
-        "dolphinrider",
+        "This is invincible until the dolphin starts swimming fast",
         "The way the song has to play in-game made me make an entire new AudioSource object just for this thing. I hate everything",
         "This is probably the single most impactful change from the entire game by letting catapults target it. I await to see where this goes",
-        "digger",
+        "Logically I don't think explosives should be able to target this, but balance wise it makes more sense",
         "I never liked this zombie in my opinion due to its redundancy, but oh well",
         "There's no shop here so I have no idea what to do when he dies",
-        "bungee",
+        "From my experiences it's almost impossible to kill this in time, but maybe that's how it should be",
         "This thing was also annoying to code...",
         "In my opinion, having it shoot the rightmost plant and not the leftmost is a good thing because it opens a new strategy of whether to put Umbrella Leafs in the front or tank them with wall plants. At least it feels better than \"put Umbrella Leaf and win\"",
-        "gargantuar",
+        "The imp throw becomes way better on roof slopes than in flat ground in a way that I don't really know how to balance",
         "Isn't it crazy how in all games this zombie is either equal to objectively stronger than a Basic? I don't feel like that should be",
-        "Now, squash zombie will feel less defining I guess",
+        "Now squash zombie will feel less defining I guess",
         "I've actually never played PvZ Plus yet",
         "I don't know whether it's better for Chomper to be able to eat this or not, but it can't for now",
-        "gigagargantuar",
+        "All things considered, I do hope Marigold ends up actually being useful outside of just dealing with this",
     };
 
 }

@@ -91,9 +91,9 @@ MonoBehaviour:
   waveNumber: 0
   spawnScore: 3
   damage: 1
-  walkTime: 3
+  walkTime: 4
   alternateWalkTime:
-  - 4
+  - 5
   HP: 16
   row: 1
   hitsGround: 0
@@ -107,5 +107,4 @@ MonoBehaviour:
   unchompable: 0
   displayOnly: 0
   enterSFX: {fileID: 0}
-  noPoleWalkTime: 4
   jumpSFX: {fileID: 8300000, guid: fe9c3bcf01157a14fafa481c50395ac2, type: 3}

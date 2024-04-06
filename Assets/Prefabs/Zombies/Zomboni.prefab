@@ -92,6 +92,7 @@ MonoBehaviour:
   spawnScore: 10
   damage: 1000
   walkTime: 5
+  alternateWalkTime: []
   HP: 58
   row: 1
   hitsGround: 1

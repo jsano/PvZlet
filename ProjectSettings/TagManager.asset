@@ -4,14 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LilyPad
   - Fire
   - Tallnut
-  - Pumpkin
   - Metal
-  - Star
-  - FlowerPot
-  - CoffeeBean
   layers:
   - Default
   - TransparentFX

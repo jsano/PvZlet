@@ -115,8 +115,8 @@ public class Tile : MonoBehaviour
         {
             if (planted != null)
             {
-                if (g.tag == "Pumpkin" && planted.tag != "LilyPad") overlapped.Insert(0, g);
-                else if (g.tag != "CoffeeBean")
+                if (g.name.StartsWith("Pumpkin") && !planted.name.StartsWith("Lily Pad") && !planted.name.StartsWith("Flower Pot")) overlapped.Insert(0, g);
+                else if (!g.name.StartsWith("Coffee Bean"))
                 {
                     overlapped.Add(planted);
                     planted = g;
@@ -146,18 +146,19 @@ public class Tile : MonoBehaviour
         if (p.GetComponent<GraveBuster>() != null) return ContainsGridItem("Grave");
         gridItems.RemoveAll(g => g == null);
         if (gridItems.Count > 0) return false;
-        if (p.tag == "Pumpkin") return (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null;
-        if (p.tag == "LilyPad") return water && planted == null;
-        if (p.tag == "FlowerPot") return roof && planted == null;
-        else if (roof && ContainsPlant("FlowerPot") == null) return false;
-        if (p.tag == "CoffeeBean") return planted != null && planted.GetComponent<Plant>().isSleeping();
+        if (p.name == "Pumpkin") return (!water && !roof || planted != null) && ContainsPlant("Pumpkin") == null;
+        if (p.name == "Lily Pad") return water && planted == null;
+        if (p.name == "Flower Pot") return roof && planted == null;
+        else if (roof && ContainsPlant("Flower Pot") == null) return false;
+        if (p.name == "Coffee Bean") return planted != null && planted.GetComponent<Plant>().isSleeping();
         if (p.grounded && (water || roof)) return false;
         if (p.aquatic)
         {
-            if (!water || ContainsPlant("LilyPad") != null) return false;
+            if (!water || ContainsPlant("Lily Pad") != null) return false;
         }
-        else if (water && ContainsPlant("LilyPad") == null) return false;
-        if (planted == null || planted.tag == "Pumpkin" || planted.tag == "LilyPad" || planted.tag == "FlowerPot") return true;
+        else if (water && ContainsPlant("Lily Pad") == null) return false;
+        if (planted == null || planted.name.StartsWith("Pumpkin") || planted.name.StartsWith("Lily Pad")
+            || planted.name.StartsWith("Flower Pot")) return true;
         return false;
     }
 

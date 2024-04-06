@@ -5,6 +5,8 @@ using UnityEngine;
 public class Gloomshroom : Plant
 {
 
+    public AudioClip[] hitSFX;
+
     public override void Start()
     {
         base.Start();
@@ -28,6 +30,7 @@ public class Gloomshroom : Plant
     {
         for (int i = 0; i < 4; i++)
         {
+            SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
             GameObject g = Instantiate(projectile, transform.position + rightOffset, Quaternion.identity);
             g.transform.localScale = Tile.TILE_DISTANCE / 2;
             g.GetComponent<DestroyAfterAnimation>().lifetime = 0.2f;

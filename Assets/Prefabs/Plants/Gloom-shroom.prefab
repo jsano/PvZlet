@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a640e1e51cef348ab5f9f25166f42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 42
   cost: 425
   recharge: 45
   damage: 1
@@ -126,3 +126,7 @@ MonoBehaviour:
   attackSFX:
   - {fileID: 8300000, guid: 69d8ee9662c19db4db69ee57e6fda7f1, type: 3}
   - {fileID: 8300000, guid: cd6399f572ec250448a43ca3ad2e0b45, type: 3}
+  hitSFX:
+  - {fileID: 8300000, guid: 4460435d6e6eed84ba7bd0f2107c99ed, type: 3}
+  - {fileID: 8300000, guid: e958a4d860da9f94ab8a172b165a7bc0, type: 3}
+  - {fileID: 8300000, guid: 05ebb0ed02b2567448523dc90916840a, type: 3}

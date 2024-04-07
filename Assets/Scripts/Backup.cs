@@ -18,6 +18,7 @@ public class Backup : Zombie
 
     protected override void Spawn()
     {
+        base.Spawn();
         transform.position = new Vector3(xLoc, Tile.tileObjects[row, Tile.WORLD_TO_COL(xLoc)].transform.position.y, 0);
         StartCoroutine(FinishSpawn());
     }

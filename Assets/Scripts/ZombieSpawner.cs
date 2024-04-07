@@ -62,7 +62,7 @@ public class ZombieSpawner : MonoBehaviour
     /// <summary> How many lanes are in this level. Will likely either be 5 or 6 </summary>
     public int lanes;
     /// <summary> The "amount" of zombies currently in the lawn, influenced by their <c>spawnScores</c>. When low enough, the next wave will spawn </summary>
-    private int[] waveBuilds;
+    private float[] waveBuilds;
     /// <summary> The amount of time in seconds to wait before the next wave spawns no matter what </summary>
     private float forceSend;
     private int waveNumber;
@@ -127,7 +127,7 @@ public class ZombieSpawner : MonoBehaviour
                 i += 3;
             }
         }
-        waveBuilds = new int[waves.Count];
+        waveBuilds = new float[waves.Count];
 
         foreach (int i in flagWaveNumbers)
         {
@@ -211,7 +211,6 @@ public class ZombieSpawner : MonoBehaviour
                 List<int> remaining = new List<int>(possible);
                 for (int x = 0; x < i.count; x++)
                 {
-                    waveBuilds[waveNumber] += allZombies[i.ID].GetComponent<Zombie>().spawnScore;
                     GameObject g = Instantiate(allZombies[i.ID]);
                     if (i.ID == 22) // Bungee
                     {
@@ -243,7 +242,6 @@ public class ZombieSpawner : MonoBehaviour
                             SFX.Instance.Play(graveRiseSFX);
                             int[] possible = new int[] { 0, 2, 4 };
                             int _ID = possible[UnityEngine.Random.Range(0, possible.Length)];
-                            waveBuilds[waveNumber] += allZombies[_ID].GetComponent<Zombie>().spawnScore;
                             GameObject g = Instantiate(allZombies[_ID], t.transform.position, Quaternion.identity);
                             g.GetComponent<Zombie>().row = i;
                             g.GetComponent<Zombie>().waveNumber = waveNumber;
@@ -277,7 +275,7 @@ public class ZombieSpawner : MonoBehaviour
                 yield return new WaitForSeconds(1);
                 SFX.Instance.Play(hugeWaveStartSFX);
             }
-            else yield return new WaitUntil(() => (waveBuilds[waveNumber] / maxBuild < 0.5f) || forceSend <= 0);
+            else yield return new WaitUntil(() => (waveBuilds[waveNumber] / maxBuild < 1f / 3) || forceSend <= 0);
         }
         yield return new WaitUntil(() => Mathf.Max(waveBuilds) == 0);
         levelManager.Win();
@@ -302,7 +300,7 @@ public class ZombieSpawner : MonoBehaviour
         final.SetActive(false);
     }
 
-    public void SubtractBuild(int build, int wave)
+    public void SubtractBuild(float build, int wave)
     {
         waveBuilds[wave] -= build;
     }

@@ -60,6 +60,7 @@ public class Bungee : Zombie
 
     protected override void Spawn()
     {
+        ZombieSpawner.Instance.SubtractBuild(-baseHP, waveNumber);
         List<(int, int)> found = new List<(int, int)>();
         for (int i = 1; i <= ZombieSpawner.Instance.lanes; i++)
         {

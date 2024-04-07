@@ -11,6 +11,8 @@ public class Armor : MonoBehaviour
     private SpriteRenderer SR;
     private Zombie user;
 
+    private bool hypnotized;
+
     private Sprite normalSprite;
     public Sprite damagedSprite1;
     public Sprite damagedSprite2;
@@ -24,6 +26,7 @@ public class Armor : MonoBehaviour
         user = transform.parent.GetComponent<Zombie>();
         normalSprite = SR.sprite;
         baseHP = HP;
+        if (!user.displayOnly) ZombieSpawner.Instance.SubtractBuild(-baseHP, user.waveNumber);
     }
 
     // Update is called once per frame
@@ -39,14 +42,23 @@ public class Armor : MonoBehaviour
     public float ReceiveDamage(float dmg, bool disintegrating)
     {
         if (!disintegrating) if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);
+        if (!hypnotized) ZombieSpawner.Instance.SubtractBuild(Mathf.Min(dmg, HP), user.waveNumber);
         float remaining = Mathf.Max(0, dmg - HP);
         HP -= dmg;
+        HP = Mathf.Max(0, HP);
         return remaining;
     }
 
     public void DetachUser()
     {
+        ZombieSpawner.Instance.SubtractBuild(HP, user.waveNumber);
         user = null;
+    }
+
+    public void Hypnotize()
+    {
+        ZombieSpawner.Instance.SubtractBuild(HP, user.waveNumber);
+        hypnotized = true;
     }
 
 }

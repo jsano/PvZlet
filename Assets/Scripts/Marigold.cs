@@ -17,8 +17,8 @@ public class Marigold : CherryBomb
             if (a.collider.GetComponent<Shield>() != null) continue;
             z = a.collider.GetComponent<Zombie>();
             if (a.transform.localScale.x < 1) z.Die();
-            z.HP /= 3;
-            if (z.armor != null) z.armor.GetComponent<Armor>().HP /= 3;
+            z.ReceiveDamage(z.HP / 3 * 2, gameObject, disintegrating: true);
+            if (z.armor != null) z.armor.GetComponent<Armor>().ReceiveDamage(z.armor.GetComponent<Armor>().HP / 3 * 2, gameObject);
             if (z.shield != null) z.shield.GetComponent<Shield>().HP /= 3;
             z.transform.localScale /= 2;
         }

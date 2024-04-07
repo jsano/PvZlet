@@ -102,7 +102,6 @@ public class Dancing : Zombie
                 left.waveNumber = waveNumber;
             }
         }
-        ZombieSpawner.Instance.SubtractBuild(-missing.Count, waveNumber);
         StartCoroutine(FinishSpawn());
     }
 

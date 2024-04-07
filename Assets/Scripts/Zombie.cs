@@ -136,6 +136,7 @@ public class Zombie : Damagable
     /// <summary> How the zombie should enter the lawn. Appears at the rightmost lane by default. Override this method if otherwise </summary>
     protected virtual void Spawn()
     {
+        ZombieSpawner.Instance.SubtractBuild(-baseHP, waveNumber);
         if (enterSFX != null) SFX.Instance.Play(enterSFX, true);
         if (transform.position == Vector3.zero) transform.position = new Vector3(Tile.COL_TO_WORLD[9] + Tile.TILE_DISTANCE.x, Tile.tileObjects[row, 9].transform.position.y, 0);
     }
@@ -217,7 +218,9 @@ public class Zombie : Damagable
         if (status != null && source != null && status.removedBy == source.tag) status.Remove();
         // Any armor will take priority over the main zombie
         if (armor != null) dmg = armor.GetComponent<Armor>().ReceiveDamage(dmg, disintegrating);
+        if (!hypnotized) ZombieSpawner.Instance.SubtractBuild(Mathf.Min(HP, dmg), waveNumber);
         HP -= dmg;
+        HP = Mathf.Max(0, HP);
         StartCoroutine(HitVisual());
         return HP;
     }
@@ -232,8 +235,12 @@ public class Zombie : Damagable
     /// <summary> Updates the spawner's progression score, and disappears </summary>
     public virtual void Die()
     {
-        ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
         Destroy(shield);
+        if (!hypnotized)
+        {
+            ZombieSpawner.Instance.SubtractBuild(Mathf.Max(HP, 0), waveNumber);
+            if (armor != null) ZombieSpawner.Instance.SubtractBuild(armor.GetComponent<Armor>().HP, waveNumber);
+        }
         Destroy(gameObject);
     }
 
@@ -246,8 +253,8 @@ public class Zombie : Damagable
         baseMaterialColor = Color.magenta;
         SR.material.color = baseMaterialColor;
         if (shield != null) shield.GetComponent<Shield>().Hypnotize();
-        ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
-        spawnScore = 0;
+        if (armor != null) armor.GetComponent<Armor>().Hypnotize();
+        ZombieSpawner.Instance.SubtractBuild(HP, waveNumber);
     }
 
     public void ResetWalk()

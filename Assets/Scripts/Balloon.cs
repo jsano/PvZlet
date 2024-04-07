@@ -33,11 +33,11 @@ public class Balloon : Zombie
         base.ReceiveDamage(dmg, source, eat, disintegrating);
         if (!popped && (armor == null || armor.GetComponent<Armor>().HP <= 0))
         {
-            SFX.Instance.Play(popSFX);
+            if (!disintegrating) SFX.Instance.Play(popSFX);
             popped = true;
             BC.offset = new Vector2(0, 0);
             BC.size = new Vector2(1, 1);
-            transform.position = new Vector3(transform.position.x, Tile.tileObjects[row, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y);
+            transform.position = new Vector3(transform.position.x, Tile.tileObjects[row, Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 9)].transform.position.y);
             walkTime = alternateWalkTime[0];
             ResetWalk();
         }

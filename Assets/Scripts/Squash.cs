@@ -30,16 +30,17 @@ public class Squash : Plant
         SR.sortingLayerName = "Projectile";
         GetComponent<BoxCollider2D>().enabled = false;
         dest += new Vector3(0, Tile.TILE_DISTANCE.y, 0);
+        if (z != null) dest.x = z.transform.position.x;
         while (transform.position != dest)
         {
-            transform.position = Vector3.MoveTowards(transform.position, dest, 15 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, dest, 25 * Time.deltaTime);
             yield return null;
         }
         dest = transform.position - new Vector3(0, Tile.TILE_DISTANCE.y, 0);
         yield return new WaitForSeconds(0.25f);
         while (transform.position != dest)
         {
-            transform.position = Vector3.MoveTowards(transform.position, dest, 15 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, dest, 25 * Time.deltaTime);
             yield return null;
         }
         RaycastHit2D[] all = Physics2D.BoxCastAll(dest, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));

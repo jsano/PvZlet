@@ -224,7 +224,7 @@ public class Almanac : MonoBehaviour
         { 5, "Normal" },
         { 4, "Moderate" },
         { 3, "Fast" },
-        { 2, "SPEED" },
+        { 1, "SPEED" },
     };
 
     private string[] zombieDescriptions = new string[]

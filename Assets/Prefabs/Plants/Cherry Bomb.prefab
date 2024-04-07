@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7370838069687565889, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
       propertyPath: m_Name
-      value: CherryBomb
+      value: Cherry Bomb
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5775459341599924872, guid: c76257340c79a5d43b1bed67c6997f10, type: 3}
@@ -87,10 +87,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d834071b87499834898c149ade33084b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 2
   cost: 150
   recharge: 45
   damage: 100
+  effectiveDamage: 100
   atkspd: 1
   variableStartPeriod: 0
   HP: 5
@@ -108,5 +109,5 @@ MonoBehaviour:
   status: {fileID: 0}
   attackSFX:
   - {fileID: 8300000, guid: 45adb37a07fbec4459b23e868c3519ea, type: 3}
-  area: {x: 2.5, y: 2.5}
+  area: {x: 3, y: 3}
   buildup: {fileID: 8300000, guid: 59958fea84a408848b742b4a6c15f63c, type: 3}

@@ -133,7 +133,7 @@ MonoBehaviour:
   reload: 10
   target: {fileID: 4859087978686269693}
   explosion: {fileID: 3887197204216420214, guid: 6725483e6b4c5934dbb86258456739c8, type: 3}
-  area: {x: 2.5, y: 2.5}
+  area: {x: 3, y: 3}
   launchSFX: {fileID: 8300000, guid: 77c092e806031d14e858ddca6e550671, type: 3}
   explosionSFX: {fileID: 8300000, guid: 65430e86f7239ba4da208f36eee67770, type: 3}
   readySFX: {fileID: 8300000, guid: e0d5ae07503dd6440801bca0b855aee2, type: 3}

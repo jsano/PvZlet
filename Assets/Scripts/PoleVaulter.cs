@@ -49,8 +49,9 @@ public class PoleVaulter : Zombie
             projectile.transform.rotation = Quaternion.Euler(0, 0, 90);
             projectile.transform.localPosition = new Vector3(-transform.localScale.x / 2, 0, 0);
             projectile.transform.SetParent(null);
-            projectile.GetComponent<DestroyAfterAnimation>().enabled = true;
+            
         }
+        projectile.GetComponent<DestroyAfterAnimation>().enabled = true;
         SFX.Instance.Play(jumpSFX);
         int c = Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 9);
         if (c == 1) RB.velocity = (Tile.tileObjects[row, c].transform.position - Tile.tileObjects[row, c + 1].transform.position) * 2;

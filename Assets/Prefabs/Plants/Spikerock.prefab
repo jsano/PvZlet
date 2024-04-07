@@ -107,7 +107,7 @@ MonoBehaviour:
   cost: 250
   recharge: 45
   damage: 1
-  effectiveDamage: 2
+  effectiveDamage: '2\nPop Count: 3'
   atkspd: 1.2
   variableStartPeriod: 1
   HP: 6
@@ -127,5 +127,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4460435d6e6eed84ba7bd0f2107c99ed, type: 3}
   - {fileID: 8300000, guid: e958a4d860da9f94ab8a172b165a7bc0, type: 3}
   - {fileID: 8300000, guid: 05ebb0ed02b2567448523dc90916840a, type: 3}
-  popsRemaining: 3
+  popsRemaining: 6
   popSFX: {fileID: 8300000, guid: 3867139b0f63ac34b8b23e792929d1cb, type: 3}

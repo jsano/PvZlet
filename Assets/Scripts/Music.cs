@@ -21,7 +21,7 @@ public class Music : MonoBehaviour
     {
         if (!changing)
         {
-            if (AS.clip.name == "RoofNight") AS.volume = PlayerPrefs.GetFloat("Music", 1); // temp
+            if (AS.clip != null && AS.clip.name == "RoofNight") AS.volume = PlayerPrefs.GetFloat("Music", 1); // temp
             else AS.volume = PlayerPrefs.GetFloat("Music", 1) / 2;
         }
     }

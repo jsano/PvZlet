@@ -12,7 +12,7 @@ public class Spikerock : Spikeweed
 
     private IEnumerator Attack_Helper(Zombie z)
     {
-        base.Attack(z);
+        Stab();
         yield return new WaitForSeconds(0.2f);
         SFX.Instance.Play(attackSFX[Random.Range(0, attackSFX.Length)]);
         base.Attack(z);

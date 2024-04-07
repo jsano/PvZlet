@@ -91,7 +91,7 @@ MonoBehaviour:
   cost: 250
   recharge: 45
   damage: 2
-  effectiveDamage: 
+  effectiveDamage: 2
   atkspd: 1.2
   variableStartPeriod: 1
   HP: 6

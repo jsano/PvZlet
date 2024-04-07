@@ -22,9 +22,8 @@ public class ZombieSpawner : MonoBehaviour
         else
         {
             instance = this;
-            l = FindFirstObjectByType<Level>();
-            if (l == null) return;
-            lanes = (l.setting == Level.Setting.Pool || l.setting == Level.Setting.Fog) ? 6 : 5;
+            if (Level.currentLevel == null) return;
+            lanes = (Level.currentLevel.setting == Level.Setting.Pool || Level.currentLevel.setting == Level.Setting.Fog) ? 6 : 5;
         }
     }
 
@@ -67,7 +66,6 @@ public class ZombieSpawner : MonoBehaviour
     private float forceSend;
     private int waveNumber;
 
-    private Level l;
     public LevelManager levelManager;
     public Image progressBar;
     public GameObject hugeWave;
@@ -86,10 +84,10 @@ public class ZombieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelUI.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = l.levelName;
+        levelUI.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = Level.currentLevel.waves.name;
         HashSet<int> unique = new HashSet<int>();
-        preparation = l.preparation;
-        TextAsset levelZombies = l.waves;
+        preparation = Level.currentLevel.preparation;
+        TextAsset levelZombies = Level.currentLevel.waves;
         string[] level = levelZombies.text.Split(new string[] { " ", "\n" }, StringSplitOptions.None);
         List<ZombieData> wave = new List<ZombieData>();
         List<GraveData> grave = new List<GraveData>();

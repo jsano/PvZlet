@@ -22,7 +22,6 @@ public class LevelManager : MonoBehaviour
     public GameObject sun;
     public GameObject conveyor;
     public Sky sky;
-    private Level l;
     public AudioSource music;
 
     public AudioClip letsRockSFX;
@@ -51,8 +50,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        l = FindFirstObjectByType<Level>();
-        foreach (GameObject g in l.special) Instantiate(g);
+        foreach (GameObject g in Level.currentLevel.special) Instantiate(g);
         foreach (Transform t in UI.transform) t.gameObject.SetActive(false);
         music.clip = music.GetComponent<Music>().allMusic[1];
         music.Play();
@@ -74,7 +72,7 @@ public class LevelManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);
 
-        if (l.conveyor.Count == 0)
+        if (Level.currentLevel.conveyor.Count == 0)
         {
             pause.SetActive(true);
             almanac.SetActive(true);
@@ -110,7 +108,7 @@ public class LevelManager : MonoBehaviour
         }
         mainCamera.transform.position = startPos;
         yield return new WaitForSeconds(0.5f);
-        if (l.fogColumn > 0)
+        if (Level.currentLevel.fogColumn > 0)
         {
             sky.enabled = true;
             yield return new WaitForSeconds(1f);
@@ -132,7 +130,7 @@ public class LevelManager : MonoBehaviour
         ZombieSpawner.Instance.levelUI.SetActive(true);
         sky.enabled = true;
         status = Status.Start;
-        if (l.conveyor.Count > 0)
+        if (Level.currentLevel.conveyor.Count > 0)
         {
             SFX.Instance.Play(rollIn);
             conveyor.SetActive(true);
@@ -143,9 +141,9 @@ public class LevelManager : MonoBehaviour
                 yield return null;
             }
         }
-        if (l.music != -1)
+        if (Level.currentLevel.music != -1)
         {
-            music.clip = music.GetComponent<Music>().allMusic[l.music];
+            music.clip = music.GetComponent<Music>().allMusic[Level.currentLevel.music];
             music.Play();
         }
         else music.clip = null;

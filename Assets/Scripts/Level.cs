@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 public class Level : MonoBehaviour
 {
 
-    [HideInInspector] public string levelName;
-
     public enum Setting
     {
         Day,
@@ -51,13 +49,14 @@ public class Level : MonoBehaviour
 
     void Start()
     {
-        levelName = waves.name;
+
     }
+
+    public static Level currentLevel;
 
     public static void LoadLevel(Level l)
     {
-        Level g = Instantiate(l);
-        DontDestroyOnLoad(g);
+        currentLevel = l;
         Time.timeScale = 1;
         SceneManager.LoadScene(l.setting.ToString());
     }

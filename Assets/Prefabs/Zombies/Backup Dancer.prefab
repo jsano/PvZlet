@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616237449142758512, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Name
-      value: Backup
+      value: Backup Dancer
       objectReference: {fileID: 0}
     - target: {fileID: 1912450237437847958, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: m_Color.b
@@ -87,11 +87,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23df625b578712e41950fed583b5cf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieName: Backup Dancer
+  weakness: 
   waveNumber: 0
   spawnScore: 1
   damage: 1
   walkTime: 5
+  alternateWalkTime: []
   HP: 10
   row: 1
   hitsGround: 0

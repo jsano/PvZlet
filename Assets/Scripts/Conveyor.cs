@@ -6,7 +6,6 @@ public class Conveyor : MonoBehaviour
 {
 
     public GameObject conveyorSeed;
-    private Level l;
     private float interval = 5;
     private float period;
     [HideInInspector] public int count;
@@ -15,7 +14,6 @@ public class Conveyor : MonoBehaviour
     void Start()
     {
         period = interval / 2;
-        l = FindFirstObjectByType<Level>();
     }
 
     // Update is called once per frame
@@ -27,11 +25,11 @@ public class Conveyor : MonoBehaviour
         {
             period = 0;
             int range = 0;
-            foreach (Level.Data d in l.conveyor) range += Mathf.Max(0, d.count - PlantBuilder.Instance.plantCounts[d.plant]);
+            foreach (Level.Data d in Level.currentLevel.conveyor) range += Mathf.Max(0, d.count - PlantBuilder.Instance.plantCounts[d.plant]);
             if (range == 0) return;
             int index = Random.Range(0, range);
             int plant = 0;
-            foreach (Level.Data d in l.conveyor)
+            foreach (Level.Data d in Level.currentLevel.conveyor)
             {
                 index -= d.count - PlantBuilder.Instance.plantCounts[d.plant];
                 if (index < 0)

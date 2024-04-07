@@ -95,16 +95,13 @@ public class UI : MonoBehaviour
     public void Restart()
     {
         SFX.Instance.Play(unpauseFX);
-        Level l = FindFirstObjectByType<Level>();
-        Destroy(l.gameObject);
-        Level.LoadLevel(l);
+        Level.LoadLevel(Level.currentLevel);
     }
 
     public void MainMenu()
     {
         if (LevelManager.status != LevelManager.Status.Won) SFX.Instance.Play(unpauseFX);
-        Level l = FindFirstObjectByType<Level>();
-        if (l != null) Destroy(l.gameObject);
+        Level.currentLevel = null;
         SceneManager.LoadScene(0);
     }
 

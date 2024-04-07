@@ -37,9 +37,9 @@ public class DolphinRider : PoleVaulter
 
     private IEnumerator EnterPool()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         gameObject.layer = LayerMask.NameToLayer("Zombie");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         entered = true;
     }
 

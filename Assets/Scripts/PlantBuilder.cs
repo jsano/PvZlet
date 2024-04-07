@@ -41,27 +41,26 @@ public class PlantBuilder : MonoBehaviour
     void Start()
     {
         s = transform.Find("Sun").Find("Text").GetComponent<TextMeshProUGUI>();
-        Level l = FindFirstObjectByType<Level>();
         currentPlant = allPlants[0];
         plantCounts = new int[allPlants.Length];
-        for (int i = 0; i < Mathf.Min(l.unlockedUntil, allPlants.Length); i++)
+        for (int i = 0; i < Mathf.Min(Level.currentLevel.unlockedUntil, allPlants.Length); i++)
         {
             GameObject g = Instantiate(selectSeed, BG.transform);
             g.GetComponent<SelectSeed>().ID = i;
             selectSeeds.Add(g);
-            if (l.banned.Contains(i)) g.GetComponent<Button>().interactable = false;
+            if (Level.currentLevel.banned.Contains(i)) g.GetComponent<Button>().interactable = false;
         }
 
-        if (l.potColumn > 0) {
+        if (Level.currentLevel.potColumn > 0) {
             for (int i = 1; i <= ZombieSpawner.Instance.lanes; i++)
-                for (int j = 1; j <= l.potColumn; j++)
+                for (int j = 1; j <= Level.currentLevel.potColumn; j++)
                 {
                     Tile.tileObjects[i, j].Place(allPlants[33]);
                     plantCounts[33] += 1;
                 }
         }
         
-        sun = l.startingSun;
+        sun = Level.currentLevel.startingSun;
     }
 
     void Update()

@@ -89,7 +89,7 @@ public class Gargantuar : Zombie
             dead = true;
             BC.enabled = false;
             RB.velocity = Vector2.zero;
-            ZombieSpawner.Instance.SubtractBuild(spawnScore, waveNumber);
+            ZombieSpawner.Instance.SubtractBuild(Mathf.Max(HP, 0), waveNumber);
             SFX.Instance.Play(death);
             StartCoroutine(Death());
         }

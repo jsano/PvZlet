@@ -56,6 +56,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9132119623866771697, guid: 84eabef172cd80549b5e5bc4f16c0ff5, type: 3}
     - target: {fileID: 4904543073488655662, guid: 46dcb2de030506f44a397bb3eff839c6, type: 3}
+      propertyPath: spawnScore
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904543073488655662, guid: 46dcb2de030506f44a397bb3eff839c6, type: 3}
       propertyPath: zombieName
       value: Giga-Football Zombie
       objectReference: {fileID: 0}
@@ -65,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5042500414427527614, guid: 46dcb2de030506f44a397bb3eff839c6, type: 3}
       propertyPath: m_Name
-      value: GigaFootball
+      value: Giga-Football Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 5268907373845036120, guid: 46dcb2de030506f44a397bb3eff839c6, type: 3}
       propertyPath: m_Color.b

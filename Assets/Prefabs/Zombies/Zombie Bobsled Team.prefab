@@ -93,7 +93,7 @@ MonoBehaviour:
   damage: 0
   walkTime: 2
   alternateWalkTime: []
-  HP: 20
+  HP: 15
   row: 1
   hitsGround: 0
   aquatic: 0

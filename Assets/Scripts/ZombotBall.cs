@@ -23,11 +23,7 @@ public class ZombotBall : Zombie
         if (status != null) status.Remove();
         child.transform.Rotate(0, 0, 30 * Time.deltaTime);
         GameObject toEat = ClosestEatablePlant(Physics2D.BoxCastAll(transform.position, Vector2.one * 2, 0, Vector2.zero, 0, LayerMask.GetMask("Plant")));
-        if (toEat != null)
-        {
-            Debug.Log(toEat);
-            Eat(toEat);
-        }
+        if (toEat != null) Eat(toEat);
         WalkConstant();
         RaycastHit2D[] l = Physics2D.BoxCastAll(transform.position, Vector2.one * 2, 0, Vector2.zero, 0, LayerMask.GetMask("Lawnmower"));
         foreach (RaycastHit2D hit in l) if (hit.collider.GetComponent<Lawnmower>().row == row) Destroy(hit.collider.gameObject);

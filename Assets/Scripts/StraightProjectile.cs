@@ -93,7 +93,7 @@ public class StraightProjectile : MonoBehaviour
             if ((dir.y != 0 || other.GetComponent<Tile>().row == lane) && other.GetComponent<Tile>().col == blockAtSlopeColumn) Destroy(gameObject);
             return;
         }
-        if (other.GetComponent<Zombie>() != null && other.GetComponent<Zombie>().row != lane && dir.y == 0) return;
+        if (other.GetComponent<Zombie>() != null && other.GetComponent<Zombie>().row != lane && other.GetComponent<Zomboss>() == null && dir.y == 0) return;
         if (other.GetComponent<Plant>() != null && other.GetComponent<Plant>().row != lane && dir.y == 0) return;
 
         if (hitSFX.Length > 0) SFX.Instance.Play(hitSFX[Random.Range(0, hitSFX.Length)]);

@@ -7,22 +7,27 @@ public class Zomboss : Zombie
 {
 
     public GameObject[] balls;
+    public GameObject RV;
     public AudioClip spawn;
+    public AudioClip move;
     public AudioClip ball;
-    public AudioClip RV;
+    public AudioClip throwRV;
     public AudioClip defeated;
 
-    private int currentBuild;
-    private int maxBuild = 4;
+    private int currentCount;
+    private int maxCount = 10;
     private int maxSingularBuild = 2;
+    private int minSingularBuild = -1;
     private float period;
     private float interval = 3;
+    private bool threwRV;
+    private bool bungeed;
     private bool idle = true;
 
     // Update is called once per frame
     public override void Update()
     {
-        if (LevelManager.status == LevelManager.Status.Intro) return;
+        if (LevelManager.status != LevelManager.Status.Start) return;
         if (status != null) {
             status.walkMod = Mathf.Max(status.walkMod, 0.5f);
         }
@@ -34,24 +39,41 @@ public class Zomboss : Zombie
         {
             idle = false;
             period = 0;
-            if (currentBuild >= maxBuild)
+            if (currentCount >= maxCount)
             {
                 StartCoroutine(MakeBall());
-                maxBuild += 4;
+                maxCount += 2;
                 maxSingularBuild += 2;
-                currentBuild = 0;
+                minSingularBuild = Mathf.Min(minSingularBuild + 1, 4);
+                currentCount = 0;
+                threwRV = false;
+                bungeed = false;
             }
             else
             {
-                float decision = Random.Range(0, 1f); // 1 = spawn, 2 = move, 3 = bungee, 4 = rv
-                if (decision < 0.4f) StartCoroutine(SpawnZombie()); // 40%
-                else if (decision < 0.8f) 
+                float decision = Random.Range(0, 1f);
+                if (decision < 0.5f) StartCoroutine(SpawnZombie()); // 50%
+                else if (decision < 0.85f) // 35%
                 {
-                    MoveToLane(Random.Range(1, ZombieSpawner.Instance.lanes + 1), 0); // 40%
+                    SFX.Instance.Play(move);
+                    int newLane;
+                    do
+                    {
+                        newLane = Random.Range(1, ZombieSpawner.Instance.lanes + 1);
+                    } while (newLane == row);
+                    MoveToLane(newLane, 0);
                     idle = true;
                 }
-                else if (decision < 0.9f) StartCoroutine(SpawnBungees()); // 10%
-                else StartCoroutine(ThrowRV()); // 10%
+                else if (decision < 0.95f) // 10%
+                {
+                    if (!bungeed && maxCount >= 15) StartCoroutine(SpawnBungees());
+                    else StartCoroutine(SpawnZombie());
+                }
+                else // 5%
+                {
+                    if (!threwRV && maxCount >= 20) StartCoroutine(ThrowRV());
+                    else StartCoroutine(SpawnZombie());
+                }
             }
         }
     }
@@ -64,7 +86,7 @@ public class Zomboss : Zombie
             if (i == 1 || i == 9 || i == 22 || i == 31) continue; // Flag, Backup, Bungee, Zomboss
             Zombie temp = ZombieSpawner.Instance.allZombies[i].GetComponent<Zombie>();
             if (temp.aquatic) continue;
-            if (temp.spawnScore > maxSingularBuild) continue;
+            if (temp.spawnScore > maxSingularBuild || temp.spawnScore < minSingularBuild) continue;
             if (i == 15 && !Tile.tileObjects[row, 7].ContainsGridItem("Snow")) continue;
             possible.Add(i);
         }
@@ -72,7 +94,7 @@ public class Zomboss : Zombie
         GameObject g = ZombieSpawner.Instance.allZombies[possible[Random.Range(0, possible.Count)]];
         Zombie z = Instantiate(g, Tile.tileObjects[row, 7].transform.position, Quaternion.identity).GetComponent<Zombie>();
         z.row = row;
-        currentBuild += z.spawnScore;
+        currentCount += 1;
         /*Vector3 to = z.transform.localScale;
         z.transform.localScale = Vector3.zero;
         float frame = 0;
@@ -87,22 +109,41 @@ public class Zomboss : Zombie
 
     private IEnumerator SpawnBungees()
     {
-        GameObject[] b = new GameObject[maxBuild / 5];
-        for (int i = 0; i < maxBuild / 5; i++) b[i] = Instantiate(ZombieSpawner.Instance.allZombies[22]);
+        Bungee[] b = new Bungee[maxCount / 8];
+        for (int i = 0; i < maxCount / 8; i++)
+        {
+            Bungee cur = Instantiate(ZombieSpawner.Instance.allZombies[22]).GetComponent<Bungee>();
+            cur.row = 0;
+            cur.col = 0;
+            b[i] = cur;
+        }
         yield return new WaitUntil(() => b.Count(g => g != null) == 0);
         idle = true;
+        bungeed = true;
     }
 
     private IEnumerator ThrowRV()
     {
-        yield return null;
+        int r = Random.Range(1, ZombieSpawner.Instance.lanes);
+        int c = Random.Range(2, 5);
+        GameObject g = Instantiate(RV, Tile.tileObjects[r, c].transform.position + new Vector3(0, Tile.TILE_DISTANCE.y * 7), Quaternion.Euler(0, 0, 7.5f));
+        Rigidbody2D rb = g.GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0, -1);
+        yield return new WaitUntil(() => g.transform.position.y <= Tile.tileObjects[r, c].transform.position.y);
+        SFX.Instance.Play(throwRV);
+        for (int i = r; i <= r + 1; i++) for (int j = c - 1; j <= c + 1; j++) Tile.tileObjects[i, j].RemoveAllPlants();
+        rb.velocity = Vector2.zero;
+        rb.AddForce(new Vector2(-10, 10), ForceMode2D.Impulse);
         idle = true;
+        threwRV = true;
+        yield return new WaitUntil(() => g.transform.position.y <= -15);
+        Destroy(g);
     }
 
     private IEnumerator MakeBall()
     {
         SFX.Instance.Play(ball);
-        GameObject g = Instantiate(balls[Random.Range(0, balls.Length)], Tile.tileObjects[row, 7].transform.position, Quaternion.identity);
+        GameObject g = Instantiate(balls[Random.Range(0, balls.Length)], Tile.tileObjects[row, 7].transform.position - new Vector3(0, Tile.TILE_DISTANCE.y / 2), Quaternion.identity);
         g.GetComponentInChildren<ZombotBall>().row = row;
         yield return new WaitUntil(() => g.transform.GetChild(0).rotation.eulerAngles.z != 0);
         idle = true;

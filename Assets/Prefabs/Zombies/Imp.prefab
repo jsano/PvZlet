@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weakness: Umbrella Leaf (when thrown)
   waveNumber: 0
-  spawnScore: 0
+  spawnScore: 1
   damage: 1
   walkTime: 4
   alternateWalkTime: []

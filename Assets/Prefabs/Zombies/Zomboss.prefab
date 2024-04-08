@@ -108,16 +108,18 @@ MonoBehaviour:
   armor: {fileID: 0}
   shield: {fileID: 0}
   projectile: {fileID: 0}
-  wheels: 0
+  wheels: 1
   eatsPlants: 0
   status: {fileID: 0}
-  unchompable: 0
+  unchompable: 1
   displayOnly: 0
   enterSFX: {fileID: 8300000, guid: e1933bea7005d05429ff1291218f064a, type: 3}
   balls:
   - {fileID: 8358331206778390720, guid: 77e8c372a7a05be498ceed2e4c151be1, type: 3}
   - {fileID: 6114802214029447543, guid: 86696bded8d4c4d43acb534a6d793249, type: 3}
+  RV: {fileID: 1257901684555397520, guid: c7f64c5a61bc06645b8c7b61d1c27939, type: 3}
   spawn: {fileID: 8300000, guid: fe831eb7e748f5b47a6307c818f3742c, type: 3}
+  move: {fileID: 8300000, guid: 97f194da4121cfb4c8a088cd5b89d608, type: 3}
   ball: {fileID: 8300000, guid: 72a538342de5d82439a14596b135f87e, type: 3}
-  RV: {fileID: 8300000, guid: e03214e3dcfc0544e8b1a6b61b7653dd, type: 3}
+  throwRV: {fileID: 8300000, guid: e03214e3dcfc0544e8b1a6b61b7653dd, type: 3}
   defeated: {fileID: 8300000, guid: 88bcf26df80dedd499f42037a15ac02d, type: 3}

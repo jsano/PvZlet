@@ -59,7 +59,7 @@ public class Gloomshroom : Plant
             foreach (RaycastHit2D r in hits)
             {
                 if (r.collider.offset.y != 0) continue;
-                r.collider.GetComponent<Damagable>().ReceiveDamage(damage, null, disintegrating: true);
+                r.collider.GetComponent<Damagable>().ReceiveDamage(damage, gameObject, disintegrating: true);
             }
             yield return new WaitForSeconds(0.25f);
         }

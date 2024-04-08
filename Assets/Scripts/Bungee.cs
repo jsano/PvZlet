@@ -65,7 +65,7 @@ public class Bungee : Zombie
         for (int i = 1; i <= ZombieSpawner.Instance.lanes; i++)
         {
             if (row != 0 && i != row) continue;
-            for (int j = 1; j <= ZombieSpawner.Instance.lanes; j++)
+            for (int j = 1; j <= 9; j++)
             {
                 if (col != 0 && j != col) continue;
                 if (Tile.tileObjects[i, j].GetEatablePlant() != null)

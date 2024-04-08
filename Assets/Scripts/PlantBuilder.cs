@@ -15,9 +15,9 @@ public class PlantBuilder : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
+            Destroy(instance.gameObject);
         }
-        else instance = this;
+        instance = this;
     }
 
     /// <summary> The master list of all plants in the game </summary>

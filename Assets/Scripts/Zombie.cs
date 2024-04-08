@@ -304,6 +304,11 @@ public class Zombie : Damagable
         return baseMaterialColor;
     }
 
+    public float getBaseHP()
+    {
+        return baseHP;
+    }
+
     public bool isEating()
     {
         return eating != null;

@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         foreach (GameObject g in Level.currentLevel.special) Instantiate(g);
         foreach (Transform t in UI.transform) t.gameObject.SetActive(false);
@@ -57,7 +57,13 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(Start_Helper());
     }
 
-    private IEnumerator Start_Helper()
+    protected virtual IEnumerator Start_Helper()
+    {
+        yield return BeforeReadySetPlant();
+        yield return ReadySetPlant();
+    }
+
+    protected IEnumerator BeforeReadySetPlant()
     {
         yield return new WaitForSeconds(1);
         Vector3 startPos = mainCamera.transform.position;
@@ -97,7 +103,7 @@ public class LevelManager : MonoBehaviour
             }
             seedSelect.SetActive(false);
         }
-        
+
         yield return new WaitForSeconds(0.5f);
         while (curTime > 0)
         {
@@ -114,6 +120,10 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         music.GetComponent<Music>().FadeOut(1);
+    }
+
+    protected IEnumerator ReadySetPlant()
+    {
         SFX.Instance.Play(readySetPlant);
         ready.SetActive(true);
         TextMeshProUGUI t = ready.transform.Find("Text").GetComponent<TextMeshProUGUI>();

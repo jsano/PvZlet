@@ -24,15 +24,12 @@ public class SFX : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
+            Destroy(instance.gameObject);
         }
-        else
-        {
-            instance = this;
-            AS = GetComponent<AudioSource>();
-            jackAS = transform.Find("Jack").GetComponent<AudioSource>();
-        }
-    }
+        instance = this;
+        AS = GetComponent<AudioSource>();
+        jackAS = transform.Find("Jack").GetComponent<AudioSource>();
+}
 
     // Update is called once per frame
     void Update()

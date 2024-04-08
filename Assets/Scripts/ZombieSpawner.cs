@@ -13,18 +13,15 @@ public class ZombieSpawner : MonoBehaviour
     private static ZombieSpawner instance;
     public static ZombieSpawner Instance { get { return instance; } }
 
-    void Awake()
+    public virtual void Awake()
     {
         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
+            Destroy(instance.gameObject);
         }
-        else
-        {
-            instance = this;
-            if (Level.currentLevel == null) return;
-            lanes = (Level.currentLevel.setting == Level.Setting.Pool || Level.currentLevel.setting == Level.Setting.Fog) ? 6 : 5;
-        }
+        instance = this;
+        if (Level.currentLevel == null) return;
+        lanes = (Level.currentLevel.setting == Level.Setting.Pool || Level.currentLevel.setting == Level.Setting.Fog) ? 6 : 5;
     }
 
     private class ZombieData
@@ -82,7 +79,7 @@ public class ZombieSpawner : MonoBehaviour
     public AudioClip finalWaveSFX;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         levelUI.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = Level.currentLevel.waves.name;
         HashSet<int> unique = new HashSet<int>();
@@ -154,7 +151,7 @@ public class ZombieSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if (LevelManager.status == LevelManager.Status.Intro)
             foreach (GameObject g in displayZombies) g.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -300,6 +297,7 @@ public class ZombieSpawner : MonoBehaviour
 
     public void SubtractBuild(float build, int wave)
     {
+        if (waveBuilds == null) return;
         waveBuilds[wave] -= build;
     }
 

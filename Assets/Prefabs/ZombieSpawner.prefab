@@ -357,6 +357,7 @@ MonoBehaviour:
   - {fileID: 5549843355457633161, guid: 7f02b3a0943c5aa4985055edd734186b, type: 3}
   - {fileID: 7877829215468386434, guid: 2b7dc2104f9433247a52bf9093fa18aa, type: 3}
   - {fileID: 2456961415477051156, guid: aed848d29c70daf40ba96da674845b47, type: 3}
+  - {fileID: 6029315067629476688, guid: 9e3e4fdc142418545acda0ad41882b71, type: 3}
   grave: {fileID: 6265875747130582572, guid: eb38c8aa8f17d1c46b577b03dca9c23b, type: 3}
   lanes: 5
   levelManager: {fileID: 0}

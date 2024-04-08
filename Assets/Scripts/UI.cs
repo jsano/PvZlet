@@ -50,6 +50,7 @@ public class UI : MonoBehaviour
 
     public void Pause(bool keepMusic = false)
     {
+        if (music == null) music = GameObject.Find("Music").GetComponent<Music>();
         if (Time.timeScale == 0) // unpause
         {
             Time.timeScale = curTimeScale;

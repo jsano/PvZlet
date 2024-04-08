@@ -222,8 +222,8 @@ public class Almanac : MonoBehaviour
     private Dictionary<float, string> speed = new Dictionary<float, string>() {
         { 6, "Slow"},
         { 5, "Normal" },
-        { 4, "Moderate" },
-        { 3, "Fast" },
+        { 3.5f, "Moderate" },
+        { 2.5f, "Fast" },
         { 1, "SPEED" },
     };
 

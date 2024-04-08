@@ -5,6 +5,7 @@ using UnityEngine;
 public class Gloomshroom : Plant
 {
 
+    private Vector2 area = new Vector2(Tile.TILE_DISTANCE.x * 3f, Tile.TILE_DISTANCE.y * 2.5f);
     public AudioClip[] hitSFX;
 
     public override void Start()
@@ -16,8 +17,8 @@ public class Gloomshroom : Plant
 
     protected override Zombie LookInRange(int row)
     {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * (range + 0.5f) * 2, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
-        foreach (RaycastHit2D hit in hits) if (hit.collider.offset.y == 0) return hit.collider.GetComponent<Zombie>();
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, area, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
+        foreach (RaycastHit2D hit in hits) if (hit.collider.GetComponent<BoxCollider2D>().size.y == 1) return hit.collider.GetComponent<Zombie>();
         return null;
     }
 
@@ -55,10 +56,10 @@ public class Gloomshroom : Plant
             g = Instantiate(projectile, transform.position + rightOffset - topOffset, Quaternion.identity);
             g.transform.localScale = Tile.TILE_DISTANCE / 2;
             g.GetComponent<DestroyAfterAnimation>().lifetime = 0.2f;
-            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, Tile.TILE_DISTANCE * 3, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Shield"));
+            RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, area, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "Shield"));
             foreach (RaycastHit2D r in hits)
             {
-                if (r.collider.offset.y != 0) continue;
+                if (r.collider.GetComponent<BoxCollider2D>().size.y != 1) continue;
                 r.collider.GetComponent<Damagable>().ReceiveDamage(damage, gameObject, disintegrating: true);
             }
             yield return new WaitForSeconds(0.25f);

@@ -93,7 +93,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: walkTime
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: zombieName

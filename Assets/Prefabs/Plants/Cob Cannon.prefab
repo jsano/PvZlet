@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73fed7db0bfbdfc42b4556e400060447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 47
   cost: 700
   recharge: 45
   damage: 100
@@ -130,7 +130,7 @@ MonoBehaviour:
   status: {fileID: 0}
   attackSFX:
   - {fileID: 8300000, guid: 77c092e806031d14e858ddca6e550671, type: 3}
-  reload: 10
+  reload: 30
   target: {fileID: 4859087978686269693}
   explosion: {fileID: 3887197204216420214, guid: 6725483e6b4c5934dbb86258456739c8, type: 3}
   area: {x: 3, y: 3}

@@ -15,14 +15,16 @@ public class Zomboss : Zombie
     public AudioClip defeated;
 
     private int currentCount;
-    private int maxCount = 10;
+    private int maxCount = 6;
     private int maxSingularBuild = 2;
     private int minSingularBuild = -1;
     private float period;
-    private float interval = 3;
+    private float interval = 5;
     private bool threwRV;
     private bool bungeed;
     private bool idle = true;
+
+    private int sortingOrder;
 
     // Update is called once per frame
     public override void Update()
@@ -42,18 +44,19 @@ public class Zomboss : Zombie
             if (currentCount >= maxCount)
             {
                 StartCoroutine(MakeBall());
-                maxCount += 2;
+                maxCount += 1;
                 maxSingularBuild += 2;
                 minSingularBuild = Mathf.Min(minSingularBuild + 1, 4);
                 currentCount = 0;
+                interval = Mathf.Max(interval - 0.25f, 2);
                 threwRV = false;
                 bungeed = false;
             }
             else
             {
                 float decision = Random.Range(0, 1f);
-                if (decision < 0.5f) StartCoroutine(SpawnZombie()); // 50%
-                else if (decision < 0.85f) // 35%
+                if (decision < 0.45f) StartCoroutine(SpawnZombie()); // 45%
+                else if (decision < 0.8f) // 35%
                 {
                     SFX.Instance.Play(move);
                     int newLane;
@@ -64,14 +67,14 @@ public class Zomboss : Zombie
                     MoveToLane(newLane, 0);
                     idle = true;
                 }
-                else if (decision < 0.95f) // 10%
+                else if (decision < 0.9f) // 10%
                 {
-                    if (!bungeed && maxCount >= 15) StartCoroutine(SpawnBungees());
+                    if (!bungeed && maxCount >= 8) StartCoroutine(SpawnBungees());
                     else StartCoroutine(SpawnZombie());
                 }
-                else // 5%
+                else // 10%
                 {
-                    if (!threwRV && maxCount >= 20) StartCoroutine(ThrowRV());
+                    if (!threwRV && maxCount >= 10) StartCoroutine(ThrowRV());
                     else StartCoroutine(SpawnZombie());
                 }
             }
@@ -94,6 +97,8 @@ public class Zomboss : Zombie
         GameObject g = ZombieSpawner.Instance.allZombies[possible[Random.Range(0, possible.Count)]];
         Zombie z = Instantiate(g, Tile.tileObjects[row, 7].transform.position, Quaternion.identity).GetComponent<Zombie>();
         z.row = row;
+        z.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
+        sortingOrder += 1;
         currentCount += 1;
         /*Vector3 to = z.transform.localScale;
         z.transform.localScale = Vector3.zero;
@@ -109,8 +114,8 @@ public class Zomboss : Zombie
 
     private IEnumerator SpawnBungees()
     {
-        Bungee[] b = new Bungee[maxCount / 8];
-        for (int i = 0; i < maxCount / 8; i++)
+        Bungee[] b = new Bungee[maxCount / 4];
+        for (int i = 0; i < maxCount / 4; i++)
         {
             Bungee cur = Instantiate(ZombieSpawner.Instance.allZombies[22]).GetComponent<Bungee>();
             cur.row = 0;
@@ -179,9 +184,14 @@ public class Zomboss : Zombie
 
     public override void Die()
     {
-        if (BC.enabled) SFX.Instance.Play(defeated);
+        if (BC.enabled)
+        {
+            Zombie[] left = FindObjectsByType<Zombie>(FindObjectsSortMode.None);
+            foreach (Zombie zombie in left) if (zombie != this) zombie.Die();
+            SFX.Instance.Play(defeated);
+            StartCoroutine(BreakDown());
+        }
         BC.enabled = false;
-        StartCoroutine(BreakDown());
     }
 
     private IEnumerator BreakDown()

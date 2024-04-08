@@ -55,6 +55,7 @@ public class PlantBuilder : MonoBehaviour
             for (int i = 1; i <= ZombieSpawner.Instance.lanes; i++)
                 for (int j = 1; j <= Level.currentLevel.potColumn; j++)
                 {
+                    if (Tile.tileObjects[i, j].planted != null) continue;
                     Tile.tileObjects[i, j].Place(allPlants[33]);
                     plantCounts[33] += 1;
                 }

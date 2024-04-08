@@ -28,7 +28,7 @@ public class Jalapeno : Plant
                 if (a.collider.GetComponent<Shield>() != null) Destroy(a.collider.gameObject);
                 else
                 {
-                    if (row == a.collider.GetComponent<Zombie>().row)
+                    if (a.collider.GetComponent<Zomboss>() != null || row == a.collider.GetComponent<Zombie>().row)
                     {
                         a.collider.GetComponent<Zombie>().ReceiveDamage(damage, gameObject, disintegrating: true);
                         prev.Add(a.collider.gameObject);

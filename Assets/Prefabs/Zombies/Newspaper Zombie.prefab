@@ -93,7 +93,7 @@ MonoBehaviour:
   damage: 1
   walkTime: 5
   alternateWalkTime:
-  - 3
+  - 2.5
   HP: 15
   row: 1
   hitsGround: 0

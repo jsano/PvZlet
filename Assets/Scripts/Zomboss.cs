@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Zomboss : Zombie
@@ -11,8 +12,8 @@ public class Zomboss : Zombie
     public AudioClip defeated;
 
     private int currentBuild;
-    private int maxBuild = 1;
-    private int maxSingularBuild = 1;
+    private int maxBuild = 4;
+    private int maxSingularBuild = 2;
     private float period;
     private float interval = 3;
     private bool idle = true;
@@ -22,8 +23,7 @@ public class Zomboss : Zombie
     {
         if (LevelManager.status == LevelManager.Status.Intro) return;
         if (status != null) {
-            if (status.name == "Butter") status = null;
-            else status.walkMod = Mathf.Max(status.walkMod, 0.5f);
+            status.walkMod = Mathf.Max(status.walkMod, 0.5f);
         }
 
         if (idle && !changingLanes) period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
@@ -31,32 +31,75 @@ public class Zomboss : Zombie
         {
             idle = false;
             period = 0;
-            float decision = Random.Range(0, 1f); // 1 = spawn, 2 = move, 3 = bungee, 4 = rv
-            if (decision < 0.5f) StartCoroutine(SpawnZombie()); // 50%
-            else if (decision < 0.75) 
+            if (currentBuild >= maxBuild)
             {
-                MoveToLane(Random.Range(1, ZombieSpawner.Instance.lanes + 1), 0); // 25%
-                idle = true;
+                StartCoroutine(MakeBall());
+                maxBuild += 4;
+                maxSingularBuild += 2;
+                currentBuild = 0;
             }
-            else if (decision < 0.9) StartCoroutine(SpawnBungees()); // 15%
-            else StartCoroutine(ThrowRV()); // 10%
+            else
+            {
+                float decision = Random.Range(0, 1f); // 1 = spawn, 2 = move, 3 = bungee, 4 = rv
+                if (decision < 0.4f) StartCoroutine(SpawnZombie()); // 40%
+                else if (decision < 0.8f) 
+                {
+                    MoveToLane(Random.Range(1, ZombieSpawner.Instance.lanes + 1), 0); // 40%
+                    idle = true;
+                }
+                else if (decision < 0.9f) StartCoroutine(SpawnBungees()); // 10%
+                else StartCoroutine(ThrowRV()); // 10%
+            }
         }
     }
 
     private IEnumerator SpawnZombie()
     {
-        //1,9,31
+        List<int> possible = new List<int>();
+        for (int i = 0; i < ZombieSpawner.Instance.allZombies.Length; i++)
+        {
+            if (i == 1 || i == 9 || i == 22 || i == 31) continue; // Flag, Backup, Bungee, Zomboss
+            Zombie temp = ZombieSpawner.Instance.allZombies[i].GetComponent<Zombie>();
+            if (temp.aquatic) continue;
+            if (temp.spawnScore > maxSingularBuild) continue;
+            if (i == 15 && Tile.tileObjects[row, 7].ContainsGridItem("Snow")) continue;
+            possible.Add(i);
+        }
+        SFX.Instance.Play(spawn);
+        GameObject g = ZombieSpawner.Instance.allZombies[possible[Random.Range(0, possible.Count)]];
+        Zombie z = Instantiate(g, Tile.tileObjects[row, 7].transform.position, Quaternion.identity).GetComponent<Zombie>();
+        z.row = row;
+        currentBuild += z.spawnScore;
+        /*Vector3 to = z.transform.localScale;
+        z.transform.localScale = Vector3.zero;
+        float frame = 0;
+        while (z.transform.localScale.magnitude < to.magnitude)
+        {
+            z.transform.localScale = Vector3.Lerp(Vector3.zero, to, frame);
+            frame += Time.deltaTime;
+        }*/
         yield return null;
+        idle = true;
     }
 
     private IEnumerator SpawnBungees()
     {
-        yield return null;
+        GameObject[] b = new GameObject[maxBuild / 5];
+        for (int i = 0; i < maxBuild / 5; i++) b[i] = Instantiate(ZombieSpawner.Instance.allZombies[22]);
+        yield return new WaitUntil(() => b.Count(g => g != null) == 0);
+        idle = true;
     }
 
     private IEnumerator ThrowRV()
     {
         yield return null;
+        idle = true;
+    }
+
+    private IEnumerator MakeBall()
+    {
+        yield return null;
+        idle = true;
     }
 
     protected override void Spawn()

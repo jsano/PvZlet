@@ -42,6 +42,7 @@ public class StatMod : ScriptableObject
     public void Apply(Zombie z, string name, AudioClip sfx = null)
     {
         if (z.GetComponent<Zomboni>() != null || z.GetComponent<Bobsled>() != null) return; //NOTE: Maybe make "status effectable" into a field
+        if (z.GetComponent<Zomboss>() != null && name == "Butter") return;
         target = z;
         if (sfx != null && (target.status == null || target.status.statusName != name)) SFX.Instance.Play(sfx);
         if (target.status) target.status.Remove();

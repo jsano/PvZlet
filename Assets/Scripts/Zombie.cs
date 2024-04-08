@@ -277,7 +277,7 @@ public class Zombie : Damagable
         float targetY = Tile.tileObjects[lane, Tile.WORLD_TO_COL(transform.position.x)].transform.position.y;
         while (Mathf.Abs(transform.position.y - targetY) > 0.01f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, 0), 2f * Time.deltaTime * ((status == null) ? 1 : status.walkMod));
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, 0), 3f * Time.deltaTime * ((status == null) ? 1 : status.walkMod));
             yield return null;
         }
         row = lane;

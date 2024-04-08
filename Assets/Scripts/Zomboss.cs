@@ -13,6 +13,8 @@ public class Zomboss : Zombie
     public AudioClip ball;
     public AudioClip throwRV;
     public AudioClip defeated;
+    public AudioClip defeated1;
+    public GameObject explosion;
 
     private int currentCount;
     private int maxCount = 6;
@@ -184,23 +186,57 @@ public class Zomboss : Zombie
 
     public override void Die()
     {
+        if (status != null) status.Remove();
         if (BC.enabled)
         {
+            MoveToLane(3, 0);
             Zombie[] left = FindObjectsByType<Zombie>(FindObjectsSortMode.None);
             foreach (Zombie zombie in left) if (zombie != this) zombie.Die();
             SFX.Instance.Play(defeated);
-            StartCoroutine(BreakDown());
+            StartCoroutine(Fade());
+            StartCoroutine(Defeated1());
+            StartCoroutine(Explosions());
         }
         BC.enabled = false;
     }
 
-    private IEnumerator BreakDown()
+    private IEnumerator Fade()
     {
-        while (SR.color.a > 0.5f)
+        while (SR.color.a >= 0.5f)
         {
             SR.color -= new Color(0, 0, 0, 0.1f * Time.deltaTime);
             yield return null;
         }
+    }
+
+    private IEnumerator Defeated1()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(1);
+            SFX.Instance.Play(defeated1);
+        }
+    }
+
+    private IEnumerator Explosions() 
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            GameObject g = Instantiate(explosion, transform.position + new Vector3(Random.Range(-3f, 3), Random.Range(-3f, 3)), Quaternion.identity);
+            StartCoroutine(FadeExplosion(g.GetComponent<SpriteRenderer>()));
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
+
+    private IEnumerator FadeExplosion(SpriteRenderer g)
+    {
+        yield return new WaitForSeconds(0.5f);
+        while (g.color.a > 0)
+        {
+            g.color -= new Color(0, 0, 0, 3 * Time.deltaTime);
+            yield return null;
+        }
+        Destroy(g.gameObject);
     }
 
 }

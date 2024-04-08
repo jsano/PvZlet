@@ -123,3 +123,5 @@ MonoBehaviour:
   ball: {fileID: 8300000, guid: 72a538342de5d82439a14596b135f87e, type: 3}
   throwRV: {fileID: 8300000, guid: e03214e3dcfc0544e8b1a6b61b7653dd, type: 3}
   defeated: {fileID: 8300000, guid: 88bcf26df80dedd499f42037a15ac02d, type: 3}
+  defeated1: {fileID: 8300000, guid: 35c1eca297008c64f908103303fe2ccb, type: 3}
+  explosion: {fileID: 5137221819675673758, guid: 1e43b3e1a240ee44eaa9847db501ab37, type: 3}

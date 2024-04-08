@@ -83,6 +83,7 @@ public class Almanac : MonoBehaviour
             g = Instantiate(ZombieSpawner.Instance.allZombies[ID], image.transform, false);
             g.GetComponent<Zombie>().displayOnly = true;
             g.transform.localScale = new Vector3(g.transform.localScale.x * 50, g.transform.localScale.y * 50, 1);
+            if (ID == 31) g.transform.localScale /= 2.5f;
             g.transform.localPosition -= new Vector3(0, image.GetComponent<RectTransform>().rect.height / 2, 0);
             Zombie z = ZombieSpawner.Instance.allZombies[ID].GetComponent<Zombie>();
             nameText.text = z.name;
@@ -259,6 +260,7 @@ public class Almanac : MonoBehaviour
         "A zombie equipped with the highest levels of protection",
         "A zombie with twice as much HP as a regular Football Zombie",
         "A huge zombie with twice as much HP as a regular Gargantuar",
+        "The misunderstood complex antagonist of the franchise"
     };
 
     private string[] zombieNotes = new string[]
@@ -293,6 +295,7 @@ public class Almanac : MonoBehaviour
         "I've actually never played PvZ Plus yet",
         "I don't know whether it's better for Chomper to be able to eat this or not, but it can't for now",
         "All things considered, I do hope Marigold ends up actually being useful outside of just dealing with this",
+        "I have a lot of new ideas for this boss fight that I want to implement, but let's just say coding a boss fight is pretty damn hard"
     };
 
 }

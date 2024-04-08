@@ -197,7 +197,7 @@ public class Zombie : Damagable
     {
         if (!wheels) ResetWalk();
         eatPeriod += Time.deltaTime * ((status == null) ? 1 : status.eatMod);
-        if (eatPeriod >= eatTime)
+        if (eatPeriod >= eatTime || wheels)
         {
             eatPeriod = 0;
             if (LevelManager.status != LevelManager.Status.Lost && SFX.Instance.zombieEat.Length > 0)

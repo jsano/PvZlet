@@ -6,6 +6,7 @@ using UnityEngine;
 public class Zomboss : Zombie
 {
 
+    public GameObject[] balls;
     public AudioClip spawn;
     public AudioClip ball;
     public AudioClip RV;
@@ -26,6 +27,8 @@ public class Zomboss : Zombie
             status.walkMod = Mathf.Max(status.walkMod, 0.5f);
         }
 
+        if (!idle) transform.rotation = Quaternion.Euler(0, 0, 30);
+        else transform.rotation = Quaternion.identity;
         if (idle && !changingLanes) period += Time.deltaTime * ((status == null) ? 1 : status.walkMod);
         if (period >= interval)
         {
@@ -62,7 +65,7 @@ public class Zomboss : Zombie
             Zombie temp = ZombieSpawner.Instance.allZombies[i].GetComponent<Zombie>();
             if (temp.aquatic) continue;
             if (temp.spawnScore > maxSingularBuild) continue;
-            if (i == 15 && Tile.tileObjects[row, 7].ContainsGridItem("Snow")) continue;
+            if (i == 15 && !Tile.tileObjects[row, 7].ContainsGridItem("Snow")) continue;
             possible.Add(i);
         }
         SFX.Instance.Play(spawn);
@@ -98,7 +101,10 @@ public class Zomboss : Zombie
 
     private IEnumerator MakeBall()
     {
-        yield return null;
+        SFX.Instance.Play(ball);
+        GameObject g = Instantiate(balls[Random.Range(0, balls.Length)], Tile.tileObjects[row, 7].transform.position, Quaternion.identity);
+        g.GetComponentInChildren<ZombotBall>().row = row;
+        yield return new WaitUntil(() => g.transform.GetChild(0).rotation.eulerAngles.z != 0);
         idle = true;
     }
 

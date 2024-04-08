@@ -20,6 +20,7 @@ public class Player : Damagable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<ZombotBall>() != null) return;
         Zombie z = collision.GetComponent<Zombie>();
         if (z != null && LevelManager.status != LevelManager.Status.Lost)
         {

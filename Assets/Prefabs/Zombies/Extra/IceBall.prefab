@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3600303426205033332
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -4376423570253790693, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: weaknessPlant
+      value: 
+      objectReference: {fileID: 6254534753222394853, guid: 9732894ad258ac34abe5979b05cca33c, type: 3}
+    - target: {fileID: 1843693149833233493, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: weaknessPlant
+      value: 
+      objectReference: {fileID: 6254534753222394853, guid: 9732894ad258ac34abe5979b05cca33c, type: 3}
+    - target: {fileID: 5479093070343418477, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b59fe18c3c4ab684988853fc2e37c513, type: 3}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854406223109806993, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289916931571577347, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}
+      propertyPath: m_Name
+      value: IceBall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 195ffaa3a14e7da48a006899ce01d99e, type: 3}

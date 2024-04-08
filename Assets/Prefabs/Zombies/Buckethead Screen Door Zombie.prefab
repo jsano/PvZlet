@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 8756953677551118028, guid: d4c539bc447926646b12668bcc3dcfca, type: 3}
     - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: spawnScore
-      value: 6
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1205580398803512389, guid: 0d339b61b18f6bb4dac62f0604c0d12d, type: 3}
       propertyPath: zombieName

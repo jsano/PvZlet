@@ -9,9 +9,18 @@ public class Balloon : Zombie
 
     public AudioClip popSFX;
 
+    public override void Start()
+    {
+        projectile = Instantiate(projectile, transform, false);
+        projectile.transform.localPosition = new Vector3(0, BC.size.y / 2, 0);
+        projectile.GetComponent<SpriteRenderer>().sortingOrder = SR.sortingOrder + 2;
+        base.Start();
+        
+    }
+
     public override void Update()
     {
-        if (!popped && status != null) status.walkMod = Mathf.Max(status.walkMod, 0.5f);
+        if (projectile != null && status != null) status.walkMod = Mathf.Max(status.walkMod, 0.5f);
         base.Update();
     }
 
@@ -24,17 +33,17 @@ public class Balloon : Zombie
 
     protected override void Walk()
     {
-        if (popped) base.Walk();
+        if (projectile == null) base.Walk();
         else WalkConstant();
     }
 
     public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
     {
         base.ReceiveDamage(dmg, source, eat, disintegrating);
-        if (!popped && (armor == null || armor.GetComponent<Armor>().HP <= 0))
+        if (projectile != null && source.GetComponent<StraightProjectile>() != null && source.GetComponent<StraightProjectile>().sharp)
         {
             if (!disintegrating) SFX.Instance.Play(popSFX);
-            popped = true;
+            Destroy(projectile);
             BC.offset = new Vector2(0, 0);
             BC.size = new Vector2(1, 1);
             transform.position = new Vector3(transform.position.x, Tile.tileObjects[row, Mathf.Clamp(Tile.WORLD_TO_COL(transform.position.x), 1, 9)].transform.position.y);
@@ -46,7 +55,7 @@ public class Balloon : Zombie
 
     protected override void Eat(GameObject p)
     {
-        if (!popped && p.GetComponent<Player>() == null) return;
+        if (projectile != null && p.GetComponent<Player>() == null) return;
         base.Eat(p);
     }
 

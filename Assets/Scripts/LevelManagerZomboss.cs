@@ -24,7 +24,9 @@ public class LevelManagerZomboss : LevelManager
     protected override IEnumerator Start_Helper()
     {
         yield return BeforeReadySetPlant();
-        Instantiate(ZombieSpawner.Instance.allZombies[31], Tile.tileObjects[3, 8].transform.position, Quaternion.identity);
+        Zomboss g = Instantiate(ZombieSpawner.Instance.allZombies[31]).GetComponent<Zomboss>();
+        g.row = 3;
+        yield return new WaitForSeconds(3.5f);
         yield return ReadySetPlant();
     }
 

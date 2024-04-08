@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
     void Awake()
     {
         status = Status.Intro;
+        if (Level.currentLevel == null) Level.currentLevel = GameObject.Find("Testing").GetComponent<Level>(); // TEMP
     }
 
     // Start is called before the first frame update

@@ -113,4 +113,9 @@ MonoBehaviour:
   status: {fileID: 0}
   unchompable: 0
   displayOnly: 0
-  enterSFX: {fileID: 0}
+  enterSFX: {fileID: 8300000, guid: e1933bea7005d05429ff1291218f064a, type: 3}
+  enter: {fileID: 0}
+  spawn: {fileID: 8300000, guid: fe831eb7e748f5b47a6307c818f3742c, type: 3}
+  ball: {fileID: 8300000, guid: 72a538342de5d82439a14596b135f87e, type: 3}
+  RV: {fileID: 8300000, guid: e03214e3dcfc0544e8b1a6b61b7653dd, type: 3}
+  defeated: {fileID: 8300000, guid: 88bcf26df80dedd499f42037a15ac02d, type: 3}

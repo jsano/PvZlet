@@ -18,7 +18,7 @@ public class Zomboss : Zombie
 
     private int currentCount;
     private int maxCount = 6;
-    private int maxSingularBuild = 2;
+    private float maxSingularBuild = 2;
     private int minSingularBuild = -1;
     private float period;
     private float interval = 5;
@@ -47,7 +47,7 @@ public class Zomboss : Zombie
             {
                 StartCoroutine(MakeBall());
                 maxCount += 1;
-                maxSingularBuild += 2;
+                maxSingularBuild += 2.5f;
                 minSingularBuild = Mathf.Min(minSingularBuild + 1, 4);
                 currentCount = 0;
                 interval = Mathf.Max(interval - 0.25f, 2);
@@ -100,7 +100,7 @@ public class Zomboss : Zombie
         Zombie z = Instantiate(g, Tile.tileObjects[row, 7].transform.position, Quaternion.identity).GetComponent<Zombie>();
         z.row = row;
         z.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
-        sortingOrder += 1;
+        sortingOrder += 3;
         currentCount += 1;
         /*Vector3 to = z.transform.localScale;
         z.transform.localScale = Vector3.zero;
@@ -116,8 +116,8 @@ public class Zomboss : Zombie
 
     private IEnumerator SpawnBungees()
     {
-        Bungee[] b = new Bungee[maxCount / 4];
-        for (int i = 0; i < maxCount / 4; i++)
+        Bungee[] b = new Bungee[maxCount / 3];
+        for (int i = 0; i < maxCount / 3; i++)
         {
             Bungee cur = Instantiate(ZombieSpawner.Instance.allZombies[22]).GetComponent<Bungee>();
             cur.row = 0;

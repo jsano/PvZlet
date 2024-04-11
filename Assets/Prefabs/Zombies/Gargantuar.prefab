@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weakness: 
   waveNumber: 0
-  spawnScore: 20
+  spawnScore: 15
   damage: 1000
   walkTime: 6
   alternateWalkTime: []

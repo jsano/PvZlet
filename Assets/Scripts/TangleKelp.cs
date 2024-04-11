@@ -13,6 +13,7 @@ public class TangleKelp : Plant
     {
         if (!attacked)
         {
+            GetComponent<BoxCollider2D>().enabled = false;
             SFX.Instance.Play(caught);
             attacked = true;
             z.GetComponent<Collider2D>().enabled = false;

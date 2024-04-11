@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3eedf1fe8ed744e8d8d96a19058d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weakness: Umbrella Leaf
+  weakness: Magnet-shroom
   waveNumber: 0
   spawnScore: 3
   damage: 1

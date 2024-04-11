@@ -99,7 +99,7 @@ public class CobCannon : Plant
         SFX.Instance.Play(explosionSFX);
         GameObject g = Instantiate(explosion, p.transform.position, Quaternion.identity);
         g.transform.localScale = area * Tile.TILE_DISTANCE;
-        RaycastHit2D[] all = Physics2D.BoxCastAll(p.transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie"));
+        RaycastHit2D[] all = Physics2D.BoxCastAll(p.transform.position, area * Tile.TILE_DISTANCE, 0, Vector2.zero, 0, LayerMask.GetMask("Zombie", "ExplosivesOnly"));
         foreach (RaycastHit2D a in all)
         {
             a.collider.GetComponent<Zombie>().ReceiveDamage(damage, gameObject, disintegrating: true);

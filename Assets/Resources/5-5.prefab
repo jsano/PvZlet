@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: conveyor.Array.data[3].count
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: conveyor.Array.data[3].plant
@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: conveyor.Array.data[6].count
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: conveyor.Array.data[6].plant
@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: conveyor.Array.data[8].count
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -2178793260664136055, guid: 5f790faf0921f4147b53c8790d424e97, type: 3}
       propertyPath: conveyor.Array.data[8].plant

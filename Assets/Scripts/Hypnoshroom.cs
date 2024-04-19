@@ -9,7 +9,7 @@ public class Hypnoshroom : Plant
 
     public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
     {
-        if (eat)
+        if (eat && !isSleeping())
         {
             SFX.Instance.Play(hypnotizeStart);
             source.GetComponent<Zombie>().Hypnotize();

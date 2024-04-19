@@ -38,8 +38,7 @@ public class Balloon : Zombie
     }
 
     public override float ReceiveDamage(float dmg, GameObject source, bool eat = false, bool disintegrating = false)
-    {
-        base.ReceiveDamage(dmg, source, eat, disintegrating);
+    { 
         if (projectile != null && source.GetComponent<StraightProjectile>() != null && source.GetComponent<StraightProjectile>().sharp)
         {
             if (!disintegrating) SFX.Instance.Play(popSFX);
@@ -50,7 +49,7 @@ public class Balloon : Zombie
             walkTime = alternateWalkTime[0];
             ResetWalk();
         }
-        return HP;
+        return base.ReceiveDamage(dmg, source, eat, disintegrating);;
     }
 
     protected override void Eat(GameObject p)

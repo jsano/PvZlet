@@ -239,7 +239,7 @@ public class Zombie : Damagable
         if (!hypnotized)
         {
             ZombieSpawner.Instance.SubtractBuild(Mathf.Max(HP, 0), waveNumber);
-            if (armor != null) ZombieSpawner.Instance.SubtractBuild(armor.GetComponent<Armor>().HP, waveNumber);
+            if (armor != null) ZombieSpawner.Instance.SubtractBuild(Mathf.Max(armor.GetComponent<Armor>().HP, 0), waveNumber);
         }
         Destroy(gameObject);
     }

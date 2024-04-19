@@ -179,13 +179,13 @@ public class Tile : MonoBehaviour
     {
         if (!ignoreLadder)
         {
-            if (planted != null)
+            if (planted != null && planted.GetComponent<Nut>() != null)
                 foreach (Transform t in planted.transform)
                     if (t.name.StartsWith("Ladder"))
                         return null;
             foreach (GameObject g in overlapped)
             {
-                if (g == null) continue;
+                if (g == null || g.GetComponent<Nut>() == null) continue;
                 foreach (Transform t in g.transform)
                     if (t.name.StartsWith("Ladder"))
                         return null;

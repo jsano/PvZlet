@@ -71,12 +71,12 @@ public class Zomboss : Zombie
                 }
                 else if (decision < 0.9f) // 10%
                 {
-                    if (!bungeed && maxCount >= 8) StartCoroutine(SpawnBungees());
+                    if (!bungeed && maxCount >= 7) StartCoroutine(SpawnBungees());
                     else StartCoroutine(SpawnZombie());
                 }
                 else // 10%
                 {
-                    if (!threwRV && maxCount >= 10) StartCoroutine(ThrowRV());
+                    if (!threwRV && maxCount >= 8) StartCoroutine(ThrowRV());
                     else StartCoroutine(SpawnZombie());
                 }
             }

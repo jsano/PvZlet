@@ -42,7 +42,7 @@ public class JackInTheBox : Football
     private IEnumerator Explode()
     {
         RB.velocity = Vector3.zero;
-        BC.enabled = false;
+        gameObject.layer = LayerMask.NameToLayer("ExplosivesOnly");
         SFX.Instance.Play(boingSFX);
         yield return new WaitForSeconds(0.25f);
         SFX.Instance.Play(gaspSFX[Random.Range(0, gaspSFX.Length)]);

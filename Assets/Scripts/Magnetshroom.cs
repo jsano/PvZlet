@@ -71,6 +71,7 @@ public class Magnetshroom : Plant
 
     private void Take(GameObject g)
     {
+        g.GetComponent<SpriteRenderer>().material.color = Color.white;
         taken = g;
         g.transform.SetParent(transform);
         g.transform.localPosition = Vector3.zero;

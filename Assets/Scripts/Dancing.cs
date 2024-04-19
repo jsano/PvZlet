@@ -76,6 +76,7 @@ public class Dancing : Zombie
                 up.row = row - 1;
                 up.xLoc = transform.position.x;
                 up.waveNumber = waveNumber;
+                up.getSpriteRenderer().sortingOrder = SR.sortingOrder;
             }
             if (s == "down")
             {
@@ -84,6 +85,7 @@ public class Dancing : Zombie
                 down.row = row + 1;
                 down.xLoc = transform.position.x;
                 down.waveNumber = waveNumber;
+                down.getSpriteRenderer().sortingOrder = SR.sortingOrder;
             }
             if (s == "right")
             {
@@ -92,6 +94,7 @@ public class Dancing : Zombie
                 right.row = row;
                 right.xLoc = transform.position.x + Tile.TILE_DISTANCE.x;
                 right.waveNumber = waveNumber;
+                right.getSpriteRenderer().sortingOrder = SR.sortingOrder;
             }
             if (s == "left")
             {
@@ -100,6 +103,7 @@ public class Dancing : Zombie
                 left.row = row;
                 left.xLoc = transform.position.x - Tile.TILE_DISTANCE.x;
                 left.waveNumber = waveNumber;
+                left.getSpriteRenderer().sortingOrder = SR.sortingOrder;
             }
         }
         StartCoroutine(FinishSpawn());

@@ -30,7 +30,7 @@ public class Lawnmower : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.GetComponent<Zombie>().row == row)
+        if (collider.GetComponent<Zombie>().row == row && collider.GetComponent<Zomboss>() == null)
         {
             if (!launched) SFX.Instance.Play(mow);
             launched = true;
